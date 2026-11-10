@@ -1,8 +1,6 @@
 Purpose: normative requirements for `aiset-flutter` — a standalone Dart/Flutter settings library
 compatible with the Python `aiset` project at its observable surface, with a native Flutter settings
 editor. Compatibility means behavior and interop, not structure: see amendment 30.
-This is the specification overlay defined in `AGENTS.md`. After user revision it is consolidated into
-`SPEC.md` by the user or an external process, never by an agent.
 
 Behavioral authority: the **newest commit** of Python `aiset` at
 `https://github.com/DenisDx/aiset` (`main`), and its code and tests take precedence over its prose

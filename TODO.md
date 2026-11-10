@@ -1,6 +1,6 @@
 # TODO.md — aiset-flutter
 
-Near-term actionable tasks only. Detailed plans stay in `SPEC_.md` (requirements), `ROADMAP.md`
+Near-term actionable tasks only. Detailed plans stay in `SPEC.md` (requirements), `ROADMAP.md`
 (stages, open decisions D-01..D-09) and future `proposal_*.md` files. Adding an entry here is a record, not
 authorization to execute it.
 
@@ -13,19 +13,20 @@ Blocked until the user answers `ROADMAP.md` §4, except the tasks marked **unblo
 - [ ] **T-01 (unblocked)** Close open decisions D-01..D-09 with the user. Authority: `ROADMAP.md` §4.
 - [x] **T-02** Repository: `git init` done by the **user** on 2026-11-10; `.gitignore` created and verified
       with `git check-ignore`. Agents commit, push and configure nothing (ROADMAP §1 rule 7).
-- [ ] **T-03 (unblocked)** Review pass over `SPEC_.md` by the user; on approval it is consolidated into
+- [ ] **T-03 (unblocked)** Review pass over `SPEC.md` by the user; on approval it is consolidated into
       `SPEC.md` externally. Until then no requirement here is frozen.
 - [ ] **T-04 (unblocked)** Create the persistent reference clone at `/workspace/aiset-python` (D-02 resolved),
       re-fetch it before each corpus generation, and record the commit SHA used in `fixtures/BASELINE` and
       `ARCHITECTURE.md` §6. The path is supplied through `.env` (`AISET_PYTHON_BASELINE`), not hardcoded.
-- [ ] **T-05** Delete the specification draft once `SPEC_.md` is approved, per `DOCUMENTS.md`; verify no
-      document links to it before removal.
+- [x] **T-05** Specification draft deleted 2026-11-10 on the user's instruction, after `SPEC.md` was
+      consolidated. It was git-ignored, so no history rewrite was needed; a grep confirmed no document
+      references it as a source.
 - [x] **T-06** Root `LICENSE` written 2026-11-10: canonical MIT text, notice `Copyright (c) 2026 DenisDx`,
       body verified identical to the SPDX MIT license text. **Remaining:** copy the same `LICENSE` into each
       package under `packages/` and each example as they are scaffolded, and set `license:` in
-      every `pubspec.yaml` (`SPEC_.md` 34).
+      every `pubspec.yaml` (`SPEC.md` 34).
 - [ ] **T-07** Add the attribution notice with the MIT text beside any verbatim upstream material in
-      `fixtures/python_compat/` (`SPEC_.md` 34).
+      `fixtures/python_compat/` (`SPEC.md` 34).
 
 ## Stage 1 prerequisites
 
@@ -42,7 +43,7 @@ Blocked until the user answers `ROADMAP.md` §4, except the tasks marked **unblo
 - [ ] **T-13** JSON5 CST prototype with dual UTF-8 byte and UTF-16 offset model; prove byte-identical
       round-trip of every preservation fixture before any editing operation is added.
 - [ ] **T-14** Decide and document the regex dialect subset and the bounded-int range policy
-      (`SPEC_.md` amendments 25, 26) — implementation choice, not a requirement change.
+      (`SPEC.md` amendments 25, 26) — implementation choice, not a requirement change.
 - [ ] **T-15** Build the bidirectional descriptor compatibility harness for TPL-01: Python-accepted
       descriptors load in Dart with the same meaning, and Dart descriptors using only shared
       grammar load in Python (`S:32` tier 1).

@@ -1,7 +1,7 @@
 # ARCHITECTURE.md — aiset-flutter
 
 Implementation status: **no code exists yet.** This document therefore records the *target* architecture
-approved in `SPEC_.md`, so that agents have one place describing how the system will be organized. Per
+approved in `SPEC.md`, so that agents have one place describing how the system will be organized. Per
 `AGENTS.md` this file must describe the implemented architecture: each section carries a status marker and
 MUST be rewritten to actual state as soon as the corresponding stage in `ROADMAP.md` lands. Until then
 `Status: planned` means "not built", never "done".
@@ -9,7 +9,7 @@ MUST be rewritten to actual state as soon as the corresponding stage in `ROADMAP
 Behavioral authority: the **newest commit** of Python `aiset`, with its code and tests preferred
 over its prose documents (`S:32`). Snapshot examined for this document: `main` @
 `cbb74c7d8cc1a1f3bb10f0661f6bc00514982cab` (2026-10-23).
-Requirements source: `SPEC_.md`; amendments are cited below as `S:n`.
+Requirements source: `SPEC.md`; amendments are cited below as `S:n`.
 
 ---
 
@@ -18,7 +18,7 @@ Requirements source: `SPEC_.md`; amendments are cited below as `S:n`.
 ```text
 aiset-flutter/
   AGENTS.md                     Agent workflow code (protected, read-only).
-  SPEC_.md                      Normative requirements for this project (overlay, pending revision).
+  SPEC.md                      Normative requirements for this project (overlay, pending revision).
   ARCHITECTURE.md               This document.
   ROADMAP.md                    Stage plan, deferred directions, open decisions.
   TODO.md                       Near-term actionable tasks.
@@ -191,7 +191,7 @@ Read-only reference used to generate the compatibility corpus, verified against 
 that a Python module becomes a Dart file, package or class, and no line below authorizes copying a
 Python internal design (`S:30`).
 
-Each row names behavior that a fixture may pin, per `SPEC_.md` amendments 24, 30 and 32, and is worth
+Each row names behavior that a fixture may pin, per `SPEC.md` amendments 24, 30 and 32, and is worth
 consulting for tier 1 and tier 2 logic. Line counts belong to the baseline files and indicate only how
 much behavior each area covers. Expectations come from **executing** the baseline, not from its prose.
 

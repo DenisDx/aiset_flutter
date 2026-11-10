@@ -10,10 +10,13 @@ statuses stay in their source documents.
 | Path | Purpose | Restrictions |
 |---|---|---|
 | `AGENTS.md` | Universal agent workflow code, version 2.0.1 | Protected. Strictly read-only for every agent; corrections go to `AGENTS_.md` as proposals. **Git-ignored by user request — not versioned, so it does not travel with a clone** |
-| `SPEC.md` | Baseline project specification | Protected read-only. **Does not exist yet.** Created and consolidated only by the user or an external process; agents never create, edit or merge into it |
-| `SPEC_.md` | Approved-amendment overlay: the full normative requirement set for aiset-flutter, 37 numbered amendments (1-36 plus 24a) including the acceptance matrix | Editable only within delegated authority. Amendments take precedence over the corresponding `SPEC.md` provisions once `SPEC.md` exists. Agents must not merge it into `SPEC.md` |
-| `local_aiset_flutter_specification.md` | Specification draft v1.2 (2026-11-09), the source `SPEC_.md` was derived from | **Transient.** Local override prefix: git-ignored via `local_*`. Scheduled for deletion once the starter document set is accepted; permanent links to it are forbidden, so `SPEC_.md` is written self-contained. It is currently the **only** `local_*` file: the prefix is reserved for cases where no ordinary mechanism hides a value (`SPEC_.md` 36) |
+| `SPEC.md` | Baseline project specification: the full normative requirement set for aiset-flutter, 37 numbered sections (1-36 plus 24a) including the acceptance matrix | **Protected, strictly read-only for every agent.** Consolidated by the user on 2026-11-10 from the draft and the overlay, and committed as `f7bb62b`. Agents never create, edit, rename or merge into it; corrections and later approved amendments are proposed in the `SPEC_.md` overlay |
+| `SPEC_.md` | Approved-amendment overlay per `AGENTS.md` | **Exists, empty**, created 2026-11-10 on the user's authorization after the previous overlay was consolidated. Numbering continues the baseline: the first recorded entry is amendment 37. Only approved or explicitly confirmed requirements go here; agents never merge it into `SPEC.md` |
 | `AGENTS_.md` | Correction proposals for `AGENTS.md` | Not an active instruction. **Does not exist yet** |
+
+The Russian specification draft `local_aiset_flutter_specification.md` v1.2 was **deleted on 2026-11-10** by
+the user's instruction, after its content was consolidated into `SPEC.md`. It was git-ignored throughout,
+so it never entered history. No document may reference it as a source.
 
 No `local_AGENTS.md` or `local_SPEC.md` overrides exist; the unprefixed files are effective.
 
@@ -52,9 +55,9 @@ No `local_AGENTS.md` or `local_SPEC.md` overrides exist; the unprefixed files ar
 | Path | Purpose | Restrictions |
 |---|---|---|
 | `.gitignore` | Excludes build output, IDE and OS junk, Python oracle caches, secrets, and the project-local meta files `memory/`, `AGENTS.md`, `.opencode/` and `local_*` | **The user owns git**: agents edit this file only when asked and never stage, commit or push (`ROADMAP.md` §1 rule 7). Editing it after the user has staged it creates index drift, so report the change and let the user re-add. Behavior verified with `git check-ignore` |
-| `.env` | Machine-specific values: local endpoint address, model name, reference-clone path, any key | **Git-ignored, never committed** (`SPEC_.md` 36). Not created by agents beyond the operator's own values |
+| `.env` | Machine-specific values: local endpoint address, model name, reference-clone path, any key | **Git-ignored, never committed** (`SPEC.md` 36). Not created by agents beyond the operator's own values |
 | `.env.example` | Placeholder-only template listing the key names | Tracked on purpose via a `.gitignore` negation. Must contain no real address, host name or key — a template with a live value is a violation |
-| `LICENSE` | MIT license text with the notice `Copyright (c) 2026 DenisDx` | Exists at the repository root; body verified identical to the SPDX MIT text. Per-package and per-example copies are still required (`SPEC_.md` 34, TODO T-06) and must use the same notice verbatim |
+| `LICENSE` | MIT license text with the notice `Copyright (c) 2026 DenisDx` | Exists at the repository root; body verified identical to the SPDX MIT text. Per-package and per-example copies are still required (`SPEC.md` 34, TODO T-06) and must use the same notice verbatim |
 
 ## Agent configuration
 
@@ -73,11 +76,11 @@ No `local_AGENTS.md` or `local_SPEC.md` overrides exist; the unprefixed files ar
 
 | Reference | Purpose | Restrictions |
 |---|---|---|
-| `https://github.com/DenisDx/aiset` @ `cbb74c7` | Python behavioral authority: modules, 406 tests, service contract. Newest commit wins (`SPEC_.md` 32) | **Read-only.** Anonymous HTTPS read works; the container has no push credentials. Its own `SPEC.md`, `SPEC_.md` and `SPEC_service.md` describe the Python project, not this one, and are not governing documents here |
+| `https://github.com/DenisDx/aiset` @ `cbb74c7` | Python behavioral authority: modules, 406 tests, service contract. Newest commit wins (`SPEC.md` 32) | **Read-only.** Anonymous HTTPS read works; the container has no push credentials. Its own `SPEC.md`, `SPEC.md` and `SPEC_service.md` describe the Python project, not this one, and are not governing documents here |
 | `/workspace/AGENTS.md` | Container runbook: toolchain paths, Flutter Web and emulator startup, Playwright and SearXNG MCP, safety rules | Applies to every project under `/workspace`; not a project specification |
 | `/run/flutterdev/topology.json`, `fd-info` | Resolved non-secret runtime topology | Never guess addresses or ports; never print secret values |
 
 ## Planned directories
 
 `packages/`, `examples/`, `fixtures/`, `tool/`, `docs/` — **none exist yet.** Layout and boundaries are
-normative in `SPEC_.md` amendment 1 and described in `ARCHITECTURE.md` §1.
+normative in `SPEC.md` amendment 1 and described in `ARCHITECTURE.md` §1.
