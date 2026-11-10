@@ -46,15 +46,24 @@ Normative text: `SPEC.md` amendments 30, 32, 33.
     referenced by variable name only (`SPEC.md` amendment 36, SEC-02).
 12. **`local_*` files are the exception.** Prefer `.env` and configuration by variable; create a
     `local_` file only when no ordinary mechanism hides the value (`SPEC.md` amendment 36).
-13. **One shared model, sequential delegation.** All agents run on the same fast, powerful, free local
+13. **One shared model, sequential delegation** — the working setup of *this* environment, not a
+    constraint on the project. All agents run on the same fast, powerful, free local
     model, so launching subagents in parallel brings no gain — effective parallelism is
     **1**. Subagents are dispatched one at a time and their results are collected in order. Several
-    queued tasks are acceptable, therefore **timeouts are set generously**: a task must not be
-    declared failed because it waited in the model's queue. A timeout is treated as an inconclusive
-    result to retry or re-scope, never as a test failure.
-14. **Files that describe the agent system rather than the project are not versioned** — `AGENTS.md`,
-    `memory/`, `.opencode/` and any `local_*`. They are tooling and working state, not project sources,
-    so a clone legitimately lacks them. This is a deliberate decision of the user, not a gap to mitigate.
+    queued tasks are acceptable, therefore **timeouts are set generously and stalled steps are
+    restarted until they pass**. The mechanism is `local_tools/run_retry.sh` — operator-side helper, deliberately not project source and not versioned: it retries timeouts, kills and
+    transport errors indefinitely with growing backoff and a checkpoint every five attempts, and it
+    **stops immediately on a genuine non-zero exit**, because retrying a real failure until it goes
+    green would hide the bug. The same rule applies to delegation: when a subagent run
+    is interrupted or expires, it is resumed on the same task rather than started from scratch, and a
+    stall is reported as inconclusive, never as a failed check.
+14. **The repository is author-neutral.** Files that describe the agent system or one developer's
+    tooling — `AGENTS.md`, `memory/`, `.opencode/`, `local_tools/`, anything `local_*` — are not versioned.
+    The reason is not tidiness: **another author may use entirely different tools**, and the project must
+    build, test and run without a single one of these files. That property is a requirement, recorded
+    as `SPEC_.md` amendment 37 with acceptance ID LIB-04. Where a tracked document
+    names one of these paths, it describes the policy behind it and treats the path as an example, not a
+    dependency.
 15. **"Verified" currently means Web and Android only** — what this environment can actually run. The
     platform list grows when the toolchains become available; until then other platforms are reported as
     unverified, never as passing (`SPEC.md` amendment 25).

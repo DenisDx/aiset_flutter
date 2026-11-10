@@ -48,6 +48,8 @@ aiset-flutter/
     preservation/                   Source-preservation fixtures (comments, BOM, CRLF, Unicode).
     descriptors/                    Descriptor grammar and diagnostics fixtures.
   tool/                           Corpus generator and codegen utilities.
+  local_tools/                    Operator-side helpers, e.g. the stall-retry wrapper. NOT project
+                                  source and NOT versioned: the local_* ignore rule excludes it.
   docs/                           API reference, integration guide, grammars, compatibility report.
 ```
 
@@ -168,6 +170,11 @@ subform session owns an isolated child draft. Disposal rules and the host-versus
 split are normative in `S:14` and `S:18`.
 
 ## 5. Platform and toolchain constraints (verified 2026-11-10)
+
+This table describes **one development environment**, not a requirement on a contributor's machine and
+not the product's platform support matrix, which is `SPEC.md` amendment 25. It is recorded because it bounds
+what the team here may honestly claim as verified. Nothing in the build or test path may depend on
+the tooling named below (`SPEC_.md` 37).
 
 | Capability | State in this container | Architectural consequence |
 |---|---|---|

@@ -52,6 +52,13 @@ Blocked until the user answers `ROADMAP.md` §4, except the tasks marked **unblo
 - [ ] **T-17** Add the leak check to the test suite: scan tracked content for private-range address
       literals, host names, key and token shapes and local absolute paths, and fail on a hit (`S:36`,
       SEC-02). The manual equivalent was run on 2026-11-10 and reported zero hits.
+- [ ] **T-18** Extend that same scan to neutrality. Scope is **executable** content only:
+      `pubspec.yaml`, build and test scripts, sources, fixtures and any command line a user is told to
+      run. A hit on `AGENTS.md`, `memory/`, `.opencode/` or `local_tools/` there is a
+      violation (`SPEC_.md` 37, LIB-04). Prose in `ROADMAP.md`, `TODO.md`, `DOCUMENTS.md` and
+      `ARCHITECTURE.md` MAY name those paths — it does so precisely to state the exclusion policy, and
+      naming a path is not depending on it. Verify the property for real by building and testing a
+      clone with those paths absent.
 
 ## Stage 6 (AI)
 
@@ -67,6 +74,10 @@ Blocked until the user answers `ROADMAP.md` §4, except the tasks marked **unblo
 ## Reporting hygiene
 
 - [ ] **T-20** Create `TEST.md` with the actual commands and the environment limits from
-      `ARCHITECTURE.md` §5, when the first runnable tests exist.
+      `ARCHITECTURE.md` §5, when the first runnable tests exist. Every long or network-bound step is
+      documented as a **policy** — stalled or transport-failed steps are restarted until they
+      pass, genuine failures are not — with the note that each author may satisfy it with their
+      own tooling. The helper used in this environment is `local_tools/run_retry.sh`, deliberately not part of
+      the repository (`SPEC_.md` 37).
 - [ ] **T-21** Keep `ARCHITECTURE.md` `Status: planned` markers honest: rewrite a section to
       implemented state only after its checks run.

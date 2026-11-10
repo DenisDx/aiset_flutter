@@ -72,6 +72,9 @@ No `local_AGENTS.md` or `local_SPEC.md` overrides exist; the unprefixed files ar
 | `.opencode/agents/debugger.md` | Scheduled runtime and log analysis | Same |
 | `.opencode/` (other) | Local OpenCode state, `node_modules/`, lockfiles | Generated local tooling state, not project source; excluded by `.gitignore` |
 
+Agent-system and operator files are excluded because they belong to one author's setup, not because
+they are disposable: the requirement that the project work without them is `SPEC_.md` amendment 37.
+
 ## External references
 
 | Reference | Purpose | Restrictions |
@@ -82,5 +85,12 @@ No `local_AGENTS.md` or `local_SPEC.md` overrides exist; the unprefixed files ar
 
 ## Planned directories
 
-`packages/`, `examples/`, `fixtures/`, `tool/`, `docs/` — **none exist yet.** Layout and boundaries are
-normative in `SPEC.md` amendment 1 and described in `ARCHITECTURE.md` §1.
+`packages/`, `examples/`, `fixtures/`, `tool/`, `docs/` — **do not exist yet.** Layout and boundaries are
+normative in `SPEC.md` amendment 1 and described in `ARCHITECTURE.md` §1. `tool/` remains the planned home of
+project code — the corpus generator and codegen utilities — and is unaffected by the operator-only
+directory below.
+
+| Path | Purpose | Restrictions |
+|---|---|---|
+| `local_tools/` | Tools of the agent system or of one developer's environment. The project builds and runs without them, and other authors are expected to bring their own (`ROADMAP.md` §1 rule 14, `SPEC_.md` 37) |
+| `local_tools/run_retry.sh` | Operator-side helper: restarts stalled steps (timeouts, kills, transport errors) indefinitely with backoff, while refusing to retry a genuine failure | **Not project source and not versioned** — the `local_` prefix matches the `local_*` ignore rule, so a fresh clone does not carry it. Exit codes: 0 success, 1 real failure, 2 gave up on stalls, 3 usage. Behavior verified 2026-11-10 on all four paths. Where the helper is absent, the retry policy in `ROADMAP.md` §1 rule 13 still applies manually |
