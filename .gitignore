@@ -1,0 +1,115 @@
+# aiset-flutter — git ignore rules
+#
+# Sections: project-local meta files, Dart and Flutter build output,
+# Android, iOS and macOS, Web, IDE and OS, Python oracle artifacts, secrets.
+# Documentation that belongs to the project (SPEC_.md, ARCHITECTURE.md, ROADMAP.md, TODO.md,
+# DOCUMENTS.md, README.md, TEST.md, fixtures/) is intentionally NOT ignored.
+
+# --- Project-local meta files (kept out of version control by request) ---
+/memory/
+/AGENTS.md
+local_*
+# Specification draft and any other local override copies.
+
+# --- OpenCode local state (the whole directory is excluded, including .opencode/agents/) ---
+.opencode/
+.opencode/node_modules/
+.opencode/package-lock.json
+.opencode/log/
+.opencode/.auth/
+
+# --- Dart and Flutter build output ---
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+doc/api/
+*.dart.js
+*.info.json
+pubspec.lock
+# Applications under examples/ are deployable: their lockfiles ARE reproducible-build input.
+!examples/*/pubspec.lock
+
+# --- Coverage and profiling ---
+coverage/
+*.lcov
+*.profindex
+*.pid
+
+# --- Android ---
+android/.gradle/
+android/.idea/
+android/captures/
+android/local.properties
+android/app/duckduckgo_output/
+**/android/**/.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# --- iOS and macOS ---
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Flutter.framework/
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/ephemeral/
+**/ios/Runner.xcodeproj/project.xcworkspace/
+**/ios/Runner.xcworkspace/xcshareddata/
+**/ios/DerivedData/
+**/macos/Pods/
+**/macos/Flutter/ephemeral/
+**/macos/DerivedData/
+*.xcuserstate
+
+# --- Web ---
+**/web/.dart_tool/
+canonical_url.txt
+
+# --- Native build intermediates (Linux and Windows desktop hosts) ---
+**/linux/flutter/ephemeral/
+**/windows/flutter/ephemeral/
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+*.lib
+
+# --- IDE and editor ---
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# --- OS ---
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
+
+# --- Python oracle artifacts (baseline is executed to derive the corpus) ---
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+# Local copies of the upstream reference clone or source export, if placed inside this tree.
+/aiset-python/
+/aiset_sources*
+
+# --- Secrets and credentials: never commit ---
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.jks
+*.keystore
+key.properties
+google-services.json
+GoogleService-Info.plist

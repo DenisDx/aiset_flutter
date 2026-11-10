@@ -1,0 +1,81 @@
+# DOCUMENTS.md — aiset-flutter
+
+Catalog of documents in this project: path, purpose, and special restrictions. It does not track status;
+statuses stay in their source documents.
+
+---
+
+## Instructions and requirements
+
+| Path | Purpose | Restrictions |
+|---|---|---|
+| `AGENTS.md` | Universal agent workflow code, version 2.0.1 | Protected. Strictly read-only for every agent; corrections go to `AGENTS_.md` as proposals. **Git-ignored by user request — not versioned, so it does not travel with a clone** |
+| `SPEC.md` | Baseline project specification | Protected read-only. **Does not exist yet.** Created and consolidated only by the user or an external process; agents never create, edit or merge into it |
+| `SPEC_.md` | Approved-amendment overlay: the full normative requirement set for aiset-flutter, 36 numbered amendments (1-35 plus 24a) including the acceptance matrix | Editable only within delegated authority. Amendments take precedence over the corresponding `SPEC.md` provisions once `SPEC.md` exists. Agents must not merge it into `SPEC.md` |
+| `local_aiset_flutter_specification.md` | Specification draft v1.2 (2026-11-09), the source `SPEC_.md` was derived from | **Transient.** Local override prefix: git-ignored via `local_*`. Scheduled for deletion once the starter document set is accepted; permanent links to it are forbidden, so `SPEC_.md` is written self-contained |
+| `AGENTS_.md` | Correction proposals for `AGENTS.md` | Not an active instruction. **Does not exist yet** |
+
+No `local_AGENTS.md` or `local_SPEC.md` overrides exist; the unprefixed files are effective.
+
+## Current project documentation
+
+| Path | Purpose | Restrictions |
+|---|---|---|
+| `README.md` | User-facing installation, configuration, startup, usage | **Does not exist yet.** Must show the zero-override connection path; implementation facts separated from roadmap |
+| `ARCHITECTURE.md` | File structure, logical component boundaries, data structures and flows | Describes the **target** architecture while nothing is implemented; each section carries a status marker and must be rewritten to actual state as stages land |
+| `TEST.md` | Test protocols, prerequisites, commands, scenarios, expected outcomes | **Does not exist yet.** Created when the first runnable tests appear; execution results go to memory, not appended here |
+| `commands.md` | Debugging, maintenance and service commands | **Does not exist yet.** Optional; must not duplicate installation and usage docs |
+| `DOCUMENTS.md` | This catalog | Update when a document's inventory, path, purpose or restrictions change — not merely because a proposal closes |
+| `README_ru.md` and other `*.lng.md` | Translations of the corresponding unprefixed file | Must be synchronized with the English source; they never define independent requirements. **None exist yet** |
+
+## Plans and assignments
+
+| Path | Purpose | Restrictions |
+|---|---|---|
+| `ROADMAP.md` | Stage plan, deliverables still to create, open decisions D-01..D-09, deferred directions, risks | Entries are not implementation authorization. New ideas are labeled as proposals; approved priorities are not changed without permission |
+| `TODO.md` | Near-term actionable tasks T-01..T-23 with links to requirements | A new entry is not authorization to execute it; must not duplicate proposal checklists or serve as a long-term backlog |
+| `proposal_*.md` | Scoped sub-specifications per approved change | **None exist yet.** One per implementation stage is the intended convention; editable only while `draft`, `approved` or `in_progress`; closed proposals become read-only |
+| `IMPLEMENTATION_LOG.md` | Execution record for a specifically assigned implementation | **Does not exist yet.** Created only when a detailed execution protocol is requested or required |
+| `TODO_<agent>.md` | Per-agent current assignments | **None exist yet.** Optional; does not override governing instructions or conflicting assignments |
+| `spec_<name>.md` | Feature, protocol or solution specifications extending the baseline within a scope | **None exist yet.** Created only at the user's request |
+
+## Project memory
+
+| Path | Purpose | Restrictions |
+|---|---|---|
+| `memory/history.md` | Shared append-only log of meaningful requests, decisions, events and verification | Append-only; never rewritten or archived; no secrets, no full transcripts, no diff copies. **`memory/` is git-ignored by user request: shared memory is local to this working copy** |
+| `memory/context.md` | Shared compact current knowledge | Compressed before exceeding 20 000 characters; must not duplicate history, specifications or plans |
+| `memory/<agent>/` | Optional personal memory (`history.md`, `context.md`) | Project-relevant findings must never live only here; created only where agent instructions or an assignment permit |
+
+## Repository files
+
+| Path | Purpose | Restrictions |
+|---|---|---|
+| `.gitignore` | Excludes build output, IDE and OS junk, Python oracle caches, secrets, and the project-local meta files `memory/`, `AGENTS.md`, `.opencode/` and `local_*` | **The user owns git**: agents edit this file only when asked and never stage, commit or push (`ROADMAP.md` §1 rule 7). Editing it after the user has staged it creates index drift, so report the change and let the user re-add. Behavior verified with `git check-ignore` |
+| `LICENSE` | MIT license text and copyright line, one per package | **Does not exist yet** (TODO T-06); blocked on the copyright holder string |
+
+## Agent configuration
+
+| Path | Purpose | Restrictions |
+|---|---|---|
+| `.opencode/agents/coordinator.md` | Coordinator role code | Changeable only on the user's direct instruction. **Not versioned: the user's `.gitignore` excludes all of `.opencode/`** |
+| `.opencode/agents/coder.md` | Implementation agent | Same |
+| `.opencode/agents/reviewer.md` | Code and design review | Same |
+| `.opencode/agents/tester.md` | Functional testing and `TEST.md` | Same |
+| `.opencode/agents/uitester.md` | UI, layout, behavior and accessibility testing | Same |
+| `.opencode/agents/documenter.md` | User documentation consistency | Same |
+| `.opencode/agents/debugger.md` | Scheduled runtime and log analysis | Same |
+| `.opencode/` (other) | Local OpenCode state, `node_modules/`, lockfiles | Generated local tooling state, not project source; excluded by `.gitignore` |
+
+## External references
+
+| Reference | Purpose | Restrictions |
+|---|---|---|
+| `https://github.com/DenisDx/aiset` @ `cbb74c7` | Python behavioral authority: modules, 406 tests, service contract. Newest commit wins (`SPEC_.md` 32) | **Read-only.** Anonymous HTTPS read works; the container has no push credentials. Its own `SPEC.md`, `SPEC_.md` and `SPEC_service.md` describe the Python project, not this one, and are not governing documents here |
+| `/workspace/AGENTS.md` | Container runbook: toolchain paths, Flutter Web and emulator startup, Playwright and SearXNG MCP, safety rules | Applies to every project under `/workspace`; not a project specification |
+| `/run/flutterdev/topology.json`, `fd-info` | Resolved non-secret runtime topology | Never guess addresses or ports; never print secret values |
+
+## Planned directories
+
+`packages/`, `examples/`, `fixtures/`, `tool/`, `docs/` — **none exist yet.** Layout and boundaries are
+normative in `SPEC_.md` amendment 1 and described in `ARCHITECTURE.md` §1.
