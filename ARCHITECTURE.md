@@ -179,6 +179,8 @@ split are normative in `S:14` and `S:18`.
 | Linux desktop toolchain (clang, cmake, ninja, pkg-config) | absent, no sudo | Linux desktop build and run cannot be verified; `native_file` is verified on the Dart VM and Android instead |
 | iOS, macOS, Windows toolchains | absent | Not verifiable in this environment; residual risk in `ROADMAP.md` §6 |
 | Playwright MCP browser container | configured | The only sanctioned Flutter Web runtime check |
+| Live OpenAI-compatible endpoint | available, no authorization | Opt-in AI suite can run for real (AI-01, AI-05). Address and model are local-space data: they live in the git-ignored `.env` and are referenced by variable name only (`S:36`) |
+| Verification scope agreed 2026-11-10 | Web and Android | "Verified" claims are limited to these two platforms until further toolchains exist |
 | Python 3, ripgrep, jq, sqlite3 | available | Corpus generation from the baseline and fixture diffing |
 | Git write access to the upstream repo | none; anonymous read only | Upstream is a fixed reference; parity data is vendored into `fixtures/` |
 

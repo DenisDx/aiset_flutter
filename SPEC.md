@@ -1,5 +1,3 @@
-# SPEC_.md — aiset-flutter specification overlay
-
 Purpose: normative requirements for `aiset-flutter` — a standalone Dart/Flutter settings library
 compatible with the Python `aiset` project at its observable surface, with a native Flutter settings
 editor. Compatibility means behavior and interop, not structure: see amendment 30.
@@ -648,7 +646,7 @@ Change:
   sessions, instruction and skill context, tool loop); `AisetProposal` (operations plus
   source and descriptor revisions plus author and note); `AisetAiPanel` (reusable chat, activity,
   proposal UI); `CredentialResolver` (the secret is received by the transport adapter, not by the prompt
-  builder).
+  builder). With no key configured, no `Authorization` header is sent at all (amendment 36).
 - The first real integration is OpenAI-compatible Chat Completions. Other providers MUST connect without
   editor changes. A remote gateway is supported separately; the presence of a client endpoint does not make a
   key safe in Web.
@@ -912,6 +910,7 @@ documented exceptions and working examples — never because a similar UI exists
 | AI-05 | One library connection call gives the standard editor a working assistant; no example code builds a panel, tool loop or proposal review |
 | AI-06 | With no AI layer installed or connected, the standard editor is complete and shows no assistant affordance |
 | SEC-01 | A secret subtree is unavailable without permissions on every surface |
+| SEC-02 | No local-space data appears in tracked content; the leak check passes and suites without local configuration skip rather than fail |
 | REM-01 | The remote example works with Python aiset through public endpoints |
 | EXT-01 | A new plugin branch, widget and AI provider connect without changing library source |
 | DEM-01 | Examples seed state only when absent and never modify tracked assets |
@@ -1085,9 +1084,10 @@ Approval: user instruction 2026-11-10 — MIT is acceptable, the project is open
 not planned now but is possible in the future.
 State: confirmed requirement (not yet implemented)
 Change:
-- The project is licensed under the **MIT license**. Every package under `packages/` and every example
-  carries a `LICENSE` file with the MIT text and the copyright line, plus the matching
-  `license:` field in `pubspec.yaml`. A `LICENSE` file is also a hard requirement of pub.dev publishing,
+- The project is licensed under the **MIT license**. The repository `LICENSE` carries the canonical MIT text
+  with the notice `Copyright (c) 2026 DenisDx`; that string is normative, and every package under `packages/`
+  and every example carries a `LICENSE` file with the same text and notice, plus the matching `license:` field
+  in `pubspec.yaml`. A `LICENSE` file is also a hard requirement of pub.dev publishing,
   so it is present from the first commit of each package rather than added at release time.
 - The upstream Python `aiset` declares MIT in `pyproject.toml` but ships no `LICENSE` file. Where this
   project reproduces upstream material verbatim — test fixture inputs and expected outputs in
@@ -1138,9 +1138,44 @@ Change:
   NOT be counted toward acceptance or described as supported.
 Reference: `ROADMAP.md` §1 rule 10, §5 and §7; amendments 1, 7, 23.
 
-## Consolidation notes for `SPEC.md`
-- Amendments 1-35 including 24a are self-contained: no other project document is required to read them.
-- The acceptance matrix has 54 IDs: 51 from the reviewed draft, plus AI-05 and AI-06 (amendment 31) and TPL-01 (amendment 32).
+## 36. Local environment data must not enter version control
+Affected: `SPEC.md` "Repository and packages", "Compatibility", "AI modules"; extends amendment 34.
+Approval: user instruction 2026-11-10 — no local IP addresses, tokens, computer names or any other
+information about the local space may reach git; test files and configurations in use carry the `local_`
+prefix and stay out of git; the `.env` mechanism may be used where it fits.
+State: confirmed requirement (not yet implemented)
+Change:
+- **Prohibited in tracked content:** IP addresses and host names of private or local infrastructure,
+  private-range IPv4 literals, non-default ports of local services, API keys, tokens, passwords and signing
+  material, computer and user names, absolute paths that reveal a local account, e-mail addresses and
+  identifiers of private services, and any equivalent local-space detail. This applies to source, tests,
+  fixtures, documentation, comments, commit messages and generated artifacts alike.
+- **Mechanism.** Machine-specific values and secrets go into a `.env` file, which `.gitignore`
+  excludes; ordinary configuration is passed by variable or argument. A tracked file MUST NOT name
+  a value — it names the variable or the file pattern instead.
+- **`local_*` is an exception, not a default.** A `local_`-prefixed file is created only when exclusion cannot
+  be achieved by the ordinary means above — chiefly for a local replacement of a governed document, or for a
+  machine-specific file that must keep the original name and path. Ordinary project files, fixtures and
+  test configurations MUST NOT be duplicated into `local_` copies to hide them from review or from a
+  check. The count of `local_*` files is expected to stay near zero.
+- **Templates.** Where a consumer needs to know which keys exist, a placeholder-only template is committed
+  (`.env.example`), with key names and empty or obviously absent values. A template carrying a real value is a
+  violation, not a convenience.
+- **Tests and tools MUST degrade without local configuration.** A suite that needs a local endpoint or a
+  reference clone MUST skip with an explicit reason when the configuration is absent, and MUST NOT fail, hang
+  or silently substitute a stub. A skipped suite is reported as skipped, never as passed.
+- **The AI test endpoint specifically.** The endpoint is supplied out of band through git-ignored local
+  configuration. When no key is configured the client MUST omit the `Authorization` header entirely: an empty,
+  placeholder or fabricated token is a defect, because the endpoint validates tokens and rejects a request
+  carrying a non-existent one.
+- **Verification.** A leak check runs over tracked content for private-range address literals, host
+  names, key and token shapes, and local absolute paths. It is part of the test suite, and a finding is
+  reported to the user immediately rather than fixed by rewriting history, which is the user's action.
+Reference: acceptance IDs SEC-01, SEC-02; `ROADMAP.md` §1 rule 11.
+
+## Consolidation notes
+- Amendments 1-36 including 24a are self-contained: no other project document is required to read them.
+- The acceptance matrix has 55 IDs: 51 from the reviewed draft, plus AI-05 and AI-06 (amendment 31), TPL-01 (amendment 32) and SEC-02 (amendment 36).
 - On consolidation, the behavioral authority snapshot in the header MUST be re-checked and, if the user
   pins a different commit, updated here first.
 - Deviations from Python behavior that are intentional corrections (for example the resolver no longer

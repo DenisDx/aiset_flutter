@@ -105,6 +105,8 @@ venv/
 # --- Secrets and credentials: never commit ---
 .env
 .env.*
+# Placeholder template with no real values is tracked on purpose.
+!.env.example
 *.key
 *.pem
 *.p12

@@ -17,11 +17,13 @@ Blocked until the user answers `ROADMAP.md` §4, except the tasks marked **unblo
       `SPEC.md` externally. Until then no requirement here is frozen.
 - [ ] **T-04 (unblocked)** Create the persistent reference clone at `/workspace/aiset-python` (D-02 resolved),
       re-fetch it before each corpus generation, and record the commit SHA used in `fixtures/BASELINE` and
-      `ARCHITECTURE.md` §6.
+      `ARCHITECTURE.md` §6. The path is supplied through `.env` (`AISET_PYTHON_BASELINE`), not hardcoded.
 - [ ] **T-05** Delete the specification draft once `SPEC_.md` is approved, per `DOCUMENTS.md`; verify no
       document links to it before removal.
-- [ ] **T-06** Write `LICENSE` (MIT) per package with the copyright line. **Blocked on the user:** the exact
-      copyright holder string is not decided yet (company legal name as it should appear in the notice).
+- [x] **T-06** Root `LICENSE` written 2026-11-10: canonical MIT text, notice `Copyright (c) 2026 DenisDx`,
+      body verified identical to the SPDX MIT license text. **Remaining:** copy the same `LICENSE` into each
+      package under `packages/` and each example as they are scaffolded, and set `license:` in
+      every `pubspec.yaml` (`SPEC_.md` 34).
 - [ ] **T-07** Add the attribution notice with the MIT text beside any verbatim upstream material in
       `fixtures/python_compat/` (`SPEC_.md` 34).
 
@@ -46,6 +48,9 @@ Blocked until the user answers `ROADMAP.md` §4, except the tasks marked **unblo
       grammar load in Python (`S:32` tier 1).
 - [ ] **T-16** Re-fetch the baseline before each corpus generation and record the commit SHA used alongside
       the fixtures; a tier 1 change upstream is an explicit re-baseline event (`S:32`).
+- [ ] **T-17** Add the leak check to the test suite: scan tracked content for private-range address
+      literals, host names, key and token shapes and local absolute paths, and fail on a hit (`S:36`,
+      SEC-02). The manual equivalent was run on 2026-11-10 and reported zero hits.
 
 ## Stage 6 (AI)
 
@@ -54,6 +59,9 @@ Blocked until the user answers `ROADMAP.md` §4, except the tasks marked **unblo
       only provider, options and credentials.
 - [ ] **T-23** Prove absence behavior: build and test the standard editor with no AI layer installed and
       with the layer installed but not connected — no affordance, no dead control, no error (AI-06, LIB-02).
+- [ ] **T-24** Opt-in AI suite reads its endpoint from the git-ignored `.env` (keys listed in
+      `.env.example`), skips with an explicit reason when the file is absent instead of failing or hanging,
+      and sends no `Authorization` header when no key is configured (`S:36`, AI-01).
 
 ## Reporting hygiene
 

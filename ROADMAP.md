@@ -38,6 +38,14 @@ Normative text: `SPEC_.md` amendments 30, 32, 33.
    their target language. Dialogue with the user is in the language the user chose.
 10. **`aiui` is not part of the MVP.** Generic mechanisms are built; the aiui host
     integration surface is deferred (`SPEC_.md` amendment 35).
+11. **No local-space data in git** — no private addresses or host names, no keys or tokens, no
+    computer or user names, no local absolute paths. Values live in git-ignored configuration and are
+    referenced by variable name only (`SPEC_.md` amendment 36, SEC-02).
+12. **`local_*` files are the exception.** Prefer `.env` and configuration by variable; create a
+    `local_` file only when no ordinary mechanism hides the value (`SPEC_.md` amendment 36).
+13. **"Verified" currently means Web and Android only** — what this environment can actually run. The
+    platform list grows when the toolchains become available; until then other platforms are reported as
+    unverified, never as passing (`SPEC_.md` amendment 25).
 
 The upstream Python behavioral authority is reachable read-only at
 `https://github.com/DenisDx/aiset` (`main` @ `cbb74c7`, 2026-10-23). The container has no push
@@ -69,7 +77,8 @@ documentation; stage 7 blocks any statement of tier 1 mutual compatibility with 
 - `TEST.md`: test invocation protocols, and `test.sh` if the user wants the convenience runner.
 - `proposal_*.md` per approved stage; `IMPLEMENTATION_LOG.md` only if a detailed execution protocol is
   requested for a stage.
-- `LICENSE` — MIT text plus the copyright line, one per package (D-04 resolved, `SPEC_.md` 34).
+- `LICENSE` per package and example — the root `LICENSE` exists; the copies do not yet (D-04 resolved,
+  `SPEC_.md` 34).
 - ~~`.gitignore` and repository initialization~~ — done 2026-11-10: the user ran `git init`,
   the coordinator added `.gitignore`.
 - `fixtures/` corpus, `tool/` generator, `docs/` reference set.
@@ -90,10 +99,10 @@ D-02 — the reference clone must be a fetchable working tree, not a frozen arch
 | ~~D-01~~ | ~~Is `main` @ `cbb74c7` the parity baseline?~~ **RESOLVED** — newest commit wins, code over prose (`SPEC_.md` 32); user confirmed on 2026-11-10 that no newer branch exists | Was: corpus correctness depended on the pin | Superseded by the re-fetch rule; no residual gap assumed |
 | ~~D-02~~ | **RESOLVED 2026-11-10** — reference clone at `/workspace/aiset-python`, re-fetched per generation with the SHA recorded; generated fixtures ARE committed. | Was: reproducibility of stage 1 without a Python install | Closed; the clone itself is created by T-04, the SHA file by T-16 |
 | ~~D-03~~ | ~~Which package identity is canonical?~~ **RESOLVED 2026-11-10** — see §4.1 for the verified naming scheme | Was: affected every `pubspec.yaml` and import path | Superseded by the measured result |
-| ~~D-04~~ | **RESOLVED 2026-11-10** — MIT, the project is open. My original premise was wrong: upstream declares `license = { text = "MIT" }` in `pyproject.toml` but ships no `LICENSE` file. | Was: blocked `pubspec.yaml` metadata | Policy in `SPEC_.md` amendment 34; the `LICENSE` file is still to be written and needs the exact copyright holder string (T-06) |
+| ~~D-04~~ | **RESOLVED 2026-11-10** — MIT, the project is open. My original premise was wrong: upstream declares `license = { text = "MIT" }` in `pyproject.toml` but ships no `LICENSE` file. | Was: blocked `pubspec.yaml` metadata | Policy in `SPEC_.md` amendment 34. Root `LICENSE` written 2026-11-10 with `Copyright (c) 2026 DenisDx`, body verified identical to the SPDX MIT text; per-package copies remain (T-06) |
 | ~~D-05~~ | **RESOLVED 2026-11-10** — the user ran `git init` from the host; no remote is configured in the container and agents never commit or push (standing rule 7). `.gitignore` was created by the coordinator and verified with `git check-ignore`. | Was: a commit-based workflow | Branch is currently `master`; renaming it to `main` is the user's call, not an agent action |
-| D-06 | Platform priority for CI: Android emulator and Flutter Web via the browser container are available; Linux desktop, iOS, macOS and Windows are not buildable here. | Determines what "verified" may honestly mean | Gate on `dart test`, `flutter test`, Android emulator, Web compile plus browser-container smoke; record the rest as residual risk |
-| D-07 | Is a live OpenAI-compatible endpoint available for the opt-in AI suite (stage 6), or only the deterministic offline provider? | AI-01 requires a real model; without an endpoint that ID cannot close | Ship stage 6 with the offline provider and mark AI-01 unverified |
+| ~~D-06~~ | **RESOLVED 2026-11-10** — verified means Web and Android only for now, i.e. what this environment can actually run; the list expands later. | Was: honest meaning of "verified" | Standing rule 13; unverified platforms are reported as unverified, never as passing |
+| ~~D-07~~ | **RESOLVED 2026-11-10** — a live OpenAI-compatible endpoint exists and needs no authorization. Its address and model name are local-space data and therefore live only in the git-ignored `.env`; the tracked template is `.env.example`. | Was: AI-01 and the depth of AI-05 | Closed; with no key configured the client sends no `Authorization` header at all (`SPEC_.md` 36) |
 | ~~D-08~~ | **RESOLVED 2026-11-10** — `aiui` support is **not** built in the MVP. The generic mechanisms it relies on stay in scope; the aiui-specific surface is deferred (`SPEC_.md` amendment 35). | Was: how much of amendments 7 and 23 to build early | Closed; deferred list in §5 |
 | ~~D-09~~ | **RESOLVED 2026-11-10** — English is mandatory for everything in this project: code, comments, documentation, memory, tool artifacts. The only exceptions are localization and translation files, written in their target language. Conversation with the user follows the language the user used. | Was: affected every document | Closed; the Russian specification draft is transient and git-ignored, and no document may cite it as a source |
 
@@ -151,7 +160,7 @@ into D-04.
 | Uncertain commit outcome on remote and native writes | Lost or duplicated writes | `CommitReport.uncertain`, reread instead of blind retry, revision checks |
 | Secret leakage through search, events, diagnostics or AI | SEC-01 fail | Redaction enforced at the binding and tool layer, plus a dedicated security suite |
 | UI scope creep before core parity | Both late | Stage gating: no presentation API is called stable before the three integration paths work together |
-| Environment cannot verify desktop and mobile platform matrix | Overstated readiness | Honest reporting per D-06; unverified platforms listed in `README.md` and the compatibility report |
+| Environment verifies Web and Android only | Overstated readiness on the remaining platforms | Accepted scope per D-06 and standing rule 13: unverified platforms listed in `README.md` and the compatibility report, and the list is revisited when toolchains appear |
 | Parity mistaken for a structural port, reproducing Python internals for no benefit | Wasted effort, unidiomatic Dart, blocked Flutter-native choices | `SPEC_.md` amendments 30 and 32 fix the boundary; `ARCHITECTURE.md` §6 is labeled a behavior index, not a layout |
 | "Newest commit wins" makes the oracle a moving target | Fixtures silently regenerate under a changed implementation and break bisectability | Record the SHA per generation; treat a tier 1 change upstream as an explicit re-baseline event, not an automatic refresh |
 | Compatibility scope read too wide again, forcing identity where only similarity is required | Over-claiming and wasted parity work on UI and naming | Tier 3 in `SPEC_.md` amendment 32 states that no acceptance ID requires identity there |
