@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_const_nested_object",
+  "description": "A whole nested object can be the fixed value.",
+  "classes": [
+    "const",
+    "object",
+    "accept"
+  ],
+  "input": "{ a: {k: [1, {m: 2}]} }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\", const: {k: [1, {m: 2}]} } } } }",
+  "value": "{ a: {k: [1, {m: 2}]} }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

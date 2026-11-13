@@ -1,0 +1,18 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "typedef_used_in_array_item",
+  "description": "A template resolves in the single node that describes array items.",
+  "classes": [
+    "typedef",
+    "array",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { card: { typedef: \"card\", type: \"object\", children: { n: { type: \"int\" } } }, cards: { type: \"array\", children: { type: \"card\" } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

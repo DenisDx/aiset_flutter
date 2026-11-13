@@ -1,0 +1,24 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "document_comments_only_root",
+  "description": "Document comments before an empty root object.",
+  "classes": [
+    "comments",
+    "document-comment",
+    "empty"
+  ],
+  "input": "// header\n{}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      ""
+    ],
+    "rootText": "{}",
+    "storedValue": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

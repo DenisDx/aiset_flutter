@@ -1,0 +1,49 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_create_in_empty_object_multiline",
+  "description": "Creating the first key of a block empty object.",
+  "classes": [
+    "set",
+    "create-member",
+    "empty"
+  ],
+  "input": "{\n  empty: {\n  },\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/empty/x",
+    "value_text": "1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  empty: {\n    x: 1\n  },\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/empty",
+        "/empty/x"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "empty",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "x",
+                  {
+                    "k": "int",
+                    "v": "1"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

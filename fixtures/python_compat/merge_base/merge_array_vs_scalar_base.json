@@ -1,0 +1,40 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_array_vs_scalar_base",
+  "description": "An array against a scalar is a conflict. (prefer: base)",
+  "classes": [
+    "array",
+    "type-mismatch",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "array",
+    "v": [
+      {
+        "k": "int",
+        "v": "1"
+      }
+    ]
+  },
+  "update": {
+    "k": "int",
+    "v": "1"
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "1"
+        }
+      ]
+    },
+    "ok": true
+  }
+}

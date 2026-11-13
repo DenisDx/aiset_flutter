@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_misplaced_array_min_length",
+  "description": "A string length on an array node is refused at the descriptor.",
+  "classes": [
+    "misplaced",
+    "constraint-by-type",
+    "array",
+    "rejection"
+  ],
+  "input": "{ a: 1 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"array\", children: { type: \"int\" }, min_length: 2 } } } }",
+  "value": "{ a: 1 }",
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "ok": false
+  }
+}

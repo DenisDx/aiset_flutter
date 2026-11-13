@@ -1,0 +1,147 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "union_quoted_placeholder_numeric_text",
+  "description": "A quoted placeholder whose resolved text fits an earlier alternative.",
+  "classes": [
+    "union",
+    "placeholder",
+    "A26"
+  ],
+  "input": "{ items: { a: { port: \"${P}\" } } }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    items: { type: \"object\", additional_children: { type: \"union\", children_options: [\n      { type: \"object\", children: { port: { type: \"int\", env: { allowed: true, convert: \"int\" } } } },\n      { type: \"object\", children: { port: { type: \"string\", env: { allowed: true, convert: \"string\" } } } },\n    ] } },\n  } },\n}\n",
+  "config": "{ items: { a: { port: \"${P}\" } } }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "P": "9"
+    },
+    "dotenv": {}
+  },
+  "divergence": {
+    "id": "A26",
+    "report": "A26",
+    "note": "The baseline classifies the stored text \"${P}\" as a string and therefore picks the string alternative, so the same document means 9 when written bare and \"9\" when written quoted. The Dart implementation resolves the placeholder first and then keeps the first alternative the resolved value fits."
+  },
+  "expected": {
+    "ok": true,
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "items",
+          {
+            "k": "object",
+            "v": [
+              [
+                "a",
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "port",
+                      {
+                        "k": "int",
+                        "v": "9"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/items/a/port",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "P"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "items",
+          {
+            "k": "object",
+            "v": [
+              [
+                "a",
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "port",
+                      {
+                        "k": "string",
+                        "v": "9"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/items/a/port",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "P"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

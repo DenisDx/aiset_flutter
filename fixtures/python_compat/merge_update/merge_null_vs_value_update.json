@@ -1,0 +1,30 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_null_vs_value_update",
+  "description": "An explicit null conflicts with a value. (prefer: update)",
+  "classes": [
+    "scalar",
+    "null",
+    "six-states",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "null"
+  },
+  "update": {
+    "k": "int",
+    "v": "1"
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "int",
+      "v": "1"
+    },
+    "ok": true
+  }
+}

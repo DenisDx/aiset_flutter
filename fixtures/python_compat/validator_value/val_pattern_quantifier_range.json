@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_quantifier_range",
+  "description": "A bounded quantifier is accepted.",
+  "classes": [
+    "pattern",
+    "accept"
+  ],
+  "input": "{ a: \"aaa\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"a{2,3}\" } } } }",
+  "value": "{ a: \"aaa\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

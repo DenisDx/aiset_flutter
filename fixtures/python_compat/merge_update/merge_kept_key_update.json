@@ -1,0 +1,82 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_kept_key_update",
+  "description": "A key only the base has is kept. (prefer: update)",
+  "classes": [
+    "object",
+    "keep",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "int",
+          "v": "1"
+        }
+      ],
+      [
+        "keep",
+        {
+          "k": "int",
+          "v": "2"
+        }
+      ]
+    ]
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "int",
+          "v": "1"
+        }
+      ],
+      [
+        "add",
+        {
+          "k": "int",
+          "v": "3"
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "keep",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ],
+        [
+          "add",
+          {
+            "k": "int",
+            "v": "3"
+          }
+        ]
+      ]
+    },
+    "ok": true
+  }
+}

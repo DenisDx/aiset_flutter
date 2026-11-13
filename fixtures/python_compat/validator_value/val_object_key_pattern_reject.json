@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_object_key_pattern_reject",
+  "description": "A key the pattern cannot match is refused.",
+  "classes": [
+    "object",
+    "key-pattern",
+    "rejection"
+  ],
+  "input": "{ o: { nohit: 1 } }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { o: { type: \"object\", key_pattern: \"^w\", additional_children: { type: \"int\" } } } } }",
+  "value": "{ o: { nohit: 1 } }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/o/nohit",
+        "rule": "key_pattern",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "sparse_comments",
+  "description": "Comments separated by blank lines between members and before the closing brace.",
+  "classes": [
+    "comments",
+    "blank-lines",
+    "block-end"
+  ],
+  "input": "{\n  // first\n\n\n  a: 1,\n\n  // between\n\n  b: 2\n  // before close\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b"
+    ],
+    "rootText": "{\n  // first\n\n\n  a: 1,\n\n  // between\n\n  b: 2\n  // before close\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    }
+  }
+}

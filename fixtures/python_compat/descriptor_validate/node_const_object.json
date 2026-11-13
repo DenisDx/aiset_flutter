@@ -1,0 +1,18 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_const_object",
+  "description": "A const may be a whole object.",
+  "classes": [
+    "node",
+    "const",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"any\", const: { a: 1 } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

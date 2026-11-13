@@ -1,0 +1,115 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_provenance_multiple_variables",
+  "description": "Provenance of a string built from two variables.",
+  "classes": [
+    "provenance",
+    "multiple",
+    "A22"
+  ],
+  "input": "x ${A} y ${B} z",
+  "layers": {
+    "overrides": {
+      "A": "1"
+    },
+    "environ": {
+      "B": "2"
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "divergence": {
+    "id": "A22",
+    "report": "A22",
+    "note": "The baseline assigns provenance inside the substitution loop, so only the LAST placeholder survives: the entry says the value came from variable B and records nothing about A, which came from an explicit host override. SPEC.md 6 requires provenance to say which layer supplied a value, and the answer here is two layers. The Dart implementation records every contributing variable and the highest-precedence source among them, keeping the single-variable shape byte-identical to the baseline."
+  },
+  "expected": {
+    "ok": true,
+    "output": "x 1 y 2 z",
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ],
+              [
+                "variables",
+                {
+                  "k": "array",
+                  "v": [
+                    {
+                      "k": "string",
+                      "v": "A"
+                    },
+                    {
+                      "k": "string",
+                      "v": "B"
+                    }
+                  ]
+                }
+              ],
+              [
+                "source",
+                {
+                  "k": "string",
+                  "v": "override"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "issues": [],
+    "ok": true,
+    "output": "x 1 y 2 z",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "B"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

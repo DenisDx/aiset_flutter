@@ -1,0 +1,46 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_append_empty_array_multiline",
+  "description": "Appending to an empty block array.",
+  "classes": [
+    "add",
+    "append-marker",
+    "empty"
+  ],
+  "input": "{\n  list: [\n  ],\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/list/-",
+    "value_text": "1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\n    1\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "int",
+                  "v": "1"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

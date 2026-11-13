@@ -1,0 +1,49 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "huge_integers",
+  "description": "Integers beyond the 64-bit range stay exact.",
+  "classes": [
+    "number",
+    "big-int",
+    "hex"
+  ],
+  "input": "{\n  big: 123456789012345678901234567890,\n  bigHex: 0xdeadbeefcafebabe1234,\n  negBig: -98765432109876543210,\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/big",
+      "/bigHex",
+      "/negBig"
+    ],
+    "rootText": "{\n  big: 123456789012345678901234567890,\n  bigHex: 0xdeadbeefcafebabe1234,\n  negBig: -98765432109876543210,\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "big",
+          {
+            "k": "int",
+            "v": "123456789012345678901234567890"
+          }
+        ],
+        [
+          "bigHex",
+          {
+            "k": "int",
+            "v": "1051570404360395033547316"
+          }
+        ],
+        [
+          "negBig",
+          {
+            "k": "int",
+            "v": "-98765432109876543210"
+          }
+        ]
+      ]
+    }
+  }
+}

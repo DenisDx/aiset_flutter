@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_array_heterogeneous_none_match",
+  "description": "An item that matches no array alternative reports the union.",
+  "classes": [
+    "array",
+    "union",
+    "rejection"
+  ],
+  "input": "{ l: [\"x\"] }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { l: { type: \"array\", children_options: [ { type: \"int\" }, { type: \"bool\" } ] } } } }",
+  "value": "{ l: [\"x\"] }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/l/0",
+        "rule": "union",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

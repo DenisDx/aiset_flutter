@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_to_end_position",
+  "description": "Moving to the position past the last item.",
+  "classes": [
+    "move",
+    "array"
+  ],
+  "input": "{\n  list: [\n    \"a\",\n    \"b\",\n  ],\n}\n",
+  "operation": {
+    "op": "move",
+    "source": "/list/0",
+    "target": "/list/2"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\n    \"b\",\n    \"a\",\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0",
+        "/list/1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "b"
+                },
+                {
+                  "k": "string",
+                  "v": "a"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

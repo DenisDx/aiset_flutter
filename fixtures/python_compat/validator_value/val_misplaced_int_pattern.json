@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_misplaced_int_pattern",
+  "description": "A pattern on an int node is refused at the descriptor.",
+  "classes": [
+    "misplaced",
+    "constraint-by-type",
+    "int",
+    "rejection"
+  ],
+  "input": "{ a: 1 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"int\", pattern: \"x\" } } } }",
+  "value": "{ a: 1 }",
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "ok": false
+  }
+}

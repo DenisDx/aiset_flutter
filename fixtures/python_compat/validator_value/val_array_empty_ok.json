@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_array_empty_ok",
+  "description": "An empty array satisfies an item node.",
+  "classes": [
+    "array",
+    "accept"
+  ],
+  "input": "{ l: [] }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { l: { type: \"array\", children: { type: \"int\" } } } } }",
+  "value": "{ l: [] }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

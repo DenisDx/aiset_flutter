@@ -1,0 +1,31 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "typedef_array_item_children_merge_minimum",
+  "description": "The bound inherited from the template survives the merge.",
+  "classes": [
+    "typedef",
+    "merge",
+    "array",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    t: { typedef: \"ints\", type: \"array\", children: { type: \"int\", minimum: 1 } },\n    u: { type: \"ints\", children: { type: \"int\", maximum: 9 } },\n  } },\n}\n",
+  "query": {
+    "op": "node_field",
+    "pointer": "/u/0",
+    "field": "minimum"
+  },
+  "strict": true,
+  "expected": {
+    "ok": true,
+    "query": {
+      "field": "minimum",
+      "op": "node_field",
+      "pointer": "/u/0"
+    },
+    "result": {
+      "k": "int",
+      "v": "1"
+    }
+  }
+}

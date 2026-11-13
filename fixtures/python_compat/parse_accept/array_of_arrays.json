@@ -1,0 +1,61 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "array_of_arrays",
+  "description": "Nested arrays with trailing commas at both levels.",
+  "classes": [
+    "array",
+    "nested",
+    "trailing-commas"
+  ],
+  "input": "{\n  m: [\n    [1, 2,],\n    [3,],\n  ],\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/m",
+      "/m/0",
+      "/m/0/0",
+      "/m/0/1",
+      "/m/1",
+      "/m/1/0"
+    ],
+    "rootText": "{\n  m: [\n    [1, 2,],\n    [3,],\n  ],\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "m",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "array",
+                "v": [
+                  {
+                    "k": "int",
+                    "v": "1"
+                  },
+                  {
+                    "k": "int",
+                    "v": "2"
+                  }
+                ]
+              },
+              {
+                "k": "array",
+                "v": [
+                  {
+                    "k": "int",
+                    "v": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

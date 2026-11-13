@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_quantifier_open_range",
+  "description": "An open quantifier range is accepted.",
+  "classes": [
+    "pattern",
+    "accept"
+  ],
+  "input": "{ a: \"aaaa\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"a{2,}\" } } } }",
+  "value": "{ a: \"aaaa\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

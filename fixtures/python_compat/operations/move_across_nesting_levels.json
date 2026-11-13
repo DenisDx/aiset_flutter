@@ -1,0 +1,89 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_across_nesting_levels",
+  "description": "A multiline object item with a nested array moves as one block, reindented.",
+  "classes": [
+    "move",
+    "nested",
+    "multiline",
+    "comments"
+  ],
+  "input": "{\n  workers: [\n    {\n      id: \"web\", // worker id\n      ports: [\n        8080,\n        8081,\n      ],\n    },\n    {\n      id: \"cache\",\n    },\n  ],\n}\n",
+  "operation": {
+    "op": "move",
+    "source": "/workers/0",
+    "target": "/workers/1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  workers: [\n    {\n      id: \"cache\",\n    },\n    {\n      id: \"web\", // worker id\n      ports: [\n        8080,\n        8081,\n      ],\n    },\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/workers",
+        "/workers/0",
+        "/workers/0/id",
+        "/workers/1",
+        "/workers/1/id",
+        "/workers/1/ports",
+        "/workers/1/ports/0",
+        "/workers/1/ports/1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "workers",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "id",
+                      {
+                        "k": "string",
+                        "v": "cache"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "id",
+                      {
+                        "k": "string",
+                        "v": "web"
+                      }
+                    ],
+                    [
+                      "ports",
+                      {
+                        "k": "array",
+                        "v": [
+                          {
+                            "k": "int",
+                            "v": "8080"
+                          },
+                          {
+                            "k": "int",
+                            "v": "8081"
+                          }
+                        ]
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

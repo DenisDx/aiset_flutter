@@ -1,0 +1,52 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_override_empty_env_set_with_default",
+  "description": "An empty override does not stop the chain when a default exists.",
+  "classes": [
+    "precedence",
+    "empty-value"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "V",
+    "inlineDefault": "fb"
+  },
+  "layers": {
+    "overrides": {
+      "V": ""
+    },
+    "environ": {
+      "V": "env"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": "fb",
+      "name": "V",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": "env"
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "env"
+          }
+        ]
+      ]
+    }
+  }
+}

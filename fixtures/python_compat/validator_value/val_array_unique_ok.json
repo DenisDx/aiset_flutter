@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_array_unique_ok",
+  "description": "Distinct items pass unique_items.",
+  "classes": [
+    "array",
+    "unique-items",
+    "accept"
+  ],
+  "input": "{ l: [1, 2, 3] }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { l: { type: \"array\", children: { type: \"int\" }, unique_items: true } } } }",
+  "value": "{ l: [1, 2, 3] }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

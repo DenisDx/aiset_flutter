@@ -1,0 +1,36 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "at_absent_pointer_missing",
+  "description": "A pointer the descriptor does not declare is MISSING.",
+  "classes": [
+    "missing",
+    "undeclared"
+  ],
+  "input": "{}",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", default: \"fb\" }, plain: { type: \"string\" }, templated: { type: \"string\", env: { allowed: true } }, n: { type: \"int\", default: 0 }, z: { type: \"string\", nullable: true, default: null } } } }",
+  "config": "{}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "query": {
+    "op": "effective_at",
+    "pointer": "/nope",
+    "stored": "MISSING",
+    "path": "/x"
+  },
+  "expected": {
+    "effective": {
+      "k": "missing"
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_reject_version",
+  "description": "An unknown version refuses compilation.",
+  "classes": [
+    "compile",
+    "rejection",
+    "version"
+  ],
+  "input": "{\n  descriptor_version: \"9.9\",\n  root: { type: \"object\", children: { a: { type: \"string\" } } },\n}\n",
+  "strict": true,
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "issues": [
+      {
+        "code": "DESCRIPTOR_VERSION",
+        "column": 23,
+        "hasMessage": true,
+        "line": 2,
+        "path": "/descriptor_version",
+        "severity": "error"
+      }
+    ],
+    "ok": false
+  }
+}

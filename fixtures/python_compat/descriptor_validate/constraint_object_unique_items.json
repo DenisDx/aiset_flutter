@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_object_unique_items",
+  "description": "The MapEntry(unique_items: true).key constraint does not apply to type object.",
+  "classes": [
+    "constraint-by-type",
+    "object",
+    "unique_items",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", unique_items: true } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 74,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/unique_items",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

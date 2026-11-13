@@ -1,0 +1,138 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "governed_key_enum_forbidden_gets_no_default",
+  "description": "A key outside key_enum is not governed, so no default is materialized for it.",
+  "classes": [
+    "keys",
+    "key-enum",
+    "A25"
+  ],
+  "input": "{ s: { forbidden: {} } }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: {\n    s: { type: \"object\", key_enum: [\"ok\"], additional_children: { type: \"object\",\n        children: { x: { type: \"string\", default: \"X\" } } } },\n} } }\n",
+  "config": "{ s: { forbidden: {} } }",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "divergence": {
+    "id": "A25",
+    "report": "A25",
+    "note": "The baseline implements \"which keys does this object govern\" three times with three answers. Default filling ignores key_enum, so a key the descriptor forbids receives a materialized default and provenance that claims it came from a default; node selection for resolution ignores key_pattern, so a key outside the pattern is still substituted. The Dart implementation applies the same governed-key rule in both places."
+  },
+  "expected": {
+    "ok": true,
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "s",
+          {
+            "k": "object",
+            "v": [
+              [
+                "forbidden",
+                {
+                  "k": "object",
+                  "v": []
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/s/forbidden",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "s",
+          {
+            "k": "object",
+            "v": [
+              [
+                "forbidden",
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "x",
+                      {
+                        "k": "string",
+                        "v": "X"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/s/forbidden/x",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "default"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/s/forbidden",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

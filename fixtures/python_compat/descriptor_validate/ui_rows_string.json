@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "ui_rows_string",
+  "description": "ui.rows must be a number.",
+  "classes": [
+    "ui",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", ui: { rows: \"3\" } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 72,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/ui/rows",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

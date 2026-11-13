@@ -1,0 +1,40 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "rename_special_characters",
+  "description": "Quote and backslash characters in the new key are escaped once.",
+  "classes": [
+    "rename",
+    "escapes",
+    "quoted-key"
+  ],
+  "input": "{ x: 1 }",
+  "operation": {
+    "op": "rename",
+    "pointer": "/x",
+    "new_key": "he said \"hi\"\\z"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{ \"he said \\\"hi\\\"\\\\z\": 1 }",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/he said \"hi\"\\z"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "he said \"hi\"\\z",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

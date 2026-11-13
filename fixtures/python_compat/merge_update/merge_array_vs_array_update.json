@@ -1,0 +1,72 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_array_vs_array_update",
+  "description": "Arrays are never merged item by item. (prefer: update)",
+  "classes": [
+    "array",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "array",
+          "v": [
+            {
+              "k": "int",
+              "v": "1"
+            },
+            {
+              "k": "int",
+              "v": "2"
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "array",
+          "v": [
+            {
+              "k": "int",
+              "v": "3"
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "int",
+                "v": "3"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    "ok": true
+  }
+}

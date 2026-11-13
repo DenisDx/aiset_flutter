@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_member_block_end_stays",
+  "description": "A block-end comment belongs to the container and stays.",
+  "classes": [
+    "remove",
+    "comments",
+    "block-end"
+  ],
+  "input": "{\n  a: 1,\n  b: 2,\n  // keep me\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/b"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  a: 1,\n  // keep me\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

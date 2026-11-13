@@ -1,0 +1,124 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "governed_key_pattern_mismatch_not_resolved",
+  "description": "A key that fails key_pattern is not governed, so its placeholder stays literal.",
+  "classes": [
+    "keys",
+    "key-pattern",
+    "A25"
+  ],
+  "input": "{ s: { badA: \"${V}\" } }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: {\n    s: { type: \"object\", key_pattern: \"^ok\",\n         additional_children: { type: \"string\", env: { allowed: true } } },\n} } }\n",
+  "config": "{ s: { badA: \"${V}\" } }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "x"
+    },
+    "dotenv": {}
+  },
+  "divergence": {
+    "id": "A25",
+    "report": "A25",
+    "note": "Same item as governed_key_enum_forbidden_gets_no_default: resolution ignores key_pattern, so a key the descriptor does not govern has its placeholder substituted while node lookup and validation both refuse the key."
+  },
+  "expected": {
+    "ok": true,
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "s",
+          {
+            "k": "object",
+            "v": [
+              [
+                "badA",
+                {
+                  "k": "string",
+                  "v": "${V}"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/s/badA",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "s",
+          {
+            "k": "object",
+            "v": [
+              [
+                "badA",
+                {
+                  "k": "string",
+                  "v": "x"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/s/badA",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "V"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

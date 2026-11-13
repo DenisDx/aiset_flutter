@@ -1,0 +1,45 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_scalar_vs_object_update",
+  "description": "A scalar against an object is a conflict. (prefer: update)",
+  "classes": [
+    "type-mismatch",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "int",
+    "v": "1"
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "int",
+          "v": "2"
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    },
+    "ok": true
+  }
+}

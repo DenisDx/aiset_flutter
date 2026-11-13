@@ -1,0 +1,24 @@
+{
+  "schema": "1",
+  "area": "pipeline_revisions",
+  "id": "rev_source_comment_change",
+  "description": "A comment change alone is a new revision.",
+  "classes": [
+    "source",
+    "comments",
+    "revision",
+    "source"
+  ],
+  "input": "{ a: 1 } // note\n",
+  "query": {
+    "op": "source"
+  },
+  "expected": {
+    "hasBom": false,
+    "ok": true,
+    "op": "source",
+    "revision": "sha256:5d18ae8cde183a29ce939a63eeac0088",
+    "utf16Length": 17,
+    "utf8Length": 17
+  }
+}

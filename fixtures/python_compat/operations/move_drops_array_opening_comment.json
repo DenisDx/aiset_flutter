@@ -1,0 +1,51 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_drops_array_opening_comment",
+  "description": "The array's own opening comment is inside the rebuilt span and leaves.",
+  "classes": [
+    "move",
+    "comments",
+    "opening"
+  ],
+  "input": "{\n  list: [ // open\n    \"a\",\n    \"b\",\n  ],\n}\n",
+  "operation": {
+    "op": "move",
+    "source": "/list/0",
+    "target": "/list/1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\n    \"b\",\n    \"a\",\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0",
+        "/list/1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "b"
+                },
+                {
+                  "k": "string",
+                  "v": "a"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_int_update",
+  "description": "Two different integers conflict. (prefer: update)",
+  "classes": [
+    "scalar",
+    "int",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "int",
+    "v": "1"
+  },
+  "update": {
+    "k": "int",
+    "v": "2"
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "int",
+      "v": "2"
+    },
+    "ok": true
+  }
+}

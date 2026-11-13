@@ -1,0 +1,40 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "members_without_commas",
+  "description": "The baseline grammar needs no separator between members on separate lines.",
+  "classes": [
+    "no-comma",
+    "grammar"
+  ],
+  "input": "{\n  a: 1\n  b: 2\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b"
+    ],
+    "rootText": "{\n  a: 1\n  b: 2\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    }
+  }
+}

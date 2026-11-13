@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_enum_huge_int_collision",
+  "description": "Distinct integers past 2^53 are distinct enum members.",
+  "classes": [
+    "enum",
+    "big-int",
+    "exact-range",
+    "A34"
+  ],
+  "input": "{ a: 9007199254740992 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"number\", enum: [9007199254740993] } } } }",
+  "value": "{ a: 9007199254740992 }",
+  "divergence": {
+    "id": "A34",
+    "report": "A34",
+    "note": "The baseline compares every numeric const/enum member through float(), so two distinct integers above the exactly representable range collapse to the same double: an enum of [9007199254740993] accepts the value 9007199254740992. docs/grammars.md §2 forbids silent rounding; the Dart implementation compares exactly and rejects the different integer."
+  },
+  "expected": {
+    "ok": true,
+    "valid": false,
+    "issues": [
+      {
+        "rule": "enum",
+        "path": "/a",
+        "severity": "error",
+        "hasMessage": true
+      }
+    ],
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

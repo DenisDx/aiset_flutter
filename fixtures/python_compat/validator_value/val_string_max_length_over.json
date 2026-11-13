@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_string_max_length_over",
+  "description": "A longer string fails max_length.",
+  "classes": [
+    "string",
+    "max-length",
+    "rejection"
+  ],
+  "input": "{ a: \"abcd\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", max_length: 3 } } } }",
+  "value": "{ a: \"abcd\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "max_length",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

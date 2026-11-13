@@ -1,0 +1,41 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "bom_crlf_no_final",
+  "description": "BOM + CRLF + missing final newline in one document.",
+  "classes": [
+    "bom",
+    "crlf",
+    "no-final-newline"
+  ],
+  "input": "﻿{\r\n  a: 1,\r\n  b: 2\r\n}",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b"
+    ],
+    "rootText": "{\r\n  a: 1,\r\n  b: 2\r\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_member_opening_comment_owned",
+  "description": "The opening comment of the removed value leaves with it.",
+  "classes": [
+    "remove",
+    "comments",
+    "opening"
+  ],
+  "input": "{\n  a: { // opening\n    b: 1,\n  },\n  c: 2,\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/a"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  c: 2,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/c"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "c",
+            {
+              "k": "int",
+              "v": "2"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

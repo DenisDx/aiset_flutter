@@ -1,0 +1,122 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "conv_int_unicode_digits",
+  "description": "A number written with Arabic-Indic digits.",
+  "classes": [
+    "convert",
+    "int",
+    "number-grammar",
+    "A29"
+  ],
+  "input": "{ number: \"${N}\" }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: {\n    type: \"object\",\n    children: {\n      plain: { type: \"string\" },\n      templated: { type: \"string\", env: { allowed: true, convert: \"string\" } },\n      noconvert: { type: \"string\", env: { allowed: true } },\n      number: { type: \"int\", env: { allowed: true, convert: \"int\" } },\n      real: { type: \"number\", env: { allowed: true, convert: \"number\" } },\n      flag: { type: \"bool\", env: { allowed: true, convert: \"bool\" } },\n      not_allowed: { type: \"string\" },\n      list: { type: \"array\", children: { type: \"string\", env: { allowed: true } } },\n      dynamic: { type: \"object\", additional_children: { type: \"string\", env: { allowed: true } } },\n      patterned: { type: \"object\", key_pattern: \"^ok\", additional_children: { type: \"string\", env: { allowed: true } } },\n      opaque: { type: \"any\" },\n    },\n  },\n}\n",
+  "config": "{ number: \"${N}\" }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "N": "٢٠"
+    },
+    "dotenv": {}
+  },
+  "divergence": {
+    "id": "A29",
+    "report": "A29",
+    "note": "The integer pattern uses d, which is Unicode-aware in Python, and int() then accepts the digits, so \"٢٠\" converts to 20. docs/grammars.md fixes d as ASCII for this product, and a value one engine reads as a number and the other refuses breaks mutual readability of the same file. The Dart implementation refuses it with env_conversion."
+  },
+  "expected": {
+    "ok": true,
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "number",
+          {
+            "k": "null"
+          }
+        ]
+      ]
+    },
+    "issues": [
+      {
+        "rule": "env_conversion",
+        "path": "/number",
+        "severity": "error",
+        "hasMessage": true
+      }
+    ],
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/number",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "N"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "number",
+          {
+            "k": "int",
+            "v": "20"
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/number",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "N"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

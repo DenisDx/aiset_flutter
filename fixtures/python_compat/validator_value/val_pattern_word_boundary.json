@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_word_boundary",
+  "description": "A word boundary is accepted.",
+  "classes": [
+    "pattern",
+    "accept"
+  ],
+  "input": "{ a: \"a word here\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"\\\\bword\\\\b\" } } } }",
+  "value": "{ a: \"a word here\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

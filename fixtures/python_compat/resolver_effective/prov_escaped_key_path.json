@@ -1,0 +1,94 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "prov_escaped_key_path",
+  "description": "A key containing a slash is escaped in the provenance path.",
+  "classes": [
+    "provenance",
+    "paths"
+  ],
+  "input": "{ \"with/slash\": \"${V}\", \"with~tilde\": \"${W}\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", additional_children: { type: \"string\", env: { allowed: true } } } }",
+  "config": "{ \"with/slash\": \"${V}\", \"with~tilde\": \"${W}\" }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "1",
+      "W": "2"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "with/slash",
+          {
+            "k": "string",
+            "v": "1"
+          }
+        ],
+        [
+          "with~tilde",
+          {
+            "k": "string",
+            "v": "2"
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/with~1slash",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "V"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/with~0tilde",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "W"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

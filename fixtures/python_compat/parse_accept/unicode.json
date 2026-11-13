@@ -1,0 +1,42 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "unicode",
+  "description": "Cyrillic comment and key, mixed-script value, escaped newline inside a string.",
+  "classes": [
+    "unicode",
+    "non-ascii-comment",
+    "em-dash",
+    "escapes"
+  ],
+  "input": "{\n  // Комментарий на русском.\n  \"ключ\": \"значение — ✓ ünïcøde\",\n  \"multiline\": \"first\\nsecond\",\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/ключ",
+      "/multiline"
+    ],
+    "rootText": "{\n  // Комментарий на русском.\n  \"ключ\": \"значение — ✓ ünïcøde\",\n  \"multiline\": \"first\\nsecond\",\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "ключ",
+          {
+            "k": "string",
+            "v": "значение — ✓ ünïcøde"
+          }
+        ],
+        [
+          "multiline",
+          {
+            "k": "string",
+            "v": "first\nsecond"
+          }
+        ]
+      ]
+    }
+  }
+}

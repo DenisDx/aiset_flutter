@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "hooks_binding_scope_invalid",
+  "description": "scope must be node or subtree.",
+  "classes": [
+    "hooks",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", hooks: { before_update: [ { tag: \"x\", scope: \"everything\" } ] } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 105,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/hooks/before_update/0/scope",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

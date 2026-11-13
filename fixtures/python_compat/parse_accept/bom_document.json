@@ -1,0 +1,31 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "bom_document",
+  "description": "A leading byte-order mark, which the baseline treats as whitespace.",
+  "classes": [
+    "bom"
+  ],
+  "input": "﻿{\n  a: 1,\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a"
+    ],
+    "rootText": "{\n  a: 1,\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "leaf_default_empty_string",
+  "description": "An empty-string default is applied and stays visible.",
+  "classes": [
+    "default",
+    "empty",
+    "A27"
+  ],
+  "input": "{}",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", default: \"\" } } } }",
+  "config": "{}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "divergence": {
+    "id": "A27",
+    "report": "A27",
+    "note": "build_effective fills defaults and then walks the result, and the walk records every leaf it passes as \"file\" — including the value the descriptor just supplied. The same field read through effective_at is recorded as \"default\", so the baseline gives two answers to one question. SPEC.md 6 requires provenance to distinguish a default from a stored value, and SPEC.md 2 keeps the six leaf states apart; the Dart implementation keeps the default provenance."
+  },
+  "expected": {
+    "ok": true,
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "string",
+            "v": ""
+          }
+        ]
+      ]
+    },
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "default"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "string",
+            "v": ""
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

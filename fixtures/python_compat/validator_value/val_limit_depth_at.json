@@ -1,0 +1,24 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_limit_depth_at",
+  "description": "A tree exactly at max_depth passes.",
+  "classes": [
+    "limits",
+    "depth",
+    "at",
+    "accept"
+  ],
+  "input": "{ a: {n: {n: 1}} }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\" } } } }",
+  "value": "{ a: {n: {n: 1}} }",
+  "limits": {
+    "max_depth": 3
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

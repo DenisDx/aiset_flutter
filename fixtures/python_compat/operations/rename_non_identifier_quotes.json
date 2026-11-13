@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "rename_non_identifier_quotes",
+  "description": "A label that is not an identifier is quoted.",
+  "classes": [
+    "rename",
+    "quoted-key"
+  ],
+  "input": "{ main: 1 }",
+  "operation": {
+    "op": "rename",
+    "pointer": "/main",
+    "new_key": "main key"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{ \"main key\": 1 }",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/main key"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "main key",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

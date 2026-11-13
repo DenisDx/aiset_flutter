@@ -1,0 +1,45 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "emoji_multiline",
+  "description": "Astral characters inside a template default and inside a block comment, plus an emoji key.",
+  "classes": [
+    "astral",
+    "template",
+    "block-comment",
+    "unicode"
+  ],
+  "input": "{ \"e\": ${V:-😀}, /* 😀 block 😀 */ \"k👍\": \"v\" }\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5-template",
+    "paths": [
+      "",
+      "/e",
+      "/k👍"
+    ],
+    "rootText": "{ \"e\": ${V:-😀}, /* 😀 block 😀 */ \"k👍\": \"v\" }",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "e",
+          {
+            "k": "template",
+            "v": {
+              "default": "😀",
+              "name": "V"
+            }
+          }
+        ],
+        [
+          "k👍",
+          {
+            "k": "string",
+            "v": "v"
+          }
+        ]
+      ]
+    }
+  }
+}

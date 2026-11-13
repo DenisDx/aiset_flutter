@@ -1,0 +1,57 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_key_quoted_label",
+  "description": "A label that is not an identifier is quoted.",
+  "classes": [
+    "add",
+    "create-member",
+    "quoted-key"
+  ],
+  "input": "{\n  o: {\n    a: 1,\n  },\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/o/new key",
+    "value_text": "2"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  o: {\n    a: 1,\n    \"new key\": 2,\n  },\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/o",
+        "/o/a",
+        "/o/new key"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "o",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "a",
+                  {
+                    "k": "int",
+                    "v": "1"
+                  }
+                ],
+                [
+                  "new key",
+                  {
+                    "k": "int",
+                    "v": "2"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_dot",
+  "description": "A dot matches any non-line-break character.",
+  "classes": [
+    "pattern",
+    "accept"
+  ],
+  "input": "{ a: \"aXb\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"a.b\" } } } }",
+  "value": "{ a: \"aXb\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

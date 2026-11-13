@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "typedef_cycle",
+  "description": "A template that references itself is reported.",
+  "classes": [
+    "typedef",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { p: { typedef: \"tpl\", type: \"tpl\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "TEMPLATE_CYCLE",
+        "column": 37,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/p<tpl>/type",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

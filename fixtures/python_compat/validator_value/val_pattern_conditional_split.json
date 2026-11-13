@@ -1,0 +1,31 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_conditional_split",
+  "description": "A conditional pattern is refused at the descriptor here; the baseline compiles and matches.",
+  "classes": [
+    "pattern",
+    "dialect",
+    "conditional",
+    "SPEC26-DIALECT"
+  ],
+  "input": "{ a: \"ab\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"(a)(?(1)b|c)\" } } } }",
+  "value": "{ a: \"ab\" }",
+  "divergence": {
+    "id": "SPEC26-DIALECT",
+    "report": "SPEC26-DIALECT",
+    "note": "docs/grammars.md §1.2 and §1.3 fix which layer reports each regex construct, and §1.2 states that the two implementations can name the same problem at different layers while the outcome (refused, named, never guessed at) does not differ. This is a documented, intentional divergence from the executed baseline under that rule (SPEC.md amendment 26), not a baseline defect.  This engine cannot compile a conditional pattern, so the descriptor compiler refuses with INVALID_PATTERN. The baseline engine supports it and accepts the match."
+  },
+  "expected": {
+    "ok": false,
+    "errorCode": "INVALID_DESCRIPTOR",
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

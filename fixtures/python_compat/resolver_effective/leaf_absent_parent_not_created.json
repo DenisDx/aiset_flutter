@@ -1,0 +1,31 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "leaf_absent_parent_not_created",
+  "description": "A default below an absent object does not create the parent.",
+  "classes": [
+    "default",
+    "absent"
+  ],
+  "input": "{}",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { nested: { type: \"object\", children: { inner: { type: \"int\", default: 7 } } } } } }",
+  "config": "{}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": []
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

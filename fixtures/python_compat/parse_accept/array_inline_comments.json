@@ -1,0 +1,36 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "array_inline_comments",
+  "description": "Array with a leading comment on the first item and a trailing comment after its comma.",
+  "classes": [
+    "array",
+    "leading",
+    "trailing",
+    "comments"
+  ],
+  "input": "[\n  // lead\n  1, // trail\n  2,\n]\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/0",
+      "/1"
+    ],
+    "rootText": "[\n  // lead\n  1, // trail\n  2,\n]",
+    "storedValue": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "2"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "deep_nesting",
+  "description": "Five levels of alternating containers.",
+  "classes": [
+    "nested",
+    "array",
+    "object"
+  ],
+  "input": "{\n  l1: {\n    l2: [\n      {\n        l3: [\n          { l4: \"leaf\" },\n        ],\n      },\n    ],\n  },\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/l1",
+      "/l1/l2",
+      "/l1/l2/0",
+      "/l1/l2/0/l3",
+      "/l1/l2/0/l3/0",
+      "/l1/l2/0/l3/0/l4"
+    ],
+    "rootText": "{\n  l1: {\n    l2: [\n      {\n        l3: [\n          { l4: \"leaf\" },\n        ],\n      },\n    ],\n  },\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "l1",
+          {
+            "k": "object",
+            "v": [
+              [
+                "l2",
+                {
+                  "k": "array",
+                  "v": [
+                    {
+                      "k": "object",
+                      "v": [
+                        [
+                          "l3",
+                          {
+                            "k": "array",
+                            "v": [
+                              {
+                                "k": "object",
+                                "v": [
+                                  [
+                                    "l4",
+                                    {
+                                      "k": "string",
+                                      "v": "leaf"
+                                    }
+                                  ]
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

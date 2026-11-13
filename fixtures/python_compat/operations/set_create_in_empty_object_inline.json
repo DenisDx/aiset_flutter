@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_create_in_empty_object_inline",
+  "description": "Creating the first key of an inline empty object replaces its inner text.",
+  "classes": [
+    "set",
+    "create-member",
+    "empty",
+    "inline"
+  ],
+  "input": "{ empty: { } }",
+  "operation": {
+    "op": "set",
+    "pointer": "/empty/x",
+    "value_text": "1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{ empty: {x: 1} }",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/empty",
+        "/empty/x"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "empty",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "x",
+                  {
+                    "k": "int",
+                    "v": "1"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_null_pattern",
+  "description": "The MapEntry(pattern: \"^a\").key constraint does not apply to type null.",
+  "classes": [
+    "constraint-by-type",
+    "null",
+    "pattern",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"null\", pattern: \"^a\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 67,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/pattern",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

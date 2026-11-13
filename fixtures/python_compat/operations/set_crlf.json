@@ -1,0 +1,56 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_crlf",
+  "description": "A set in a CRLF document keeps every other byte.",
+  "classes": [
+    "set",
+    "crlf"
+  ],
+  "input": "{\r\n  a: 1,\r\n  b: {\r\n    c: 2,\r\n  },\r\n}\r\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/a",
+    "value_text": "9"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\r\n  a: 9,\r\n  b: {\r\n    c: 2,\r\n  },\r\n}\r\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a",
+        "/b",
+        "/b/c"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "int",
+              "v": "9"
+            }
+          ],
+          [
+            "b",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "c",
+                  {
+                    "k": "int",
+                    "v": "2"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

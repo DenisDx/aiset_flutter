@@ -1,0 +1,31 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_int_vs_double_base",
+  "description": "1 and 1.0 are equal to Python ==. (prefer: base)",
+  "classes": [
+    "scalar",
+    "number",
+    "equality",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "int",
+    "v": "1"
+  },
+  "update": {
+    "k": "double",
+    "v": 1.0
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "int",
+      "v": "1"
+    },
+    "ok": true
+  }
+}

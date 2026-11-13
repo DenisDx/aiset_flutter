@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "duplicate_key_quoting_styles",
+  "description": "A quoted and an unquoted spelling of one key collide.",
+  "classes": [
+    "duplicate-key",
+    "quoted-key"
+  ],
+  "input": "{\"a\": 1, a: 2}",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

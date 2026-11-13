@@ -1,0 +1,35 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "at_missing_without_default",
+  "description": "MISSING with no default stays MISSING.",
+  "classes": [
+    "missing"
+  ],
+  "input": "{}",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", default: \"fb\" }, plain: { type: \"string\" }, templated: { type: \"string\", env: { allowed: true } }, n: { type: \"int\", default: 0 }, z: { type: \"string\", nullable: true, default: null } } } }",
+  "config": "{}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "query": {
+    "op": "effective_at",
+    "pointer": "/plain",
+    "stored": "MISSING",
+    "path": "/x"
+  },
+  "expected": {
+    "effective": {
+      "k": "missing"
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

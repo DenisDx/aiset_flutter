@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "env_unknown_key_strict",
+  "description": "Strict mode turns unknown metadata into errors.",
+  "classes": [
+    "envelope",
+    "unknown-metadata",
+    "strict",
+    "rejection"
+  ],
+  "input": "{ descriptor_version: \"1.0\", language: \"en\", root: { type: \"object\", children: {} } }",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "UNKNOWN_DESCRIPTOR_PROPERTY",
+        "column": 40,
+        "hasMessage": true,
+        "line": 1,
+        "path": "/language",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

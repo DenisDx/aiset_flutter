@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_enum_match",
+  "description": "A value inside the enum passes.",
+  "classes": [
+    "enum",
+    "accept"
+  ],
+  "input": "{ a: \"b\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", enum: [\"a\", \"b\"] } } } }",
+  "value": "{ a: \"b\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

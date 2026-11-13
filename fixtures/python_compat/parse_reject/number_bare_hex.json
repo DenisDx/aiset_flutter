@@ -1,0 +1,18 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "number_bare_hex",
+  "description": "A hex prefix with no digits.",
+  "classes": [
+    "number",
+    "invalid",
+    "hex"
+  ],
+  "input": "{ a: 0x }",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

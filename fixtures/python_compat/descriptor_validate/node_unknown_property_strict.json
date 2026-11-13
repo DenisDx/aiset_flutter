@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_unknown_property_strict",
+  "description": "Strict mode turns it into an error.",
+  "classes": [
+    "node",
+    "unknown-metadata",
+    "strict",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", requried: true } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "UNKNOWN_DESCRIPTOR_PROPERTY",
+        "column": 70,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/requried",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

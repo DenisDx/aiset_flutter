@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_enum_with_const",
+  "description": "enum and const are incompatible.",
+  "classes": [
+    "node",
+    "structure",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", enum: [\"a\"], const: \"a\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 80,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/const",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

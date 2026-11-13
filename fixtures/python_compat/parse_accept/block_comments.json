@@ -1,0 +1,60 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "block_comments",
+  "description": "A multi-line block comment between members and an inline block comment after an array comma.",
+  "classes": [
+    "block-comment",
+    "multiline-comment",
+    "array-comments"
+  ],
+  "input": "{\n  a: 1,\n  /* multi\n     line block\n     comment */\n  b: 2,\n  list: [\n    1, /* inline */\n    2,\n  ],\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b",
+      "/list",
+      "/list/0",
+      "/list/1"
+    ],
+    "rootText": "{\n  a: 1,\n  /* multi\n     line block\n     comment */\n  b: 2,\n  list: [\n    1, /* inline */\n    2,\n  ],\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ],
+        [
+          "list",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "int",
+                "v": "1"
+              },
+              {
+                "k": "int",
+                "v": "2"
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

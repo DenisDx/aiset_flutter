@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "ui_valid",
+  "description": "The recognized ui keys are accepted.",
+  "classes": [
+    "ui",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", ui: { label: \"Name\", group: \"basic\", order: 1, help: \"h\", widget: \"textarea\", rows: 3, placeholder: \"p\" } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

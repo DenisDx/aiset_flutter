@@ -1,0 +1,29 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_reject_template_cycle",
+  "description": "A cyclic template refuses compilation.",
+  "classes": [
+    "compile",
+    "rejection",
+    "typedef"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { p: { typedef: \"tpl\", type: \"tpl\" } } },\n}\n",
+  "strict": true,
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "issues": [
+      {
+        "code": "TEMPLATE_CYCLE",
+        "column": 37,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/p<tpl>/type",
+        "severity": "error"
+      }
+    ],
+    "ok": false
+  }
+}

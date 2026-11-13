@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "structure_union_with_additional",
+  "description": "additional_children is not valid on a union.",
+  "classes": [
+    "structure",
+    "union",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"union\", children_options: [ { type: \"int\" } ], additional_children: { type: \"string\" } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 86,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/additional_children",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

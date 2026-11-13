@@ -1,0 +1,64 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "leaf_present_beats_default",
+  "description": "A present value wins over the default, even when it resolves to empty.",
+  "classes": [
+    "default",
+    "empty-value"
+  ],
+  "input": "{ a: \"${V}\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", env: { allowed: true }, default: \"fb\" } } } }",
+  "config": "{ a: \"${V}\" }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": ""
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "string",
+            "v": ""
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "V"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

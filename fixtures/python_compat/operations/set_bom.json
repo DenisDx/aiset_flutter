@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_bom",
+  "description": "A set in a BOM document keeps the mark.",
+  "classes": [
+    "set",
+    "bom"
+  ],
+  "input": "﻿{\n  a: 1,\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/a",
+    "value_text": "2"
+  },
+  "expected": {
+    "ok": true,
+    "output": "﻿{\n  a: 2,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "int",
+              "v": "2"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

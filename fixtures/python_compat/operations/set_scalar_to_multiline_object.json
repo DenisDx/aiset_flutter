@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_scalar_to_multiline_object",
+  "description": "A multi-line submitted value is reindented by the baseline rule.",
+  "classes": [
+    "set",
+    "object",
+    "reindent",
+    "multiline"
+  ],
+  "input": "{\n  a: 1,\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/a",
+    "value_text": "{\n  b: 1,\n}"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  a: {\n      b: 1,\n    },\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a",
+        "/a/b"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "b",
+                  {
+                    "k": "int",
+                    "v": "1"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

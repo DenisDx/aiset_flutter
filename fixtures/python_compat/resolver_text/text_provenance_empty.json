@@ -1,0 +1,55 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_provenance_empty",
+  "description": "An unset variable with no default is named as empty.",
+  "classes": [
+    "provenance"
+  ],
+  "input": "${A}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ],
+              [
+                "source",
+                {
+                  "k": "string",
+                  "v": "empty"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_array_item_no_comma_middle",
+  "description": "A middle item without a comma is removed with its line.",
+  "classes": [
+    "remove",
+    "array",
+    "commas"
+  ],
+  "input": "{\n  l: [\n    1\n    2\n    3,\n  ],\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/l/1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  l: [\n    1\n    3,\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/l",
+        "/l/0",
+        "/l/1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "l",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "int",
+                  "v": "1"
+                },
+                {
+                  "k": "int",
+                  "v": "3"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

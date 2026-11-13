@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_union_null_rejected_when_none_admits",
+  "description": "A null value with no null-admitting alternative is refused.",
+  "classes": [
+    "union",
+    "null",
+    "rejection"
+  ],
+  "input": "{ u: null }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { u: { type: \"union\", children_options: [ { type: \"int\" }, { type: \"string\" } ] } } } }",
+  "value": "{ u: null }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/u",
+        "rule": "nullable",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

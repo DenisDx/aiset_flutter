@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_posix_literal_set_agrees",
+  "description": "A POSIX class reads as a literal set on both engines, and the value matches on neither.",
+  "classes": [
+    "pattern",
+    "dialect",
+    "posix",
+    "agree"
+  ],
+  "input": "{ a: \"abc\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"[[:alpha:]]+\" } } } }",
+  "value": "{ a: \"abc\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "pattern",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

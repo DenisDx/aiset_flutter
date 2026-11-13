@@ -1,0 +1,22 @@
+{
+  "schema": "1",
+  "area": "pipeline_revision_pair",
+  "id": "cas_wrong_descriptor_half_refused",
+  "description": "A write presenting the wrong descriptor revision is refused.",
+  "classes": [
+    "cas",
+    "rejection",
+    "cas"
+  ],
+  "input": "{ port: 1, host: \"localhost\" }\n",
+  "scenario": "wrong_descriptor",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: {\n    port: { type: \"int\", minimum: 1, maximum: 65535 },\n    host: { type: \"string\" },\n  } } }\n",
+  "config": "{ port: 1, host: \"localhost\" }\n",
+  "expected": {
+    "fileRevision": "sha256:825f1b5fbf3ecbf247b2abd1c4c77104",
+    "fileText": "{ port: 1, host: \"localhost\" }\n",
+    "ok": true,
+    "scenario": "wrong_descriptor",
+    "wrongDescriptor": "REVISION_CONFLICT"
+  }
+}

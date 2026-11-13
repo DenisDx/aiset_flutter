@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_array_item_type",
+  "description": "An item of the wrong type reports its index path.",
+  "classes": [
+    "array",
+    "type",
+    "rejection"
+  ],
+  "input": "{ l: [1, \"x\", 3] }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { l: { type: \"array\", children: { type: \"int\" } } } } }",
+  "value": "{ l: [1, \"x\", 3] }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/l/1",
+        "rule": "type",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

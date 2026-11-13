@@ -1,0 +1,56 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "rename_crlf",
+  "description": "Renaming in a CRLF document.",
+  "classes": [
+    "rename",
+    "crlf"
+  ],
+  "input": "{\r\n  a: 1,\r\n  b: {\r\n    c: 2,\r\n  },\r\n}\r\n",
+  "operation": {
+    "op": "rename",
+    "pointer": "/a",
+    "new_key": "z"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\r\n  z: 1,\r\n  b: {\r\n    c: 2,\r\n  },\r\n}\r\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/z",
+        "/b",
+        "/b/c"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "z",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ],
+          [
+            "b",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "c",
+                  {
+                    "k": "int",
+                    "v": "2"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

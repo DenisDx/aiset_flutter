@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_array_max_items",
+  "description": "The MapEntry(max_items: 9).key constraint applies to type array.",
+  "classes": [
+    "constraint-by-type",
+    "array",
+    "max_items",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"array\", children: { type: \"int\" }, max_items: 9 } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

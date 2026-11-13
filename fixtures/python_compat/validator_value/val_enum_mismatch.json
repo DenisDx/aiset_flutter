@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_enum_mismatch",
+  "description": "A value outside the enum fails.",
+  "classes": [
+    "enum",
+    "rejection"
+  ],
+  "input": "{ a: \"c\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", enum: [\"a\", \"b\"] } } } }",
+  "value": "{ a: \"c\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "enum",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

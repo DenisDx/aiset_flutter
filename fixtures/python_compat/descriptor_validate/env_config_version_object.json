@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "env_config_version_object",
+  "description": "config_version must be a string.",
+  "classes": [
+    "envelope",
+    "rejection"
+  ],
+  "input": "{ descriptor_version: \"1.0\", config_version: { v: 1 }, root: { type: \"object\", children: {} } }",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "DESCRIPTOR_STRUCTURE",
+        "column": 46,
+        "hasMessage": true,
+        "line": 1,
+        "path": "/config_version",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

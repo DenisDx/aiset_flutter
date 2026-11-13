@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_property_type_required_string",
+  "description": "required must be a boolean.",
+  "classes": [
+    "node",
+    "property-types",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", required: \"yes\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_PROPERTY_TYPE",
+        "column": 70,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/required",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

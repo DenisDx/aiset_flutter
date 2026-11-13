@@ -1,0 +1,31 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_equal_int_update",
+  "description": "Equal integers are not a conflict. (prefer: update)",
+  "classes": [
+    "scalar",
+    "int",
+    "equal",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "int",
+    "v": "7"
+  },
+  "update": {
+    "k": "int",
+    "v": "7"
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "int",
+      "v": "7"
+    },
+    "ok": true
+  }
+}

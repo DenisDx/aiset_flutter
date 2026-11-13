@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_empty_string_present",
+  "description": "The empty string is a present value.",
+  "classes": [
+    "leaf-state",
+    "string",
+    "empty",
+    "accept"
+  ],
+  "input": "{ a: \"\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\" } } } }",
+  "value": "{ a: \"\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

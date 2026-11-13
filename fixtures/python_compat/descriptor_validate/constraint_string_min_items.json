@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_string_min_items",
+  "description": "The MapEntry(min_items: 1).key constraint does not apply to type string.",
+  "classes": [
+    "constraint-by-type",
+    "string",
+    "min_items",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", min_items: 1 } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 71,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/min_items",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

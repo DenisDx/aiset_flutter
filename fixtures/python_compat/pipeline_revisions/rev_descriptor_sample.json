@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "pipeline_revisions",
+  "id": "rev_descriptor_sample",
+  "description": "The descriptor revision of the sample descriptor.",
+  "classes": [
+    "descriptor",
+    "revision",
+    "descriptor"
+  ],
+  "input": "{ descriptor_version: \"1.0\", project: \"rev\", config_version: \"2\",\n  root: { type: \"object\", children: { a: { type: \"int\", default: 1 } } } }\n",
+  "query": {
+    "op": "descriptor"
+  },
+  "expected": {
+    "bytesRevision": "sha256:6f0669c893fc497580a06b98b68ec2d5",
+    "ok": true,
+    "op": "descriptor",
+    "revision": "sha256:6f0669c893fc497580a06b98b68ec2d5"
+  }
+}

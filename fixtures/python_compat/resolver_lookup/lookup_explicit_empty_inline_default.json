@@ -1,0 +1,48 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_explicit_empty_inline_default",
+  "description": "An explicit empty inline default is still a default.",
+  "classes": [
+    "inline-default",
+    "empty"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "V",
+    "inlineDefault": ""
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": "",
+      "name": "V",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": ""
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "inline_default"
+          }
+        ]
+      ]
+    }
+  }
+}

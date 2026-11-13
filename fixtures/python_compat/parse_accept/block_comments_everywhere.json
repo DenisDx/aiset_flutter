@@ -1,0 +1,40 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "block_comments_everywhere",
+  "description": "Block comments in every trivia slot.",
+  "classes": [
+    "comments",
+    "block-comment"
+  ],
+  "input": "{\n  /* doc-ish */\n  /* mid */ a: /* after colon */ 1, /* trail */\n  /* lead b */ b: 2, /* trail b */\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b"
+    ],
+    "rootText": "{\n  /* doc-ish */\n  /* mid */ a: /* after colon */ 1, /* trail */\n  /* lead b */ b: 2, /* trail b */\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    }
+  }
+}

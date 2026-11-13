@@ -1,0 +1,48 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_create_after_commented_last",
+  "description": "A new key lands after the last member and its trailing comment.",
+  "classes": [
+    "set",
+    "create-member",
+    "comments"
+  ],
+  "input": "{\n  a: 1, // one\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/b",
+    "value_text": "2"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  a: 1, // one\n  b: 2,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a",
+        "/b"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ],
+          [
+            "b",
+            {
+              "k": "int",
+              "v": "2"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "template_unterminated",
+  "description": "A placeholder with no closing brace.",
+  "classes": [
+    "placeholder",
+    "unterminated"
+  ],
+  "input": "{ a: ${VAR",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

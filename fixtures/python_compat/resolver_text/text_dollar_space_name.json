@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_dollar_space_name",
+  "description": "A dollar sign with a space is not a reference.",
+  "classes": [
+    "syntax",
+    "reject"
+  ],
+  "input": "$ {A}",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "A": "x"
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "$ {A}",
+    "provenance": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

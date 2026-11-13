@@ -1,0 +1,40 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_unicode_shorthand_word_split",
+  "description": "A Cyrillic word is classified differently by the two engines.",
+  "classes": [
+    "pattern",
+    "dialect",
+    "unicode",
+    "shorthand",
+    "SPEC26-DIALECT"
+  ],
+  "input": "{ a: \"привет\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"^\\\\w+$\" } } } }",
+  "value": "{ a: \"привет\" }",
+  "divergence": {
+    "id": "SPEC26-DIALECT",
+    "report": "SPEC26-DIALECT",
+    "note": "Same documented shorthand row as val_pattern_unicode_shorthand_digit_split, on the word class and a non-ASCII-letter value."
+  },
+  "expected": {
+    "ok": true,
+    "valid": false,
+    "issues": [
+      {
+        "rule": "pattern",
+        "path": "/a",
+        "severity": "error",
+        "hasMessage": true
+      }
+    ],
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

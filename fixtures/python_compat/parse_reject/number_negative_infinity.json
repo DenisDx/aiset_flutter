@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "number_negative_infinity",
+  "description": "Negative Infinity is rejected too.",
+  "classes": [
+    "number",
+    "non-finite"
+  ],
+  "input": "{ a: -Infinity }",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

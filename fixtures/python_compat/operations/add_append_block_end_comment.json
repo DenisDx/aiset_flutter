@@ -1,0 +1,57 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_append_block_end_comment",
+  "description": "Appending to an array with a block-end comment and no trailing comma.",
+  "classes": [
+    "add",
+    "append-marker",
+    "comments",
+    "block-end"
+  ],
+  "input": "{\n  list: [\n    1,\n    2\n    // end\n  ],\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/list/-",
+    "value_text": "3"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\n    1,\n    2,\n    3\n    // end\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0",
+        "/list/1",
+        "/list/2"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "int",
+                  "v": "1"
+                },
+                {
+                  "k": "int",
+                  "v": "2"
+                },
+                {
+                  "k": "int",
+                  "v": "3"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

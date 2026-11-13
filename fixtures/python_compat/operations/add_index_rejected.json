@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_index_rejected",
+  "description": "An array index is not an add target.",
+  "classes": [
+    "add",
+    "rejection",
+    "array"
+  ],
+  "input": "{\n  compact: { a: 1, b: 2 },\n  empty_object: {},\n  empty_array: [],\n  single_array: [1, 2, 3],\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/single_array/0",
+    "value_text": "2"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "PathError",
+    "errorCode": "BAD_REQUEST",
+    "ok": false
+  }
+}

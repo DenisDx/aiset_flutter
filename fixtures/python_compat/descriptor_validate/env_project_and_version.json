@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "env_project_and_version",
+  "description": "The optional envelope strings are accepted.",
+  "classes": [
+    "envelope",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  project: \"demo\",\n  config_version: \"2.1\",\n  root: { type: \"object\", children: {} },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

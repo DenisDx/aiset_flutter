@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_null_plain_rejected",
+  "description": "null on a non-nullable node is a nullable issue.",
+  "classes": [
+    "null",
+    "rejection"
+  ],
+  "input": "{ a: null }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\" } } } }",
+  "value": "{ a: null }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "nullable",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

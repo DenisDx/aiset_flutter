@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_object_key_pattern_search_vs_prefix",
+  "description": "A non-anchored key_pattern governs by prefix, not by an interior match.",
+  "classes": [
+    "object",
+    "key-pattern",
+    "governance",
+    "A25"
+  ],
+  "input": "{ o: { xworker: 1 } }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { o: { type: \"object\", key_pattern: \"worker\", additional_children: { type: \"int\" } } } } }",
+  "value": "{ o: { xworker: 1 } }",
+  "divergence": {
+    "id": "A25",
+    "report": "A25",
+    "note": "Report A25 is the baseline answering which keys an object governs differently in different places. The validator governs the key with re.search, so key_pattern \"worker\" accepts the key \"xworker\", while node_at and the resolver use a prefix match and refuse it. The Dart implementation uses one prefix predicate everywhere, so an object never governs a key its own node lookup rejects."
+  },
+  "expected": {
+    "ok": true,
+    "valid": false,
+    "issues": [
+      {
+        "rule": "key_pattern",
+        "path": "/o/xworker",
+        "severity": "error",
+        "hasMessage": true
+      }
+    ],
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

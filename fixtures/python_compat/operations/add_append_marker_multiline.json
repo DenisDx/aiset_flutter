@@ -1,0 +1,56 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_append_marker_multiline",
+  "description": "The append marker adds one item in the array's own layout.",
+  "classes": [
+    "add",
+    "append-marker",
+    "array"
+  ],
+  "input": "{\n  list: [\n    \"a\",\n    // comment\n    \"b\",\n  ],\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/list/-",
+    "value_text": "\"c\""
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\n    \"a\",\n    // comment\n    \"b\",\n    \"c\",\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0",
+        "/list/1",
+        "/list/2"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "a"
+                },
+                {
+                  "k": "string",
+                  "v": "b"
+                },
+                {
+                  "k": "string",
+                  "v": "c"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

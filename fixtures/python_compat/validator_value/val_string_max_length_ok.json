@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_string_max_length_ok",
+  "description": "A string at max_length passes.",
+  "classes": [
+    "string",
+    "max-length",
+    "accept"
+  ],
+  "input": "{ a: \"abc\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", max_length: 3 } } } }",
+  "value": "{ a: \"abc\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

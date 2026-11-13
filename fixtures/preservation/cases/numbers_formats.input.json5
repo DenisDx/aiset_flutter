@@ -1,0 +1,12 @@
+{
+  hex: 0xFF,
+  negHex: -0x1a,
+  plusHex: +0x10,
+  plus: +5,
+  leadDot: .5,
+  trailDot: 5.,
+  exp: 1e3,
+  expPlus: 1E+3,
+  negFloat: -0.25,
+  leadingZero: 08,
+}

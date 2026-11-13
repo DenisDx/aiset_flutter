@@ -1,0 +1,32 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_limit_collection_object_under",
+  "description": "An object under max_collection_size passes.",
+  "classes": [
+    "limits",
+    "collection",
+    "object",
+    "under",
+    "accept"
+  ],
+  "input": "{ o: {a: 1, b: 2} }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\" } } } }",
+  "value": "{ o: {a: 1, b: 2} }",
+  "limits": {
+    "max_collection_size": 3
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/o",
+        "rule": "undeclared_field",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

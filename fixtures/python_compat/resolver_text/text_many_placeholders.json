@@ -1,0 +1,112 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_many_placeholders",
+  "description": "Three placeholders in one string.",
+  "classes": [
+    "adjacent",
+    "provenance",
+    "A22"
+  ],
+  "input": "${A}-${B}-${C}",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "A": "1",
+      "B": "2",
+      "C": "3"
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "divergence": {
+    "id": "A22",
+    "report": "A22",
+    "note": "Same defect as text_adjacent_placeholders: three variables contribute, one is recorded."
+  },
+  "expected": {
+    "ok": true,
+    "output": "1-2-3",
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ],
+              [
+                "variables",
+                {
+                  "k": "array",
+                  "v": [
+                    {
+                      "k": "string",
+                      "v": "A"
+                    },
+                    {
+                      "k": "string",
+                      "v": "B"
+                    },
+                    {
+                      "k": "string",
+                      "v": "C"
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "issues": [],
+    "ok": true,
+    "output": "1-2-3",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "C"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

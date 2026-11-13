@@ -1,0 +1,82 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "presence_mixed",
+  "description": "Presence reports set and unset without exposing values.",
+  "classes": [
+    "presence"
+  ],
+  "input": "",
+  "query": {
+    "op": "presence",
+    "names": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "A": "x",
+      "B": ""
+    },
+    "dotenv": {
+      "C": "y"
+    }
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "names": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "op": "presence"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "presence",
+          {
+            "k": "object",
+            "v": [
+              [
+                "A",
+                {
+                  "k": "bool",
+                  "v": true
+                }
+              ],
+              [
+                "B",
+                {
+                  "k": "bool",
+                  "v": true
+                }
+              ],
+              [
+                "C",
+                {
+                  "k": "bool",
+                  "v": true
+                }
+              ],
+              [
+                "D",
+                {
+                  "k": "bool",
+                  "v": false
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

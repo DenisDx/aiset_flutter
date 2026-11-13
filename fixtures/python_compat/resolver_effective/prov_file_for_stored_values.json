@@ -1,0 +1,77 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "prov_file_for_stored_values",
+  "description": "A stored value is provenanced as file.",
+  "classes": [
+    "provenance",
+    "file"
+  ],
+  "input": "{ plain: \"x\", number: 5 }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: {\n    type: \"object\",\n    children: {\n      plain: { type: \"string\" },\n      templated: { type: \"string\", env: { allowed: true, convert: \"string\" } },\n      noconvert: { type: \"string\", env: { allowed: true } },\n      number: { type: \"int\", env: { allowed: true, convert: \"int\" } },\n      real: { type: \"number\", env: { allowed: true, convert: \"number\" } },\n      flag: { type: \"bool\", env: { allowed: true, convert: \"bool\" } },\n      not_allowed: { type: \"string\" },\n      list: { type: \"array\", children: { type: \"string\", env: { allowed: true } } },\n      dynamic: { type: \"object\", additional_children: { type: \"string\", env: { allowed: true } } },\n      patterned: { type: \"object\", key_pattern: \"^ok\", additional_children: { type: \"string\", env: { allowed: true } } },\n      opaque: { type: \"any\" },\n    },\n  },\n}\n",
+  "config": "{ plain: \"x\", number: 5 }",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "plain",
+          {
+            "k": "string",
+            "v": "x"
+          }
+        ],
+        [
+          "number",
+          {
+            "k": "int",
+            "v": "5"
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/plain",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/number",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

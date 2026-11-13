@@ -1,0 +1,53 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_env_beats_dotenv",
+  "description": "The environment wins over the dotenv mapping.",
+  "classes": [
+    "precedence",
+    "env",
+    "dotenv"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "V",
+    "inlineDefault": null
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "env"
+    },
+    "dotenv": {
+      "V": "dotenv"
+    }
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": null,
+      "name": "V",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": "env"
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "env"
+          }
+        ]
+      ]
+    }
+  }
+}

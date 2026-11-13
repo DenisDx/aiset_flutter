@@ -1,0 +1,18 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "typedef_reference_overrides_children",
+  "description": "A template reference may override the composite keys of the node it resolves to.",
+  "classes": [
+    "typedef",
+    "merge",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    t: { typedef: \"ints\", type: \"array\", children: { type: \"int\", minimum: 1 } },\n    u: { type: \"ints\", children: { type: \"int\", maximum: 9 } },\n  } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

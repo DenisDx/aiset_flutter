@@ -1,0 +1,29 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_reject_duplicate_field",
+  "description": "A duplicate field name refuses compilation.",
+  "classes": [
+    "compile",
+    "rejection",
+    "id"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { one: { id: \"same\", type: \"string\" }, two: { id: \"same\", type: \"string\" } } },\n}\n",
+  "strict": true,
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "issues": [
+      {
+        "code": "DUPLICATE_FIELD",
+        "column": 81,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/two",
+        "severity": "error"
+      }
+    ],
+    "ok": false
+  }
+}

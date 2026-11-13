@@ -1,0 +1,35 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "structure_object_children_list",
+  "description": "children must not be a list.",
+  "classes": [
+    "structure",
+    "object",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", children: [1] } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_PROPERTY_TYPE",
+        "column": 70,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/children",
+        "severity": "error"
+      },
+      {
+        "code": "DESCRIPTOR_STRUCTURE",
+        "column": 70,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/children",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

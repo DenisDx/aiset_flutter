@@ -1,0 +1,61 @@
+{
+  "schema": "1",
+  "area": "merge_immutability",
+  "id": "merge_alias_recursive",
+  "description": "A merged object keeps its untouched base child.",
+  "classes": [
+    "alias",
+    "nested",
+    "immutability",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "object",
+          "v": [
+            [
+              "x",
+              {
+                "k": "int",
+                "v": "1"
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "object",
+          "v": [
+            [
+              "y",
+              {
+                "k": "int",
+                "v": "2"
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "aliased": false,
+    "inputsUnchanged": true,
+    "ok": true,
+    "sharesBaseNodes": 0,
+    "sharesUpdateNodes": 0
+  }
+}

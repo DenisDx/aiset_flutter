@@ -1,0 +1,108 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "numbers_formats",
+  "description": "Every number form the grammar accepts: hex with sign, leading/trailing dot, exponents, leading zeros.",
+  "classes": [
+    "numbers",
+    "hex",
+    "exponent",
+    "signed",
+    "leading-dot",
+    "trailing-dot"
+  ],
+  "input": "{\n  hex: 0xFF,\n  negHex: -0x1a,\n  plusHex: +0x10,\n  plus: +5,\n  leadDot: .5,\n  trailDot: 5.,\n  exp: 1e3,\n  expPlus: 1E+3,\n  negFloat: -0.25,\n  leadingZero: 08,\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/hex",
+      "/negHex",
+      "/plusHex",
+      "/plus",
+      "/leadDot",
+      "/trailDot",
+      "/exp",
+      "/expPlus",
+      "/negFloat",
+      "/leadingZero"
+    ],
+    "rootText": "{\n  hex: 0xFF,\n  negHex: -0x1a,\n  plusHex: +0x10,\n  plus: +5,\n  leadDot: .5,\n  trailDot: 5.,\n  exp: 1e3,\n  expPlus: 1E+3,\n  negFloat: -0.25,\n  leadingZero: 08,\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "hex",
+          {
+            "k": "int",
+            "v": "255"
+          }
+        ],
+        [
+          "negHex",
+          {
+            "k": "int",
+            "v": "-26"
+          }
+        ],
+        [
+          "plusHex",
+          {
+            "k": "int",
+            "v": "16"
+          }
+        ],
+        [
+          "plus",
+          {
+            "k": "int",
+            "v": "5"
+          }
+        ],
+        [
+          "leadDot",
+          {
+            "k": "double",
+            "v": 0.5
+          }
+        ],
+        [
+          "trailDot",
+          {
+            "k": "double",
+            "v": 5.0
+          }
+        ],
+        [
+          "exp",
+          {
+            "k": "double",
+            "v": 1000.0
+          }
+        ],
+        [
+          "expPlus",
+          {
+            "k": "double",
+            "v": 1000.0
+          }
+        ],
+        [
+          "negFloat",
+          {
+            "k": "double",
+            "v": -0.25
+          }
+        ],
+        [
+          "leadingZero",
+          {
+            "k": "int",
+            "v": "8"
+          }
+        ]
+      ]
+    }
+  }
+}

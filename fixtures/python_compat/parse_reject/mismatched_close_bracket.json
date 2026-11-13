@@ -1,0 +1,16 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "mismatched_close_bracket",
+  "description": "An array bracket closing an object.",
+  "classes": [
+    "mismatched-bracket"
+  ],
+  "input": "{ a: 1 ]",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

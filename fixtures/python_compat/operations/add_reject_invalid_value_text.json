@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_reject_invalid_value_text",
+  "description": "Malformed value text is refused before editing.",
+  "classes": [
+    "add",
+    "rejection",
+    "value-text"
+  ],
+  "input": "{\n  compact: { a: 1, b: 2 },\n  empty_object: {},\n  empty_array: [],\n  single_array: [1, 2, 3],\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/compact/z",
+    "value_text": "nope!"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR",
+    "ok": false
+  }
+}

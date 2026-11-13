@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "structure_any_with_key_enum",
+  "description": "The opaque type rejects key constraints.",
+  "classes": [
+    "structure",
+    "any",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"any\", key_enum: [\"a\"] } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 42,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

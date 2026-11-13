@@ -1,0 +1,51 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_provenance_root_path",
+  "description": "The empty path is recorded under the empty key.",
+  "classes": [
+    "provenance",
+    "paths"
+  ],
+  "input": "${A}",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "A": "1"
+    },
+    "dotenv": {}
+  },
+  "path": "",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "1",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

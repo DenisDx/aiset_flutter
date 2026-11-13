@@ -1,0 +1,18 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_children_labels_are_not_unknown_properties",
+  "description": "Children named like grammar keywords are data, not metadata.",
+  "classes": [
+    "node",
+    "unknown-metadata",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { type: { type: \"string\" }, children: { type: \"int\" }, required: { type: \"bool\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

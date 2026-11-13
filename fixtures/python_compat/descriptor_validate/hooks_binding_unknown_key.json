@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "hooks_binding_unknown_key",
+  "description": "An unknown binding key is reported as metadata.",
+  "classes": [
+    "hooks",
+    "unknown-metadata"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", hooks: { before_update: [ { tag: \"x\", when: \"always\" } ] } } } },\n}\n",
+  "mode": "default",
+  "expected": {
+    "issues": [
+      {
+        "code": "UNKNOWN_DESCRIPTOR_PROPERTY",
+        "column": 104,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/hooks/before_update/0/when",
+        "severity": "warning"
+      }
+    ],
+    "ok": true,
+    "valid": true
+  }
+}

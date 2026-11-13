@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "field_default_absent_flag",
+  "description": "A node without a default reports no default.",
+  "classes": [
+    "default"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\" } } },\n}\n",
+  "query": {
+    "op": "node_field",
+    "pointer": "/a",
+    "field": "hasDefault"
+  },
+  "strict": true,
+  "expected": {
+    "ok": true,
+    "query": {
+      "field": "hasDefault",
+      "op": "node_field",
+      "pointer": "/a"
+    },
+    "result": {
+      "k": "bool",
+      "v": false
+    }
+  }
+}

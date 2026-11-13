@@ -1,0 +1,304 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_template_override_description",
+  "description": "The referencing node keeps its own description.",
+  "classes": [
+    "compile",
+    "typedef",
+    "override",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { p: { typedef: \"card\", type: \"object\", description: \"base\", children: { n: { type: \"int\" } } }, q: { type: \"card\", description: \"One card\" } } },\n}\n",
+  "strict": true,
+  "expected": {
+    "configVersion": null,
+    "ok": true,
+    "project": null,
+    "revision": "sha256:95b7860b6758b12adc6e2272828f0441",
+    "shape": {
+      "additionalChildren": null,
+      "apply": "restart",
+      "children": [
+        [
+          "p",
+          "p",
+          {
+            "additionalChildren": null,
+            "apply": "restart",
+            "children": [
+              [
+                "n",
+                "n",
+                {
+                  "additionalChildren": null,
+                  "apply": "restart",
+                  "children": null,
+                  "const": null,
+                  "default": {
+                    "k": "null"
+                  },
+                  "description": null,
+                  "enum": null,
+                  "envAllowed": false,
+                  "envConvert": null,
+                  "fieldName": "n",
+                  "hasConst": false,
+                  "hasDefault": false,
+                  "helper": null,
+                  "hooks": null,
+                  "itemNode": null,
+                  "keyEnum": null,
+                  "keyPattern": null,
+                  "label": "n",
+                  "maxItems": {
+                    "k": "null"
+                  },
+                  "maxLength": {
+                    "k": "null"
+                  },
+                  "maximum": {
+                    "k": "null"
+                  },
+                  "minItems": {
+                    "k": "null"
+                  },
+                  "minLength": {
+                    "k": "null"
+                  },
+                  "minimum": {
+                    "k": "null"
+                  },
+                  "nullable": false,
+                  "optionNodes": null,
+                  "path": "/root/children/p/children/n",
+                  "pattern": null,
+                  "readOnly": false,
+                  "required": false,
+                  "secret": false,
+                  "title": null,
+                  "type": "int",
+                  "typedefName": null,
+                  "ui": null,
+                  "uniqueItems": null,
+                  "validators": []
+                }
+              ]
+            ],
+            "const": null,
+            "default": {
+              "k": "null"
+            },
+            "description": "base",
+            "enum": null,
+            "envAllowed": false,
+            "envConvert": null,
+            "fieldName": "p",
+            "hasConst": false,
+            "hasDefault": false,
+            "helper": null,
+            "hooks": null,
+            "itemNode": null,
+            "keyEnum": null,
+            "keyPattern": null,
+            "label": "p",
+            "maxItems": {
+              "k": "null"
+            },
+            "maxLength": {
+              "k": "null"
+            },
+            "maximum": {
+              "k": "null"
+            },
+            "minItems": {
+              "k": "null"
+            },
+            "minLength": {
+              "k": "null"
+            },
+            "minimum": {
+              "k": "null"
+            },
+            "nullable": false,
+            "optionNodes": null,
+            "path": "/root/children/p",
+            "pattern": null,
+            "readOnly": false,
+            "required": false,
+            "secret": false,
+            "title": null,
+            "type": "object",
+            "typedefName": null,
+            "ui": null,
+            "uniqueItems": null,
+            "validators": []
+          }
+        ],
+        [
+          "q",
+          "q",
+          {
+            "additionalChildren": null,
+            "apply": "restart",
+            "children": [
+              [
+                "n",
+                "n",
+                {
+                  "additionalChildren": null,
+                  "apply": "restart",
+                  "children": null,
+                  "const": null,
+                  "default": {
+                    "k": "null"
+                  },
+                  "description": null,
+                  "enum": null,
+                  "envAllowed": false,
+                  "envConvert": null,
+                  "fieldName": "n",
+                  "hasConst": false,
+                  "hasDefault": false,
+                  "helper": null,
+                  "hooks": null,
+                  "itemNode": null,
+                  "keyEnum": null,
+                  "keyPattern": null,
+                  "label": "n",
+                  "maxItems": {
+                    "k": "null"
+                  },
+                  "maxLength": {
+                    "k": "null"
+                  },
+                  "maximum": {
+                    "k": "null"
+                  },
+                  "minItems": {
+                    "k": "null"
+                  },
+                  "minLength": {
+                    "k": "null"
+                  },
+                  "minimum": {
+                    "k": "null"
+                  },
+                  "nullable": false,
+                  "optionNodes": null,
+                  "path": "/root/children/q/children/n",
+                  "pattern": null,
+                  "readOnly": false,
+                  "required": false,
+                  "secret": false,
+                  "title": null,
+                  "type": "int",
+                  "typedefName": null,
+                  "ui": null,
+                  "uniqueItems": null,
+                  "validators": []
+                }
+              ]
+            ],
+            "const": null,
+            "default": {
+              "k": "null"
+            },
+            "description": "One card",
+            "enum": null,
+            "envAllowed": false,
+            "envConvert": null,
+            "fieldName": "q",
+            "hasConst": false,
+            "hasDefault": false,
+            "helper": null,
+            "hooks": null,
+            "itemNode": null,
+            "keyEnum": null,
+            "keyPattern": null,
+            "label": "q",
+            "maxItems": {
+              "k": "null"
+            },
+            "maxLength": {
+              "k": "null"
+            },
+            "maximum": {
+              "k": "null"
+            },
+            "minItems": {
+              "k": "null"
+            },
+            "minLength": {
+              "k": "null"
+            },
+            "minimum": {
+              "k": "null"
+            },
+            "nullable": false,
+            "optionNodes": null,
+            "path": "/root/children/q",
+            "pattern": null,
+            "readOnly": false,
+            "required": false,
+            "secret": false,
+            "title": null,
+            "type": "object",
+            "typedefName": null,
+            "ui": null,
+            "uniqueItems": null,
+            "validators": []
+          }
+        ]
+      ],
+      "const": null,
+      "default": {
+        "k": "null"
+      },
+      "description": null,
+      "enum": null,
+      "envAllowed": false,
+      "envConvert": null,
+      "fieldName": null,
+      "hasConst": false,
+      "hasDefault": false,
+      "helper": null,
+      "hooks": null,
+      "itemNode": null,
+      "keyEnum": null,
+      "keyPattern": null,
+      "label": null,
+      "maxItems": {
+        "k": "null"
+      },
+      "maxLength": {
+        "k": "null"
+      },
+      "maximum": {
+        "k": "null"
+      },
+      "minItems": {
+        "k": "null"
+      },
+      "minLength": {
+        "k": "null"
+      },
+      "minimum": {
+        "k": "null"
+      },
+      "nullable": false,
+      "optionNodes": null,
+      "path": "/root",
+      "pattern": null,
+      "readOnly": false,
+      "required": false,
+      "secret": false,
+      "title": null,
+      "type": "object",
+      "typedefName": null,
+      "ui": null,
+      "uniqueItems": null,
+      "validators": []
+    }
+  }
+}

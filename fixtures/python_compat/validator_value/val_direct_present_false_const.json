@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_direct_present_false_const",
+  "description": "present=False short-circuits even a const check.",
+  "classes": [
+    "present",
+    "const",
+    "accept"
+  ],
+  "input": "",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", const: \"z\" } } } }",
+  "direct": true,
+  "query": {
+    "pointer": "/a",
+    "value": {
+      "k": "string",
+      "v": "x"
+    },
+    "path": "/a",
+    "present": false
+  },
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

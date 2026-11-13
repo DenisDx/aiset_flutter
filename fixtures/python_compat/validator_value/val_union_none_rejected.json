@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_union_none_rejected",
+  "description": "A value matching no alternative fails.",
+  "classes": [
+    "union",
+    "rejection"
+  ],
+  "input": "{ u: \"hi\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { u: { type: \"union\", children_options: [ { type: \"int\", minimum: 10 }, { type: \"string\", min_length: 5 } ] } } } }",
+  "value": "{ u: \"hi\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/u",
+        "rule": "union",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

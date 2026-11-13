@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_bool_pattern",
+  "description": "The MapEntry(pattern: \"^a\").key constraint does not apply to type bool.",
+  "classes": [
+    "constraint-by-type",
+    "bool",
+    "pattern",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"bool\", pattern: \"^a\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 67,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/pattern",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_direct_missing_under_any",
+  "description": "The absence marker passes under the opaque type.",
+  "classes": [
+    "missing",
+    "any",
+    "accept"
+  ],
+  "input": "",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\" } } } }",
+  "direct": true,
+  "query": {
+    "pointer": "/a",
+    "value": {
+      "missing": true
+    },
+    "path": "/a",
+    "present": true
+  },
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

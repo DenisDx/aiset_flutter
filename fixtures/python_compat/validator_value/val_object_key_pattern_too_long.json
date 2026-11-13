@@ -1,0 +1,49 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_object_key_pattern_too_long",
+  "description": "An over-long key_pattern reports pattern_length here; the baseline reports a plain key mismatch.",
+  "classes": [
+    "object",
+    "key-pattern",
+    "pattern-length",
+    "SPEC26-DIALECT"
+  ],
+  "input": "{ o: { y: 1 } }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { o: { type: \"object\", key_pattern: \"xxxxxxxxx\", additional_children: { type: \"int\" } } } } }",
+  "value": "{ o: { y: 1 } }",
+  "limits": {
+    "max_pattern_length": 5
+  },
+  "divergence": {
+    "id": "SPEC26-DIALECT",
+    "report": "SPEC26-DIALECT",
+    "note": "docs/grammars.md §1.2 and §1.3 fix which layer reports each regex construct, and §1.2 states that the two implementations can name the same problem at different layers while the outcome (refused, named, never guessed at) does not differ. This is a documented, intentional divergence from the executed baseline under that rule (SPEC.md amendment 26), not a baseline defect.  docs/grammars.md §1.3 checks the pattern length before the pattern is compiled or matched, and key_pattern is checked the same way as pattern. The baseline applies the length bound only to a value pattern; an over-long key_pattern is handed to the engine and reported as an ordinary key mismatch, which reads as a data problem rather than a descriptor problem."
+  },
+  "expected": {
+    "ok": true,
+    "valid": false,
+    "issues": [
+      {
+        "rule": "pattern_length",
+        "path": "/o/y",
+        "severity": "error",
+        "hasMessage": true
+      }
+    ],
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/o/y",
+        "rule": "key_pattern",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "leaf_absent_without_default",
+  "description": "An absent field with no default stays absent.",
+  "classes": [
+    "absent"
+  ],
+  "input": "{ other: 1 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { plain: { type: \"string\" } } } }",
+  "config": "{ other: 1 }",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "other",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/other",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

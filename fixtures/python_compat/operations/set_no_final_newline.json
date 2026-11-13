@@ -1,0 +1,47 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_no_final_newline",
+  "description": "A set in a document without a final newline.",
+  "classes": [
+    "set",
+    "no-final-newline"
+  ],
+  "input": "{\n  a: 1,\n  b: 2\n}",
+  "operation": {
+    "op": "set",
+    "pointer": "/a",
+    "value_text": "9"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  a: 9,\n  b: 2\n}",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a",
+        "/b"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "int",
+              "v": "9"
+            }
+          ],
+          [
+            "b",
+            {
+              "k": "int",
+              "v": "2"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

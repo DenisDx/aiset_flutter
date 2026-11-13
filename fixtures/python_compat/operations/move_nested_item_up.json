@@ -1,0 +1,88 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_nested_item_up",
+  "description": "Moving the last item of a nested array to the front.",
+  "classes": [
+    "move",
+    "nested",
+    "array"
+  ],
+  "input": "{\n  workers: [\n    {\n      id: \"web\", // worker id\n      ports: [\n        8080,\n        8081,\n      ],\n    },\n    {\n      id: \"cache\",\n    },\n  ],\n}\n",
+  "operation": {
+    "op": "move",
+    "source": "/workers/0/ports/1",
+    "target": "/workers/0/ports/0"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  workers: [\n    {\n      id: \"web\", // worker id\n      ports: [\n        8081,\n        8080,\n      ],\n    },\n    {\n      id: \"cache\",\n    },\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/workers",
+        "/workers/0",
+        "/workers/0/id",
+        "/workers/0/ports",
+        "/workers/0/ports/0",
+        "/workers/0/ports/1",
+        "/workers/1",
+        "/workers/1/id"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "workers",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "id",
+                      {
+                        "k": "string",
+                        "v": "web"
+                      }
+                    ],
+                    [
+                      "ports",
+                      {
+                        "k": "array",
+                        "v": [
+                          {
+                            "k": "int",
+                            "v": "8081"
+                          },
+                          {
+                            "k": "int",
+                            "v": "8080"
+                          }
+                        ]
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "id",
+                      {
+                        "k": "string",
+                        "v": "cache"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

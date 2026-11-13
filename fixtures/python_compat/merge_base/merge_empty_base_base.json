@@ -1,0 +1,46 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_empty_base_base",
+  "description": "An empty base yields the update. (prefer: base)",
+  "classes": [
+    "object",
+    "empty",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "object",
+    "v": []
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "int",
+          "v": "1"
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ]
+      ]
+    },
+    "ok": true
+  }
+}

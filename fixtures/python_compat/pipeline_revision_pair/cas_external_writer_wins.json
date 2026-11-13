@@ -1,0 +1,24 @@
+{
+  "schema": "1",
+  "area": "pipeline_revision_pair",
+  "id": "cas_external_writer_wins",
+  "description": "A document replaced outside the service refuses the next stale commit.",
+  "classes": [
+    "cas",
+    "rejection",
+    "external",
+    "cas"
+  ],
+  "input": "{ port: 1, host: \"localhost\" }\n",
+  "scenario": "external_writer",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: {\n    port: { type: \"int\", minimum: 1, maximum: 65535 },\n    host: { type: \"string\" },\n  } } }\n",
+  "config": "{ port: 1, host: \"localhost\" }\n",
+  "expected": {
+    "externalWrite": "stored_externally",
+    "fileRevision": "sha256:37ecdf6be7663659bb2a2cebb55d1534",
+    "fileText": "{ port: 4242, host: \"outside\" }\n",
+    "ok": true,
+    "scenario": "external_writer",
+    "staleWrite": "REVISION_CONFLICT"
+  }
+}

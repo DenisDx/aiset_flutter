@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "typedef_unknown_reference",
+  "description": "An unknown type name is reported.",
+  "classes": [
+    "typedef",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"missing\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "UNKNOWN_TYPE",
+        "column": 50,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/type",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

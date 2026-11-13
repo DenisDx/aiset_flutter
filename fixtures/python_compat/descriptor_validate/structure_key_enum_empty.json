@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "structure_key_enum_empty",
+  "description": "An empty key_enum governs no key at all.",
+  "classes": [
+    "structure",
+    "keys"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", key_enum: [], additional_children: { type: \"int\" } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

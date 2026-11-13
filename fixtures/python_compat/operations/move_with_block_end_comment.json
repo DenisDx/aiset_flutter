@@ -1,0 +1,51 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_with_block_end_comment",
+  "description": "A block-end comment stays before the closing bracket.",
+  "classes": [
+    "move",
+    "comments",
+    "block-end"
+  ],
+  "input": "{\n  list: [\n    1,\n    2\n    // end\n  ],\n}\n",
+  "operation": {
+    "op": "move",
+    "source": "/list/0",
+    "target": "/list/1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\n    2,\n    1\n    // end\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0",
+        "/list/1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "int",
+                  "v": "2"
+                },
+                {
+                  "k": "int",
+                  "v": "1"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_string_pattern",
+  "description": "The MapEntry(pattern: \"^a\").key constraint applies to type string.",
+  "classes": [
+    "constraint-by-type",
+    "string",
+    "pattern",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", pattern: \"^a\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

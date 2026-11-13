@@ -1,0 +1,131 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "governed_key_enum_allowed",
+  "description": "A declared key_enum member is governed by additional_children.",
+  "classes": [
+    "keys",
+    "key-enum",
+    "A27"
+  ],
+  "input": "{ s: { ok: {} } }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: {\n    s: { type: \"object\", key_enum: [\"ok\"], additional_children: { type: \"object\",\n        children: { x: { type: \"string\", default: \"X\" } } } },\n} } }\n",
+  "config": "{ s: { ok: {} } }",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "divergence": {
+    "id": "A27",
+    "report": "A27",
+    "note": "The governed key behaves the same in both implementations; the difference is only the provenance of the default materialized under it (see prov_default_for_absent)."
+  },
+  "expected": {
+    "ok": true,
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "s",
+          {
+            "k": "object",
+            "v": [
+              [
+                "ok",
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "x",
+                      {
+                        "k": "string",
+                        "v": "X"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/s/ok/x",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "default"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "s",
+          {
+            "k": "object",
+            "v": [
+              [
+                "ok",
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "x",
+                      {
+                        "k": "string",
+                        "v": "X"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/s/ok/x",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

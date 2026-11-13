@@ -1,0 +1,46 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_middle_member",
+  "description": "Removing a middle member leaves its neighbours intact.",
+  "classes": [
+    "remove",
+    "object"
+  ],
+  "input": "{\n  // lead a\n  a: 1, // trail a\n  b: 2,\n  c: 3,\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/b"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  // lead a\n  a: 1, // trail a\n  c: 3,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a",
+        "/c"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ],
+          [
+            "c",
+            {
+              "k": "int",
+              "v": "3"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

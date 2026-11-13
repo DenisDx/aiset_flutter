@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_bool_minimum",
+  "description": "The MapEntry(minimum: 1).key constraint does not apply to type bool.",
+  "classes": [
+    "constraint-by-type",
+    "bool",
+    "minimum",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"bool\", minimum: 1 } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 67,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/minimum",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "conv_number_underscore_grouping",
+  "description": "A number written with Python literal underscore grouping.",
+  "classes": [
+    "convert",
+    "number",
+    "number-grammar",
+    "A28"
+  ],
+  "input": "{ real: \"${N}\" }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: {\n    type: \"object\",\n    children: {\n      plain: { type: \"string\" },\n      templated: { type: \"string\", env: { allowed: true, convert: \"string\" } },\n      noconvert: { type: \"string\", env: { allowed: true } },\n      number: { type: \"int\", env: { allowed: true, convert: \"int\" } },\n      real: { type: \"number\", env: { allowed: true, convert: \"number\" } },\n      flag: { type: \"bool\", env: { allowed: true, convert: \"bool\" } },\n      not_allowed: { type: \"string\" },\n      list: { type: \"array\", children: { type: \"string\", env: { allowed: true } } },\n      dynamic: { type: \"object\", additional_children: { type: \"string\", env: { allowed: true } } },\n      patterned: { type: \"object\", key_pattern: \"^ok\", additional_children: { type: \"string\", env: { allowed: true } } },\n      opaque: { type: \"any\" },\n    },\n  },\n}\n",
+  "config": "{ real: \"${N}\" }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "N": "1_0"
+    },
+    "dotenv": {}
+  },
+  "divergence": {
+    "id": "A28",
+    "report": "A28",
+    "note": "The number conversion calls float() with no format check of its own, and Python's float() accepts the underscore grouping of its literal syntax, so the settings value \"1_0\" silently means ten. The integer conversion refuses the same text through its explicit pattern, so the two numeric types disagree about one format. The Dart implementation applies one ASCII decimal grammar to both and reports env_conversion."
+  },
+  "expected": {
+    "ok": true,
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "real",
+          {
+            "k": "null"
+          }
+        ]
+      ]
+    },
+    "issues": [
+      {
+        "rule": "env_conversion",
+        "path": "/real",
+        "severity": "error",
+        "hasMessage": true
+      }
+    ],
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/real",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "N"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "real",
+          {
+            "k": "double",
+            "v": 10.0
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/real",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "N"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

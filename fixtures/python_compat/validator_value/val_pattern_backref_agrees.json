@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_backref_agrees",
+  "description": "A numeric backreference is refused as a dialect issue by both.",
+  "classes": [
+    "pattern",
+    "dialect",
+    "backreference",
+    "agree"
+  ],
+  "input": "{ a: \"aa\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"(a)\\\\1\" } } } }",
+  "value": "{ a: \"aa\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "pattern",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

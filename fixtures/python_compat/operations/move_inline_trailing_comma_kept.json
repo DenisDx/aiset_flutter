@@ -1,0 +1,51 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_inline_trailing_comma_kept",
+  "description": "An inline array keeps its trailing comma style through a move.",
+  "classes": [
+    "move",
+    "inline",
+    "commas"
+  ],
+  "input": "{ list: [1, 2,], }\n",
+  "operation": {
+    "op": "move",
+    "source": "/list/0",
+    "target": "/list/1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{ list: [2, 1,], }\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0",
+        "/list/1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "int",
+                  "v": "2"
+                },
+                {
+                  "k": "int",
+                  "v": "1"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

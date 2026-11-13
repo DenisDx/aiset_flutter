@@ -1,0 +1,59 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "astral_document",
+  "description": "The astral-plane document used by the splice cases.",
+  "classes": [
+    "astral",
+    "unicode"
+  ],
+  "input": "{\n  \"rocket 🚀\": \"start\",\n  list: [\n    \"a\",\n    \"b\",\n  ],\n  tail: 1,\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/rocket 🚀",
+      "/list",
+      "/list/0",
+      "/list/1",
+      "/tail"
+    ],
+    "rootText": "{\n  \"rocket 🚀\": \"start\",\n  list: [\n    \"a\",\n    \"b\",\n  ],\n  tail: 1,\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "rocket 🚀",
+          {
+            "k": "string",
+            "v": "start"
+          }
+        ],
+        [
+          "list",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "string",
+                "v": "a"
+              },
+              {
+                "k": "string",
+                "v": "b"
+              }
+            ]
+          }
+        ],
+        [
+          "tail",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ]
+      ]
+    }
+  }
+}

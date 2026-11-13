@@ -1,0 +1,30 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_float_precision_base",
+  "description": "A fraction that is not equal to the base conflicts. (prefer: base)",
+  "classes": [
+    "scalar",
+    "number",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "int",
+    "v": "1"
+  },
+  "update": {
+    "k": "double",
+    "v": 1.5
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "int",
+      "v": "1"
+    },
+    "ok": true
+  }
+}

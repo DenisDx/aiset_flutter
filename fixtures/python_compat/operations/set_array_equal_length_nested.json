@@ -1,0 +1,64 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_array_equal_length_nested",
+  "description": "Nested equal-length array replacement edits item by item.",
+  "classes": [
+    "set",
+    "array",
+    "elementwise",
+    "nested"
+  ],
+  "input": "{\n  l: [[1], [2]],\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/l",
+    "value_text": "[[9], [8]]"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  l: [[9], [8]],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/l",
+        "/l/0",
+        "/l/0/0",
+        "/l/1",
+        "/l/1/0"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "l",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "array",
+                  "v": [
+                    {
+                      "k": "int",
+                      "v": "9"
+                    }
+                  ]
+                },
+                {
+                  "k": "array",
+                  "v": [
+                    {
+                      "k": "int",
+                      "v": "8"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

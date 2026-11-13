@@ -1,0 +1,40 @@
+{
+  "schema": "1",
+  "area": "pipeline_dry_run",
+  "id": "dry_run_stale_revision_still_refused",
+  "description": "A dry run still requires a live revision pair.",
+  "classes": [
+    "dry-run",
+    "revision",
+    "pipeline"
+  ],
+  "input": "{\n  // The service port the operator changed last week.\n  port: 1,\n  host: \"localhost\",\n  label: ${LABEL},\n  ro: \"keep\",\n  fixed: \"nope\",\n  need: 7,\n  secret_token: \"s3cr3t\",\n  zero: 3,\n  flag: true,\n  nothing: null,\n  plain: \"p\",\n  heavy: \"h\",\n  list: [1, 2],\n  obj: { a: \"b\", second: \"c\" },\n  closed: { a: 1 },\n  boxed: { inner_ro: \"in\", secret_inner: \"shh\", inner: \"x\" },\n  keyed: { ok: 1 },\n  masked: { w1: 2 },\n  uni: { a: 1 },\n}\n",
+  "descriptor": "{ descriptor_version: \"1.0\", project: \"pipeline\", config_version: \"1\",\n  root: {\n    type: \"object\",\n    children: {\n      port:  { type: \"int\", minimum: 1, maximum: 65535, apply: \"live\" },\n      host:  { type: \"string\", default: \"localhost\", apply: \"reload\" },\n      label: { type: \"string\", env: { allowed: true }, apply: \"restart\" },\n      heavy: { type: \"string\", apply: \"restart\" },\n      plain: { type: \"string\" },\n      ro:    { type: \"string\", read_only: true },\n      fixed: { type: \"string\", const: \"nope\" },\n      need:  { type: \"int\", required: true },\n      secret_token: { type: \"string\", secret: true },\n      zero:  { type: \"int\", default: 0 },\n      flag:  { type: \"bool\", default: false },\n      nothing: { type: \"string\", nullable: true },\n      list:  { type: \"array\", children: { type: \"int\" } },\n      obj:   { type: \"object\", additional_children: { type: \"string\" } },\n      closed: { type: \"object\", children: { a: { type: \"int\" } } },\n      boxed: { type: \"object\", children: {\n                 inner_ro: { type: \"string\", read_only: true },\n                 secret_inner: { type: \"string\", secret: true },\n                 inner:  { type: \"string\" } } },\n      keyed: { type: \"object\", key_enum: [\"ok\"],\n               additional_children: { type: \"int\" } },\n      masked: { type: \"object\", key_pattern: \"^w\",\n                additional_children: { type: \"int\" } },\n      uni:   { type: \"union\", children_options: [\n                 { type: \"object\", children: { a: { type: \"int\" } } },\n                 { type: \"object\", read_only: true, children: { b: { type: \"int\" } } } ] },\n    },\n  },\n}\n",
+  "config": "{\n  // The service port the operator changed last week.\n  port: 1,\n  host: \"localhost\",\n  label: ${LABEL},\n  ro: \"keep\",\n  fixed: \"nope\",\n  need: 7,\n  secret_token: \"s3cr3t\",\n  zero: 3,\n  flag: true,\n  nothing: null,\n  plain: \"p\",\n  heavy: \"h\",\n  list: [1, 2],\n  obj: { a: \"b\", second: \"c\" },\n  closed: { a: 1 },\n  boxed: { inner_ro: \"in\", secret_inner: \"shh\", inner: \"x\" },\n  keyed: { ok: 1 },\n  masked: { w1: 2 },\n  uni: { a: 1 },\n}\n",
+  "operations": [
+    {
+      "op": "set",
+      "path": "/port",
+      "value_text": "80"
+    }
+  ],
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "principal": "demo",
+  "dryRun": true,
+  "expectedRevisions": "stale_source",
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "RevisionConflict",
+    "errorCode": "REVISION_CONFLICT",
+    "fileUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "result": "rejected",
+    "stateTextUnchanged": true,
+    "stored": false
+  }
+}

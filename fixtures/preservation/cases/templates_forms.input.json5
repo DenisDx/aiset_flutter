@@ -1,0 +1,8 @@
+{
+  bare: ${A},
+  def: ${B:-x y},
+  empty: ${C:-},
+  inStr: "pre ${D:-1} post",
+  fake: "${1N0T} a placeholder",
+  unterminatedish: "x ${VAR y",
+}

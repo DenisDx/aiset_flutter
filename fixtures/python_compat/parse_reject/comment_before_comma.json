@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "comment_before_comma",
+  "description": "A comment between value and comma.",
+  "classes": [
+    "comma-placement",
+    "comments"
+  ],
+  "input": "{ a: 1/* c */, b: 2 }",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

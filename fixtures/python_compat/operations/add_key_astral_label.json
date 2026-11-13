@@ -1,0 +1,75 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_key_astral_label",
+  "description": "An astral label is not an identifier and is quoted.",
+  "classes": [
+    "add",
+    "create-member",
+    "astral"
+  ],
+  "input": "{\n  \"rocket 🚀\": \"start\",\n  list: [\n    \"a\",\n    \"b\",\n  ],\n  tail: 1,\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/🚀pad",
+    "value_text": "\"dock\""
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  \"rocket 🚀\": \"start\",\n  list: [\n    \"a\",\n    \"b\",\n  ],\n  tail: 1,\n  \"🚀pad\": \"dock\",\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/rocket 🚀",
+        "/list",
+        "/list/0",
+        "/list/1",
+        "/tail",
+        "/🚀pad"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "rocket 🚀",
+            {
+              "k": "string",
+              "v": "start"
+            }
+          ],
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "a"
+                },
+                {
+                  "k": "string",
+                  "v": "b"
+                }
+              ]
+            }
+          ],
+          [
+            "tail",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ],
+          [
+            "🚀pad",
+            {
+              "k": "string",
+              "v": "dock"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

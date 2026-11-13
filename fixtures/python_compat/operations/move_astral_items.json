@@ -1,0 +1,66 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_astral_items",
+  "description": "Moving items in an array that follows astral text.",
+  "classes": [
+    "move",
+    "astral"
+  ],
+  "input": "{\n  \"rocket 🚀\": \"start\",\n  list: [\n    \"a\",\n    \"b\",\n  ],\n  tail: 1,\n}\n",
+  "operation": {
+    "op": "move",
+    "source": "/list/0",
+    "target": "/list/1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  \"rocket 🚀\": \"start\",\n  list: [\n    \"b\",\n    \"a\",\n  ],\n  tail: 1,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/rocket 🚀",
+        "/list",
+        "/list/0",
+        "/list/1",
+        "/tail"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "rocket 🚀",
+            {
+              "k": "string",
+              "v": "start"
+            }
+          ],
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "b"
+                },
+                {
+                  "k": "string",
+                  "v": "a"
+                }
+              ]
+            }
+          ],
+          [
+            "tail",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

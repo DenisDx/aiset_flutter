@@ -1,0 +1,35 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_unknown_property_position",
+  "description": "Every issue carries the source position of the offending property.",
+  "classes": [
+    "node",
+    "unknown-metadata",
+    "positions"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: {\n    type: \"object\",\n    children: {\n      port: {\n        typo: \"string\",\n      },\n    },\n  },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "UNKNOWN_DESCRIPTOR_PROPERTY",
+        "column": 15,
+        "hasMessage": true,
+        "line": 7,
+        "path": "/root/children/port/typo",
+        "severity": "error"
+      },
+      {
+        "code": "DESCRIPTOR_STRUCTURE",
+        "column": 13,
+        "hasMessage": true,
+        "line": 6,
+        "path": "/root/children/port/type",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_array_unique_dup_first_index",
+  "description": "A duplicate is reported at the first index.",
+  "classes": [
+    "array",
+    "unique-items",
+    "rejection"
+  ],
+  "input": "{ l: [5, 5, 5] }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { l: { type: \"array\", children: { type: \"int\" }, unique_items: true } } } }",
+  "value": "{ l: [5, 5, 5] }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/l/0",
+        "rule": "unique_items",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

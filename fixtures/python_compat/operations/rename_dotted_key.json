@@ -1,0 +1,40 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "rename_dotted_key",
+  "description": "Renaming a key that contains a dot.",
+  "classes": [
+    "rename",
+    "dotted-key",
+    "quoted-key"
+  ],
+  "input": "{\n  \"a.b\": 1,\n}\n",
+  "operation": {
+    "op": "rename",
+    "pointer": "/a.b",
+    "new_key": "c.d"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  \"c.d\": 1,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/c.d"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "c.d",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

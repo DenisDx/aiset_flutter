@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "scalar_document",
+  "description": "A bare number as the whole document, surrounded by whitespace.",
+  "classes": [
+    "scalar-root",
+    "no-final-newline"
+  ],
+  "input": " 42  ",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      ""
+    ],
+    "rootText": "42",
+    "storedValue": {
+      "k": "int",
+      "v": "42"
+    }
+  }
+}

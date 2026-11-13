@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_object_drops_opening_comment",
+  "description": "The replaced object's own opening comment is inside the replaced span.",
+  "classes": [
+    "set",
+    "object",
+    "comments",
+    "opening"
+  ],
+  "input": "{\n  a: { // opening\n    b: 1,\n  },\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/a",
+    "value_text": "{ c: 2 }"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  a: {\n    c: 2,\n  },\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a",
+        "/a/c"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "c",
+                  {
+                    "k": "int",
+                    "v": "2"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

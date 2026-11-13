@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_noncapture",
+  "description": "A non-capturing group is accepted.",
+  "classes": [
+    "pattern",
+    "accept"
+  ],
+  "input": "{ a: \"abab\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"(?:ab)+\" } } } }",
+  "value": "{ a: \"abab\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

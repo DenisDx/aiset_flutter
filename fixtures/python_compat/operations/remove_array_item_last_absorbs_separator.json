@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_array_item_last_absorbs_separator",
+  "description": "Removing the last item takes the preceding separator.",
+  "classes": [
+    "remove",
+    "array",
+    "commas"
+  ],
+  "input": "{\n  list: [\n    // first\n    \"a\",\n    \"b\", // second\n    \"c\",\n  ],\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/list/2"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\n    // first\n    \"a\",\n    \"b\",\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0",
+        "/list/1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "a"
+                },
+                {
+                  "k": "string",
+                  "v": "b"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

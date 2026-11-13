@@ -1,0 +1,37 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_prefer_unknown",
+  "description": "An unknown prefer name is refused with a stable code.",
+  "classes": [
+    "rejection",
+    "prefer"
+  ],
+  "input": "",
+  "prefer": "sideways",
+  "base": {
+    "k": "int",
+    "v": "1"
+  },
+  "update": {
+    "k": "int",
+    "v": "2"
+  },
+  "divergence": {
+    "id": "MERGE-PREFER-CODE",
+    "report": "A37",
+    "note": "The baseline raises a bare ValueError with no stable code for an unknown merge preference, while every other malformed argument in the same library is reported as BAD_REQUEST. The corrected answer is the stable code."
+  },
+  "expected": {
+    "ok": false,
+    "errorCode": "BAD_REQUEST",
+    "baselineCrash": false,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "baselineCrash": true,
+    "errorClass": "ValueError",
+    "errorCode": null,
+    "ok": false
+  }
+}

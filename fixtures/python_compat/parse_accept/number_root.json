@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "number_root",
+  "description": "A number as the whole document.",
+  "classes": [
+    "scalar-root",
+    "number"
+  ],
+  "input": "-12.5e2",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      ""
+    ],
+    "rootText": "-12.5e2",
+    "storedValue": {
+      "k": "double",
+      "v": -1250.0
+    }
+  }
+}

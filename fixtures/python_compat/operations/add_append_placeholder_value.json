@@ -1,0 +1,54 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_append_placeholder_value",
+  "description": "An appended placeholder keeps its token text exactly.",
+  "classes": [
+    "add",
+    "append-marker",
+    "placeholder"
+  ],
+  "input": "{\n  list: [\n    \"a\",\n  ],\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/list/-",
+    "value_text": "${EXTRA:-}"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\n    \"a\",\n    ${EXTRA:-},\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0",
+        "/list/1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "a"
+                },
+                {
+                  "k": "template",
+                  "v": {
+                    "default": "",
+                    "name": "EXTRA"
+                  }
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

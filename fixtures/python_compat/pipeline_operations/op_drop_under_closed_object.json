@@ -1,0 +1,56 @@
+{
+  "schema": "1",
+  "area": "pipeline_operations",
+  "id": "op_drop_under_closed_object",
+  "description": "A drifted key inside a closed object is what drop removes.",
+  "classes": [
+    "drop",
+    "accept",
+    "pipeline"
+  ],
+  "input": "{ closed: { a: 1, junk: 2 } }\n",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: {\n    closed: { type: \"object\", children: { a: { type: \"int\" } } },\n  } } }\n",
+  "config": "{ closed: { a: 1, junk: 2 } }\n",
+  "operations": [
+    {
+      "op": "drop",
+      "path": "/closed/junk"
+    }
+  ],
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "principal": "demo",
+  "divergence": {
+    "id": "PIPE-UNDECLARED-PATH-APPLIED",
+    "report": "A39",
+    "note": "A batch whose changed paths are all undeclared reports `applied` and advances the active revision: the baseline reduces the strictest apply policy over the changed paths starting from `live`, and a path with no governing node contributes nothing, so a repair that only removes a drifted key pretends to be live. Its own docstring states that `live` is the policy a node without an explicit apply must not get. SPEC.md amendment 8 fixes undeclared as `restart`; the corrected answer is `restart_required` with the active revision left where the application actually is."
+  },
+  "expected": {
+    "result": "stored",
+    "application": "restart_required",
+    "activeMatchesRevision": false,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "activeMatchesRevision": true,
+    "activeRevision": "sha256:2547b0021c9288b6f15233b1f07c91de",
+    "application": "applied",
+    "changedPaths": [
+      "/closed/junk"
+    ],
+    "descriptorRevision": "sha256:24abb5c947d8596926390875e56aa77e",
+    "dryRun": false,
+    "fileText": "{ closed: { a: 1 } }\n",
+    "fileUnchanged": false,
+    "issues": [],
+    "ok": true,
+    "result": "stored",
+    "revision": "sha256:2547b0021c9288b6f15233b1f07c91de",
+    "stateTextUnchanged": false,
+    "stored": true,
+    "valid": true
+  }
+}

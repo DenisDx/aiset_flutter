@@ -1,0 +1,104 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "array_of_objects_placeholders",
+  "description": "Placeholders inside array item objects resolve.",
+  "classes": [
+    "array",
+    "nested"
+  ],
+  "input": "{ list: [ { v: \"${A}\" }, { v: \"plain\" } ] }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { list: { type: \"array\", children: { type: \"object\", children: { v: { type: \"string\", env: { allowed: true } } } } } } } }",
+  "config": "{ list: [ { v: \"${A}\" }, { v: \"plain\" } ] }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "A": "1"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "list",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "object",
+                "v": [
+                  [
+                    "v",
+                    {
+                      "k": "string",
+                      "v": "1"
+                    }
+                  ]
+                ]
+              },
+              {
+                "k": "object",
+                "v": [
+                  [
+                    "v",
+                    {
+                      "k": "string",
+                      "v": "plain"
+                    }
+                  ]
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/list/0/v",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/list/1/v",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

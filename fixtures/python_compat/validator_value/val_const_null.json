@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_const_null",
+  "description": "null can be the fixed value of a null node.",
+  "classes": [
+    "const",
+    "null",
+    "accept"
+  ],
+  "input": "{ a: null }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"null\", const: null } } } }",
+  "value": "{ a: null }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

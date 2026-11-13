@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "structure_scalar_with_children",
+  "description": "A scalar cannot have children.",
+  "classes": [
+    "structure",
+    "scalar",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", children: { type: \"int\" } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 70,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/children",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

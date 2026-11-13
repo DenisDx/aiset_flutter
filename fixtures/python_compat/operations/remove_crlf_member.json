@@ -1,0 +1,38 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_crlf_member",
+  "description": "Removing a member in a CRLF document.",
+  "classes": [
+    "remove",
+    "crlf"
+  ],
+  "input": "{\r\n  a: 1,\r\n  b: {\r\n    c: 2,\r\n  },\r\n}\r\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/b"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\r\n  a: 1,\r\n}\r\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

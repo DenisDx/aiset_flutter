@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_min_above_max_length",
+  "description": "min_length above max_length is refused.",
+  "classes": [
+    "node",
+    "constraints",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", min_length: 5, max_length: 2 } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 87,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/max_length",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_any_minimum",
+  "description": "The MapEntry(minimum: 1).key constraint does not apply to type any.",
+  "classes": [
+    "constraint-by-type",
+    "any",
+    "minimum",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"any\", minimum: 1 } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 66,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/minimum",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "bom",
+  "description": "UTF-8 byte-order mark before the root value; the baseline treats U+FEFF as whitespace.",
+  "classes": [
+    "bom"
+  ],
+  "input": "﻿{\n  a: 1,\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a"
+    ],
+    "rootText": "{\n  a: 1,\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ]
+      ]
+    }
+  }
+}

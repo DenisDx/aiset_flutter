@@ -1,0 +1,47 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "allowed_opaque_bare_placeholder",
+  "description": "A bare placeholder under the opaque type needs env.allowed.",
+  "classes": [
+    "any",
+    "rejection"
+  ],
+  "input": "{ opaque: ${V} }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: {\n    type: \"object\",\n    children: {\n      plain: { type: \"string\" },\n      templated: { type: \"string\", env: { allowed: true, convert: \"string\" } },\n      noconvert: { type: \"string\", env: { allowed: true } },\n      number: { type: \"int\", env: { allowed: true, convert: \"int\" } },\n      real: { type: \"number\", env: { allowed: true, convert: \"number\" } },\n      flag: { type: \"bool\", env: { allowed: true, convert: \"bool\" } },\n      not_allowed: { type: \"string\" },\n      list: { type: \"array\", children: { type: \"string\", env: { allowed: true } } },\n      dynamic: { type: \"object\", additional_children: { type: \"string\", env: { allowed: true } } },\n      patterned: { type: \"object\", key_pattern: \"^ok\", additional_children: { type: \"string\", env: { allowed: true } } },\n      opaque: { type: \"any\" },\n    },\n  },\n}\n",
+  "config": "{ opaque: ${V} }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "x"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "opaque",
+          {
+            "k": "null"
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/opaque",
+        "rule": "env_not_allowed",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_reject_non_numeric_source",
+  "description": "A word cannot address an item.",
+  "classes": [
+    "move",
+    "rejection",
+    "array"
+  ],
+  "input": "{\n  list: [\n    // first\n    \"a\",\n    \"b\", // second\n    \"c\",\n  ],\n}\n",
+  "operation": {
+    "op": "move",
+    "source": "/list/x",
+    "target": "/list/0"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "PathError",
+    "errorCode": "BAD_REQUEST",
+    "ok": false
+  }
+}

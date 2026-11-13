@@ -1,0 +1,51 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_multiline_keeps_comments",
+  "description": "A moved item carries its leading comment with it.",
+  "classes": [
+    "move",
+    "comments",
+    "array"
+  ],
+  "input": "{\n  list: [\n    // first\n    \"a\",\n    // second\n    \"b\",\n  ],\n}\n",
+  "operation": {
+    "op": "move",
+    "source": "/list/1",
+    "target": "/list/0"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\n    // second\n    \"b\",\n    // first\n    \"a\",\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0",
+        "/list/1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "b"
+                },
+                {
+                  "k": "string",
+                  "v": "a"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_minimum_above_maximum",
+  "description": "minimum above maximum is refused.",
+  "classes": [
+    "node",
+    "constraints",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"int\", minimum: 10, maximum: 2 } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 79,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/maximum",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

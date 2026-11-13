@@ -1,0 +1,57 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_provenance_dotenv",
+  "description": "The dotenv mapping is named as the source.",
+  "classes": [
+    "provenance"
+  ],
+  "input": "${A}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {
+      "A": "1"
+    }
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "1",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ],
+              [
+                "source",
+                {
+                  "k": "string",
+                  "v": "dotenv"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

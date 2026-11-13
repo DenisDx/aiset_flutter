@@ -1,0 +1,49 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "astral_and_surrogate_escapes",
+  "description": "Astral characters written raw and as surrogate-pair escapes.",
+  "classes": [
+    "astral",
+    "unicode",
+    "escapes"
+  ],
+  "input": "{\n  raw: \"🚀🇺🇸\",\n  escaped: \"\\ud83d\\ude00\",\n  bmp: \"üé中文\",\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/raw",
+      "/escaped",
+      "/bmp"
+    ],
+    "rootText": "{\n  raw: \"🚀🇺🇸\",\n  escaped: \"\\ud83d\\ude00\",\n  bmp: \"üé中文\",\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "raw",
+          {
+            "k": "string",
+            "v": "🚀🇺🇸"
+          }
+        ],
+        [
+          "escaped",
+          {
+            "k": "string",
+            "v": "😀"
+          }
+        ],
+        [
+          "bmp",
+          {
+            "k": "string",
+            "v": "üé中文"
+          }
+        ]
+      ]
+    }
+  }
+}

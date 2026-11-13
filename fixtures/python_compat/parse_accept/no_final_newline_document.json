@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "no_final_newline_document",
+  "description": "Document without a trailing newline.",
+  "classes": [
+    "no-final-newline"
+  ],
+  "input": "{\n  a: 1,\n  b: 2\n}",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b"
+    ],
+    "rootText": "{\n  a: 1,\n  b: 2\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    }
+  }
+}

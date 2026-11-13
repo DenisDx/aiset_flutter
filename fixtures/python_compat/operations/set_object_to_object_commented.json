@@ -1,0 +1,65 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_object_to_object_commented",
+  "description": "Replacing a commented object keeps the comments of surviving members.",
+  "classes": [
+    "set",
+    "object",
+    "comments"
+  ],
+  "input": "// Document comment (belongs to the whole document).\n{\n  // Leading comment for element1.\n  element1: 124, // Trailing comment for element1.\n  element2: { // Trailing comment for element2.\n    // Leading comment for element3.\n    element3: 123, // Trailing comment for element3.\n    // Leading comment for element4.\n    element4: 111 // Trailing comment for element4.\n    // Block-end comment for element2 (kept before the closing brace).\n  } // Trailing comment for element2's closing brace.\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/element2",
+    "value_text": "{\n    element3: 500,\n    element4: 600,\n  }"
+  },
+  "expected": {
+    "ok": true,
+    "output": "// Document comment (belongs to the whole document).\n{\n  // Leading comment for element1.\n  element1: 124, // Trailing comment for element1.\n  element2: {\n    // Leading comment for element3.\n    element3: 500, // Trailing comment for element3.\n    // Leading comment for element4.\n    element4: 600 // Trailing comment for element4.\n    // Block-end comment for element2 (kept before the closing brace).\n  } // Trailing comment for element2's closing brace.\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/element1",
+        "/element2",
+        "/element2/element3",
+        "/element2/element4"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "element1",
+            {
+              "k": "int",
+              "v": "124"
+            }
+          ],
+          [
+            "element2",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "element3",
+                  {
+                    "k": "int",
+                    "v": "500"
+                  }
+                ],
+                [
+                  "element4",
+                  {
+                    "k": "int",
+                    "v": "600"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

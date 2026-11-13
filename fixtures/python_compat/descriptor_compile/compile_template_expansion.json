@@ -1,0 +1,251 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_template_expansion",
+  "description": "A reference inherits the template definition.",
+  "classes": [
+    "compile",
+    "typedef",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    port: { typedef: \"service_port\", type: \"int\", minimum: 1, maximum: 65535 },\n    http_port: { type: \"service_port\", default: 8080 },\n    admin_port: { type: \"service_port\", description: \"Admin\" },\n  } },\n}\n",
+  "strict": true,
+  "expected": {
+    "configVersion": null,
+    "ok": true,
+    "project": null,
+    "revision": "sha256:ba5857ab7a2023ff06c27ec574450568",
+    "shape": {
+      "additionalChildren": null,
+      "apply": "restart",
+      "children": [
+        [
+          "port",
+          "port",
+          {
+            "additionalChildren": null,
+            "apply": "restart",
+            "children": null,
+            "const": null,
+            "default": {
+              "k": "null"
+            },
+            "description": null,
+            "enum": null,
+            "envAllowed": false,
+            "envConvert": null,
+            "fieldName": "port",
+            "hasConst": false,
+            "hasDefault": false,
+            "helper": null,
+            "hooks": null,
+            "itemNode": null,
+            "keyEnum": null,
+            "keyPattern": null,
+            "label": "port",
+            "maxItems": {
+              "k": "null"
+            },
+            "maxLength": {
+              "k": "null"
+            },
+            "maximum": {
+              "k": "int",
+              "v": "65535"
+            },
+            "minItems": {
+              "k": "null"
+            },
+            "minLength": {
+              "k": "null"
+            },
+            "minimum": {
+              "k": "int",
+              "v": "1"
+            },
+            "nullable": false,
+            "optionNodes": null,
+            "path": "/root/children/port",
+            "pattern": null,
+            "readOnly": false,
+            "required": false,
+            "secret": false,
+            "title": null,
+            "type": "int",
+            "typedefName": null,
+            "ui": null,
+            "uniqueItems": null,
+            "validators": []
+          }
+        ],
+        [
+          "http_port",
+          "http_port",
+          {
+            "additionalChildren": null,
+            "apply": "restart",
+            "children": null,
+            "const": null,
+            "default": {
+              "k": "int",
+              "v": "8080"
+            },
+            "description": null,
+            "enum": null,
+            "envAllowed": false,
+            "envConvert": null,
+            "fieldName": "http_port",
+            "hasConst": false,
+            "hasDefault": true,
+            "helper": null,
+            "hooks": null,
+            "itemNode": null,
+            "keyEnum": null,
+            "keyPattern": null,
+            "label": "http_port",
+            "maxItems": {
+              "k": "null"
+            },
+            "maxLength": {
+              "k": "null"
+            },
+            "maximum": {
+              "k": "int",
+              "v": "65535"
+            },
+            "minItems": {
+              "k": "null"
+            },
+            "minLength": {
+              "k": "null"
+            },
+            "minimum": {
+              "k": "int",
+              "v": "1"
+            },
+            "nullable": false,
+            "optionNodes": null,
+            "path": "/root/children/http_port",
+            "pattern": null,
+            "readOnly": false,
+            "required": false,
+            "secret": false,
+            "title": null,
+            "type": "int",
+            "typedefName": null,
+            "ui": null,
+            "uniqueItems": null,
+            "validators": []
+          }
+        ],
+        [
+          "admin_port",
+          "admin_port",
+          {
+            "additionalChildren": null,
+            "apply": "restart",
+            "children": null,
+            "const": null,
+            "default": {
+              "k": "null"
+            },
+            "description": "Admin",
+            "enum": null,
+            "envAllowed": false,
+            "envConvert": null,
+            "fieldName": "admin_port",
+            "hasConst": false,
+            "hasDefault": false,
+            "helper": null,
+            "hooks": null,
+            "itemNode": null,
+            "keyEnum": null,
+            "keyPattern": null,
+            "label": "admin_port",
+            "maxItems": {
+              "k": "null"
+            },
+            "maxLength": {
+              "k": "null"
+            },
+            "maximum": {
+              "k": "int",
+              "v": "65535"
+            },
+            "minItems": {
+              "k": "null"
+            },
+            "minLength": {
+              "k": "null"
+            },
+            "minimum": {
+              "k": "int",
+              "v": "1"
+            },
+            "nullable": false,
+            "optionNodes": null,
+            "path": "/root/children/admin_port",
+            "pattern": null,
+            "readOnly": false,
+            "required": false,
+            "secret": false,
+            "title": null,
+            "type": "int",
+            "typedefName": null,
+            "ui": null,
+            "uniqueItems": null,
+            "validators": []
+          }
+        ]
+      ],
+      "const": null,
+      "default": {
+        "k": "null"
+      },
+      "description": null,
+      "enum": null,
+      "envAllowed": false,
+      "envConvert": null,
+      "fieldName": null,
+      "hasConst": false,
+      "hasDefault": false,
+      "helper": null,
+      "hooks": null,
+      "itemNode": null,
+      "keyEnum": null,
+      "keyPattern": null,
+      "label": null,
+      "maxItems": {
+        "k": "null"
+      },
+      "maxLength": {
+        "k": "null"
+      },
+      "maximum": {
+        "k": "null"
+      },
+      "minItems": {
+        "k": "null"
+      },
+      "minLength": {
+        "k": "null"
+      },
+      "minimum": {
+        "k": "null"
+      },
+      "nullable": false,
+      "optionNodes": null,
+      "path": "/root",
+      "pattern": null,
+      "readOnly": false,
+      "required": false,
+      "secret": false,
+      "title": null,
+      "type": "object",
+      "typedefName": null,
+      "ui": null,
+      "uniqueItems": null,
+      "validators": []
+    }
+  }
+}

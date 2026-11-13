@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_number_maximum",
+  "description": "The MapEntry(maximum: 9).key constraint applies to type number.",
+  "classes": [
+    "constraint-by-type",
+    "number",
+    "maximum",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"number\", maximum: 9 } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

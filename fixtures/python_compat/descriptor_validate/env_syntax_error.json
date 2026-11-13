@@ -1,0 +1,25 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "env_syntax_error",
+  "description": "Source that does not parse is reported, not raised.",
+  "classes": [
+    "envelope",
+    "syntax",
+    "rejection"
+  ],
+  "input": "{ descriptor_version: ",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "DESCRIPTOR_SYNTAX",
+        "hasMessage": true,
+        "path": "",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_default_with_spaces",
+  "description": "The inline default keeps its spaces.",
+  "classes": [
+    "inline-default",
+    "whitespace"
+  ],
+  "input": "${V:-a b}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "a b",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "V"
+                }
+              ],
+              [
+                "source",
+                {
+                  "k": "string",
+                  "v": "inline_default"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_member_trailing_comment_non_last",
+  "description": "A trailing comment of a removed non-last member survives on its own line.",
+  "classes": [
+    "remove",
+    "comments",
+    "trailing",
+    "quirk"
+  ],
+  "input": "{\n  a: 1, // trail\n  b: 2,\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/a"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n // trail\n  b: 2,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/b"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "b",
+            {
+              "k": "int",
+              "v": "2"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

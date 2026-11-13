@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "rename_reject_array_parent",
+  "description": "An array has no keys to rename.",
+  "classes": [
+    "rename",
+    "rejection",
+    "array"
+  ],
+  "input": "{\n  compact: { a: 1, b: 2 },\n  empty_object: {},\n  empty_array: [],\n  single_array: [1, 2, 3],\n}\n",
+  "operation": {
+    "op": "rename",
+    "pointer": "/single_array/0",
+    "new_key": "y"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "PathError",
+    "errorCode": "BAD_REQUEST",
+    "ok": false
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_unicode_description",
+  "description": "Non-ASCII description text survives.",
+  "classes": [
+    "compile",
+    "description",
+    "unicode",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", description: \"Число повторов — ✓\" } } },\n}\n",
+  "strict": true,
+  "expected": {
+    "configVersion": null,
+    "ok": true,
+    "project": null,
+    "revision": "sha256:e1727d117a4351c771d7fce875fc8fcf",
+    "shape": {
+      "additionalChildren": null,
+      "apply": "restart",
+      "children": [
+        [
+          "a",
+          "a",
+          {
+            "additionalChildren": null,
+            "apply": "restart",
+            "children": null,
+            "const": null,
+            "default": {
+              "k": "null"
+            },
+            "description": "Число повторов — ✓",
+            "enum": null,
+            "envAllowed": false,
+            "envConvert": null,
+            "fieldName": "a",
+            "hasConst": false,
+            "hasDefault": false,
+            "helper": null,
+            "hooks": null,
+            "itemNode": null,
+            "keyEnum": null,
+            "keyPattern": null,
+            "label": "a",
+            "maxItems": {
+              "k": "null"
+            },
+            "maxLength": {
+              "k": "null"
+            },
+            "maximum": {
+              "k": "null"
+            },
+            "minItems": {
+              "k": "null"
+            },
+            "minLength": {
+              "k": "null"
+            },
+            "minimum": {
+              "k": "null"
+            },
+            "nullable": false,
+            "optionNodes": null,
+            "path": "/root/children/a",
+            "pattern": null,
+            "readOnly": false,
+            "required": false,
+            "secret": false,
+            "title": null,
+            "type": "string",
+            "typedefName": null,
+            "ui": null,
+            "uniqueItems": null,
+            "validators": []
+          }
+        ]
+      ],
+      "const": null,
+      "default": {
+        "k": "null"
+      },
+      "description": null,
+      "enum": null,
+      "envAllowed": false,
+      "envConvert": null,
+      "fieldName": null,
+      "hasConst": false,
+      "hasDefault": false,
+      "helper": null,
+      "hooks": null,
+      "itemNode": null,
+      "keyEnum": null,
+      "keyPattern": null,
+      "label": null,
+      "maxItems": {
+        "k": "null"
+      },
+      "maxLength": {
+        "k": "null"
+      },
+      "maximum": {
+        "k": "null"
+      },
+      "minItems": {
+        "k": "null"
+      },
+      "minLength": {
+        "k": "null"
+      },
+      "minimum": {
+        "k": "null"
+      },
+      "nullable": false,
+      "optionNodes": null,
+      "path": "/root",
+      "pattern": null,
+      "readOnly": false,
+      "required": false,
+      "secret": false,
+      "title": null,
+      "type": "object",
+      "typedefName": null,
+      "ui": null,
+      "uniqueItems": null,
+      "validators": []
+    }
+  }
+}

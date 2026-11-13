@@ -1,0 +1,93 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_nested_plugin_defaults_base",
+  "description": "A nested plugin branch merges without touching the user branch. (prefer: base)",
+  "classes": [
+    "object",
+    "layering",
+    "nested",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "object",
+    "v": [
+      [
+        "ui",
+        {
+          "k": "object",
+          "v": [
+            [
+              "theme",
+              {
+                "k": "string",
+                "v": "dark"
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "ui",
+        {
+          "k": "object",
+          "v": [
+            [
+              "theme",
+              {
+                "k": "string",
+                "v": "light"
+              }
+            ],
+            [
+              "density",
+              {
+                "k": "int",
+                "v": "2"
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "object",
+      "v": [
+        [
+          "ui",
+          {
+            "k": "object",
+            "v": [
+              [
+                "theme",
+                {
+                  "k": "string",
+                  "v": "dark"
+                }
+              ],
+              [
+                "density",
+                {
+                  "k": "int",
+                  "v": "2"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "ok": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "leaf_default_placeholder_unset",
+  "description": "An unresolved default placeholder yields the empty string.",
+  "classes": [
+    "default",
+    "empty"
+  ],
+  "input": "{}",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", env: { allowed: true }, default: \"${DEF}\" } } } }",
+  "config": "{}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "string",
+            "v": ""
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "DEF"
+                }
+              ],
+              [
+                "source",
+                {
+                  "k": "string",
+                  "v": "empty"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

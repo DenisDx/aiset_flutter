@@ -1,0 +1,49 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "mixed_indent",
+  "description": "Tab-indented and space-indented levels side by side.",
+  "classes": [
+    "tabs",
+    "mixed-indentation"
+  ],
+  "input": "{\n\ta: 1,\n    b: {\n\t\tc: 2,\n\t},\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b",
+      "/b/c"
+    ],
+    "rootText": "{\n\ta: 1,\n    b: {\n\t\tc: 2,\n\t},\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "object",
+            "v": [
+              [
+                "c",
+                {
+                  "k": "int",
+                  "v": "2"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

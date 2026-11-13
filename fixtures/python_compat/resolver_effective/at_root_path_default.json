@@ -1,0 +1,53 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "at_root_path_default",
+  "description": "The root path is recorded under the key \"/\".",
+  "classes": [
+    "default",
+    "paths"
+  ],
+  "input": "{}",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", default: \"fb\" }, plain: { type: \"string\" }, templated: { type: \"string\", env: { allowed: true } }, n: { type: \"int\", default: 0 }, z: { type: \"string\", nullable: true, default: null } } } }",
+  "config": "{}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "query": {
+    "op": "effective_at",
+    "pointer": "/a",
+    "stored": "MISSING",
+    "path": ""
+  },
+  "expected": {
+    "effective": {
+      "k": "string",
+      "v": "fb"
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "default"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

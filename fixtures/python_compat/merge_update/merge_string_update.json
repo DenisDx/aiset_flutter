@@ -1,0 +1,30 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_string_update",
+  "description": "Two different strings conflict. (prefer: update)",
+  "classes": [
+    "scalar",
+    "string",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "string",
+    "v": "a"
+  },
+  "update": {
+    "k": "string",
+    "v": "b"
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "string",
+      "v": "b"
+    },
+    "ok": true
+  }
+}

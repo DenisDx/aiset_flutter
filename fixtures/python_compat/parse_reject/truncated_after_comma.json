@@ -1,0 +1,16 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "truncated_after_comma",
+  "description": "A comma where the next key is expected.",
+  "classes": [
+    "truncated"
+  ],
+  "input": "{a: 1,",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

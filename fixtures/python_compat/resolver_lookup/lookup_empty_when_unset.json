@@ -1,0 +1,47 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_empty_when_unset",
+  "description": "With nothing set and no default, the value is the empty string.",
+  "classes": [
+    "empty"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "V",
+    "inlineDefault": null
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": null,
+      "name": "V",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": ""
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "empty"
+          }
+        ]
+      ]
+    }
+  }
+}

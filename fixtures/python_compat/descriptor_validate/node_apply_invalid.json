@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_apply_invalid",
+  "description": "An unknown apply policy is refused.",
+  "classes": [
+    "node",
+    "apply",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"int\", apply: \"immediately\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_PROPERTY_VALUE",
+        "column": 64,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/apply",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

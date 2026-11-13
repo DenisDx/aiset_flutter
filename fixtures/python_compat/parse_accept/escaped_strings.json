@@ -1,0 +1,80 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "escaped_strings",
+  "description": "Escape forms accepted by the baseline string scanner.",
+  "classes": [
+    "escapes",
+    "string"
+  ],
+  "input": "{\n  q: \"a\\\"b'c\",\n  s: 'x\\'y',\n  bs: \"back\\\\slash\",\n  solid: \"a\\/b\",\n  uni: \"\\u00e9\\u0041\",\n  hex: \"\\x41\\x7a\",\n  ctrl: \"\\n\\t\\r\\b\\f\\v\\0\",\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/q",
+      "/s",
+      "/bs",
+      "/solid",
+      "/uni",
+      "/hex",
+      "/ctrl"
+    ],
+    "rootText": "{\n  q: \"a\\\"b'c\",\n  s: 'x\\'y',\n  bs: \"back\\\\slash\",\n  solid: \"a\\/b\",\n  uni: \"\\u00e9\\u0041\",\n  hex: \"\\x41\\x7a\",\n  ctrl: \"\\n\\t\\r\\b\\f\\v\\0\",\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "q",
+          {
+            "k": "string",
+            "v": "a\"b'c"
+          }
+        ],
+        [
+          "s",
+          {
+            "k": "string",
+            "v": "x'y"
+          }
+        ],
+        [
+          "bs",
+          {
+            "k": "string",
+            "v": "back\\slash"
+          }
+        ],
+        [
+          "solid",
+          {
+            "k": "string",
+            "v": "a/b"
+          }
+        ],
+        [
+          "uni",
+          {
+            "k": "string",
+            "v": "éA"
+          }
+        ],
+        [
+          "hex",
+          {
+            "k": "string",
+            "v": "Az"
+          }
+        ],
+        [
+          "ctrl",
+          {
+            "k": "string",
+            "v": "\n\t\r\b\f\u000b\u0000"
+          }
+        ]
+      ]
+    }
+  }
+}

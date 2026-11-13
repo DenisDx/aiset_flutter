@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_array_unique_objects",
+  "description": "Equal nested objects are duplicates.",
+  "classes": [
+    "array",
+    "unique-items",
+    "object",
+    "rejection"
+  ],
+  "input": "{ l: [{a: 1}, {a: 1}] }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { l: { type: \"array\", children: { type: \"any\" }, unique_items: true } } } }",
+  "value": "{ l: [{a: 1}, {a: 1}] }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/l/0",
+        "rule": "unique_items",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

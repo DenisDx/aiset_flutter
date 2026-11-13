@@ -1,0 +1,52 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "crlf_comments",
+  "description": "CRLF line endings combined with leading, trailing and block-end comments.",
+  "classes": [
+    "crlf",
+    "comments",
+    "leading",
+    "trailing",
+    "block-end"
+  ],
+  "input": "{\r\n  // leading\r\n  a: 1, // trailing\r\n  b: {\r\n    c: 2\r\n    // block end\r\n  }\r\n}\r\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b",
+      "/b/c"
+    ],
+    "rootText": "{\r\n  // leading\r\n  a: 1, // trailing\r\n  b: {\r\n    c: 2\r\n    // block end\r\n  }\r\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "object",
+            "v": [
+              [
+                "c",
+                {
+                  "k": "int",
+                  "v": "2"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

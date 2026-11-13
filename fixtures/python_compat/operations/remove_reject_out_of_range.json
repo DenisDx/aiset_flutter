@@ -1,0 +1,22 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_reject_out_of_range",
+  "description": "Removing past the last index is refused.",
+  "classes": [
+    "remove",
+    "rejection",
+    "array"
+  ],
+  "input": "{\n  list: [\n    // first\n    \"a\",\n    \"b\", // second\n    \"c\",\n  ],\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/list/9"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "PathError",
+    "errorCode": "BAD_REQUEST",
+    "ok": false
+  }
+}

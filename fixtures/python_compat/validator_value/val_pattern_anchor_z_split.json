@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_anchor_z_split",
+  "description": "A Python end anchor is refused at validation here; the baseline anchors the match.",
+  "classes": [
+    "pattern",
+    "dialect",
+    "anchor",
+    "SPEC26-DIALECT"
+  ],
+  "input": "{ a: \"abc\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"abc\\\\Z\" } } } }",
+  "value": "{ a: \"abc\" }",
+  "divergence": {
+    "id": "SPEC26-DIALECT",
+    "report": "SPEC26-DIALECT",
+    "note": "Same documented row as val_pattern_anchor_a_split, on the end anchor."
+  },
+  "expected": {
+    "ok": true,
+    "valid": false,
+    "issues": [
+      {
+        "rule": "pattern",
+        "path": "/a",
+        "severity": "error",
+        "hasMessage": true
+      }
+    ],
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

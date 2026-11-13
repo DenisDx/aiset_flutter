@@ -1,0 +1,24 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "at_leading_zero_index",
+  "description": "An index with a leading zero is not an index.",
+  "classes": [
+    "node-at",
+    "array"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  project: \"rich\",\n  config_version: \"7\",\n  root: {\n    type: \"object\",\n    secret: false,\n    apply: \"reload\",\n    children: {\n      worker: { typedef: \"workerId\", type: \"string\", pattern: \"^[a-z]+$\" },\n      alias: { type: \"workerId\", description: \"Another worker\" },\n      tags: { type: \"array\", children: { type: \"string\" }, max_items: 4 },\n      ports: { type: \"array\", children_options: [ { type: \"int\", minimum: 1 }, { type: \"string\" } ] },\n      sinks: {\n        type: \"object\",\n        key_enum: [\"file\", \"stdout\"],\n        additional_children: { type: \"object\", children: { target: { type: \"string\" } } },\n      },\n      dynamic: { type: \"object\", key_pattern: \"^w-\", additional_children: { type: \"int\" } },\n      choice: {\n        type: \"union\",\n        children_options: [\n          { type: \"string\" },\n          { type: \"object\", children: { host: { type: \"string\" }, port: { type: \"int\" } } },\n        ],\n      },\n      secretKey: { type: \"string\", secret: true, read_only: true },\n      nested: { type: \"object\", children: { deep: { type: \"int\", default: 3 } } },\n    },\n  },\n}\n",
+  "query": {
+    "op": "node_at",
+    "pointer": "/tags/01"
+  },
+  "strict": true,
+  "expected": {
+    "ok": true,
+    "query": {
+      "op": "node_at",
+      "pointer": "/tags/01"
+    },
+    "result": null
+  }
+}

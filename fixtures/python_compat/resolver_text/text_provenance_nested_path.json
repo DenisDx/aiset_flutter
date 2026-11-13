@@ -1,0 +1,51 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_provenance_nested_path",
+  "description": "A deep path is recorded verbatim.",
+  "classes": [
+    "provenance",
+    "paths"
+  ],
+  "input": "${A}",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "A": "1"
+    },
+    "dotenv": {}
+  },
+  "path": "/servers/a~1b/port",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "1",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/servers/a~1b/port",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

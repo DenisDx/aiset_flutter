@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_fragment_without_root",
+  "description": "A fragment document that is only a node is refused.",
+  "classes": [
+    "compile",
+    "fragment",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\" } } },\n}\n",
+  "strict": true,
+  "fragments": [
+    {
+      "source": "{ type: \"object\", children: {} }",
+      "mount": "/root/children/x"
+    }
+  ],
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "DescriptorError",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "issues": [],
+    "ok": false
+  }
+}

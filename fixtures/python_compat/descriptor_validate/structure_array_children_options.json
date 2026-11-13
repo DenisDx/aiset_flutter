@@ -1,0 +1,18 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "structure_array_children_options",
+  "description": "An array may offer alternatives per index.",
+  "classes": [
+    "structure",
+    "array",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"array\", children_options: [ { type: \"int\" }, { type: \"string\" } ] } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

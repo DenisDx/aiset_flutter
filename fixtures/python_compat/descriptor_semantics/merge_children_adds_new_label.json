@@ -1,0 +1,38 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "merge_children_adds_new_label",
+  "description": "The label the reference adds is present.",
+  "classes": [
+    "typedef",
+    "merge",
+    "object",
+    "A17"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { p: { typedef: \"card\", type: \"object\", children: { a: { type: \"int\" }, b: { type: \"string\" } } }, q: { type: \"card\", children: { b: { type: \"int\", minimum: 3 }, c: { type: \"bool\" } } } } },\n}\n",
+  "query": {
+    "op": "has_node",
+    "pointer": "/q/c"
+  },
+  "strict": true,
+  "divergence": {
+    "id": "A17",
+    "report": "A17",
+    "note": "Same residual as merge_children_keeps_template_label: the merged child keeps the base type, so the descriptor never compiles and the added label is never produced."
+  },
+  "expected": {
+    "ok": true,
+    "result": true,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "ok": false,
+    "query": {
+      "op": "has_node",
+      "pointer": "/q/c"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "rename_to_dotted_key",
+  "description": "Renaming to a key that needs quoting.",
+  "classes": [
+    "rename",
+    "dotted-key"
+  ],
+  "input": "{\n  plain: 1,\n}\n",
+  "operation": {
+    "op": "rename",
+    "pointer": "/plain",
+    "new_key": "a.b"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  \"a.b\": 1,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a.b"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a.b",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

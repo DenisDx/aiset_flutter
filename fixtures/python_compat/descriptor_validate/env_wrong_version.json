@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "env_wrong_version",
+  "description": "An unknown descriptor version is refused.",
+  "classes": [
+    "envelope",
+    "version",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"2.0\",\n  root: { type: \"object\", children: {} },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "DESCRIPTOR_VERSION",
+        "column": 23,
+        "hasMessage": true,
+        "line": 2,
+        "path": "/descriptor_version",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

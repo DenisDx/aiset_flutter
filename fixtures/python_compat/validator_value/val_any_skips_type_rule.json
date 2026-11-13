@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_any_skips_type_rule",
+  "description": "The opaque type is checked before any type rule.",
+  "classes": [
+    "type",
+    "any",
+    "accept"
+  ],
+  "input": "{ a: true }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\" } } } }",
+  "value": "{ a: true }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

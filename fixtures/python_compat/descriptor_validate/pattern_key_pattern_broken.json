@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "pattern_key_pattern_broken",
+  "description": "A malformed key_pattern.",
+  "classes": [
+    "pattern",
+    "keys",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", key_pattern: \"(\", additional_children: { type: \"int\" } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_PATTERN",
+        "column": 73,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/key_pattern",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

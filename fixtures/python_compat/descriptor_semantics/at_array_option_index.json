@@ -1,0 +1,79 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "at_array_option_index",
+  "description": "A children_options array clamps the index.",
+  "classes": [
+    "node-at",
+    "array",
+    "options"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  project: \"rich\",\n  config_version: \"7\",\n  root: {\n    type: \"object\",\n    secret: false,\n    apply: \"reload\",\n    children: {\n      worker: { typedef: \"workerId\", type: \"string\", pattern: \"^[a-z]+$\" },\n      alias: { type: \"workerId\", description: \"Another worker\" },\n      tags: { type: \"array\", children: { type: \"string\" }, max_items: 4 },\n      ports: { type: \"array\", children_options: [ { type: \"int\", minimum: 1 }, { type: \"string\" } ] },\n      sinks: {\n        type: \"object\",\n        key_enum: [\"file\", \"stdout\"],\n        additional_children: { type: \"object\", children: { target: { type: \"string\" } } },\n      },\n      dynamic: { type: \"object\", key_pattern: \"^w-\", additional_children: { type: \"int\" } },\n      choice: {\n        type: \"union\",\n        children_options: [\n          { type: \"string\" },\n          { type: \"object\", children: { host: { type: \"string\" }, port: { type: \"int\" } } },\n        ],\n      },\n      secretKey: { type: \"string\", secret: true, read_only: true },\n      nested: { type: \"object\", children: { deep: { type: \"int\", default: 3 } } },\n    },\n  },\n}\n",
+  "query": {
+    "op": "node_at",
+    "pointer": "/ports/1"
+  },
+  "strict": true,
+  "expected": {
+    "ok": true,
+    "query": {
+      "op": "node_at",
+      "pointer": "/ports/1"
+    },
+    "result": {
+      "node": {
+        "additionalChildren": null,
+        "apply": "reload",
+        "children": null,
+        "const": null,
+        "default": {
+          "k": "null"
+        },
+        "description": null,
+        "enum": null,
+        "envAllowed": false,
+        "envConvert": null,
+        "fieldName": null,
+        "hasConst": false,
+        "hasDefault": false,
+        "helper": null,
+        "hooks": null,
+        "itemNode": null,
+        "keyEnum": null,
+        "keyPattern": null,
+        "label": null,
+        "maxItems": {
+          "k": "null"
+        },
+        "maxLength": {
+          "k": "null"
+        },
+        "maximum": {
+          "k": "null"
+        },
+        "minItems": {
+          "k": "null"
+        },
+        "minLength": {
+          "k": "null"
+        },
+        "minimum": {
+          "k": "null"
+        },
+        "nullable": false,
+        "optionNodes": null,
+        "path": "/root/children/ports/children_options/1",
+        "pattern": null,
+        "readOnly": false,
+        "required": false,
+        "secret": false,
+        "title": null,
+        "type": "string",
+        "typedefName": null,
+        "ui": null,
+        "uniqueItems": null,
+        "validators": []
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_multiline_no_trailing_comma",
+  "description": "A block array without a trailing comma stays without one.",
+  "classes": [
+    "move",
+    "commas"
+  ],
+  "input": "{\n  l: [\n    1,\n    2\n  ],\n}\n",
+  "operation": {
+    "op": "move",
+    "source": "/l/0",
+    "target": "/l/1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  l: [\n    2,\n    1\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/l",
+        "/l/0",
+        "/l/1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "l",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "int",
+                  "v": "2"
+                },
+                {
+                  "k": "int",
+                  "v": "1"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

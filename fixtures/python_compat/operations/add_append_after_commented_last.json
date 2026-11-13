@@ -1,0 +1,56 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_append_after_commented_last",
+  "description": "The new item lands after the last item and its trailing comment.",
+  "classes": [
+    "add",
+    "append-marker",
+    "comments"
+  ],
+  "input": "{\n  l: [\n    1, // one\n    2, // two\n  ],\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/l/-",
+    "value_text": "3"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  l: [\n    1, // one\n    2, // two\n    3,\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/l",
+        "/l/0",
+        "/l/1",
+        "/l/2"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "l",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "int",
+                  "v": "1"
+                },
+                {
+                  "k": "int",
+                  "v": "2"
+                },
+                {
+                  "k": "int",
+                  "v": "3"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

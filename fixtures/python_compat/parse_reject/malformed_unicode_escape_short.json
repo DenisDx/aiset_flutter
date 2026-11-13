@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "malformed_unicode_escape_short",
+  "description": "A \\u escape with fewer than four hex digits.",
+  "classes": [
+    "escapes",
+    "unicode"
+  ],
+  "input": "{ a: \"\\u12\" }",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

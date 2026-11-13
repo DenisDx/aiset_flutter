@@ -1,0 +1,56 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_key_multiline",
+  "description": "Adding a key to a block object.",
+  "classes": [
+    "add",
+    "create-member"
+  ],
+  "input": "{\n  dyn: {\n    a: 1,\n  },\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/dyn/b",
+    "value_text": "2"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  dyn: {\n    a: 1,\n    b: 2,\n  },\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/dyn",
+        "/dyn/a",
+        "/dyn/b"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "dyn",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "a",
+                  {
+                    "k": "int",
+                    "v": "1"
+                  }
+                ],
+                [
+                  "b",
+                  {
+                    "k": "int",
+                    "v": "2"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

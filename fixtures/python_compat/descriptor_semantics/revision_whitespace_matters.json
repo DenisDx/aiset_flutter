@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "revision_whitespace_matters",
+  "description": "Whitespace is part of the hashed source.",
+  "classes": [
+    "revision"
+  ],
+  "input": "{descriptor_version:\"1.0\",root:{type:\"object\",children:{}}}",
+  "query": {
+    "op": "revision"
+  },
+  "strict": true,
+  "expected": {
+    "ok": true,
+    "query": {
+      "op": "revision"
+    },
+    "result": "sha256:7634acd590b924d0c156bc6f4228a9ff"
+  }
+}

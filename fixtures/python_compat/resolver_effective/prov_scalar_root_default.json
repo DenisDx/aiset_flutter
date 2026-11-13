@@ -1,0 +1,30 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "prov_scalar_root_default",
+  "description": "A defaulted scalar root is recorded under \"/\".",
+  "classes": [
+    "provenance",
+    "default"
+  ],
+  "input": "null",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"string\", default: \"roott\" } }",
+  "config": "null",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "null"
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_array_unique_bool_vs_int",
+  "description": "true and 1 are distinct for uniqueness.",
+  "classes": [
+    "array",
+    "unique-items",
+    "bool",
+    "accept"
+  ],
+  "input": "{ l: [true, 1] }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { l: { type: \"array\", children: { type: \"any\" }, unique_items: true } } } }",
+  "value": "{ l: [true, 1] }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

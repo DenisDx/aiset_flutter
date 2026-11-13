@@ -1,0 +1,22 @@
+{
+  "schema": "1",
+  "area": "pipeline_revisions",
+  "id": "rev_descriptor_whitespace",
+  "description": "A descriptor with different whitespace is a new revision.",
+  "classes": [
+    "descriptor",
+    "whitespace",
+    "revision",
+    "descriptor"
+  ],
+  "input": "{descriptor_version:\"1.0\",project:\"rev\",config_version:\"2\",root:{type:\"object\",children:{a:{type:\"int\",default:1}}}}",
+  "query": {
+    "op": "descriptor"
+  },
+  "expected": {
+    "bytesRevision": "sha256:0e7b3d697033a256d63547b1dac7e52b",
+    "ok": true,
+    "op": "descriptor",
+    "revision": "sha256:0e7b3d697033a256d63547b1dac7e52b"
+  }
+}

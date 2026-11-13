@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "values",
+  "id": "value_text_root",
+  "description": "The root container text without surrounding trivia.",
+  "classes": [
+    "value-text",
+    "root"
+  ],
+  "input": "// Document comment (belongs to the whole document).\n{\n  // Leading comment for element1.\n  element1: 124, // Trailing comment for element1.\n  element2: { // Trailing comment for element2.\n    // Leading comment for element3.\n    element3: 123, // Trailing comment for element3.\n    // Leading comment for element4.\n    element4: 111 // Trailing comment for element4.\n    // Block-end comment for element2 (kept before the closing brace).\n  } // Trailing comment for element2's closing brace.\n}\n",
+  "query": {
+    "op": "value_text",
+    "pointer": ""
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "op": "value_text",
+      "pointer": ""
+    },
+    "result": "{\n  // Leading comment for element1.\n  element1: 124, // Trailing comment for element1.\n  element2: { // Trailing comment for element2.\n    // Leading comment for element3.\n    element3: 123, // Trailing comment for element3.\n    // Leading comment for element4.\n    element4: 111 // Trailing comment for element4.\n    // Block-end comment for element2 (kept before the closing brace).\n  } // Trailing comment for element2's closing brace.\n}"
+  }
+}

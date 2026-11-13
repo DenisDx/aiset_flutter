@@ -1,0 +1,49 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_multiline_value",
+  "description": "A value with a line break passes through.",
+  "classes": [
+    "whitespace"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "V",
+    "inlineDefault": null
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "a\nb"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": null,
+      "name": "V",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": "a\nb"
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "env"
+          }
+        ]
+      ]
+    }
+  }
+}

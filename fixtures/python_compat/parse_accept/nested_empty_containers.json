@@ -1,0 +1,68 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "nested_empty_containers",
+  "description": "Empty containers nested inside each other.",
+  "classes": [
+    "empty",
+    "nested"
+  ],
+  "input": "{\n  o: {},\n  a: [],\n  deep: { x: [ {}, [] ] },\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/o",
+      "/a",
+      "/deep",
+      "/deep/x",
+      "/deep/x/0",
+      "/deep/x/1"
+    ],
+    "rootText": "{\n  o: {},\n  a: [],\n  deep: { x: [ {}, [] ] },\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "o",
+          {
+            "k": "object",
+            "v": []
+          }
+        ],
+        [
+          "a",
+          {
+            "k": "array",
+            "v": []
+          }
+        ],
+        [
+          "deep",
+          {
+            "k": "object",
+            "v": [
+              [
+                "x",
+                {
+                  "k": "array",
+                  "v": [
+                    {
+                      "k": "object",
+                      "v": []
+                    },
+                    {
+                      "k": "array",
+                      "v": []
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "values",
+  "id": "stored_escaped_slash_key",
+  "description": "A key containing a slash, addressed with ~1.",
+  "classes": [
+    "stored-value",
+    "pointer-escape"
+  ],
+  "input": "// Mixed-type fixture with quotes, trailing commas and templates.\n{\n  // A quoted string with a placeholder and escapes.\n  'single quoted': \"value with ${VAR:-default} and \\\"escaped\\\" quotes\",\n  number_int: 42,\n  number_negative: -7,\n  number_float: 1.5,\n  flag_true: true,\n  flag_false: false,\n  explicit_null: null,\n  // An unquoted whole-value template.\n  port: ${PORT:-8080},\n  nested: {\n    // Nested array with comments.\n    list: [\n      // First item.\n      1,\n      2, // Second item.\n      {\n        // Item object.\n        deep: 'yes',\n      },\n    ],\n    /* block comment inside an object */\n    quoted_key: 1,\n    \"dotted.key\": 2,\n    \"with/slash\": 3,\n    \"with~tilde\": 4,\n    \"0\": \"numeric object key\",\n  },\n}\n",
+  "query": {
+    "op": "stored_value",
+    "pointer": "/nested/with~1slash"
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "op": "stored_value",
+      "pointer": "/nested/with~1slash"
+    },
+    "result": {
+      "k": "int",
+      "v": "3"
+    }
+  }
+}

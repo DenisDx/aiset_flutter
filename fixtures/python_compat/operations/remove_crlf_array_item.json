@@ -1,0 +1,45 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_crlf_array_item",
+  "description": "Removing an item in a CRLF array.",
+  "classes": [
+    "remove",
+    "array",
+    "crlf"
+  ],
+  "input": "{\r\n  list: [\r\n    \"a\",\r\n    \"b\",\r\n  ],\r\n}\r\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/list/0"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\r\n  list: [\r\n    \"b\",\r\n  ],\r\n}\r\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "b"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

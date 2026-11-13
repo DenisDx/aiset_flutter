@@ -1,0 +1,47 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_append_empty_array_inline",
+  "description": "Appending to an empty inline array.",
+  "classes": [
+    "add",
+    "append-marker",
+    "empty",
+    "inline"
+  ],
+  "input": "{\n  list: [],\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/list/-",
+    "value_text": "1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [1],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "int",
+                  "v": "1"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "union_disjoint_key_int",
+  "description": "A key declared by one alternative resolves through it.",
+  "classes": [
+    "union"
+  ],
+  "input": "{ items: { a: { port: ${P} } } }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    items: { type: \"object\", additional_children: { type: \"union\", children_options: [\n      { type: \"object\", children: { enabled: { type: \"bool\" } } },\n      { type: \"object\", children: {\n          label: { type: \"string\", env: { allowed: true, convert: \"string\" } },\n          port: { type: \"int\", env: { allowed: true, convert: \"int\" } },\n        } },\n    ] } },\n  } },\n}\n",
+  "config": "{ items: { a: { port: ${P} } } }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "P": "9"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "items",
+          {
+            "k": "object",
+            "v": [
+              [
+                "a",
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "port",
+                      {
+                        "k": "int",
+                        "v": "9"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/items/a/port",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "P"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

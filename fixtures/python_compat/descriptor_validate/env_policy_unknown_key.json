@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "env_policy_unknown_key",
+  "description": "An unknown env key is reported as unknown metadata.",
+  "classes": [
+    "env",
+    "unknown-metadata"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"int\", env: { allowed: true, cast: \"int\" } } } },\n}\n",
+  "mode": "default",
+  "expected": {
+    "issues": [
+      {
+        "code": "UNKNOWN_DESCRIPTOR_PROPERTY",
+        "column": 85,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/env/cast",
+        "severity": "warning"
+      }
+    ],
+    "ok": true,
+    "valid": true
+  }
+}

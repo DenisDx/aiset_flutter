@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "number_two_dots",
+  "description": "A malformed decimal.",
+  "classes": [
+    "number",
+    "invalid"
+  ],
+  "input": "{ a: 1.2.3 }",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

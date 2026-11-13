@@ -1,0 +1,24 @@
+{
+  "schema": "1",
+  "area": "pipeline_revisions",
+  "id": "rev_source_crlf",
+  "description": "CRLF line endings change the revision.",
+  "classes": [
+    "source",
+    "crlf",
+    "revision",
+    "source"
+  ],
+  "input": "{\r\n  a: 1,\r\n}\r\n",
+  "query": {
+    "op": "source"
+  },
+  "expected": {
+    "hasBom": false,
+    "ok": true,
+    "op": "source",
+    "revision": "sha256:8ebd6636525071df4968104211d85d28",
+    "utf16Length": 15,
+    "utf8Length": 15
+  }
+}

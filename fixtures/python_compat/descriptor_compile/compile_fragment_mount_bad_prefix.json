@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_fragment_mount_bad_prefix",
+  "description": "A mount outside the descriptor root is refused.",
+  "classes": [
+    "compile",
+    "fragment",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\" } } },\n}\n",
+  "strict": true,
+  "fragments": [
+    {
+      "source": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { extra: { type: \"int\" } } } }",
+      "mount": "/children/extra"
+    }
+  ],
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "DescriptorError",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "issues": [],
+    "ok": false
+  }
+}

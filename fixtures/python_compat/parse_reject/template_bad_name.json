@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "template_bad_name",
+  "description": "A placeholder name may not start with a digit.",
+  "classes": [
+    "placeholder",
+    "unsupported-token"
+  ],
+  "input": "{ a: ${1X} }",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

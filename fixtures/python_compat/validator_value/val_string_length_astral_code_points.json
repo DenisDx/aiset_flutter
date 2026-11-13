@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_string_length_astral_code_points",
+  "description": "Astral characters count as one code point toward max_length.",
+  "classes": [
+    "string",
+    "max-length",
+    "astral",
+    "accept"
+  ],
+  "input": "{ a: \"🚀🚀🚀\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", max_length: 3 } } } }",
+  "value": "{ a: \"🚀🚀🚀\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

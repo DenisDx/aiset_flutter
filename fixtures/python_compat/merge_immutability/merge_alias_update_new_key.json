@@ -1,0 +1,45 @@
+{
+  "schema": "1",
+  "area": "merge_immutability",
+  "id": "merge_alias_update_new_key",
+  "description": "An update-only subtree in the result.",
+  "classes": [
+    "alias",
+    "new-key",
+    "immutability",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "object",
+    "v": []
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "k",
+        {
+          "k": "object",
+          "v": [
+            [
+              "deep",
+              {
+                "k": "int",
+                "v": "1"
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "aliased": false,
+    "inputsUnchanged": true,
+    "ok": true,
+    "sharesBaseNodes": 0,
+    "sharesUpdateNodes": 0
+  }
+}

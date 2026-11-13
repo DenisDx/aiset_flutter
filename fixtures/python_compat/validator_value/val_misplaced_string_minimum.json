@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_misplaced_string_minimum",
+  "description": "A numeric bound on a string node is refused at the descriptor.",
+  "classes": [
+    "misplaced",
+    "constraint-by-type",
+    "string",
+    "rejection"
+  ],
+  "input": "{ a: 1 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", minimum: 5 } } } }",
+  "value": "{ a: 1 }",
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "ok": false
+  }
+}

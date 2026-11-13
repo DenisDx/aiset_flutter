@@ -1,0 +1,82 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_plugin_defaults_base",
+  "description": "A plugin default fills the gap; the user setting wins. (prefer: base)",
+  "classes": [
+    "object",
+    "layering",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "object",
+    "v": [
+      [
+        "retry",
+        {
+          "k": "int",
+          "v": "5"
+        }
+      ],
+      [
+        "theme",
+        {
+          "k": "string",
+          "v": "dark"
+        }
+      ]
+    ]
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "retry",
+        {
+          "k": "int",
+          "v": "1"
+        }
+      ],
+      [
+        "language",
+        {
+          "k": "string",
+          "v": "en"
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "object",
+      "v": [
+        [
+          "retry",
+          {
+            "k": "int",
+            "v": "5"
+          }
+        ],
+        [
+          "theme",
+          {
+            "k": "string",
+            "v": "dark"
+          }
+        ],
+        [
+          "language",
+          {
+            "k": "string",
+            "v": "en"
+          }
+        ]
+      ]
+    },
+    "ok": true
+  }
+}

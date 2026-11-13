@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_duplicate_field_names",
+  "description": "Two children cannot claim one field name.",
+  "classes": [
+    "node",
+    "id",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { one: { id: \"same\", type: \"string\" }, two: { id: \"same\", type: \"string\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "DUPLICATE_FIELD",
+        "column": 81,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/two",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

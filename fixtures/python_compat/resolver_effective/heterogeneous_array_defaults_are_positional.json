@@ -1,0 +1,180 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "heterogeneous_array_defaults_are_positional",
+  "description": "Defaults below a heterogeneous array come from the alternative of that position.",
+  "classes": [
+    "array",
+    "union",
+    "default",
+    "A24"
+  ],
+  "input": "{ steps: [ {}, {} ] }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    steps: { type: \"array\", children_options: [\n      { type: \"object\", children: { a: { type: \"string\", default: \"A\" } } },\n      { type: \"object\", children: { b: { type: \"string\", default: \"B\" } } },\n      { type: \"int\" },\n    ] },\n  } },\n}\n",
+  "config": "{ steps: [ {}, {} ] }",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "divergence": {
+    "id": "A24",
+    "report": "A24",
+    "note": "The baseline has two helpers for the same question and they disagree: resolution uses the alternative at the item index, while default filling always uses alternative 0. Both items therefore receive the first alternative's default, and the provenance names a field of the wrong alternative. The Dart implementation uses the positional alternative in both places."
+  },
+  "expected": {
+    "ok": true,
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "steps",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "object",
+                "v": [
+                  [
+                    "a",
+                    {
+                      "k": "string",
+                      "v": "A"
+                    }
+                  ]
+                ]
+              },
+              {
+                "k": "object",
+                "v": [
+                  [
+                    "b",
+                    {
+                      "k": "string",
+                      "v": "B"
+                    }
+                  ]
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/steps/0/a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "default"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/steps/1/b",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "default"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "steps",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "object",
+                "v": [
+                  [
+                    "a",
+                    {
+                      "k": "string",
+                      "v": "A"
+                    }
+                  ]
+                ]
+              },
+              {
+                "k": "object",
+                "v": [
+                  [
+                    "a",
+                    {
+                      "k": "string",
+                      "v": "A"
+                    }
+                  ]
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/steps/0/a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/steps/1/a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

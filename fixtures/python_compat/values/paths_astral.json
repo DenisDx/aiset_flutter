@@ -1,0 +1,30 @@
+{
+  "schema": "1",
+  "area": "values",
+  "id": "paths_astral",
+  "description": "Pointers of the astral document.",
+  "classes": [
+    "paths",
+    "astral"
+  ],
+  "input": "{\n  \"rocket 🚀\": \"start\",\n  list: [\n    \"a\",\n    \"b\",\n  ],\n  tail: 1,\n}\n",
+  "query": {
+    "op": "paths",
+    "pointer": ""
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "op": "paths",
+      "pointer": ""
+    },
+    "result": [
+      "",
+      "/rocket 🚀",
+      "/list",
+      "/list/0",
+      "/list/1",
+      "/tail"
+    ]
+  }
+}

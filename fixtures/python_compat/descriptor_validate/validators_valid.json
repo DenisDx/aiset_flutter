@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "validators_valid",
+  "description": "A list of validator ids is accepted.",
+  "classes": [
+    "validators",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", validators: [\"no_spaces\"] } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

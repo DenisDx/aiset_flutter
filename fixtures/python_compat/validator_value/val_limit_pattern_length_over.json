@@ -1,0 +1,31 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_limit_pattern_length_over",
+  "description": "A pattern past max_pattern_length reports pattern_length.",
+  "classes": [
+    "limits",
+    "pattern-length",
+    "over",
+    "rejection"
+  ],
+  "input": "{ a: \"x\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"xxxxxx\" } } } }",
+  "value": "{ a: \"x\" }",
+  "limits": {
+    "max_pattern_length": 5
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "pattern_length",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

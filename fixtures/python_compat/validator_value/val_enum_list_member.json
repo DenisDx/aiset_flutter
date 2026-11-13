@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_enum_list_member",
+  "description": "A list can be an enum member.",
+  "classes": [
+    "enum",
+    "array",
+    "accept"
+  ],
+  "input": "{ a: [1, 2] }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\", enum: [[1, 2]] } } } }",
+  "value": "{ a: [1, 2] }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

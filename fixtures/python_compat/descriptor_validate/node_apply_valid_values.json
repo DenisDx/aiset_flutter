@@ -1,0 +1,18 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_apply_valid_values",
+  "description": "Each declared apply policy is accepted.",
+  "classes": [
+    "node",
+    "apply",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"int\", apply: \"live\" }, b: { type: \"int\", apply: \"reload\" }, c: { type: \"int\", apply: \"restart\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

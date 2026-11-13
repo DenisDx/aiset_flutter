@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "default_array_items",
+  "description": "An array default is checked item by item.",
+  "classes": [
+    "default",
+    "array",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"array\", children: { type: \"int\" }, default: [1, \"x\"] } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_DEFAULT",
+        "column": 95,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/default",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

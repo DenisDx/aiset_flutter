@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_bounds_nonfinite_number",
+  "description": "A non-finite number on a number node is a finite issue.",
+  "classes": [
+    "bounds",
+    "finite",
+    "number",
+    "rejection"
+  ],
+  "input": "{ a: 1e400 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"number\" } } } }",
+  "value": "{ a: 1e400 }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "finite",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

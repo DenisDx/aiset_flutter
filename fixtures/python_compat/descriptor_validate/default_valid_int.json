@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "default_valid_int",
+  "description": "A default inside the bounds is accepted.",
+  "classes": [
+    "default",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"int\", minimum: 1, maximum: 9, default: 5 } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

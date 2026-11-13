@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "template_document",
+  "description": "A bare placeholder token as the whole document.",
+  "classes": [
+    "template-root",
+    "scalar-root"
+  ],
+  "input": "${VAR:-x}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5-template",
+    "paths": [
+      ""
+    ],
+    "rootText": "${VAR:-x}",
+    "storedValue": {
+      "k": "template",
+      "v": {
+        "default": "x",
+        "name": "VAR"
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "merge_children_override_wins",
+  "description": "The bound declared on the reference wins over the template child.",
+  "classes": [
+    "typedef",
+    "merge",
+    "object",
+    "A17"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { p: { typedef: \"card\", type: \"object\", children: { a: { type: \"int\" }, b: { type: \"string\" } } }, q: { type: \"card\", children: { b: { type: \"int\", minimum: 3 }, c: { type: \"bool\" } } } } },\n}\n",
+  "query": {
+    "op": "node_field",
+    "pointer": "/q/b",
+    "field": "minimum"
+  },
+  "strict": true,
+  "divergence": {
+    "id": "A17",
+    "report": "A17",
+    "note": "Same residual as merge_children_keeps_template_label, on the field the reference adds: the merged child stays a string, so minimum: 3 is refused as misplaced."
+  },
+  "expected": {
+    "ok": true,
+    "result": {
+      "k": "int",
+      "v": "3"
+    },
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "ok": false,
+    "query": {
+      "field": "minimum",
+      "op": "node_field",
+      "pointer": "/q/b"
+    }
+  }
+}

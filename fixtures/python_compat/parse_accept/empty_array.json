@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "empty_array",
+  "description": "An empty array root.",
+  "classes": [
+    "empty",
+    "array"
+  ],
+  "input": "[]",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      ""
+    ],
+    "rootText": "[]",
+    "storedValue": {
+      "k": "array",
+      "v": []
+    }
+  }
+}

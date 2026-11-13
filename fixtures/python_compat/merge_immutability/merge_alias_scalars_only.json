@@ -1,0 +1,29 @@
+{
+  "schema": "1",
+  "area": "merge_immutability",
+  "id": "merge_alias_scalars_only",
+  "description": "A merge of scalars cannot alias.",
+  "classes": [
+    "alias",
+    "scalar",
+    "immutability",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "int",
+    "v": "1"
+  },
+  "update": {
+    "k": "int",
+    "v": "2"
+  },
+  "expected": {
+    "aliased": false,
+    "inputsUnchanged": true,
+    "ok": true,
+    "sharesBaseNodes": 0,
+    "sharesUpdateNodes": 0
+  }
+}

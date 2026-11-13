@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_enum_number_vs_string",
+  "description": "A number is not a listed string.",
+  "classes": [
+    "enum",
+    "rejection"
+  ],
+  "input": "{ a: \"1\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\", enum: [1] } } } }",
+  "value": "{ a: \"1\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

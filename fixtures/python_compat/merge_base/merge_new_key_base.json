@@ -1,0 +1,61 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_new_key_base",
+  "description": "A key only the update has is added. (prefer: base)",
+  "classes": [
+    "object",
+    "add",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "int",
+          "v": "1"
+        }
+      ]
+    ]
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "b",
+        {
+          "k": "int",
+          "v": "2"
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    },
+    "ok": true
+  }
+}

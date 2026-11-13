@@ -1,0 +1,41 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "mid_comments",
+  "description": "Two block comments between ':' and the value; a trailing comment on the next member.",
+  "classes": [
+    "mid-comments",
+    "block-comment",
+    "trailing-comment"
+  ],
+  "input": "{\n  a: /* one */ /* two */ 1,\n  b: 2, // tail\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b"
+    ],
+    "rootText": "{\n  a: /* one */ /* two */ 1,\n  b: 2, // tail\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    }
+  }
+}

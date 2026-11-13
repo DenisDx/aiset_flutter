@@ -1,0 +1,47 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_member_leading_comment",
+  "description": "Removing a member takes the comments it owns.",
+  "classes": [
+    "remove",
+    "comments",
+    "leading"
+  ],
+  "input": "{\n  // lead a\n  a: 1, // trail a\n  b: 2,\n  c: 3,\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/a"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n // trail a\n  b: 2,\n  c: 3,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/b",
+        "/c"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "b",
+            {
+              "k": "int",
+              "v": "2"
+            }
+          ],
+          [
+            "c",
+            {
+              "k": "int",
+              "v": "3"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

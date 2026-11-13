@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "revision_other_document",
+  "description": "A different source gives a different revision.",
+  "classes": [
+    "revision"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", description: \"changed\" } } },\n}\n",
+  "query": {
+    "op": "revision"
+  },
+  "strict": true,
+  "expected": {
+    "ok": true,
+    "query": {
+      "op": "revision"
+    },
+    "result": "sha256:7590e3fe7b0c47f56e0a9fd0033756da"
+  }
+}

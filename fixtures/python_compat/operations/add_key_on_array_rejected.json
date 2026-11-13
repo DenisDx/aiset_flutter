@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_key_on_array_rejected",
+  "description": "A non-append token cannot address an array.",
+  "classes": [
+    "add",
+    "rejection",
+    "array"
+  ],
+  "input": "{\n  compact: { a: 1, b: 2 },\n  empty_object: {},\n  empty_array: [],\n  single_array: [1, 2, 3],\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/single_array/x",
+    "value_text": "2"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "PathError",
+    "errorCode": "BAD_REQUEST",
+    "ok": false
+  }
+}

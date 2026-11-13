@@ -1,0 +1,66 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_astral_key_value",
+  "description": "Editing the value under an astral key splices at the right code-unit offset.",
+  "classes": [
+    "set",
+    "astral"
+  ],
+  "input": "{\n  \"rocket 🚀\": \"start\",\n  list: [\n    \"a\",\n    \"b\",\n  ],\n  tail: 1,\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/rocket 🚀",
+    "value_text": "\"liftoff\""
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  \"rocket 🚀\": \"liftoff\",\n  list: [\n    \"a\",\n    \"b\",\n  ],\n  tail: 1,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/rocket 🚀",
+        "/list",
+        "/list/0",
+        "/list/1",
+        "/tail"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "rocket 🚀",
+            {
+              "k": "string",
+              "v": "liftoff"
+            }
+          ],
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "a"
+                },
+                {
+                  "k": "string",
+                  "v": "b"
+                }
+              ]
+            }
+          ],
+          [
+            "tail",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

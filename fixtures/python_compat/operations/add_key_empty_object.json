@@ -1,0 +1,49 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_key_empty_object",
+  "description": "Adding the first key of an empty object.",
+  "classes": [
+    "add",
+    "create-member",
+    "empty"
+  ],
+  "input": "{\n  o: {},\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/o/x",
+    "value_text": "1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  o: {x: 1},\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/o",
+        "/o/x"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "o",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "x",
+                  {
+                    "k": "int",
+                    "v": "1"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

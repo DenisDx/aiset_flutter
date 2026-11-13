@@ -1,0 +1,114 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "allowed_inside_array",
+  "description": "Each item of a homogeneous array resolves.",
+  "classes": [
+    "array"
+  ],
+  "input": "{ tags: [\"${A}\", \"b\", \"${C}\"] }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    tags: { type: \"array\", children: { type: \"string\", env: { allowed: true } } },\n  } },\n}\n",
+  "config": "{ tags: [\"${A}\", \"b\", \"${C}\"] }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "A": "1",
+      "C": "3"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "tags",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "string",
+                "v": "1"
+              },
+              {
+                "k": "string",
+                "v": "b"
+              },
+              {
+                "k": "string",
+                "v": "3"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/tags/0",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/tags/1",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/tags/2",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "C"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

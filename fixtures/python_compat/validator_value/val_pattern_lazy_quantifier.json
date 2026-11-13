@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_lazy_quantifier",
+  "description": "A lazy quantifier is accepted.",
+  "classes": [
+    "pattern",
+    "accept"
+  ],
+  "input": "{ a: \"aab\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"a+?b\" } } } }",
+  "value": "{ a: \"aab\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

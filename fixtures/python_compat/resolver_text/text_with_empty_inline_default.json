@@ -1,0 +1,56 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_with_empty_inline_default",
+  "description": "An explicit empty inline default resolves to empty.",
+  "classes": [
+    "inline-default",
+    "empty"
+  ],
+  "input": "${V:-}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "V"
+                }
+              ],
+              [
+                "source",
+                {
+                  "k": "string",
+                  "v": "inline_default"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

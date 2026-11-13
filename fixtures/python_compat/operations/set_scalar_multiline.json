@@ -1,0 +1,65 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_scalar_multiline",
+  "description": "Replace one scalar in a commented document.",
+  "classes": [
+    "set",
+    "scalar",
+    "comments"
+  ],
+  "input": "// Document comment (belongs to the whole document).\n{\n  // Leading comment for element1.\n  element1: 124, // Trailing comment for element1.\n  element2: { // Trailing comment for element2.\n    // Leading comment for element3.\n    element3: 123, // Trailing comment for element3.\n    // Leading comment for element4.\n    element4: 111 // Trailing comment for element4.\n    // Block-end comment for element2 (kept before the closing brace).\n  } // Trailing comment for element2's closing brace.\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/element1",
+    "value_text": "125"
+  },
+  "expected": {
+    "ok": true,
+    "output": "// Document comment (belongs to the whole document).\n{\n  // Leading comment for element1.\n  element1: 125, // Trailing comment for element1.\n  element2: { // Trailing comment for element2.\n    // Leading comment for element3.\n    element3: 123, // Trailing comment for element3.\n    // Leading comment for element4.\n    element4: 111 // Trailing comment for element4.\n    // Block-end comment for element2 (kept before the closing brace).\n  } // Trailing comment for element2's closing brace.\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/element1",
+        "/element2",
+        "/element2/element3",
+        "/element2/element4"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "element1",
+            {
+              "k": "int",
+              "v": "125"
+            }
+          ],
+          [
+            "element2",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "element3",
+                  {
+                    "k": "int",
+                    "v": "123"
+                  }
+                ],
+                [
+                  "element4",
+                  {
+                    "k": "int",
+                    "v": "111"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

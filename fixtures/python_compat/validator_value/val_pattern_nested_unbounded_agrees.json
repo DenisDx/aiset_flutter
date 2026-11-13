@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_nested_unbounded_agrees",
+  "description": "A nested unbounded repetition is refused here before matching; the value needs a trailing b that neither engine finds.",
+  "classes": [
+    "pattern",
+    "dialect",
+    "budget",
+    "agree"
+  ],
+  "input": "{ a: \"aaa\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"(a+)+b\" } } } }",
+  "value": "{ a: \"aaa\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "pattern",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

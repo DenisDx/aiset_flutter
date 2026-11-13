@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "structure_array_empty_children_options",
+  "description": "An empty alternatives list is refused.",
+  "classes": [
+    "structure",
+    "array",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"array\", children_options: [] } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 77,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/children_options",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

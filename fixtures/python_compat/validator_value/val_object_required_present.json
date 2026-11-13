@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_object_required_present",
+  "description": "A present required field passes.",
+  "classes": [
+    "object",
+    "required",
+    "accept"
+  ],
+  "input": "{ o: { a: 1 } }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { o: { type: \"object\", children: { a: { type: \"int\", required: true } } } } } }",
+  "value": "{ o: { a: 1 } }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

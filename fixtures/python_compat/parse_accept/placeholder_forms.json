@@ -1,0 +1,87 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "placeholder_forms",
+  "description": "Bare and embedded placeholders, with and without defaults.",
+  "classes": [
+    "placeholder",
+    "template"
+  ],
+  "input": "{\n  bare: ${A},\n  emptyDefault: ${B:-},\n  withDefault: ${C:-x y},\n  embedded: \"pre ${D} post ${E:-f}\",\n  list: [${F}, \"${G:-h}\"],\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5-template",
+    "paths": [
+      "",
+      "/bare",
+      "/emptyDefault",
+      "/withDefault",
+      "/embedded",
+      "/list",
+      "/list/0",
+      "/list/1"
+    ],
+    "rootText": "{\n  bare: ${A},\n  emptyDefault: ${B:-},\n  withDefault: ${C:-x y},\n  embedded: \"pre ${D} post ${E:-f}\",\n  list: [${F}, \"${G:-h}\"],\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "bare",
+          {
+            "k": "template",
+            "v": {
+              "default": null,
+              "name": "A"
+            }
+          }
+        ],
+        [
+          "emptyDefault",
+          {
+            "k": "template",
+            "v": {
+              "default": "",
+              "name": "B"
+            }
+          }
+        ],
+        [
+          "withDefault",
+          {
+            "k": "template",
+            "v": {
+              "default": "x y",
+              "name": "C"
+            }
+          }
+        ],
+        [
+          "embedded",
+          {
+            "k": "string",
+            "v": "pre ${D} post ${E:-f}"
+          }
+        ],
+        [
+          "list",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "template",
+                "v": {
+                  "default": null,
+                  "name": "F"
+                }
+              },
+              {
+                "k": "string",
+                "v": "${G:-h}"
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

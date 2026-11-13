@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_string_length_astral_over",
+  "description": "A fourth astral character exceeds max_length 3.",
+  "classes": [
+    "string",
+    "max-length",
+    "astral",
+    "rejection"
+  ],
+  "input": "{ a: \"🚀🚀🚀🚀\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", max_length: 3 } } } }",
+  "value": "{ a: \"🚀🚀🚀🚀\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "max_length",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

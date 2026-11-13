@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "crlf",
+  "description": "Every line break is CRLF.",
+  "classes": [
+    "crlf"
+  ],
+  "input": "{\r\n  a: 1,\r\n  b: 2,\r\n}\r\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b"
+    ],
+    "rootText": "{\r\n  a: 1,\r\n  b: 2,\r\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_underscore_name",
+  "description": "A name starting with an underscore is a valid name.",
+  "classes": [
+    "names"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "_PRIVATE",
+    "inlineDefault": null
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "_PRIVATE": "p"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": null,
+      "name": "_PRIVATE",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": "p"
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "env"
+          }
+        ]
+      ]
+    }
+  }
+}

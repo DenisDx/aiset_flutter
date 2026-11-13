@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "template_spaced_name",
+  "description": "A placeholder name may not contain spaces.",
+  "classes": [
+    "placeholder",
+    "unsupported-token"
+  ],
+  "input": "{ a: ${ A } }",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

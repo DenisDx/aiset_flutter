@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_any_accepts_string",
+  "description": "The opaque type accepts a string.",
+  "classes": [
+    "type",
+    "any",
+    "accept"
+  ],
+  "input": "{ a: \"x\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\" } } } }",
+  "value": "{ a: \"x\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "structure_key_pattern_and_key_enum",
+  "description": "The two key constraints exclude each other.",
+  "classes": [
+    "structure",
+    "keys",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", key_pattern: \"^a$\", key_enum: [\"a\"], additional_children: { type: \"int\" } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 42,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

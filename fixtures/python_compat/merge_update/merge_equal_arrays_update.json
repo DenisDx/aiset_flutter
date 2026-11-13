@@ -1,0 +1,57 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_equal_arrays_update",
+  "description": "Two identical arrays are equal. (prefer: update)",
+  "classes": [
+    "array",
+    "equal",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "array",
+    "v": [
+      {
+        "k": "int",
+        "v": "1"
+      },
+      {
+        "k": "string",
+        "v": "x"
+      }
+    ]
+  },
+  "update": {
+    "k": "array",
+    "v": [
+      {
+        "k": "int",
+        "v": "1"
+      },
+      {
+        "k": "string",
+        "v": "x"
+      }
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "string",
+          "v": "x"
+        }
+      ]
+    },
+    "ok": true
+  }
+}

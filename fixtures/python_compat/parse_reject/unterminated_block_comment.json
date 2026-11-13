@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "unterminated_block_comment",
+  "description": "A block comment without its terminator.",
+  "classes": [
+    "unterminated",
+    "comments"
+  ],
+  "input": "{ a: 1 /* never closed\n}\n",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

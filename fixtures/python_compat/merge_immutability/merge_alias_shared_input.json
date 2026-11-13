@@ -1,0 +1,61 @@
+{
+  "schema": "1",
+  "area": "merge_immutability",
+  "id": "merge_alias_shared_input",
+  "description": "Equal objects in both inputs.",
+  "classes": [
+    "alias",
+    "shared",
+    "immutability",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "object",
+    "v": [
+      [
+        "k",
+        {
+          "k": "object",
+          "v": [
+            [
+              "deep",
+              {
+                "k": "int",
+                "v": "1"
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "k",
+        {
+          "k": "object",
+          "v": [
+            [
+              "deep",
+              {
+                "k": "int",
+                "v": "1"
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "aliased": false,
+    "inputsUnchanged": true,
+    "ok": true,
+    "sharesBaseNodes": 0,
+    "sharesUpdateNodes": 0
+  }
+}

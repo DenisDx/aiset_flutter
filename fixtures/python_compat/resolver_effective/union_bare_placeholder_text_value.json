@@ -1,0 +1,153 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "union_bare_placeholder_text_value",
+  "description": "A bare placeholder whose resolved text fits a later alternative.",
+  "classes": [
+    "union",
+    "placeholder",
+    "A26"
+  ],
+  "input": "{ items: { a: { port: ${P} } } }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    items: { type: \"object\", additional_children: { type: \"union\", children_options: [\n      { type: \"object\", children: { port: { type: \"int\", env: { allowed: true, convert: \"int\" } } } },\n      { type: \"object\", children: { port: { type: \"string\", env: { allowed: true, convert: \"string\" } } } },\n    ] } },\n  } },\n}\n",
+  "config": "{ items: { a: { port: ${P} } } }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "P": "text"
+    },
+    "dotenv": {}
+  },
+  "divergence": {
+    "id": "A26",
+    "report": "A26",
+    "note": "A bare placeholder has no type before resolution, so the baseline takes the first alternative that declares the key, converts \"text\" to int, fails, and reports env_conversion with a null value — for a document the descriptor permits through its second alternative. The Dart implementation resolves the placeholder against each candidate alternative in declaration order and keeps the first one that succeeds."
+  },
+  "expected": {
+    "ok": true,
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "items",
+          {
+            "k": "object",
+            "v": [
+              [
+                "a",
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "port",
+                      {
+                        "k": "string",
+                        "v": "text"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/items/a/port",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "P"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "items",
+          {
+            "k": "object",
+            "v": [
+              [
+                "a",
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "port",
+                      {
+                        "k": "null"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/items/a/port",
+        "rule": "env_conversion",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/items/a/port",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "P"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

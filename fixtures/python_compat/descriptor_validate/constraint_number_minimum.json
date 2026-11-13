@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_number_minimum",
+  "description": "The MapEntry(minimum: 1).key constraint applies to type number.",
+  "classes": [
+    "constraint-by-type",
+    "number",
+    "minimum",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"number\", minimum: 1 } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

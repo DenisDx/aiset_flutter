@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_missing_type",
+  "description": "A node without a type is refused.",
+  "classes": [
+    "node",
+    "type",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { description: \"x\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "DESCRIPTOR_STRUCTURE",
+        "column": 42,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/type",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

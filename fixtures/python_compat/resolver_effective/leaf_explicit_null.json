@@ -1,0 +1,54 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "leaf_explicit_null",
+  "description": "An explicit null is not absent and is not defaulted.",
+  "classes": [
+    "null",
+    "six-states"
+  ],
+  "input": "{ a: null }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", default: \"fb\" } } } }",
+  "config": "{ a: null }",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "null"
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

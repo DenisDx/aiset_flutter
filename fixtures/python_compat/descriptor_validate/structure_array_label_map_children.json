@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "structure_array_label_map_children",
+  "description": "An array item position cannot be a label map.",
+  "classes": [
+    "structure",
+    "array",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"array\", children: { first: { type: \"int\" }, second: { type: \"int\" } } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "DESCRIPTOR_STRUCTURE",
+        "column": 69,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/children",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_array_length_change_uncommented",
+  "description": "Changing the length of a comment-free array replaces its text.",
+  "classes": [
+    "set",
+    "array",
+    "length-change"
+  ],
+  "input": "{\n  compact: { a: 1, b: 2 },\n  empty_object: {},\n  empty_array: [],\n  single_array: [1, 2, 3],\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/single_array",
+    "value_text": "[1, 2, 3, 4, 5]"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  compact: { a: 1, b: 2 },\n  empty_object: {},\n  empty_array: [],\n  single_array: [1, 2, 3, 4, 5],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/compact",
+        "/compact/a",
+        "/compact/b",
+        "/empty_object",
+        "/empty_array",
+        "/single_array",
+        "/single_array/0",
+        "/single_array/1",
+        "/single_array/2",
+        "/single_array/3",
+        "/single_array/4"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "compact",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "a",
+                  {
+                    "k": "int",
+                    "v": "1"
+                  }
+                ],
+                [
+                  "b",
+                  {
+                    "k": "int",
+                    "v": "2"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "empty_object",
+            {
+              "k": "object",
+              "v": []
+            }
+          ],
+          [
+            "empty_array",
+            {
+              "k": "array",
+              "v": []
+            }
+          ],
+          [
+            "single_array",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "int",
+                  "v": "1"
+                },
+                {
+                  "k": "int",
+                  "v": "2"
+                },
+                {
+                  "k": "int",
+                  "v": "3"
+                },
+                {
+                  "k": "int",
+                  "v": "4"
+                },
+                {
+                  "k": "int",
+                  "v": "5"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

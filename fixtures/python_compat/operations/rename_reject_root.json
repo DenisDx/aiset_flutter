@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "rename_reject_root",
+  "description": "The root pointer cannot be renamed.",
+  "classes": [
+    "rename",
+    "rejection",
+    "root"
+  ],
+  "input": "{ a: 1 }",
+  "operation": {
+    "op": "rename",
+    "pointer": "",
+    "new_key": "y"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "PathError",
+    "errorCode": "BAD_REQUEST",
+    "ok": false
+  }
+}

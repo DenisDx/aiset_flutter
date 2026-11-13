@@ -1,0 +1,71 @@
+{
+  "schema": "1",
+  "area": "merge_immutability",
+  "id": "merge_alias_base_conflict",
+  "description": "A base value that wins a conflict.",
+  "classes": [
+    "alias",
+    "conflict",
+    "immutability",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "object",
+    "v": [
+      [
+        "k",
+        {
+          "k": "array",
+          "v": [
+            {
+              "k": "object",
+              "v": [
+                [
+                  "deep",
+                  {
+                    "k": "int",
+                    "v": "1"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "k",
+        {
+          "k": "array",
+          "v": [
+            {
+              "k": "object",
+              "v": [
+                [
+                  "deep",
+                  {
+                    "k": "int",
+                    "v": "2"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "aliased": false,
+    "inputsUnchanged": true,
+    "ok": true,
+    "sharesBaseNodes": 0,
+    "sharesUpdateNodes": 0
+  }
+}

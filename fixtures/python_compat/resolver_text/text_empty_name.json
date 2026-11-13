@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_empty_name",
+  "description": "An empty name is not a reference.",
+  "classes": [
+    "syntax",
+    "reject"
+  ],
+  "input": "${}",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "x"
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "${}",
+    "provenance": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

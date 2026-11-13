@@ -1,0 +1,84 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "templates_forms",
+  "description": "Bare ${A}, ${B:-x y}, the explicit empty default ${C:-}, a placeholder inside a string, and strings that only look like placeholders.",
+  "classes": [
+    "template",
+    "placeholder",
+    "empty-default",
+    "default-with-space",
+    "non-placeholder-string"
+  ],
+  "input": "{\n  bare: ${A},\n  def: ${B:-x y},\n  empty: ${C:-},\n  inStr: \"pre ${D:-1} post\",\n  fake: \"${1N0T} a placeholder\",\n  unterminatedish: \"x ${VAR y\",\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5-template",
+    "paths": [
+      "",
+      "/bare",
+      "/def",
+      "/empty",
+      "/inStr",
+      "/fake",
+      "/unterminatedish"
+    ],
+    "rootText": "{\n  bare: ${A},\n  def: ${B:-x y},\n  empty: ${C:-},\n  inStr: \"pre ${D:-1} post\",\n  fake: \"${1N0T} a placeholder\",\n  unterminatedish: \"x ${VAR y\",\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "bare",
+          {
+            "k": "template",
+            "v": {
+              "default": null,
+              "name": "A"
+            }
+          }
+        ],
+        [
+          "def",
+          {
+            "k": "template",
+            "v": {
+              "default": "x y",
+              "name": "B"
+            }
+          }
+        ],
+        [
+          "empty",
+          {
+            "k": "template",
+            "v": {
+              "default": "",
+              "name": "C"
+            }
+          }
+        ],
+        [
+          "inStr",
+          {
+            "k": "string",
+            "v": "pre ${D:-1} post"
+          }
+        ],
+        [
+          "fake",
+          {
+            "k": "string",
+            "v": "${1N0T} a placeholder"
+          }
+        ],
+        [
+          "unterminatedish",
+          {
+            "k": "string",
+            "v": "x ${VAR y"
+          }
+        ]
+      ]
+    }
+  }
+}

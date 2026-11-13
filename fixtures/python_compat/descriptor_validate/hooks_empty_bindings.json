@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "hooks_empty_bindings",
+  "description": "A hook event needs at least one binding.",
+  "classes": [
+    "hooks",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", hooks: { before_update: [] } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 84,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/hooks/before_update",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

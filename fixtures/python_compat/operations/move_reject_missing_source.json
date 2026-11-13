@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_reject_missing_source",
+  "description": "The source must exist.",
+  "classes": [
+    "move",
+    "rejection",
+    "pointer"
+  ],
+  "input": "{\n  list: [\n    // first\n    \"a\",\n    \"b\", // second\n    \"c\",\n  ],\n}\n",
+  "operation": {
+    "op": "move",
+    "source": "/list/7",
+    "target": "/list/0"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "PathError",
+    "errorCode": "BAD_REQUEST",
+    "ok": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_object_declared_child_wins",
+  "description": "A declared child takes precedence over key constraints.",
+  "classes": [
+    "object",
+    "key-enum",
+    "accept"
+  ],
+  "input": "{ o: { a: \"s\" } }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { o: { type: \"object\", children: { a: { type: \"string\" } }, key_enum: [\"b\"], additional_children: { type: \"int\" } } } } }",
+  "value": "{ o: { a: \"s\" } }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

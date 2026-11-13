@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_duplicate_field_name_and_label",
+  "description": "A renamed child cannot collide with another child label.",
+  "classes": [
+    "node",
+    "id",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { id: \"b\", type: \"string\" }, b: { type: \"string\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "DUPLICATE_FIELD",
+        "column": 74,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/b",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

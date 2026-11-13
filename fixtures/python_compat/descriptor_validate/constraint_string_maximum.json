@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_string_maximum",
+  "description": "The MapEntry(maximum: 9).key constraint does not apply to type string.",
+  "classes": [
+    "constraint-by-type",
+    "string",
+    "maximum",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", maximum: 9 } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 69,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/maximum",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "special_unquoted_keys",
+  "description": "Unquoted keys built from the baseline key character set.",
+  "classes": [
+    "key-chars",
+    "dotted-key",
+    "dash-key",
+    "dollar-key"
+  ],
+  "input": "{\n  a.b: 1,\n  a-b: 2,\n  $c: 3,\n  _d: 4,\n  E1: 5,\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a.b",
+      "/a-b",
+      "/$c",
+      "/_d",
+      "/E1"
+    ],
+    "rootText": "{\n  a.b: 1,\n  a-b: 2,\n  $c: 3,\n  _d: 4,\n  E1: 5,\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a.b",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "a-b",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ],
+        [
+          "$c",
+          {
+            "k": "int",
+            "v": "3"
+          }
+        ],
+        [
+          "_d",
+          {
+            "k": "int",
+            "v": "4"
+          }
+        ],
+        [
+          "E1",
+          {
+            "k": "int",
+            "v": "5"
+          }
+        ]
+      ]
+    }
+  }
+}

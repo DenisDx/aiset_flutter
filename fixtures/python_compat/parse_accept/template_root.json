@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "template_root",
+  "description": "A bare placeholder as the whole document.",
+  "classes": [
+    "scalar-root",
+    "placeholder"
+  ],
+  "input": "${WHOLE_FILE}",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5-template",
+    "paths": [
+      ""
+    ],
+    "rootText": "${WHOLE_FILE}",
+    "storedValue": {
+      "k": "template",
+      "v": {
+        "default": null,
+        "name": "WHOLE_FILE"
+      }
+    }
+  }
+}

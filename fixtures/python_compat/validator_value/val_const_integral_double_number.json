@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_const_integral_double_number",
+  "description": "An integral double equals a number-node const.",
+  "classes": [
+    "const",
+    "number",
+    "accept"
+  ],
+  "input": "{ a: 2.0 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"number\", const: 2 } } } }",
+  "value": "{ a: 2.0 }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

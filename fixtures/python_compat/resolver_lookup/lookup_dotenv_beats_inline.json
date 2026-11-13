@@ -1,0 +1,51 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_dotenv_beats_inline",
+  "description": "The dotenv mapping wins over the inline default.",
+  "classes": [
+    "precedence",
+    "dotenv",
+    "inline-default"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "V",
+    "inlineDefault": "inline"
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {
+      "V": "dotenv"
+    }
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": "inline",
+      "name": "V",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": "dotenv"
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "dotenv"
+          }
+        ]
+      ]
+    }
+  }
+}

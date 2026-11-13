@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_enum_object",
+  "description": "An enum written as an object instead of a list.",
+  "classes": [
+    "node",
+    "property-types",
+    "enum",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", enum: { x: 1 } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_PROPERTY_TYPE",
+        "column": 66,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/enum",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

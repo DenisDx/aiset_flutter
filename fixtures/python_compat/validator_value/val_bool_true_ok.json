@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_bool_true_ok",
+  "description": "true satisfies a bool node.",
+  "classes": [
+    "type",
+    "bool",
+    "accept"
+  ],
+  "input": "{ a: true }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"bool\" } } } }",
+  "value": "{ a: true }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

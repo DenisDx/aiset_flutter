@@ -1,0 +1,64 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "leaf_default_containing_placeholder",
+  "description": "A default that is itself a placeholder is resolved.",
+  "classes": [
+    "default",
+    "inline-default"
+  ],
+  "input": "{}",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", env: { allowed: true }, default: \"${DEF}\" } } } }",
+  "config": "{}",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "DEF": "from-default"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "string",
+            "v": "from-default"
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "DEF"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

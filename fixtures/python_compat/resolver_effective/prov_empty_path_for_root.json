@@ -1,0 +1,31 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "prov_empty_path_for_root",
+  "description": "The root itself carries no provenance entry.",
+  "classes": [
+    "provenance",
+    "paths"
+  ],
+  "input": "\"plain\"",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"string\" } }",
+  "config": "\"plain\"",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "string",
+      "v": "plain"
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

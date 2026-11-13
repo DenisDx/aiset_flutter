@@ -1,0 +1,24 @@
+{
+  "schema": "1",
+  "area": "pipeline_revisions",
+  "id": "rev_source_astral",
+  "description": "An astral key is hashed as UTF-8 bytes.",
+  "classes": [
+    "source",
+    "astral",
+    "revision",
+    "source"
+  ],
+  "input": "{ \"rocket 🚀\": 1 }\n",
+  "query": {
+    "op": "source"
+  },
+  "expected": {
+    "hasBom": false,
+    "ok": true,
+    "op": "source",
+    "revision": "sha256:e30c42f52e0361cd8b7bf300697e291e",
+    "utf16Length": 19,
+    "utf8Length": 21
+  }
+}

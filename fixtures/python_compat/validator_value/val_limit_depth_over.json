@@ -1,0 +1,31 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_limit_depth_over",
+  "description": "One level past max_depth reports the over-deep node.",
+  "classes": [
+    "limits",
+    "depth",
+    "over",
+    "rejection"
+  ],
+  "input": "{ a: {n: {n: {n: 1}}}}",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\" } } } }",
+  "value": "{ a: {n: {n: {n: 1}}}}",
+  "limits": {
+    "max_depth": 2
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a/n/n",
+        "rule": "max_depth",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

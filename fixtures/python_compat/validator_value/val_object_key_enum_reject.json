@@ -1,0 +1,33 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_object_key_enum_reject",
+  "description": "A key outside key_enum is reported and its value still checked.",
+  "classes": [
+    "object",
+    "key-enum",
+    "rejection"
+  ],
+  "input": "{ o: { no: \"x\" } }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { o: { type: \"object\", key_enum: [\"ok\"], additional_children: { type: \"int\" } } } } }",
+  "value": "{ o: { no: \"x\" } }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/o/no",
+        "rule": "key_enum",
+        "severity": "error"
+      },
+      {
+        "hasMessage": true,
+        "path": "/o/no",
+        "rule": "type",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

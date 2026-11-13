@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "default_pattern_must_match",
+  "description": "A default must satisfy the node pattern.",
+  "classes": [
+    "default",
+    "pattern",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", pattern: \"^a\", default: \"b\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_DEFAULT",
+        "column": 84,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/default",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

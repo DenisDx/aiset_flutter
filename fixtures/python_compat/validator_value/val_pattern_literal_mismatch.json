@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_literal_mismatch",
+  "description": "A value the accepted pattern rejects fails.",
+  "classes": [
+    "pattern",
+    "rejection"
+  ],
+  "input": "{ a: \"abc\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"^b\" } } } }",
+  "value": "{ a: \"abc\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "pattern",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

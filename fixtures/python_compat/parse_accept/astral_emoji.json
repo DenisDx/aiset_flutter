@@ -1,0 +1,42 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "astral_emoji",
+  "description": "Astral-plane emoji in a quoted key, in a value and in a trailing comment; UTF-8 byte offsets and UTF-16 code-unit offsets must diverge here.",
+  "classes": [
+    "astral",
+    "surrogate-pairs",
+    "unicode",
+    "comments"
+  ],
+  "input": "{\n  \"rocket 🚀 key\": \"lift 🚀 🚀\", // emoji comment 🚀\n  plain: 1,\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/rocket 🚀 key",
+      "/plain"
+    ],
+    "rootText": "{\n  \"rocket 🚀 key\": \"lift 🚀 🚀\", // emoji comment 🚀\n  plain: 1,\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "rocket 🚀 key",
+          {
+            "k": "string",
+            "v": "lift 🚀 🚀"
+          }
+        ],
+        [
+          "plain",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ]
+      ]
+    }
+  }
+}

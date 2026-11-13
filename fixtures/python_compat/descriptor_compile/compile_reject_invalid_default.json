@@ -1,0 +1,29 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_reject_invalid_default",
+  "description": "Compiling a bad default fails.",
+  "classes": [
+    "compile",
+    "rejection",
+    "default"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", enum: [\"x\"], default: \"z\" } } },\n}\n",
+  "strict": true,
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "issues": [
+      {
+        "code": "INVALID_DEFAULT",
+        "column": 82,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/default",
+        "severity": "error"
+      }
+    ],
+    "ok": false
+  }
+}

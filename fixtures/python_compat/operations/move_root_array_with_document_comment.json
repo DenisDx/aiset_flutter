@@ -1,0 +1,42 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_root_array_with_document_comment",
+  "description": "Moving inside the root array leaves the document comment outside the rebuilt container.",
+  "classes": [
+    "move",
+    "root",
+    "comments"
+  ],
+  "input": "// header\n[\n  \"a\",\n  \"b\",\n]\n",
+  "operation": {
+    "op": "move",
+    "source": "/0",
+    "target": "/1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "// header\n[\n  \"b\",\n  \"a\",\n]\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/0",
+        "/1"
+      ],
+      "storedValue": {
+        "k": "array",
+        "v": [
+          {
+            "k": "string",
+            "v": "b"
+          },
+          {
+            "k": "string",
+            "v": "a"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_exact_over_rejected",
+  "description": "Just above the exact maximum is refused.",
+  "classes": [
+    "exact-range",
+    "int",
+    "rejection"
+  ],
+  "input": "{ a: 9007199254740992 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"int\" } } } }",
+  "value": "{ a: 9007199254740992 }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "exact_range",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_placeholder_update",
+  "description": "A placeholder is one opaque value. (prefer: update)",
+  "classes": [
+    "scalar",
+    "placeholder",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "template",
+    "v": {
+      "name": "PORT",
+      "default": "8080"
+    }
+  },
+  "update": {
+    "k": "int",
+    "v": "9090"
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "int",
+      "v": "9090"
+    },
+    "ok": true
+  }
+}

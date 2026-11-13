@@ -1,0 +1,16 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "pattern_empty_string",
+  "description": "An empty pattern matches everything.",
+  "classes": [
+    "pattern"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", pattern: \"\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_empty_string",
+  "description": "An empty string has nothing to substitute.",
+  "classes": [
+    "empty"
+  ],
+  "input": "",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "x"
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "",
+    "provenance": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

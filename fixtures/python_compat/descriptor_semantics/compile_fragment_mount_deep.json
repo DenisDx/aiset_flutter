@@ -1,0 +1,32 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "compile_fragment_mount_deep",
+  "description": "A fragment mounted below an existing object.",
+  "classes": [
+    "compile",
+    "fragment",
+    "mount",
+    "accept"
+  ],
+  "input": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { g: { type: \"object\", children: {} } } } }",
+  "query": {
+    "op": "has_node",
+    "pointer": "/g/z"
+  },
+  "strict": true,
+  "fragments": [
+    {
+      "source": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { z: { type: \"int\" } } } }",
+      "mount": "/root/children/g/children/z"
+    }
+  ],
+  "expected": {
+    "ok": true,
+    "query": {
+      "op": "has_node",
+      "pointer": "/g/z"
+    },
+    "result": true
+  }
+}

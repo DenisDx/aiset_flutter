@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_literal_ok",
+  "description": "An accepted anchored pattern matches.",
+  "classes": [
+    "pattern",
+    "accept"
+  ],
+  "input": "{ a: \"abbb\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"^ab+$\" } } } }",
+  "value": "{ a: \"abbb\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

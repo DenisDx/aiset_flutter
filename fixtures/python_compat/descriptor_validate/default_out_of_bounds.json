@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "default_out_of_bounds",
+  "description": "A default below the minimum is refused.",
+  "classes": [
+    "default",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"int\", minimum: 10, default: 1 } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_DEFAULT",
+        "column": 79,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/default",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

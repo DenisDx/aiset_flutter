@@ -1,0 +1,22 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_python_named_backref_agrees",
+  "description": "The Python-spelled named backreference is refused at the descriptor by both engines.",
+  "classes": [
+    "pattern",
+    "dialect",
+    "named-backreference",
+    "descriptor",
+    "agree"
+  ],
+  "input": "{ a: \"aa\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"(a)(?P=1)\" } } } }",
+  "value": "{ a: \"aa\" }",
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "ok": false
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_array_vs_array_base",
+  "description": "Arrays are never merged item by item. (prefer: base)",
+  "classes": [
+    "array",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "array",
+          "v": [
+            {
+              "k": "int",
+              "v": "1"
+            },
+            {
+              "k": "int",
+              "v": "2"
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "array",
+          "v": [
+            {
+              "k": "int",
+              "v": "3"
+            }
+          ]
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "int",
+                "v": "1"
+              },
+              {
+                "k": "int",
+                "v": "2"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    "ok": true
+  }
+}

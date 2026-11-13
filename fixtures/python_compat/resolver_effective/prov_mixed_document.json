@@ -1,0 +1,107 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "prov_mixed_document",
+  "description": "One document mixes file, environment and default provenance.",
+  "classes": [
+    "provenance"
+  ],
+  "input": "{ plain: \"p\", templated: \"${V}\", not_allowed: \"lit\" }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: {\n    type: \"object\",\n    children: {\n      plain: { type: \"string\" },\n      templated: { type: \"string\", env: { allowed: true, convert: \"string\" } },\n      noconvert: { type: \"string\", env: { allowed: true } },\n      number: { type: \"int\", env: { allowed: true, convert: \"int\" } },\n      real: { type: \"number\", env: { allowed: true, convert: \"number\" } },\n      flag: { type: \"bool\", env: { allowed: true, convert: \"bool\" } },\n      not_allowed: { type: \"string\" },\n      list: { type: \"array\", children: { type: \"string\", env: { allowed: true } } },\n      dynamic: { type: \"object\", additional_children: { type: \"string\", env: { allowed: true } } },\n      patterned: { type: \"object\", key_pattern: \"^ok\", additional_children: { type: \"string\", env: { allowed: true } } },\n      opaque: { type: \"any\" },\n    },\n  },\n}\n",
+  "config": "{ plain: \"p\", templated: \"${V}\", not_allowed: \"lit\" }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "x"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "plain",
+          {
+            "k": "string",
+            "v": "p"
+          }
+        ],
+        [
+          "templated",
+          {
+            "k": "string",
+            "v": "x"
+          }
+        ],
+        [
+          "not_allowed",
+          {
+            "k": "string",
+            "v": "lit"
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/plain",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/templated",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "V"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/not_allowed",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_provenance_env_has_no_source",
+  "description": "A value from the environment records no source key.",
+  "classes": [
+    "provenance"
+  ],
+  "input": "${A}",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "A": "1"
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "1",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

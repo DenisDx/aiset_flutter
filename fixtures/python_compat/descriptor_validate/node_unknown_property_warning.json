@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_unknown_property_warning",
+  "description": "An unknown node property is a warning by default.",
+  "classes": [
+    "node",
+    "unknown-metadata",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", requried: true } } },\n}\n",
+  "mode": "default",
+  "expected": {
+    "issues": [
+      {
+        "code": "UNKNOWN_DESCRIPTOR_PROPERTY",
+        "column": 70,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/requried",
+        "severity": "warning"
+      }
+    ],
+    "ok": true,
+    "valid": true
+  }
+}

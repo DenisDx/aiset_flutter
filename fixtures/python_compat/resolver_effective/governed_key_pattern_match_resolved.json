@@ -1,0 +1,72 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "governed_key_pattern_match_resolved",
+  "description": "A key that matches key_pattern is governed and resolved.",
+  "classes": [
+    "keys",
+    "key-pattern"
+  ],
+  "input": "{ s: { okA: \"${V}\" } }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: {\n    s: { type: \"object\", key_pattern: \"^ok\",\n         additional_children: { type: \"string\", env: { allowed: true } } },\n} } }\n",
+  "config": "{ s: { okA: \"${V}\" } }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "x"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "s",
+          {
+            "k": "object",
+            "v": [
+              [
+                "okA",
+                {
+                  "k": "string",
+                  "v": "x"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/s/okA",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "V"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

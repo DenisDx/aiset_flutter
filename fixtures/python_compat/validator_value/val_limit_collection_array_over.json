@@ -1,0 +1,32 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_limit_collection_array_over",
+  "description": "An oversized array reports the container path.",
+  "classes": [
+    "limits",
+    "collection",
+    "array",
+    "over",
+    "rejection"
+  ],
+  "input": "{ l: [1, 2, 3, 4] }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\" } } } }",
+  "value": "{ l: [1, 2, 3, 4] }",
+  "limits": {
+    "max_collection_size": 3
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/l",
+        "rule": "max_collection_size",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

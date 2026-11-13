@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_key_duplicate_rejected",
+  "description": "Adding an existing key is refused.",
+  "classes": [
+    "add",
+    "rejection",
+    "duplicate-key"
+  ],
+  "input": "{\n  o: {\n    a: 1,\n  },\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/o/a",
+    "value_text": "2"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "PathError",
+    "errorCode": "BAD_REQUEST",
+    "ok": false
+  }
+}

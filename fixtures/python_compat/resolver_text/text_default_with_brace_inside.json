@@ -1,0 +1,56 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_default_with_brace_inside",
+  "description": "A default cannot contain a closing brace.",
+  "classes": [
+    "syntax",
+    "reject"
+  ],
+  "input": "${A:-x}y}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "xy}",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ],
+              [
+                "source",
+                {
+                  "k": "string",
+                  "v": "inline_default"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "unicode_keys",
+  "description": "Unquoted keys in Cyrillic, Latin with accent, CJK and Arabic-Indic digits (the baseline key grammar is Unicode-alphanumeric based).",
+  "classes": [
+    "unicode-keys",
+    "unquoted-keys",
+    "non-ascii"
+  ],
+  "input": "{ ключ: 1, café: 2, 日本: 3, ٠١: 4 }\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/ключ",
+      "/café",
+      "/日本",
+      "/٠١"
+    ],
+    "rootText": "{ ключ: 1, café: 2, 日本: 3, ٠١: 4 }",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "ключ",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "café",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ],
+        [
+          "日本",
+          {
+            "k": "int",
+            "v": "3"
+          }
+        ],
+        [
+          "٠١",
+          {
+            "k": "int",
+            "v": "4"
+          }
+        ]
+      ]
+    }
+  }
+}

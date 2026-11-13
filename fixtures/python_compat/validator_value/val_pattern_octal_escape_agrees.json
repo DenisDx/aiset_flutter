@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_octal_escape_agrees",
+  "description": "A multi-digit octal escape reads as the backspace character on both engines, and the value matches on both.",
+  "classes": [
+    "pattern",
+    "escape",
+    "octal",
+    "agree"
+  ],
+  "input": "{ a: \"\\b\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"\\\\010\" } } } }",
+  "value": "{ a: \"\\b\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

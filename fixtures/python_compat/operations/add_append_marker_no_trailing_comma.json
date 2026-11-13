@@ -1,0 +1,51 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_append_marker_no_trailing_comma",
+  "description": "An array without a trailing comma gains the separator before the new item.",
+  "classes": [
+    "add",
+    "append-marker",
+    "commas"
+  ],
+  "input": "{\n  list: [\n    \"a\"\n  ],\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/list/-",
+    "value_text": "\"b\""
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\n    \"a\",\n    \"b\"\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0",
+        "/list/1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "a"
+                },
+                {
+                  "k": "string",
+                  "v": "b"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

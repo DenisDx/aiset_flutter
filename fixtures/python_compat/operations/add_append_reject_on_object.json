@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_append_reject_on_object",
+  "description": "The append marker requires an array.",
+  "classes": [
+    "add",
+    "rejection",
+    "append-marker"
+  ],
+  "input": "{\n  obj: { a: 1 },\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/obj/-",
+    "value_text": "2"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "PathError",
+    "errorCode": "BAD_REQUEST",
+    "ok": false
+  }
+}

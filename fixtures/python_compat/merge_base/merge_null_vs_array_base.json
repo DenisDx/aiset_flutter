@@ -1,0 +1,34 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_null_vs_array_base",
+  "description": "A null against an array is a conflict. (prefer: base)",
+  "classes": [
+    "array",
+    "null",
+    "type-mismatch",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "null"
+  },
+  "update": {
+    "k": "array",
+    "v": [
+      {
+        "k": "int",
+        "v": "1"
+      }
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "null"
+    },
+    "ok": true
+  }
+}

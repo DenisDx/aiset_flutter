@@ -1,0 +1,72 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_nested_placeholder_unset",
+  "description": "The same nested reference with the outer variable unset.",
+  "classes": [
+    "syntax",
+    "nested",
+    "A23"
+  ],
+  "input": "${A:-${B}}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "path": "/value",
+  "divergence": {
+    "id": "A23",
+    "report": "A23",
+    "note": "With A unset the baseline substitutes the literal broken default \"${B\" and appends the leftover brace, producing \"${B}\". The corrected behaviour leaves the text untouched."
+  },
+  "expected": {
+    "ok": true,
+    "output": "${A:-${B}}",
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": []
+    },
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "issues": [],
+    "ok": true,
+    "output": "${B}",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ],
+              [
+                "source",
+                {
+                  "k": "string",
+                  "v": "inline_default"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

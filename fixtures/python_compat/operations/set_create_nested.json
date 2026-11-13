@@ -1,0 +1,96 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_create_nested",
+  "description": "Creating a key two levels down.",
+  "classes": [
+    "set",
+    "create-member",
+    "nested"
+  ],
+  "input": "{\n  workers: [\n    {\n      id: \"web\", // worker id\n      ports: [\n        8080,\n        8081,\n      ],\n    },\n    {\n      id: \"cache\",\n    },\n  ],\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/workers/0/name",
+    "value_text": "\"Web\""
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  workers: [\n    {\n      id: \"web\", // worker id\n      ports: [\n        8080,\n        8081,\n      ],\n      name: \"Web\",\n    },\n    {\n      id: \"cache\",\n    },\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/workers",
+        "/workers/0",
+        "/workers/0/id",
+        "/workers/0/ports",
+        "/workers/0/ports/0",
+        "/workers/0/ports/1",
+        "/workers/0/name",
+        "/workers/1",
+        "/workers/1/id"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "workers",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "id",
+                      {
+                        "k": "string",
+                        "v": "web"
+                      }
+                    ],
+                    [
+                      "ports",
+                      {
+                        "k": "array",
+                        "v": [
+                          {
+                            "k": "int",
+                            "v": "8080"
+                          },
+                          {
+                            "k": "int",
+                            "v": "8081"
+                          }
+                        ]
+                      }
+                    ],
+                    [
+                      "name",
+                      {
+                        "k": "string",
+                        "v": "Web"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "id",
+                      {
+                        "k": "string",
+                        "v": "cache"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

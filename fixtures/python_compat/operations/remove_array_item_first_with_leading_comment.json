@@ -1,0 +1,46 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_array_item_first_with_leading_comment",
+  "description": "Removing the first item takes its leading comment.",
+  "classes": [
+    "remove",
+    "array",
+    "comments",
+    "leading"
+  ],
+  "input": "{\n  list: [\n    // first\n    \"a\",\n    \"b\",\n  ],\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/list/0"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\n    \"b\",\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "b"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

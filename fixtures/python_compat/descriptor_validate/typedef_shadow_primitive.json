@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "typedef_shadow_primitive",
+  "description": "A template cannot shadow a primitive type.",
+  "classes": [
+    "typedef",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { p: { typedef: \"string\", type: \"int\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "TEMPLATE_SHADOWS_PRIMITIVE",
+        "column": 53,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/p/typedef",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

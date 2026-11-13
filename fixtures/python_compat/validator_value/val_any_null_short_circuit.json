@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_any_null_short_circuit",
+  "description": "The opaque type is checked before the null rule.",
+  "classes": [
+    "null",
+    "any",
+    "accept"
+  ],
+  "input": "{ a: null }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\" } } } }",
+  "value": "{ a: null }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

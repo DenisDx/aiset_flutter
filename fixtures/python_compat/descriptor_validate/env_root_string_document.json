@@ -1,0 +1,46 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "env_root_string_document",
+  "description": "A descriptor document whose whole root value is a string.",
+  "classes": [
+    "envelope",
+    "root",
+    "rejection",
+    "A10"
+  ],
+  "input": "\"just a string\"",
+  "mode": "strict",
+  "divergence": {
+    "id": "A10",
+    "report": "A10",
+    "note": "Same defect as env_root_array: the corrected diagnostic carries no source position, where the Dart implementation reports it at the root value."
+  },
+  "expected": {
+    "ok": true,
+    "valid": false,
+    "issues": [
+      {
+        "code": "DESCRIPTOR_SYNTAX",
+        "severity": "error",
+        "path": "",
+        "hasMessage": true,
+        "line": 1,
+        "column": 1
+      }
+    ],
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "issues": [
+      {
+        "code": "DESCRIPTOR_SYNTAX",
+        "hasMessage": true,
+        "path": "",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_array_unique_items",
+  "description": "The MapEntry(unique_items: true).key constraint applies to type array.",
+  "classes": [
+    "constraint-by-type",
+    "array",
+    "unique_items",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"array\", children: { type: \"int\" }, unique_items: true } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

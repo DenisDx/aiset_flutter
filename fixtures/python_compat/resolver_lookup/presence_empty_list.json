@@ -1,0 +1,38 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "presence_empty_list",
+  "description": "Asking for no names answers with nothing.",
+  "classes": [
+    "presence"
+  ],
+  "input": "",
+  "query": {
+    "op": "presence",
+    "names": []
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "names": [],
+      "op": "presence"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "presence",
+          {
+            "k": "object",
+            "v": []
+          }
+        ]
+      ]
+    }
+  }
+}

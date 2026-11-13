@@ -1,0 +1,38 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_last_member_absorbs_separator",
+  "description": "Removing the last member takes the separator that used to precede it.",
+  "classes": [
+    "remove",
+    "commas"
+  ],
+  "input": "{\n  a: 1,\n  b: 2,\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/b"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  a: 1,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

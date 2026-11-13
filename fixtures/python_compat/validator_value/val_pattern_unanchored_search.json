@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_unanchored_search",
+  "description": "An unanchored pattern matches anywhere.",
+  "classes": [
+    "pattern",
+    "accept"
+  ],
+  "input": "{ a: \"abc\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"b\" } } } }",
+  "value": "{ a: \"abc\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

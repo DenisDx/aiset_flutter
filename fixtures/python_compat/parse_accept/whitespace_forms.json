@@ -1,0 +1,42 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "whitespace_forms",
+  "description": "The full baseline whitespace set, including NBSP, BOM and VT.",
+  "classes": [
+    "whitespace",
+    "nbsp",
+    "bom",
+    "vertical-tab"
+  ],
+  "input": "{ a: 1,\u000b\fb:\t2\r\n}﻿\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b"
+    ],
+    "rootText": "{ a: 1,\u000b\fb:\t2\r\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    }
+  }
+}

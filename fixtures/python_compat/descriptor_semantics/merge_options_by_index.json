@@ -1,0 +1,43 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "merge_options_by_index",
+  "description": "children_options merge with the alternative at the same index.",
+  "classes": [
+    "typedef",
+    "merge",
+    "union",
+    "A17"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { p: { typedef: \"u\", type: \"array\", children_options: [ { type: \"int\" }, { type: \"string\" } ] }, q: { type: \"u\", children_options: [ { type: \"int\", minimum: 5 } ] } } },\n}\n",
+  "query": {
+    "op": "node_field",
+    "pointer": "/q/0",
+    "field": "minimum"
+  },
+  "strict": true,
+  "divergence": {
+    "id": "A17",
+    "report": "A17",
+    "note": "The reported rejection closed on d4adb45; the children_options-by-index merge still fails the same way report A18 described for item nodes: _merge_template computes `dict(base[key])` before branching on the key, so merging a list of alternatives raises ValueError (dictionary update sequence element #0 has length 1; 2 is required). On d4adb45 this crash is reachable from validate_descriptor itself, which now expands templates before checking them; the crash is not yet written up in the handoff notes. The Dart implementation merges the alternatives by index."
+  },
+  "expected": {
+    "ok": true,
+    "result": {
+      "k": "int",
+      "v": "5"
+    },
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "baselineCrash": true,
+    "errorClass": "ValueError",
+    "errorCode": null,
+    "ok": false,
+    "query": {
+      "field": "minimum",
+      "op": "node_field",
+      "pointer": "/q/0"
+    }
+  }
+}

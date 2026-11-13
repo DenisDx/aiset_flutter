@@ -1,0 +1,41 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "nbsp_bom_infix",
+  "description": "NBSP between tokens and a mid-document BOM, both baseline whitespace.",
+  "classes": [
+    "nbsp",
+    "bom",
+    "whitespace"
+  ],
+  "input": "{ a: 1, b: 2}﻿\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b"
+    ],
+    "rootText": "{ a: 1, b: 2}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    }
+  }
+}

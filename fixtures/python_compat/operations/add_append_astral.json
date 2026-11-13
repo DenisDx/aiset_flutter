@@ -1,0 +1,72 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_append_astral",
+  "description": "Appending an astral value after astral text.",
+  "classes": [
+    "add",
+    "append-marker",
+    "astral"
+  ],
+  "input": "{\n  \"rocket 🚀\": \"start\",\n  list: [\n    \"a\",\n    \"b\",\n  ],\n  tail: 1,\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/list/-",
+    "value_text": "\"🚀\""
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  \"rocket 🚀\": \"start\",\n  list: [\n    \"a\",\n    \"b\",\n    \"🚀\",\n  ],\n  tail: 1,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/rocket 🚀",
+        "/list",
+        "/list/0",
+        "/list/1",
+        "/list/2",
+        "/tail"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "rocket 🚀",
+            {
+              "k": "string",
+              "v": "start"
+            }
+          ],
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "a"
+                },
+                {
+                  "k": "string",
+                  "v": "b"
+                },
+                {
+                  "k": "string",
+                  "v": "🚀"
+                }
+              ]
+            }
+          ],
+          [
+            "tail",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

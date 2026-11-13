@@ -1,0 +1,40 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "trailing_comma_variants",
+  "description": "Last member with and without a trailing comma in the same document.",
+  "classes": [
+    "trailing-comma",
+    "no-trailing-comma"
+  ],
+  "input": "{\n  withComma: 1,\n  withoutComma: 2\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/withComma",
+      "/withoutComma"
+    ],
+    "rootText": "{\n  withComma: 1,\n  withoutComma: 2\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "withComma",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "withoutComma",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    }
+  }
+}

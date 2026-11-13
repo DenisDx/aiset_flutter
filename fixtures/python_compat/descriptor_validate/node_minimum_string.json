@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_minimum_string",
+  "description": "A numeric bound holding a string.",
+  "classes": [
+    "node",
+    "property-types",
+    "constraints",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"int\", minimum: \"abc\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_PROPERTY_TYPE",
+        "column": 66,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/minimum",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

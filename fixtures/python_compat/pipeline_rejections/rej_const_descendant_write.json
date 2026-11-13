@@ -1,0 +1,45 @@
+{
+  "schema": "1",
+  "area": "pipeline_rejections",
+  "id": "rej_const_descendant_write",
+  "description": "A container write that changes a const descendant is refused.",
+  "classes": [
+    "const",
+    "container",
+    "rejection",
+    "pipeline"
+  ],
+  "input": "{ port: 1, box: { fixed: \"F\", keep: \"k\" } }\n",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: {\n    port: { type: \"int\" },\n    box: { type: \"object\", children: {\n             fixed: { type: \"string\", const: \"F\" },\n             keep: { type: \"string\" } } },\n  } } }\n",
+  "config": "{ port: 1, box: { fixed: \"F\", keep: \"k\" } }\n",
+  "operations": [
+    {
+      "op": "set",
+      "path": "/box",
+      "value_text": "{ fixed: \"G\", keep: \"k\" }"
+    }
+  ],
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "principal": "demo",
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "ValidationError",
+    "errorCode": "VALIDATION_ERROR",
+    "fileUnchanged": true,
+    "issues": [
+      {
+        "path": "/box/fixed",
+        "rule": "const",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "result": "rejected",
+    "stateTextUnchanged": true,
+    "stored": false
+  }
+}

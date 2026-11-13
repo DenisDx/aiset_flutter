@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "whitespace_only",
+  "description": "Whitespace only.",
+  "classes": [
+    "empty-input",
+    "whitespace"
+  ],
+  "input": "  \n\t \n",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

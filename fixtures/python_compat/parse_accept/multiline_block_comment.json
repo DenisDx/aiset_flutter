@@ -1,0 +1,33 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "multiline_block_comment",
+  "description": "A block comment spanning several lines.",
+  "classes": [
+    "comments",
+    "block-comment",
+    "multiline"
+  ],
+  "input": "{\n  /*\n   * first\n   * second\n   */\n  a: 1,\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a"
+    ],
+    "rootText": "{\n  /*\n   * first\n   * second\n   */\n  a: 1,\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ]
+      ]
+    }
+  }
+}

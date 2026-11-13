@@ -1,0 +1,53 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "at_missing_with_default",
+  "description": "MISSING with a defaulted node yields the default.",
+  "classes": [
+    "missing",
+    "default"
+  ],
+  "input": "{}",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", default: \"fb\" }, plain: { type: \"string\" }, templated: { type: \"string\", env: { allowed: true } }, n: { type: \"int\", default: 0 }, z: { type: \"string\", nullable: true, default: null } } } }",
+  "config": "{}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "query": {
+    "op": "effective_at",
+    "pointer": "/a",
+    "stored": "MISSING",
+    "path": "/x"
+  },
+  "expected": {
+    "effective": {
+      "k": "string",
+      "v": "fb"
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/x",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "default"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

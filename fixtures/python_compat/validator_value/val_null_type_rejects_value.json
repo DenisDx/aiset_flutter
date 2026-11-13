@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_null_type_rejects_value",
+  "description": "A string is not null.",
+  "classes": [
+    "type",
+    "null",
+    "rejection"
+  ],
+  "input": "{ a: \"x\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"null\" } } } }",
+  "value": "{ a: \"x\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "type",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

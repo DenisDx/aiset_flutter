@@ -1,0 +1,22 @@
+{
+  "schema": "1",
+  "area": "pipeline_revisions",
+  "id": "rev_descriptor_reordered_keys",
+  "description": "A descriptor with reordered properties is a new revision.",
+  "classes": [
+    "descriptor",
+    "order",
+    "revision",
+    "descriptor"
+  ],
+  "input": "{ root: { type: \"object\", children: { a: { default: 1, type: \"int\" } } }, config_version: \"2\", project: \"rev\", descriptor_version: \"1.0\" }",
+  "query": {
+    "op": "descriptor"
+  },
+  "expected": {
+    "bytesRevision": "sha256:bae9d1f5d4248acf9045ab00c03366be",
+    "ok": true,
+    "op": "descriptor",
+    "revision": "sha256:bae9d1f5d4248acf9045ab00c03366be"
+  }
+}

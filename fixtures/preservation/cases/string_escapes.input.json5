@@ -1,0 +1,10 @@
+{
+  hex: "\x41",
+  uni: "\u00e9",
+  pair: "\ud83d\ude80",
+  slash: "a\/b",
+  cont: "ab\
+cd",
+  tabs: "\t|",
+  said: "he said \"hi\"",
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_inline_default_when_unset",
+  "description": "With nothing set, the inline default is used.",
+  "classes": [
+    "inline-default"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "V",
+    "inlineDefault": "inline"
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": "inline",
+      "name": "V",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": "inline"
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "inline_default"
+          }
+        ]
+      ]
+    }
+  }
+}

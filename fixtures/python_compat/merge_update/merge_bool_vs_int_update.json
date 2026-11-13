@@ -1,0 +1,31 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_bool_vs_int_update",
+  "description": "true and 1 are equal to Python ==. (prefer: update)",
+  "classes": [
+    "scalar",
+    "bool",
+    "equality",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "bool",
+    "v": true
+  },
+  "update": {
+    "k": "int",
+    "v": "1"
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "bool",
+      "v": true
+    },
+    "ok": true
+  }
+}

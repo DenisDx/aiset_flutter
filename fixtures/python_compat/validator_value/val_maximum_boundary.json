@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_maximum_boundary",
+  "description": "A value at maximum passes.",
+  "classes": [
+    "bounds",
+    "maximum",
+    "accept"
+  ],
+  "input": "{ a: 5 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"int\", maximum: 5 } } } }",
+  "value": "{ a: 5 }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

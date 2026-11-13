@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "values",
+  "id": "value_text_astral",
+  "description": "Source text of a value under an astral key.",
+  "classes": [
+    "value-text",
+    "astral"
+  ],
+  "input": "{\n  \"rocket 🚀\": \"start\",\n  list: [\n    \"a\",\n    \"b\",\n  ],\n  tail: 1,\n}\n",
+  "query": {
+    "op": "value_text",
+    "pointer": "/rocket 🚀"
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "op": "value_text",
+      "pointer": "/rocket 🚀"
+    },
+    "result": "\"start\""
+  }
+}

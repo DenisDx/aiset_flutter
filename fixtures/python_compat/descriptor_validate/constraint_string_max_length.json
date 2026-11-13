@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_string_max_length",
+  "description": "The MapEntry(max_length: 9).key constraint applies to type string.",
+  "classes": [
+    "constraint-by-type",
+    "string",
+    "max_length",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", max_length: 9 } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

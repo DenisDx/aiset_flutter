@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "empty_object",
+  "description": "An empty object root.",
+  "classes": [
+    "empty",
+    "object"
+  ],
+  "input": "{}",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      ""
+    ],
+    "rootText": "{}",
+    "storedValue": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_reject_missing_type",
+  "description": "A node without a type refuses compilation.",
+  "classes": [
+    "compile",
+    "rejection",
+    "node"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { description: \"x\" } } },\n}\n",
+  "strict": true,
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "issues": [
+      {
+        "code": "DESCRIPTOR_STRUCTURE",
+        "column": 42,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/type",
+        "severity": "error"
+      }
+    ],
+    "ok": false
+  }
+}

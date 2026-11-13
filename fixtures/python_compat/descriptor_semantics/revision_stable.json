@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "revision_stable",
+  "description": "The revision is the hash of the descriptor source.",
+  "classes": [
+    "revision"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\" } } },\n}\n",
+  "query": {
+    "op": "revision"
+  },
+  "strict": true,
+  "expected": {
+    "ok": true,
+    "query": {
+      "op": "revision"
+    },
+    "result": "sha256:162645dd5bf31535a6d12cd985360e2e"
+  }
+}

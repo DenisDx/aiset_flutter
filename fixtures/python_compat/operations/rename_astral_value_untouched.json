@@ -1,0 +1,67 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "rename_astral_value_untouched",
+  "description": "Renaming a key that follows astral text leaves the value bytes alone.",
+  "classes": [
+    "rename",
+    "astral",
+    "value-preserved"
+  ],
+  "input": "{\n  \"rocket 🚀\": \"start\",\n  list: [\n    \"a\",\n    \"b\",\n  ],\n  tail: 1,\n}\n",
+  "operation": {
+    "op": "rename",
+    "pointer": "/tail",
+    "new_key": "head"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  \"rocket 🚀\": \"start\",\n  list: [\n    \"a\",\n    \"b\",\n  ],\n  head: 1,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/rocket 🚀",
+        "/list",
+        "/list/0",
+        "/list/1",
+        "/head"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "rocket 🚀",
+            {
+              "k": "string",
+              "v": "start"
+            }
+          ],
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "a"
+                },
+                {
+                  "k": "string",
+                  "v": "b"
+                }
+              ]
+            }
+          ],
+          [
+            "head",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

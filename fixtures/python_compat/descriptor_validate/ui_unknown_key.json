@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "ui_unknown_key",
+  "description": "An unknown ui key is reported as unknown metadata.",
+  "classes": [
+    "ui",
+    "unknown-metadata"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", ui: { colour: \"red\" } } } },\n}\n",
+  "mode": "default",
+  "expected": {
+    "issues": [
+      {
+        "code": "UNKNOWN_DESCRIPTOR_PROPERTY",
+        "column": 74,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/ui/colour",
+        "severity": "warning"
+      }
+    ],
+    "ok": true,
+    "valid": true
+  }
+}

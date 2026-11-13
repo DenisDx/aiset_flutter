@@ -1,0 +1,24 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_limit_pattern_length_under",
+  "description": "A pattern under max_pattern_length is accepted.",
+  "classes": [
+    "limits",
+    "pattern-length",
+    "under",
+    "accept"
+  ],
+  "input": "{ a: \"xxxx\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"xxxx\" } } } }",
+  "value": "{ a: \"xxxx\" }",
+  "limits": {
+    "max_pattern_length": 5
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_property_type_min_length_string",
+  "description": "min_length must be an integer.",
+  "classes": [
+    "node",
+    "property-types",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", min_length: \"2\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_PROPERTY_TYPE",
+        "column": 72,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/min_length",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

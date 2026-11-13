@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "typedef_duplicate_name",
+  "description": "A template name is declared once.",
+  "classes": [
+    "typedef",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { p: { typedef: \"tpl\", type: \"int\" }, q: { typedef: \"tpl\", type: \"string\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "DUPLICATE_TYPEDEF",
+        "column": 89,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/q/typedef",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

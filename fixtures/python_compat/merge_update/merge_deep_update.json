@@ -1,0 +1,130 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_deep_update",
+  "description": "The recursion reaches any depth. (prefer: update)",
+  "classes": [
+    "object",
+    "nested",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "object",
+          "v": [
+            [
+              "b",
+              {
+                "k": "object",
+                "v": [
+                  [
+                    "c",
+                    {
+                      "k": "int",
+                      "v": "1"
+                    }
+                  ],
+                  [
+                    "d",
+                    {
+                      "k": "int",
+                      "v": "2"
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "object",
+          "v": [
+            [
+              "b",
+              {
+                "k": "object",
+                "v": [
+                  [
+                    "d",
+                    {
+                      "k": "int",
+                      "v": "9"
+                    }
+                  ],
+                  [
+                    "e",
+                    {
+                      "k": "int",
+                      "v": "3"
+                    }
+                  ]
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "b",
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "c",
+                      {
+                        "k": "int",
+                        "v": "1"
+                      }
+                    ],
+                    [
+                      "d",
+                      {
+                        "k": "int",
+                        "v": "9"
+                      }
+                    ],
+                    [
+                      "e",
+                      {
+                        "k": "int",
+                        "v": "3"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "ok": true
+  }
+}

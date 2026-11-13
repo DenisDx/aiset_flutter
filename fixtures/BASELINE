@@ -1,0 +1,43 @@
+{
+  "schema": "1",
+  "baseline": {
+    "commit": "d4adb45cff867811e69c7439f22a9df93b0d01a9",
+    "branch": "main"
+  },
+  "generator": {
+    "name": "tool/generate_corpus.dart",
+    "version": "1.0.0",
+    "sha256": "a2838786bf0f2ac143c58fb74d42cad46b400c254f869cc30cfcde5557128a1c"
+  },
+  "oracle": {
+    "suite": "tests",
+    "status": "checked",
+    "passed": 436,
+    "failed": 0
+  },
+  "counts": {
+    "parse_accept": 58,
+    "parse_reject": 43,
+    "values": 35,
+    "operations": 135,
+    "descriptor_validate": 215,
+    "descriptor_compile": 48,
+    "descriptor_semantics": 37,
+    "resolver_lookup": 26,
+    "resolver_text": 34,
+    "resolver_effective": 99,
+    "validator_profile": 1,
+    "validator_value": 174,
+    "merge_base": 31,
+    "merge_update": 30,
+    "merge_immutability": 8,
+    "pipeline_revisions": 14,
+    "pipeline_operations": 29,
+    "pipeline_dry_run": 8,
+    "pipeline_rejections": 49,
+    "pipeline_revision_pair": 5,
+    "pipeline_views": 12,
+    "pipeline_callbacks": 9,
+    "total": 1100
+  }
+}

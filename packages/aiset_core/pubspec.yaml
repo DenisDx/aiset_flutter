@@ -1,0 +1,15 @@
+name: aiset_core
+description: >-
+  Pure-Dart core for Aiset: lossless JSON5 concrete syntax tree with exact
+  source round-trip, dual UTF-8/UTF-16 offsets and comment ownership.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.13.0
+
+# Pure Dart by requirement (SPEC.md LIB-03): no flutter dependency here,
+# in dependencies or in dev_dependencies.
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.26.0

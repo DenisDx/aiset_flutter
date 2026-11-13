@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "helper_unknown_key",
+  "description": "An unknown helper key is reported as unknown metadata.",
+  "classes": [
+    "helper",
+    "unknown-metadata"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", helper: { tag: \"t\", actions: [\"edit\"], colour: \"blue\" } } } },\n}\n",
+  "mode": "default",
+  "expected": {
+    "issues": [
+      {
+        "code": "UNKNOWN_DESCRIPTOR_PROPERTY",
+        "column": 107,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/helper/colour",
+        "severity": "warning"
+      }
+    ],
+    "ok": true,
+    "valid": true
+  }
+}

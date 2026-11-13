@@ -1,0 +1,42 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_append_root_array",
+  "description": "The append marker on the root array.",
+  "classes": [
+    "add",
+    "append-marker",
+    "root"
+  ],
+  "input": "[\n  \"a\",\n]\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/-",
+    "value_text": "\"b\""
+  },
+  "expected": {
+    "ok": true,
+    "output": "[\n  \"a\",\n  \"b\",\n]\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/0",
+        "/1"
+      ],
+      "storedValue": {
+        "k": "array",
+        "v": [
+          {
+            "k": "string",
+            "v": "a"
+          },
+          {
+            "k": "string",
+            "v": "b"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "deeply_nested",
+  "description": "Four nesting levels with a comment at each level.",
+  "classes": [
+    "nested",
+    "comments",
+    "mixed-depth"
+  ],
+  "input": "{\n  // level 1\n  l1: {\n    // level 2\n    l2: {\n      // level 3\n      l3: [\n        // level 4\n        { l4: \"deep\" },\n      ],\n    },\n  },\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/l1",
+      "/l1/l2",
+      "/l1/l2/l3",
+      "/l1/l2/l3/0",
+      "/l1/l2/l3/0/l4"
+    ],
+    "rootText": "{\n  // level 1\n  l1: {\n    // level 2\n    l2: {\n      // level 3\n      l3: [\n        // level 4\n        { l4: \"deep\" },\n      ],\n    },\n  },\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "l1",
+          {
+            "k": "object",
+            "v": [
+              [
+                "l2",
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "l3",
+                      {
+                        "k": "array",
+                        "v": [
+                          {
+                            "k": "object",
+                            "v": [
+                              [
+                                "l4",
+                                {
+                                  "k": "string",
+                                  "v": "deep"
+                                }
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

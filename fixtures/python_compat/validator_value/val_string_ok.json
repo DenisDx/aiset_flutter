@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_string_ok",
+  "description": "A string satisfies a string node.",
+  "classes": [
+    "type",
+    "string",
+    "accept"
+  ],
+  "input": "{ a: \"hello\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\" } } } }",
+  "value": "{ a: \"hello\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

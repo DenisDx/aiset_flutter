@@ -7,8 +7,12 @@ MUST be rewritten to actual state as soon as the corresponding stage in `ROADMAP
 `Status: planned` means "not built", never "done".
 
 Behavioral authority: the **newest commit** of Python `aiset`, with its code and tests preferred
-over its prose documents (`S:32`). Snapshot examined for this document: `main` @
-`cbb74c7d8cc1a1f3bb10f0661f6bc00514982cab` (2026-10-23).
+over its prose documents (`S:32`). Current baseline pin: `main` @
+`d4adb45cff867811e69c7439f22a9df93b0d01a9` (2026-11-11, "regression fix") — the commit the
+compatibility corpus is generated against and `fixtures/BASELINE` records. The first batch of upstream
+defect reports (A1–A21 + F1) was implemented by the Python team between `cbb74c7` and this
+commit; the corpus divergences that closed as a result are listed in
+`proposal_stage2_core_pipeline.md`.
 Requirements source: `SPEC.md`; amendments are cited below as `S:n`.
 
 ---
@@ -47,10 +51,17 @@ aiset-flutter/
     python_compat/                  Expected inputs and outputs extracted from Python behavior.
     preservation/                   Source-preservation fixtures (comments, BOM, CRLF, Unicode).
     descriptors/                    Descriptor grammar and diagnostics fixtures.
-  tool/                           Corpus generator and codegen utilities.
+  tool/                           Corpus generator and codegen utilities. Status: implemented
+                                  (generate_corpus.dart, corpus_cases.dart, python/corpus_driver.py).
   local_tools/                    Operator-side helpers, e.g. the stall-retry wrapper. NOT project
                                   source and NOT versioned: the local_* ignore rule excludes it.
-  docs/                           API reference, integration guide, grammars, compatibility report.
+  docs/                           User documentation and technical records. Status: created.
+    overview.md                     Human-readable description of the system (`S:39`). Planned.
+    build-from-source.md            Clone, prerequisites and build steps with examples. Planned.
+    integration.md                  How to embed the library in a host project. Planned.
+    grammars.md                     Accepted regex dialect and bounded-integer policy. Implemented.
+    api/                            Generated API reference. Planned.
+    compatibility-report.md         Tier 1 and tier 2 coverage and declared divergences. Planned.
 ```
 
 Not present and not yet created: `SPEC.md` (protected; consolidated by the user), `README.md`, `TEST.md`,
@@ -67,8 +78,8 @@ list. The Python project is a source of required behavior, not of structure (`S:
 
 | Boundary | Responsibility it encapsulates | Public surface | Must not know |
 |---|---|---|---|
-| core / json5 | Lossless JSON5 CST, byte-accurate splices, comment ownership, placeholder nodes | `parse`, `Document.find`, `applySet`, `applyAdd`, `applyRemove`, `applyMove`, `applyRename` | Flutter, files, HTTP |
-| core / descriptor | Compile envelope 1.0 plus `x_aiset_flutter`, typedefs, fragments, structural rules, diagnostics | `compileDescriptor`, `validateDescriptor`, `nodeAt`, `revisionOf` | Storage, UI |
+| core / json5 | Lossless JSON5 CST, byte-accurate splices, comment ownership, placeholder nodes. Status: implemented, corpus-verified against the baseline | `parse`, `Json5Document.find` / `findParent` / `paths` / `sourceOf`, `applySet`, `applyAdd`, `applyRemove`, `applyMove`, `applyRename` | Flutter, files, HTTP |
+| core / descriptor | Compile envelope 1.0 plus `x_aiset_flutter`, typedefs, fragments, structural rules, diagnostics; resolve the two `description` and `title` forms to display text (`S:41`) | `compileDescriptor`, `validateDescriptor`, `nodeAt`, `revisionOf`, description resolution | Storage, rendering |
 | core / resolver | `${VAR}` single-pass resolution, precedence chain, conversion, provenance | `resolveValue`, `buildEffective`, injected `Resolver` sources | Process environment, secret stores |
 | core / validator | Type, constraint, limit, union and dynamic-key checks; structured issues | `validateValue`, `validateDocument`, `Limits` | Presentation |
 | core / service | The one write path: authorize → revisions → candidate → resolve → validate → preserve → probe → recheck → commit → apply → audit (`S:8`) | `AisetService`, `AisetDocumentRegistration`, `openSession`, operations, doctor, rollback, subscribe | Transport details, widgets |
@@ -78,7 +89,7 @@ list. The Python project is a source of required behavior, not of structure (`S:
 | `aiset_remote` | `aiset_service` and `document_api` profiles, envelope mapping, uncertain-outcome handling | same port plus profile config | Server-side file paths |
 | `aiset_storage_host` | Calls the host object; never opens host files | `AisetHostStorage` bridge | Host storage internals |
 | flutter / controller | Editor semantics: snapshots, staged operations, dirty state, validation, conflicts, permissions, proposal merge, commands | `AisetEditorController`, `AisetSubformSession` | Rendering |
-| flutter / presentation | Default UI, slots, decorators, typed bindings, theme tokens, ARB strings, adaptive layout; hosts the assistant entry and panel when one is connected | `AisetEditor`, `AisetSettingsPage`, `AisetSettingsApp`, `AisetBoundField`, `AisetGeneratedSubform` | Private core shortcuts — it uses the same public contracts a host uses (`S:16`); it does not hard-depend on the AI layer (`S:31`) |
+| flutter / presentation | Default UI, slots, decorators, typed bindings, theme tokens, adaptive layout; ARB resources with no literal user-facing strings; a hint on every interactive control via tooltip plus semantics (`S:40`); hosts the assistant entry and panel when one is connected | `AisetEditor`, `AisetSettingsPage`, `AisetSettingsApp`, `AisetBoundField`, `AisetGeneratedSubform` | Private core shortcuts (`S:16`); the AI layer as a hard dependency (`S:31`); descriptor content in library ARB (`S:41`) |
 | `aiset_ai` | Bounded session, tool loop, proposals, approval binding, secret redaction; **the connection API that wires the assistant into the ready UI** (`S:31`) | `AisetAiProvider`, `AisetAiAssistant`, `AisetProposal`, `AisetAiPanel`, assistant connection entry point | Direct storage writes, which are forbidden (`S:21`) |
 | `aiset_mcp` | **Deferred** (`S:33`): MCP facade over the existing service, permissions, revisions and codes, to be built only after Python ships one | optional entry point | A second validation path; building it ahead of the baseline |
 
@@ -119,6 +130,13 @@ Nothing is registered by data arriving from a server (`S:18`).
   unsupported reason. Per adapter: persistent, conditional write, cross-context concurrency, source
   preservation, backup, history, load-LKG, change notifications, export access, validation authority
   (`S:11`, `S:15`).
+
+**User-facing text.** Two independent channels, deliberately not merged (`S:40`, `S:41`):
+library chrome — labels, buttons, hints, errors, confirmations — comes from the package's ARB
+resources in English, Chinese (Simplified), Cantonese and Russian; element descriptions come from the
+descriptor, either as a string used as a translation key or as a language-tagged object,
+optionally translated by a host-supplied translator. Locale selection is host parameter, then platform,
+then English, with a reported fallback rather than a silent one.
 
 ### 3.2 Where data comes from and goes
 

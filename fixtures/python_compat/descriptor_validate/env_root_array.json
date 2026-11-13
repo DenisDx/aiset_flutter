@@ -1,0 +1,46 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "env_root_array",
+  "description": "A descriptor document whose root value is an array.",
+  "classes": [
+    "envelope",
+    "root",
+    "rejection",
+    "A10"
+  ],
+  "input": "[1, 2]",
+  "mode": "strict",
+  "divergence": {
+    "id": "A10",
+    "report": "A10",
+    "note": "Upstream fixed the crash (d4adb45) but the intended DESCRIPTOR_SYNTAX issue is emitted with no line and column, because _validate_data() is called without the source text on this path. The Dart implementation locates the issue at the root value position."
+  },
+  "expected": {
+    "ok": true,
+    "valid": false,
+    "issues": [
+      {
+        "code": "DESCRIPTOR_SYNTAX",
+        "severity": "error",
+        "path": "",
+        "hasMessage": true,
+        "line": 1,
+        "column": 1
+      }
+    ],
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "issues": [
+      {
+        "code": "DESCRIPTOR_SYNTAX",
+        "hasMessage": true,
+        "path": "",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

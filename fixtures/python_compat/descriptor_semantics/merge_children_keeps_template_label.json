@@ -1,0 +1,38 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "merge_children_keeps_template_label",
+  "description": "A reference that adds a child keeps the template child.",
+  "classes": [
+    "typedef",
+    "merge",
+    "object",
+    "A17"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { p: { typedef: \"card\", type: \"object\", children: { a: { type: \"int\" }, b: { type: \"string\" } } }, q: { type: \"card\", children: { b: { type: \"int\", minimum: 3 }, c: { type: \"bool\" } } } } },\n}\n",
+  "query": {
+    "op": "has_node",
+    "pointer": "/q/a"
+  },
+  "strict": true,
+  "divergence": {
+    "id": "A17",
+    "report": "A17",
+    "note": "The reported rejection closed on d4adb45, but the merged child keeps the base type, so the constraint the reference adds is refused against the wrong type and the descriptor is still rejected with INVALID_DESCRIPTOR before the merge produces the child. The Dart implementation lets the child override replace the base type, which is what the expander already implements for the item node of an array."
+  },
+  "expected": {
+    "ok": true,
+    "result": true,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "ok": false,
+    "query": {
+      "op": "has_node",
+      "pointer": "/q/a"
+    }
+  }
+}

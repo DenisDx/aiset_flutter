@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_member_with_container_value",
+  "description": "Removing a member removes its whole value, comments included.",
+  "classes": [
+    "remove",
+    "comments",
+    "nested"
+  ],
+  "input": "// Document comment (belongs to the whole document).\n{\n  // Leading comment for element1.\n  element1: 124, // Trailing comment for element1.\n  element2: { // Trailing comment for element2.\n    // Leading comment for element3.\n    element3: 123, // Trailing comment for element3.\n    // Leading comment for element4.\n    element4: 111 // Trailing comment for element4.\n    // Block-end comment for element2 (kept before the closing brace).\n  } // Trailing comment for element2's closing brace.\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/element2"
+  },
+  "expected": {
+    "ok": true,
+    "output": "// Document comment (belongs to the whole document).\n{\n  // Leading comment for element1.\n  element1: 124\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/element1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "element1",
+            {
+              "k": "int",
+              "v": "124"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

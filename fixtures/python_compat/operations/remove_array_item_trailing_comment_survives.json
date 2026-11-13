@@ -1,0 +1,47 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_array_item_trailing_comment_survives",
+  "description": "A trailing comment of a removed non-last item stays behind, as in the baseline.",
+  "classes": [
+    "remove",
+    "array",
+    "comments",
+    "trailing",
+    "quirk"
+  ],
+  "input": "{\n  l: [\n    1, // one\n    2,\n  ],\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/l/0"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  l: [\n // one\n    2,\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/l",
+        "/l/0"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "l",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "int",
+                  "v": "2"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

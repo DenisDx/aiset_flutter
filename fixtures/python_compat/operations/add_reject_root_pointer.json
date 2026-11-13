@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_reject_root_pointer",
+  "description": "Adding at the root pointer is refused.",
+  "classes": [
+    "add",
+    "rejection",
+    "root"
+  ],
+  "input": "[1]",
+  "operation": {
+    "op": "add",
+    "pointer": "",
+    "value_text": "2"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "PathError",
+    "errorCode": "BAD_REQUEST",
+    "ok": false
+  }
+}

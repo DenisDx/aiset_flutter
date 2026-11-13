@@ -1,0 +1,188 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_create_member_multiline",
+  "description": "Setting an absent key creates it with local indentation.",
+  "classes": [
+    "set",
+    "create-member",
+    "indentation"
+  ],
+  "input": "// Mixed-type fixture with quotes, trailing commas and templates.\n{\n  // A quoted string with a placeholder and escapes.\n  'single quoted': \"value with ${VAR:-default} and \\\"escaped\\\" quotes\",\n  number_int: 42,\n  number_negative: -7,\n  number_float: 1.5,\n  flag_true: true,\n  flag_false: false,\n  explicit_null: null,\n  // An unquoted whole-value template.\n  port: ${PORT:-8080},\n  nested: {\n    // Nested array with comments.\n    list: [\n      // First item.\n      1,\n      2, // Second item.\n      {\n        // Item object.\n        deep: 'yes',\n      },\n    ],\n    /* block comment inside an object */\n    quoted_key: 1,\n    \"dotted.key\": 2,\n    \"with/slash\": 3,\n    \"with~tilde\": 4,\n    \"0\": \"numeric object key\",\n  },\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/created_leaf",
+    "value_text": "42"
+  },
+  "expected": {
+    "ok": true,
+    "output": "// Mixed-type fixture with quotes, trailing commas and templates.\n{\n  // A quoted string with a placeholder and escapes.\n  'single quoted': \"value with ${VAR:-default} and \\\"escaped\\\" quotes\",\n  number_int: 42,\n  number_negative: -7,\n  number_float: 1.5,\n  flag_true: true,\n  flag_false: false,\n  explicit_null: null,\n  // An unquoted whole-value template.\n  port: ${PORT:-8080},\n  nested: {\n    // Nested array with comments.\n    list: [\n      // First item.\n      1,\n      2, // Second item.\n      {\n        // Item object.\n        deep: 'yes',\n      },\n    ],\n    /* block comment inside an object */\n    quoted_key: 1,\n    \"dotted.key\": 2,\n    \"with/slash\": 3,\n    \"with~tilde\": 4,\n    \"0\": \"numeric object key\",\n  },\n  created_leaf: 42,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/single quoted",
+        "/number_int",
+        "/number_negative",
+        "/number_float",
+        "/flag_true",
+        "/flag_false",
+        "/explicit_null",
+        "/port",
+        "/nested",
+        "/nested/list",
+        "/nested/list/0",
+        "/nested/list/1",
+        "/nested/list/2",
+        "/nested/list/2/deep",
+        "/nested/quoted_key",
+        "/nested/dotted.key",
+        "/nested/with~1slash",
+        "/nested/with~0tilde",
+        "/nested/0",
+        "/created_leaf"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "single quoted",
+            {
+              "k": "string",
+              "v": "value with ${VAR:-default} and \"escaped\" quotes"
+            }
+          ],
+          [
+            "number_int",
+            {
+              "k": "int",
+              "v": "42"
+            }
+          ],
+          [
+            "number_negative",
+            {
+              "k": "int",
+              "v": "-7"
+            }
+          ],
+          [
+            "number_float",
+            {
+              "k": "double",
+              "v": 1.5
+            }
+          ],
+          [
+            "flag_true",
+            {
+              "k": "bool",
+              "v": true
+            }
+          ],
+          [
+            "flag_false",
+            {
+              "k": "bool",
+              "v": false
+            }
+          ],
+          [
+            "explicit_null",
+            {
+              "k": "null"
+            }
+          ],
+          [
+            "port",
+            {
+              "k": "template",
+              "v": {
+                "default": "8080",
+                "name": "PORT"
+              }
+            }
+          ],
+          [
+            "nested",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "list",
+                  {
+                    "k": "array",
+                    "v": [
+                      {
+                        "k": "int",
+                        "v": "1"
+                      },
+                      {
+                        "k": "int",
+                        "v": "2"
+                      },
+                      {
+                        "k": "object",
+                        "v": [
+                          [
+                            "deep",
+                            {
+                              "k": "string",
+                              "v": "yes"
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "quoted_key",
+                  {
+                    "k": "int",
+                    "v": "1"
+                  }
+                ],
+                [
+                  "dotted.key",
+                  {
+                    "k": "int",
+                    "v": "2"
+                  }
+                ],
+                [
+                  "with/slash",
+                  {
+                    "k": "int",
+                    "v": "3"
+                  }
+                ],
+                [
+                  "with~tilde",
+                  {
+                    "k": "int",
+                    "v": "4"
+                  }
+                ],
+                [
+                  "0",
+                  {
+                    "k": "string",
+                    "v": "numeric object key"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "created_leaf",
+            {
+              "k": "int",
+              "v": "42"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  // leading
+  a: 1, // trailing
+  b: {
+    c: 2
+    // block end
+  }
+}

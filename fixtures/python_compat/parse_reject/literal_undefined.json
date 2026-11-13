@@ -1,0 +1,16 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "literal_undefined",
+  "description": "The JavaScript undefined literal is not a value here.",
+  "classes": [
+    "literal"
+  ],
+  "input": "{ a: undefined }",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

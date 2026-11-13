@@ -1,0 +1,36 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_limit_short_circuit",
+  "description": "A limit violation returns only the limit issues, not the constraint walk.",
+  "classes": [
+    "limits",
+    "short-circuit",
+    "rejection"
+  ],
+  "input": "{ a: 1, \"b\": 2 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"int\", minimum: 100 } } } }",
+  "value": "{ a: 1, \"b\": 2 }",
+  "limits": {
+    "max_depth": 0
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "max_depth",
+        "severity": "error"
+      },
+      {
+        "hasMessage": true,
+        "path": "/b",
+        "rule": "max_depth",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

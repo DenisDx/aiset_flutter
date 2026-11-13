@@ -1,0 +1,57 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "rename_keeps_value_and_comments",
+  "description": "Renaming changes the key bytes only; the value text is untouched.",
+  "classes": [
+    "rename",
+    "comments",
+    "value-preserved"
+  ],
+  "input": "{\n  // leading\n  main: {\n    a: 1, // trailing\n  },\n  other: 2,\n}\n",
+  "operation": {
+    "op": "rename",
+    "pointer": "/main",
+    "new_key": "primary"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  // leading\n  primary: {\n    a: 1, // trailing\n  },\n  other: 2,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/primary",
+        "/primary/a",
+        "/other"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "primary",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "a",
+                  {
+                    "k": "int",
+                    "v": "1"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "other",
+            {
+              "k": "int",
+              "v": "2"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

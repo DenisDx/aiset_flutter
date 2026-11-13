@@ -1,0 +1,70 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "union_plain_string_value",
+  "description": "A string value is resolved by the string alternative.",
+  "classes": [
+    "union"
+  ],
+  "input": "{ items: { a: { port: \"text\" } } }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    items: { type: \"object\", additional_children: { type: \"union\", children_options: [\n      { type: \"object\", children: { port: { type: \"int\", env: { allowed: true, convert: \"int\" } } } },\n      { type: \"object\", children: { port: { type: \"string\", env: { allowed: true, convert: \"string\" } } } },\n    ] } },\n  } },\n}\n",
+  "config": "{ items: { a: { port: \"text\" } } }",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "items",
+          {
+            "k": "object",
+            "v": [
+              [
+                "a",
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "port",
+                      {
+                        "k": "string",
+                        "v": "text"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/items/a/port",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

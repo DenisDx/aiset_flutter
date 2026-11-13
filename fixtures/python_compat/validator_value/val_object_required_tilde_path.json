@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_object_required_tilde_path",
+  "description": "A required key with a tilde escapes its path.",
+  "classes": [
+    "object",
+    "required",
+    "paths",
+    "rejection"
+  ],
+  "input": "{ o: {} }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { o: { type: \"object\", children: { \"a~b\": { type: \"int\", required: true } } } } } }",
+  "value": "{ o: {} }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/o/a~0b",
+        "rule": "required",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

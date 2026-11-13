@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_bounds_nonfinite_any",
+  "description": "A non-finite number under the opaque type is caught by the walk.",
+  "classes": [
+    "bounds",
+    "finite",
+    "any",
+    "rejection"
+  ],
+  "input": "{ a: -1e400 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\" } } } }",
+  "value": "{ a: -1e400 }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "finite",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

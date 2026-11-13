@@ -1,0 +1,31 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_limit_string_value_over",
+  "description": "A long string value reports at its path.",
+  "classes": [
+    "limits",
+    "string",
+    "over",
+    "rejection"
+  ],
+  "input": "{ a: \"abcd\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\" } } } }",
+  "value": "{ a: \"abcd\" }",
+  "limits": {
+    "max_string_length": 3
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "max_string_length",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "pattern_unbalanced_class",
+  "description": "A malformed class is refused.",
+  "classes": [
+    "pattern",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", pattern: \"[a-\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_PATTERN",
+        "column": 69,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/pattern",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

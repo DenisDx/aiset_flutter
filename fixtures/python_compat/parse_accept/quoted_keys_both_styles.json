@@ -1,0 +1,40 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "quoted_keys_both_styles",
+  "description": "Single- and double-quoted keys side by side.",
+  "classes": [
+    "quoted-key",
+    "single-quote"
+  ],
+  "input": "{\n  'one': 1,\n  \"two\": 2,\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/one",
+      "/two"
+    ],
+    "rootText": "{\n  'one': 1,\n  \"two\": 2,\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "one",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "two",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    }
+  }
+}

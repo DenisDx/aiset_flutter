@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "env_policy_convert_invalid",
+  "description": "convert must name a supported conversion.",
+  "classes": [
+    "env",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"int\", env: { allowed: true, convert: \"date\" } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 88,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/env/convert",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

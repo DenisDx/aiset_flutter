@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_int_ok",
+  "description": "An integer satisfies an int node.",
+  "classes": [
+    "type",
+    "int",
+    "accept"
+  ],
+  "input": "{ a: 42 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"int\" } } } }",
+  "value": "{ a: 42 }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

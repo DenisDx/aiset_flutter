@@ -1,0 +1,31 @@
+// Mixed-type fixture with quotes, trailing commas and templates.
+{
+  // A quoted string with a placeholder and escapes.
+  'single quoted': "value with ${VAR:-default} and \"escaped\" quotes",
+  number_int: 42,
+  number_negative: -7,
+  number_float: 1.5,
+  flag_true: true,
+  flag_false: false,
+  explicit_null: null,
+  // An unquoted whole-value template.
+  port: ${PORT:-8080},
+  nested: {
+    // Nested array with comments.
+    list: [
+      // First item.
+      1,
+      2, // Second item.
+      {
+        // Item object.
+        deep: 'yes',
+      },
+    ],
+    /* block comment inside an object */
+    quoted_key: 1,
+    "dotted.key": 2,
+    "with/slash": 3,
+    "with~tilde": 4,
+    "0": "numeric object key",
+  },
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "typedef_used_in_additional_children",
+  "description": "A template resolves as the node governing dynamic keys.",
+  "classes": [
+    "typedef",
+    "object",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { card: { typedef: \"card\", type: \"object\", children: { n: { type: \"int\" } } }, named: { type: \"object\", additional_children: { type: \"card\" } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

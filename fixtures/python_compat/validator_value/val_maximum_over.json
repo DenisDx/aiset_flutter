@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_maximum_over",
+  "description": "A value over maximum fails.",
+  "classes": [
+    "bounds",
+    "maximum",
+    "rejection"
+  ],
+  "input": "{ a: 6 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"int\", maximum: 5 } } } }",
+  "value": "{ a: 6 }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "maximum",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

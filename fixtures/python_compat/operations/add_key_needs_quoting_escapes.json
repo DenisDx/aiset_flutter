@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_key_needs_quoting_escapes",
+  "description": "A label with quote and backslash characters is escaped once.",
+  "classes": [
+    "add",
+    "create-member",
+    "quoted-key",
+    "escapes"
+  ],
+  "input": "{\n  o: {},\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/o/a\"b\\c",
+    "value_text": "1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  o: {\"a\\\"b\\\\c\": 1},\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/o",
+        "/o/a\"b\\c"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "o",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "a\"b\\c",
+                  {
+                    "k": "int",
+                    "v": "1"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

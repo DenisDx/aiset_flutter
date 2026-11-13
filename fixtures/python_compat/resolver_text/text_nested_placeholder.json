@@ -1,0 +1,67 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_nested_placeholder",
+  "description": "A placeholder whose default opens another placeholder.",
+  "classes": [
+    "syntax",
+    "nested",
+    "A23"
+  ],
+  "input": "${A:-${B}}",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "A": "V"
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "divergence": {
+    "id": "A23",
+    "report": "A23",
+    "note": "The baseline placeholder pattern takes any run of non-} characters as the default, so it matches the prefix \"${A:-${B}\" of a nested reference, substitutes A and leaves the trailing brace: the value becomes \"V}\". A malformed reference is therefore silently mangled instead of being left alone. The Dart implementation treats a default that opens another placeholder as not a placeholder at all, so the text is returned verbatim."
+  },
+  "expected": {
+    "ok": true,
+    "output": "${A:-${B}}",
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": []
+    },
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "issues": [],
+    "ok": true,
+    "output": "V}",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

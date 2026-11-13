@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "number_double_sign",
+  "description": "Two signs are one invalid token.",
+  "classes": [
+    "number",
+    "invalid"
+  ],
+  "input": "{ a: --1 }",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

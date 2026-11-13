@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_object_commented_child_same_comment",
+  "description": "A comment the client sent back is re-attached anyway, as the baseline does.",
+  "classes": [
+    "set",
+    "object",
+    "comments",
+    "quirk"
+  ],
+  "input": "{\n  e: {\n    // lead\n    x: 1, // mid-trail\n  },\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/e",
+    "value_text": "{\n  // lead\n  x: 5,\n}"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  e: {\n    // lead\n    // lead\n    x: 5, // mid-trail\n  },\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/e",
+        "/e/x"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "e",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "x",
+                  {
+                    "k": "int",
+                    "v": "5"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

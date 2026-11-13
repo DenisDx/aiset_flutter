@@ -1,0 +1,45 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_object_vs_null_base",
+  "description": "An object against null is a conflict. (prefer: base)",
+  "classes": [
+    "type-mismatch",
+    "null",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "int",
+          "v": "1"
+        }
+      ]
+    ]
+  },
+  "update": {
+    "k": "null"
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ]
+      ]
+    },
+    "ok": true
+  }
+}

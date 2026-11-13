@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "env_project_number",
+  "description": "project must be a string.",
+  "classes": [
+    "envelope",
+    "rejection"
+  ],
+  "input": "{ descriptor_version: \"1.0\", project: 7, root: { type: \"object\", children: {} } }",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "DESCRIPTOR_STRUCTURE",
+        "column": 39,
+        "hasMessage": true,
+        "line": 1,
+        "path": "/project",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

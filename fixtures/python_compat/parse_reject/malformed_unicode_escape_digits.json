@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "malformed_unicode_escape_digits",
+  "description": "A \\u escape with non-hex digits.",
+  "classes": [
+    "escapes",
+    "unicode"
+  ],
+  "input": "{ a: \"\\uZZZZ\" }",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_bounds_huge_below",
+  "description": "A value below a huge integer bound passes.",
+  "classes": [
+    "bounds",
+    "big-int",
+    "exact",
+    "accept"
+  ],
+  "input": "{ a: 9007199254740992 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"number\", maximum: 9007199254740993 } } } }",
+  "value": "{ a: 9007199254740992 }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

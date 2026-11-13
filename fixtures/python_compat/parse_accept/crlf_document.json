@@ -1,0 +1,48 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "crlf_document",
+  "description": "CRLF line endings throughout.",
+  "classes": [
+    "crlf"
+  ],
+  "input": "{\r\n  a: 1,\r\n  b: {\r\n    c: 2,\r\n  },\r\n}\r\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b",
+      "/b/c"
+    ],
+    "rootText": "{\r\n  a: 1,\r\n  b: {\r\n    c: 2,\r\n  },\r\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "object",
+            "v": [
+              [
+                "c",
+                {
+                  "k": "int",
+                  "v": "2"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

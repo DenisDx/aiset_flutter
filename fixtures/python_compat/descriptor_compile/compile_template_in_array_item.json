@@ -1,0 +1,616 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_template_in_array_item",
+  "description": "A template resolves in the array item position and carries the helper with it.",
+  "classes": [
+    "compile",
+    "typedef",
+    "array",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { card: { typedef: \"card\", type: \"object\", description: \"card\", helper: { tag: \"node_form\", actions: [\"edit\"], presentation: \"modal\" }, children: { n: { type: \"int\", minimum: 1 } } }, cards: { type: \"array\", children: { type: \"card\", description: \"One card\" } }, named: { type: \"object\", additional_children: { type: \"card\" } } } },\n}\n",
+  "strict": true,
+  "expected": {
+    "configVersion": null,
+    "ok": true,
+    "project": null,
+    "revision": "sha256:2dda852688b4bf2651f6aaf13aec704c",
+    "shape": {
+      "additionalChildren": null,
+      "apply": "restart",
+      "children": [
+        [
+          "card",
+          "card",
+          {
+            "additionalChildren": null,
+            "apply": "restart",
+            "children": [
+              [
+                "n",
+                "n",
+                {
+                  "additionalChildren": null,
+                  "apply": "restart",
+                  "children": null,
+                  "const": null,
+                  "default": {
+                    "k": "null"
+                  },
+                  "description": null,
+                  "enum": null,
+                  "envAllowed": false,
+                  "envConvert": null,
+                  "fieldName": "n",
+                  "hasConst": false,
+                  "hasDefault": false,
+                  "helper": null,
+                  "hooks": null,
+                  "itemNode": null,
+                  "keyEnum": null,
+                  "keyPattern": null,
+                  "label": "n",
+                  "maxItems": {
+                    "k": "null"
+                  },
+                  "maxLength": {
+                    "k": "null"
+                  },
+                  "maximum": {
+                    "k": "null"
+                  },
+                  "minItems": {
+                    "k": "null"
+                  },
+                  "minLength": {
+                    "k": "null"
+                  },
+                  "minimum": {
+                    "k": "int",
+                    "v": "1"
+                  },
+                  "nullable": false,
+                  "optionNodes": null,
+                  "path": "/root/children/card/children/n",
+                  "pattern": null,
+                  "readOnly": false,
+                  "required": false,
+                  "secret": false,
+                  "title": null,
+                  "type": "int",
+                  "typedefName": null,
+                  "ui": null,
+                  "uniqueItems": null,
+                  "validators": []
+                }
+              ]
+            ],
+            "const": null,
+            "default": {
+              "k": "null"
+            },
+            "description": "card",
+            "enum": null,
+            "envAllowed": false,
+            "envConvert": null,
+            "fieldName": "card",
+            "hasConst": false,
+            "hasDefault": false,
+            "helper": {
+              "k": "object",
+              "v": [
+                [
+                  "tag",
+                  {
+                    "k": "string",
+                    "v": "node_form"
+                  }
+                ],
+                [
+                  "actions",
+                  {
+                    "k": "array",
+                    "v": [
+                      {
+                        "k": "string",
+                        "v": "edit"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "presentation",
+                  {
+                    "k": "string",
+                    "v": "modal"
+                  }
+                ]
+              ]
+            },
+            "hooks": null,
+            "itemNode": null,
+            "keyEnum": null,
+            "keyPattern": null,
+            "label": "card",
+            "maxItems": {
+              "k": "null"
+            },
+            "maxLength": {
+              "k": "null"
+            },
+            "maximum": {
+              "k": "null"
+            },
+            "minItems": {
+              "k": "null"
+            },
+            "minLength": {
+              "k": "null"
+            },
+            "minimum": {
+              "k": "null"
+            },
+            "nullable": false,
+            "optionNodes": null,
+            "path": "/root/children/card",
+            "pattern": null,
+            "readOnly": false,
+            "required": false,
+            "secret": false,
+            "title": null,
+            "type": "object",
+            "typedefName": null,
+            "ui": null,
+            "uniqueItems": null,
+            "validators": []
+          }
+        ],
+        [
+          "cards",
+          "cards",
+          {
+            "additionalChildren": null,
+            "apply": "restart",
+            "children": null,
+            "const": null,
+            "default": {
+              "k": "null"
+            },
+            "description": null,
+            "enum": null,
+            "envAllowed": false,
+            "envConvert": null,
+            "fieldName": "cards",
+            "hasConst": false,
+            "hasDefault": false,
+            "helper": null,
+            "hooks": null,
+            "itemNode": {
+              "additionalChildren": null,
+              "apply": "restart",
+              "children": [
+                [
+                  "n",
+                  "n",
+                  {
+                    "additionalChildren": null,
+                    "apply": "restart",
+                    "children": null,
+                    "const": null,
+                    "default": {
+                      "k": "null"
+                    },
+                    "description": null,
+                    "enum": null,
+                    "envAllowed": false,
+                    "envConvert": null,
+                    "fieldName": "n",
+                    "hasConst": false,
+                    "hasDefault": false,
+                    "helper": null,
+                    "hooks": null,
+                    "itemNode": null,
+                    "keyEnum": null,
+                    "keyPattern": null,
+                    "label": "n",
+                    "maxItems": {
+                      "k": "null"
+                    },
+                    "maxLength": {
+                      "k": "null"
+                    },
+                    "maximum": {
+                      "k": "null"
+                    },
+                    "minItems": {
+                      "k": "null"
+                    },
+                    "minLength": {
+                      "k": "null"
+                    },
+                    "minimum": {
+                      "k": "int",
+                      "v": "1"
+                    },
+                    "nullable": false,
+                    "optionNodes": null,
+                    "path": "/root/children/cards/children/children/n",
+                    "pattern": null,
+                    "readOnly": false,
+                    "required": false,
+                    "secret": false,
+                    "title": null,
+                    "type": "int",
+                    "typedefName": null,
+                    "ui": null,
+                    "uniqueItems": null,
+                    "validators": []
+                  }
+                ]
+              ],
+              "const": null,
+              "default": {
+                "k": "null"
+              },
+              "description": "One card",
+              "enum": null,
+              "envAllowed": false,
+              "envConvert": null,
+              "fieldName": null,
+              "hasConst": false,
+              "hasDefault": false,
+              "helper": {
+                "k": "object",
+                "v": [
+                  [
+                    "tag",
+                    {
+                      "k": "string",
+                      "v": "node_form"
+                    }
+                  ],
+                  [
+                    "actions",
+                    {
+                      "k": "array",
+                      "v": [
+                        {
+                          "k": "string",
+                          "v": "edit"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    "presentation",
+                    {
+                      "k": "string",
+                      "v": "modal"
+                    }
+                  ]
+                ]
+              },
+              "hooks": null,
+              "itemNode": null,
+              "keyEnum": null,
+              "keyPattern": null,
+              "label": null,
+              "maxItems": {
+                "k": "null"
+              },
+              "maxLength": {
+                "k": "null"
+              },
+              "maximum": {
+                "k": "null"
+              },
+              "minItems": {
+                "k": "null"
+              },
+              "minLength": {
+                "k": "null"
+              },
+              "minimum": {
+                "k": "null"
+              },
+              "nullable": false,
+              "optionNodes": null,
+              "path": "/root/children/cards/children",
+              "pattern": null,
+              "readOnly": false,
+              "required": false,
+              "secret": false,
+              "title": null,
+              "type": "object",
+              "typedefName": null,
+              "ui": null,
+              "uniqueItems": null,
+              "validators": []
+            },
+            "keyEnum": null,
+            "keyPattern": null,
+            "label": "cards",
+            "maxItems": {
+              "k": "null"
+            },
+            "maxLength": {
+              "k": "null"
+            },
+            "maximum": {
+              "k": "null"
+            },
+            "minItems": {
+              "k": "null"
+            },
+            "minLength": {
+              "k": "null"
+            },
+            "minimum": {
+              "k": "null"
+            },
+            "nullable": false,
+            "optionNodes": null,
+            "path": "/root/children/cards",
+            "pattern": null,
+            "readOnly": false,
+            "required": false,
+            "secret": false,
+            "title": null,
+            "type": "array",
+            "typedefName": null,
+            "ui": null,
+            "uniqueItems": null,
+            "validators": []
+          }
+        ],
+        [
+          "named",
+          "named",
+          {
+            "additionalChildren": {
+              "additionalChildren": null,
+              "apply": "restart",
+              "children": [
+                [
+                  "n",
+                  "n",
+                  {
+                    "additionalChildren": null,
+                    "apply": "restart",
+                    "children": null,
+                    "const": null,
+                    "default": {
+                      "k": "null"
+                    },
+                    "description": null,
+                    "enum": null,
+                    "envAllowed": false,
+                    "envConvert": null,
+                    "fieldName": "n",
+                    "hasConst": false,
+                    "hasDefault": false,
+                    "helper": null,
+                    "hooks": null,
+                    "itemNode": null,
+                    "keyEnum": null,
+                    "keyPattern": null,
+                    "label": "n",
+                    "maxItems": {
+                      "k": "null"
+                    },
+                    "maxLength": {
+                      "k": "null"
+                    },
+                    "maximum": {
+                      "k": "null"
+                    },
+                    "minItems": {
+                      "k": "null"
+                    },
+                    "minLength": {
+                      "k": "null"
+                    },
+                    "minimum": {
+                      "k": "int",
+                      "v": "1"
+                    },
+                    "nullable": false,
+                    "optionNodes": null,
+                    "path": "/root/children/named/additional_children/children/n",
+                    "pattern": null,
+                    "readOnly": false,
+                    "required": false,
+                    "secret": false,
+                    "title": null,
+                    "type": "int",
+                    "typedefName": null,
+                    "ui": null,
+                    "uniqueItems": null,
+                    "validators": []
+                  }
+                ]
+              ],
+              "const": null,
+              "default": {
+                "k": "null"
+              },
+              "description": "card",
+              "enum": null,
+              "envAllowed": false,
+              "envConvert": null,
+              "fieldName": null,
+              "hasConst": false,
+              "hasDefault": false,
+              "helper": {
+                "k": "object",
+                "v": [
+                  [
+                    "tag",
+                    {
+                      "k": "string",
+                      "v": "node_form"
+                    }
+                  ],
+                  [
+                    "actions",
+                    {
+                      "k": "array",
+                      "v": [
+                        {
+                          "k": "string",
+                          "v": "edit"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    "presentation",
+                    {
+                      "k": "string",
+                      "v": "modal"
+                    }
+                  ]
+                ]
+              },
+              "hooks": null,
+              "itemNode": null,
+              "keyEnum": null,
+              "keyPattern": null,
+              "label": null,
+              "maxItems": {
+                "k": "null"
+              },
+              "maxLength": {
+                "k": "null"
+              },
+              "maximum": {
+                "k": "null"
+              },
+              "minItems": {
+                "k": "null"
+              },
+              "minLength": {
+                "k": "null"
+              },
+              "minimum": {
+                "k": "null"
+              },
+              "nullable": false,
+              "optionNodes": null,
+              "path": "/root/children/named/additional_children",
+              "pattern": null,
+              "readOnly": false,
+              "required": false,
+              "secret": false,
+              "title": null,
+              "type": "object",
+              "typedefName": null,
+              "ui": null,
+              "uniqueItems": null,
+              "validators": []
+            },
+            "apply": "restart",
+            "children": null,
+            "const": null,
+            "default": {
+              "k": "null"
+            },
+            "description": null,
+            "enum": null,
+            "envAllowed": false,
+            "envConvert": null,
+            "fieldName": "named",
+            "hasConst": false,
+            "hasDefault": false,
+            "helper": null,
+            "hooks": null,
+            "itemNode": null,
+            "keyEnum": null,
+            "keyPattern": null,
+            "label": "named",
+            "maxItems": {
+              "k": "null"
+            },
+            "maxLength": {
+              "k": "null"
+            },
+            "maximum": {
+              "k": "null"
+            },
+            "minItems": {
+              "k": "null"
+            },
+            "minLength": {
+              "k": "null"
+            },
+            "minimum": {
+              "k": "null"
+            },
+            "nullable": false,
+            "optionNodes": null,
+            "path": "/root/children/named",
+            "pattern": null,
+            "readOnly": false,
+            "required": false,
+            "secret": false,
+            "title": null,
+            "type": "object",
+            "typedefName": null,
+            "ui": null,
+            "uniqueItems": null,
+            "validators": []
+          }
+        ]
+      ],
+      "const": null,
+      "default": {
+        "k": "null"
+      },
+      "description": null,
+      "enum": null,
+      "envAllowed": false,
+      "envConvert": null,
+      "fieldName": null,
+      "hasConst": false,
+      "hasDefault": false,
+      "helper": null,
+      "hooks": null,
+      "itemNode": null,
+      "keyEnum": null,
+      "keyPattern": null,
+      "label": null,
+      "maxItems": {
+        "k": "null"
+      },
+      "maxLength": {
+        "k": "null"
+      },
+      "maximum": {
+        "k": "null"
+      },
+      "minItems": {
+        "k": "null"
+      },
+      "minLength": {
+        "k": "null"
+      },
+      "minimum": {
+        "k": "null"
+      },
+      "nullable": false,
+      "optionNodes": null,
+      "path": "/root",
+      "pattern": null,
+      "readOnly": false,
+      "required": false,
+      "secret": false,
+      "title": null,
+      "type": "object",
+      "typedefName": null,
+      "ui": null,
+      "uniqueItems": null,
+      "validators": []
+    }
+  }
+}

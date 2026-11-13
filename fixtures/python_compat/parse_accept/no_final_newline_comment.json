@@ -1,0 +1,33 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "no_final_newline_comment",
+  "description": "The document ends with a line comment's closing brace and no newline.",
+  "classes": [
+    "no-final-newline",
+    "trailing-comment",
+    "eof-comment"
+  ],
+  "input": "{\n  a: 1 // last\n}",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a"
+    ],
+    "rootText": "{\n  a: 1 // last\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ]
+      ]
+    }
+  }
+}

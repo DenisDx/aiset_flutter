@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_int_bool_rejected",
+  "description": "A boolean is never an int.",
+  "classes": [
+    "type",
+    "int",
+    "bool",
+    "rejection"
+  ],
+  "input": "{ a: true }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"int\" } } } }",
+  "value": "{ a: true }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "type",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_union_second_alt",
+  "description": "A value matching the second alternative passes.",
+  "classes": [
+    "union",
+    "accept"
+  ],
+  "input": "{ u: \"hello\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { u: { type: \"union\", children_options: [ { type: \"int\", minimum: 10 }, { type: \"string\", min_length: 5 } ] } } } }",
+  "value": "{ u: \"hello\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

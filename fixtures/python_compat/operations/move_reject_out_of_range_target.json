@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_reject_out_of_range_target",
+  "description": "The target position must exist.",
+  "classes": [
+    "move",
+    "rejection",
+    "array"
+  ],
+  "input": "{\n  list: [\n    // first\n    \"a\",\n    \"b\", // second\n    \"c\",\n  ],\n}\n",
+  "operation": {
+    "op": "move",
+    "source": "/list/0",
+    "target": "/list/9"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "PathError",
+    "errorCode": "BAD_REQUEST",
+    "ok": false
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_env_empty_no_default",
+  "description": "An empty environment value with no default is empty, sourced env.",
+  "classes": [
+    "empty-value"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "V",
+    "inlineDefault": null
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": ""
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": null,
+      "name": "V",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": ""
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "env"
+          }
+        ]
+      ]
+    }
+  }
+}

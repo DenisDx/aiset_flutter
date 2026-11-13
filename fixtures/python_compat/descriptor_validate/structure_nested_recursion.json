@@ -1,0 +1,18 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "structure_nested_recursion",
+  "description": "Errors inside a deep subtree are reported with their full path.",
+  "classes": [
+    "structure",
+    "paths",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", children: { b: { type: \"object\", children: { c: { type: \"int\", minimum: 0 } } } } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

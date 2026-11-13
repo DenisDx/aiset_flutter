@@ -1,0 +1,31 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_both_empty_update",
+  "description": "Two empty objects merge to an empty object. (prefer: update)",
+  "classes": [
+    "object",
+    "empty",
+    "equal",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "object",
+    "v": []
+  },
+  "update": {
+    "k": "object",
+    "v": []
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "object",
+      "v": []
+    },
+    "ok": true
+  }
+}

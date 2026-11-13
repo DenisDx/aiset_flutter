@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_number_double_ok",
+  "description": "A double is a valid number.",
+  "classes": [
+    "type",
+    "number",
+    "accept"
+  ],
+  "input": "{ a: 1.5 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"number\" } } } }",
+  "value": "{ a: 1.5 }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

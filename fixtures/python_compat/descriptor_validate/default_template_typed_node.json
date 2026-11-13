@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "default_template_typed_node",
+  "description": "A default on a node whose type names a template.",
+  "classes": [
+    "default",
+    "typedef",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    port: { typedef: \"sp\", type: \"int\", minimum: 1 },\n    bad: { type: \"sp\", default: \"abc\" },\n  } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_DEFAULT",
+        "column": 33,
+        "hasMessage": true,
+        "line": 5,
+        "path": "/root/children/bad/default",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

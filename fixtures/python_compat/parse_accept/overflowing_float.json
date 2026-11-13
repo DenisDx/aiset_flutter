@@ -1,0 +1,41 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "overflowing_float",
+  "description": "A float literal that overflows to infinity.",
+  "classes": [
+    "number",
+    "float",
+    "overflow"
+  ],
+  "input": "{\n  huge: 1e400,\n  tiny: 1e-400,\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/huge",
+      "/tiny"
+    ],
+    "rootText": "{\n  huge: 1e400,\n  tiny: 1e-400,\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "huge",
+          {
+            "k": "double",
+            "v": "inf"
+          }
+        ],
+        [
+          "tiny",
+          {
+            "k": "double",
+            "v": 0.0
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_only_array_item",
+  "description": "Removing the only item leaves an empty array.",
+  "classes": [
+    "remove",
+    "array",
+    "empty"
+  ],
+  "input": "{\n  list: [\n    \"a\",\n  ],\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/list/0"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": []
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

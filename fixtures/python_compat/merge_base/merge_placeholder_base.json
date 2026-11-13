@@ -1,0 +1,36 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_placeholder_base",
+  "description": "A placeholder is one opaque value. (prefer: base)",
+  "classes": [
+    "scalar",
+    "placeholder",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "template",
+    "v": {
+      "name": "PORT",
+      "default": "8080"
+    }
+  },
+  "update": {
+    "k": "int",
+    "v": "9090"
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "template",
+      "v": {
+        "default": "8080",
+        "name": "PORT"
+      }
+    },
+    "ok": true
+  }
+}

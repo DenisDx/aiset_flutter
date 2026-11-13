@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "pipeline_revisions",
+  "id": "rev_source_empty_object",
+  "description": "The revision of an empty object.",
+  "classes": [
+    "source",
+    "revision",
+    "source"
+  ],
+  "input": "{}",
+  "query": {
+    "op": "source"
+  },
+  "expected": {
+    "hasBom": false,
+    "ok": true,
+    "op": "source",
+    "revision": "sha256:44136fa355b3678a1146ad16f7e8649e",
+    "utf16Length": 2,
+    "utf8Length": 2
+  }
+}

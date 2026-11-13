@@ -1,0 +1,22 @@
+{
+  "schema": "1",
+  "area": "pipeline_revisions",
+  "id": "rev_descriptor_comment",
+  "description": "A descriptor comment changes the revision.",
+  "classes": [
+    "descriptor",
+    "comments",
+    "revision",
+    "descriptor"
+  ],
+  "input": "// style\n{ descriptor_version: \"1.0\", project: \"rev\", config_version: \"2\",\n  root: { type: \"object\", children: { a: { type: \"int\", default: 1 } } } }\n",
+  "query": {
+    "op": "descriptor"
+  },
+  "expected": {
+    "bytesRevision": "sha256:e256bdcade1256880952474af161ad02",
+    "ok": true,
+    "op": "descriptor",
+    "revision": "sha256:e256bdcade1256880952474af161ad02"
+  }
+}

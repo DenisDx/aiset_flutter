@@ -1,0 +1,63 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "empty_string_values",
+  "description": "Empty strings and an empty default are distinct from absent.",
+  "classes": [
+    "string",
+    "empty"
+  ],
+  "input": "{\n  e: \"\",\n  q: '',\n  n: 0,\n  f: false,\n  z: null,\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/e",
+      "/q",
+      "/n",
+      "/f",
+      "/z"
+    ],
+    "rootText": "{\n  e: \"\",\n  q: '',\n  n: 0,\n  f: false,\n  z: null,\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "e",
+          {
+            "k": "string",
+            "v": ""
+          }
+        ],
+        [
+          "q",
+          {
+            "k": "string",
+            "v": ""
+          }
+        ],
+        [
+          "n",
+          {
+            "k": "int",
+            "v": "0"
+          }
+        ],
+        [
+          "f",
+          {
+            "k": "bool",
+            "v": false
+          }
+        ],
+        [
+          "z",
+          {
+            "k": "null"
+          }
+        ]
+      ]
+    }
+  }
+}

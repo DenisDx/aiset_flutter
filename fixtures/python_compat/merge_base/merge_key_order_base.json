@@ -1,0 +1,82 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_key_order_base",
+  "description": "The base order is kept and new keys follow. (prefer: base)",
+  "classes": [
+    "object",
+    "order",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "object",
+    "v": [
+      [
+        "z",
+        {
+          "k": "int",
+          "v": "1"
+        }
+      ],
+      [
+        "a",
+        {
+          "k": "int",
+          "v": "2"
+        }
+      ]
+    ]
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "m",
+        {
+          "k": "int",
+          "v": "3"
+        }
+      ],
+      [
+        "z",
+        {
+          "k": "int",
+          "v": "4"
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "object",
+      "v": [
+        [
+          "z",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ],
+        [
+          "m",
+          {
+            "k": "int",
+            "v": "3"
+          }
+        ]
+      ]
+    },
+    "ok": true
+  }
+}

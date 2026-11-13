@@ -1,0 +1,51 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_array_item_middle_inline",
+  "description": "Removing an inline item absorbs the separator space, as the baseline does.",
+  "classes": [
+    "remove",
+    "array",
+    "inline",
+    "commas"
+  ],
+  "input": "{\n  list: [\"a\", \"b\", \"c\"],\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/list/1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\"a\",\"c\"],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0",
+        "/list/1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "a"
+                },
+                {
+                  "k": "string",
+                  "v": "c"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_override_only",
+  "description": "A value from the host override layer.",
+  "classes": [
+    "precedence",
+    "override"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "V",
+    "inlineDefault": null
+  },
+  "layers": {
+    "overrides": {
+      "V": "from-override"
+    },
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": null,
+      "name": "V",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": "from-override"
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "override"
+          }
+        ]
+      ]
+    }
+  }
+}

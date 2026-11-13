@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_crlf_items",
+  "description": "Moving items in a CRLF array.",
+  "classes": [
+    "move",
+    "crlf"
+  ],
+  "input": "{\r\n  list: [\r\n    \"a\",\r\n    \"b\",\r\n  ],\r\n}\r\n",
+  "operation": {
+    "op": "move",
+    "source": "/list/0",
+    "target": "/list/1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\r\n  list: [\n    \"b\",\n    \"a\",\n  ],\r\n}\r\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0",
+        "/list/1"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "b"
+                },
+                {
+                  "k": "string",
+                  "v": "a"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

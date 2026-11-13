@@ -1,0 +1,29 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "field_default_present_flag",
+  "description": "An explicit null default is reported as a present default.",
+  "classes": [
+    "default",
+    "null"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", nullable: true, default: null } } },\n}\n",
+  "query": {
+    "op": "node_field",
+    "pointer": "/a",
+    "field": "hasDefault"
+  },
+  "strict": true,
+  "expected": {
+    "ok": true,
+    "query": {
+      "field": "hasDefault",
+      "op": "node_field",
+      "pointer": "/a"
+    },
+    "result": {
+      "k": "bool",
+      "v": true
+    }
+  }
+}

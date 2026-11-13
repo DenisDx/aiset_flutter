@@ -1,0 +1,30 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_reject_strict_unknown_property",
+  "description": "Strict compilation refuses unknown metadata.",
+  "classes": [
+    "compile",
+    "rejection",
+    "unknown-metadata",
+    "strict"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", requried: true } } },\n}\n",
+  "strict": true,
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "issues": [
+      {
+        "code": "UNKNOWN_DESCRIPTOR_PROPERTY",
+        "column": 70,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/requried",
+        "severity": "error"
+      }
+    ],
+    "ok": false
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "template_dash_operator",
+  "description": "The ${VAR-default} spelling is not supported.",
+  "classes": [
+    "placeholder",
+    "unsupported-token"
+  ],
+  "input": "{ a: ${VAR-default} }",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

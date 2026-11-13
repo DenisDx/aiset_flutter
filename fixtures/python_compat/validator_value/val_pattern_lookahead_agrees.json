@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_lookahead_agrees",
+  "description": "A lookahead is refused as a dialect issue by both.",
+  "classes": [
+    "pattern",
+    "dialect",
+    "lookaround",
+    "agree"
+  ],
+  "input": "{ a: \"xy\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"(?=x)y\" } } } }",
+  "value": "{ a: \"xy\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "pattern",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

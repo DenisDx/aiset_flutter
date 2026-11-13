@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_env_empty_with_default",
+  "description": "An empty environment value falls through to the inline default.",
+  "classes": [
+    "empty-value",
+    "inline-default"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "V",
+    "inlineDefault": "fb"
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": ""
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": "fb",
+      "name": "V",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": "fb"
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "inline_default"
+          }
+        ]
+      ]
+    }
+  }
+}

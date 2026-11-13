@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_object_block_end_only",
+  "description": "An object whose only comment is a block-end comment keeps it.",
+  "classes": [
+    "set",
+    "object",
+    "comments",
+    "block-end"
+  ],
+  "input": "{\n  e: {\n    x: 1\n    // end\n  },\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/e",
+    "value_text": "{ x: 5 }"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  e: {\n    x: 5\n    // end\n  },\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/e",
+        "/e/x"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "e",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "x",
+                  {
+                    "k": "int",
+                    "v": "5"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

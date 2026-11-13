@@ -1,0 +1,49 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_value_with_spaces",
+  "description": "Surrounding spaces are kept by lookup.",
+  "classes": [
+    "whitespace"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "V",
+    "inlineDefault": null
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "  spaced  "
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": null,
+      "name": "V",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": "  spaced  "
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "env"
+          }
+        ]
+      ]
+    }
+  }
+}

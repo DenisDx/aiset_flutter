@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_const_int_vs_bool",
+  "description": "1 is not true.",
+  "classes": [
+    "const",
+    "bool",
+    "rejection"
+  ],
+  "input": "{ a: true }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\", const: 1 } } } }",
+  "value": "{ a: true }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

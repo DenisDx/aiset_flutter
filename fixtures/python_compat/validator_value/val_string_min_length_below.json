@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_string_min_length_below",
+  "description": "A shorter string fails min_length.",
+  "classes": [
+    "string",
+    "min-length",
+    "rejection"
+  ],
+  "input": "{ a: \"ab\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", min_length: 3 } } } }",
+  "value": "{ a: \"ab\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "min_length",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

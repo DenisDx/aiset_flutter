@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_union_null_admits_nullable_alternative",
+  "description": "A null value is admitted when an alternative is nullable.",
+  "classes": [
+    "union",
+    "null",
+    "accept",
+    "A35"
+  ],
+  "input": "{ u: null }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { u: { type: \"union\", children_options: [ { type: \"int\" }, { type: \"string\", nullable: true } ] } } } }",
+  "value": "{ u: null }",
+  "divergence": {
+    "id": "A35",
+    "report": "A35",
+    "note": "Same root cause as val_union_null_admits_null_alternative: the baseline refuses null at the union node before consulting the nullable alternative."
+  },
+  "expected": {
+    "ok": true,
+    "valid": true,
+    "issues": [],
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/u",
+        "rule": "nullable",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

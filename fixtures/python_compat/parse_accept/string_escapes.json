@@ -1,0 +1,83 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "string_escapes",
+  "description": "Hex, unicode and surrogate-pair escapes, escaped slash and quote, a line continuation, all kept verbatim in the raw text.",
+  "classes": [
+    "escapes",
+    "hex-escape",
+    "unicode-escape",
+    "surrogate-pair-escape",
+    "line-continuation"
+  ],
+  "input": "{\n  hex: \"\\x41\",\n  uni: \"\\u00e9\",\n  pair: \"\\ud83d\\ude80\",\n  slash: \"a\\/b\",\n  cont: \"ab\\\ncd\",\n  tabs: \"\\t|\",\n  said: \"he said \\\"hi\\\"\",\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/hex",
+      "/uni",
+      "/pair",
+      "/slash",
+      "/cont",
+      "/tabs",
+      "/said"
+    ],
+    "rootText": "{\n  hex: \"\\x41\",\n  uni: \"\\u00e9\",\n  pair: \"\\ud83d\\ude80\",\n  slash: \"a\\/b\",\n  cont: \"ab\\\ncd\",\n  tabs: \"\\t|\",\n  said: \"he said \\\"hi\\\"\",\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "hex",
+          {
+            "k": "string",
+            "v": "A"
+          }
+        ],
+        [
+          "uni",
+          {
+            "k": "string",
+            "v": "é"
+          }
+        ],
+        [
+          "pair",
+          {
+            "k": "string",
+            "v": "🚀"
+          }
+        ],
+        [
+          "slash",
+          {
+            "k": "string",
+            "v": "a/b"
+          }
+        ],
+        [
+          "cont",
+          {
+            "k": "string",
+            "v": "abcd"
+          }
+        ],
+        [
+          "tabs",
+          {
+            "k": "string",
+            "v": "\t|"
+          }
+        ],
+        [
+          "said",
+          {
+            "k": "string",
+            "v": "he said \"hi\""
+          }
+        ]
+      ]
+    }
+  }
+}

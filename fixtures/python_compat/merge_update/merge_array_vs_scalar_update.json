@@ -1,0 +1,35 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_array_vs_scalar_update",
+  "description": "An array against a scalar is a conflict. (prefer: update)",
+  "classes": [
+    "array",
+    "type-mismatch",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "array",
+    "v": [
+      {
+        "k": "int",
+        "v": "1"
+      }
+    ]
+  },
+  "update": {
+    "k": "int",
+    "v": "1"
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "int",
+      "v": "1"
+    },
+    "ok": true
+  }
+}

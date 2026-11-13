@@ -1,0 +1,36 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_direct_template_unresolved",
+  "description": "A placeholder value is never validated as data.",
+  "classes": [
+    "unresolved-template",
+    "rejection"
+  ],
+  "input": "",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\" } } } }",
+  "direct": true,
+  "query": {
+    "pointer": "/a",
+    "value": {
+      "template": {
+        "name": "V",
+        "default": null
+      }
+    },
+    "path": "/a",
+    "present": true
+  },
+  "expected": {
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "unresolved_template",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

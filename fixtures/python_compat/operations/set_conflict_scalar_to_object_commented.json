@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_conflict_scalar_to_object_commented",
+  "description": "Replacing a commented scalar with a different structural type is refused.",
+  "classes": [
+    "set",
+    "rejection",
+    "comment-conflict"
+  ],
+  "input": "{\n  a: 1, // c\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/a",
+    "value_text": "{}"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "CommentPreservationConflict",
+    "errorCode": "COMMENT_PRESERVATION_CONFLICT",
+    "ok": false
+  }
+}

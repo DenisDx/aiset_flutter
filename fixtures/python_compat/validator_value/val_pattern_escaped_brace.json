@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_pattern_escaped_brace",
+  "description": "An escaped brace is a literal.",
+  "classes": [
+    "pattern",
+    "accept"
+  ],
+  "input": "{ a: \"{a}\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", pattern: \"\\\\{a\\\\}\" } } } }",
+  "value": "{ a: \"{a}\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

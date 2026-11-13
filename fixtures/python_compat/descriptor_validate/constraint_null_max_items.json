@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "constraint_null_max_items",
+  "description": "The MapEntry(max_items: 9).key constraint does not apply to type null.",
+  "classes": [
+    "constraint-by-type",
+    "null",
+    "max_items",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"null\", max_items: 9 } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 69,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/max_items",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "pipeline_revisions",
+  "id": "rev_source_simple",
+  "description": "The source revision of a plain document.",
+  "classes": [
+    "source",
+    "revision",
+    "source"
+  ],
+  "input": "{\n  a: 1,\n}\n",
+  "query": {
+    "op": "source"
+  },
+  "expected": {
+    "hasBom": false,
+    "ok": true,
+    "op": "source",
+    "revision": "sha256:3db1025c3ed23140486224095a06e89e",
+    "utf16Length": 12,
+    "utf8Length": 12
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "empty_containers",
+  "description": "Empty object and array, with and without inner whitespace, plus a nested [[{}]].",
+  "classes": [
+    "empty-containers",
+    "nested-arrays"
+  ],
+  "input": "{\n  eo: {},\n  ea: [],\n  eoWs: {  },\n  eaWs: [\n  ],\n  nested: [[{}]],\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/eo",
+      "/ea",
+      "/eoWs",
+      "/eaWs",
+      "/nested",
+      "/nested/0",
+      "/nested/0/0"
+    ],
+    "rootText": "{\n  eo: {},\n  ea: [],\n  eoWs: {  },\n  eaWs: [\n  ],\n  nested: [[{}]],\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "eo",
+          {
+            "k": "object",
+            "v": []
+          }
+        ],
+        [
+          "ea",
+          {
+            "k": "array",
+            "v": []
+          }
+        ],
+        [
+          "eoWs",
+          {
+            "k": "object",
+            "v": []
+          }
+        ],
+        [
+          "eaWs",
+          {
+            "k": "array",
+            "v": []
+          }
+        ],
+        [
+          "nested",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "array",
+                "v": [
+                  {
+                    "k": "object",
+                    "v": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

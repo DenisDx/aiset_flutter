@@ -1,0 +1,53 @@
+{
+  "schema": "1",
+  "area": "pipeline_operations",
+  "id": "op_batch_create_object_then_fill",
+  "description": "A container created by operation one is filled by operation two.",
+  "classes": [
+    "batch",
+    "create-then-fill",
+    "sequential",
+    "pipeline"
+  ],
+  "input": "{ port: 1 }\n",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: {\n    port: { type: \"int\" },\n    fresh: { type: \"object\", additional_children: { type: \"string\" } },\n  } } }\n",
+  "config": "{ port: 1 }\n",
+  "operations": [
+    {
+      "op": "set",
+      "path": "/fresh",
+      "value_text": "{}"
+    },
+    {
+      "op": "set",
+      "path": "/fresh/x",
+      "value_text": "\"v\""
+    }
+  ],
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "principal": "demo",
+  "expected": {
+    "activeMatchesRevision": false,
+    "activeRevision": "sha256:1b2c712e5dd79d8fd5c0f018a08f39d4",
+    "application": "restart_required",
+    "changedPaths": [
+      "/fresh",
+      "/fresh/x"
+    ],
+    "descriptorRevision": "sha256:7b2a9a03967f758da7e27c2faaa5b309",
+    "dryRun": false,
+    "fileText": "{ port: 1, fresh: {x: \"v\"} }\n",
+    "fileUnchanged": false,
+    "issues": [],
+    "ok": true,
+    "result": "stored",
+    "revision": "sha256:1e5cfc72af8e28822edeb51169e8be63",
+    "stateTextUnchanged": false,
+    "stored": true,
+    "valid": true
+  }
+}

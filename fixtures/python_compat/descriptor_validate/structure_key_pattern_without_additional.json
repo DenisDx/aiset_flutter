@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "structure_key_pattern_without_additional",
+  "description": "A key pattern with nothing to govern is accepted by the baseline.",
+  "classes": [
+    "structure",
+    "keys"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", key_pattern: \"^a$\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

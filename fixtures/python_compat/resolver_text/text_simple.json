@@ -1,0 +1,51 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_simple",
+  "description": "One placeholder in an otherwise empty string.",
+  "classes": [
+    "syntax",
+    "accept"
+  ],
+  "input": "${V}",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "x"
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "x",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "V"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

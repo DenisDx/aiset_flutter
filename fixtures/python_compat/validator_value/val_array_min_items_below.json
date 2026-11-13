@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_array_min_items_below",
+  "description": "One item short of min_items fails.",
+  "classes": [
+    "array",
+    "min-items",
+    "rejection"
+  ],
+  "input": "{ l: [1] }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { l: { type: \"array\", children: { type: \"int\" }, min_items: 2 } } } }",
+  "value": "{ l: [1] }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/l",
+        "rule": "min_items",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

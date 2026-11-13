@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_misplaced_number_unique_items",
+  "description": "Item uniqueness on a number node is refused at the descriptor.",
+  "classes": [
+    "misplaced",
+    "constraint-by-type",
+    "number",
+    "rejection"
+  ],
+  "input": "{ a: 1 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"number\", unique_items: true } } } }",
+  "value": "{ a: 1 }",
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "ok": false
+  }
+}

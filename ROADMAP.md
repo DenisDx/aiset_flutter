@@ -30,10 +30,8 @@ Normative text: `SPEC.md` amendments 30, 32, 33.
 5. A capability Python `aiset` does **not** implement is **not** implemented here for now. This library does
    not run ahead of the Python project; when Python gains such a feature it becomes in scope later.
 6. As of 2026-11-10 no newer Python branch exists, so the newest public commit is the whole authority.
-7. **Git belongs to the user.** `git init` was performed outside the container on 2026-11-10. Agents stage,
-   commit, push and configure nothing; the container has no credentials and no remote is set. The user
-   commits and pushes from the host machine. Until the user says otherwise, **nothing is
-   committed by an agent**.
+7. **Git belongs to the user.** The user creates commits and pushes. Agents stage, commit, push and
+   configure nothing, and until the user says otherwise **nothing is committed by an agent**.
 8. The project is **open, MIT-licensed** (`SPEC.md` amendment 34). Publication to pub.dev is not planned now
    but is not excluded later.
 9. **English only** for everything this project produces — code, comments, documentation, memory,
@@ -46,17 +44,12 @@ Normative text: `SPEC.md` amendments 30, 32, 33.
     referenced by variable name only (`SPEC.md` amendment 36, SEC-02).
 12. **`local_*` files are the exception.** Prefer `.env` and configuration by variable; create a
     `local_` file only when no ordinary mechanism hides the value (`SPEC.md` amendment 36).
-13. **One shared model, sequential delegation** — the working setup of *this* environment, not a
-    constraint on the project. All agents run on the same fast, powerful, free local
-    model, so launching subagents in parallel brings no gain — effective parallelism is
-    **1**. Subagents are dispatched one at a time and their results are collected in order. Several
-    queued tasks are acceptable, therefore **timeouts are set generously and stalled steps are
-    restarted until they pass**. The mechanism is `local_tools/run_retry.sh` — operator-side helper, deliberately not project source and not versioned: it retries timeouts, kills and
-    transport errors indefinitely with growing backoff and a checkpoint every five attempts, and it
-    **stops immediately on a genuine non-zero exit**, because retrying a real failure until it goes
-    green would hide the bug. The same rule applies to delegation: when a subagent run
-    is interrupted or expires, it is resumed on the same task rather than started from scratch, and a
-    stall is reported as inconclusive, never as a failed check.
+13. **Stalled work is restarted, failures are not.** A step that stops because it waited —
+    a timeout, a killed process, a transport error — is retried until it completes, and
+    slowness is never treated as a defect. A step that fails for a stated reason is reported on the
+    first occurrence: retrying a real failure until it goes green would hide the bug. Per-environment
+    numbers, helper scripts and tool-specific budgets are working notes and live in
+    `memory/context.md`, not in this plan.
 14. **The repository is author-neutral.** Files that describe the agent system or one developer's
     tooling — `AGENTS.md`, `memory/`, `.opencode/`, `local_tools/`, anything `local_*` — are not versioned.
     The reason is not tidiness: **another author may use entirely different tools**, and the project must
@@ -69,7 +62,7 @@ Normative text: `SPEC.md` amendments 30, 32, 33.
     unverified, never as passing (`SPEC.md` amendment 25).
 
 The upstream Python behavioral authority is reachable read-only at
-`https://github.com/DenisDx/aiset` (`main` @ `cbb74c7`, 2026-10-23). The container has no push
+`https://github.com/DenisDx/aiset` (`main` @ `d4adb45`, 2026-11-11 — re-baselined after the Python team implemented the frozen defect batch; `cbb74c7` was the initial snapshot). The container has no push
 credentials, so upstream is a fixed input, not a collaboration target.
 
 ## 2. Stage plan (derived from `SPEC.md` amendment 29)
@@ -118,7 +111,7 @@ D-02 — the reference clone must be a fetchable working tree, not a frozen arch
 | ID | Question | Why it matters | Coordinator default if unanswered |
 |---|---|---|---|
 | ~~D-01~~ | ~~Is `main` @ `cbb74c7` the parity baseline?~~ **RESOLVED** — newest commit wins, code over prose (`SPEC.md` 32); user confirmed on 2026-11-10 that no newer branch exists | Was: corpus correctness depended on the pin | Superseded by the re-fetch rule; no residual gap assumed |
-| ~~D-02~~ | **RESOLVED 2026-11-10** — reference clone at `/workspace/aiset-python`, re-fetched per generation with the SHA recorded; generated fixtures ARE committed. | Was: reproducibility of stage 1 without a Python install | Closed; the clone itself is created by T-04, the SHA file by T-16 |
+| ~~D-02~~ | **RESOLVED 2026-11-10** — reference clone kept outside the repository and located through the git-ignored `.env` key `AISET_PYTHON_BASELINE`, re-fetched per generation with the SHA recorded; generated fixtures ARE committed. | Was: reproducibility of stage 1 without a Python install | Closed; the clone was created in T-04 and provenance is recorded in `fixtures/BASELINE` |
 | ~~D-03~~ | ~~Which package identity is canonical?~~ **RESOLVED 2026-11-10** — see §4.1 for the verified naming scheme | Was: affected every `pubspec.yaml` and import path | Superseded by the measured result |
 | ~~D-04~~ | **RESOLVED 2026-11-10** — MIT, the project is open. My original premise was wrong: upstream declares `license = { text = "MIT" }` in `pyproject.toml` but ships no `LICENSE` file. | Was: blocked `pubspec.yaml` metadata | Policy in `SPEC.md` amendment 34. Root `LICENSE` written 2026-11-10 with `Copyright (c) 2026 DenisDx`, body verified identical to the SPDX MIT text; per-package copies remain (T-06) |
 | ~~D-05~~ | **RESOLVED 2026-11-10** — the user ran `git init` from the host; no remote is configured in the container and agents never commit or push (standing rule 7). `.gitignore` was created by the coordinator and verified with `git check-ignore`. | Was: a commit-based workflow | Branch is currently `master`; renaming it to `main` is the user's call, not an agent action |
@@ -126,6 +119,9 @@ D-02 — the reference clone must be a fetchable working tree, not a frozen arch
 | ~~D-07~~ | **RESOLVED 2026-11-10** — a live OpenAI-compatible endpoint exists and needs no authorization. Its address and model name are local-space data and therefore live only in the git-ignored `.env`; the tracked template is `.env.example`. | Was: AI-01 and the depth of AI-05 | Closed; with no key configured the client sends no `Authorization` header at all (`SPEC.md` 36) |
 | ~~D-08~~ | **RESOLVED 2026-11-10** — `aiui` support is **not** built in the MVP. The generic mechanisms it relies on stay in scope; the aiui-specific surface is deferred (`SPEC.md` amendment 35). | Was: how much of amendments 7 and 23 to build early | Closed; deferred list in §5 |
 | ~~D-09~~ | **RESOLVED 2026-11-10** — English is mandatory for everything in this project: code, comments, documentation, memory, tool artifacts. The only exceptions are localization and translation files, written in their target language. Conversation with the user follows the language the user used. | Was: affected every document | Closed; the Russian draft was git-ignored and was deleted on 2026-11-10 after consolidation, so no document can cite it |
+| ~~D-10~~ | **RESOLVED 2026-11-13** (`SPEC_.md` 43): tag `yue`, `zh-Hant` is a script tag, never a Cantonese stand-in. Was: how is **Cantonese** represented: the CLDR tag `yue`, a `zh-Hant` resource reused for Cantonese readers, or both? | Fixes the ARB file set and the language tags accepted in a multilingual `description` (`SPEC_.md` 40, 41) | Ship `yue` and `zh-Hant` as separate resources, `yue` falling back to `zh-Hant` |
+| ~~D-11~~ | **RESOLVED 2026-11-13** by the user: all documents stay in English now; translations only after the texts stabilize. | Was: four drifting copies | Closed |
+| ~~D-12~~ | **RESOLVED 2026-11-13** (`SPEC_.md` 42): help = chrome + hints + contextual mini-help (ARB-only, English base with explicit fallback). A md-article browser is **permanently forbidden** — `docs/` is developer documentation and never ships to users. Search must cover title, description, value. | Was: help depth | Closed |
 
 ### 4.1 Naming scheme (D-03, resolved by measurement)
 

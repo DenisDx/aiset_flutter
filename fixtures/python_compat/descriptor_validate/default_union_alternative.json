@@ -1,0 +1,18 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "default_union_alternative",
+  "description": "A union default must match one alternative.",
+  "classes": [
+    "default",
+    "union",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"union\", children_options: [ { type: \"int\" }, { type: \"string\" } ], default: \"text\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

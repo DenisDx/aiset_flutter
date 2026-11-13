@@ -1,0 +1,136 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "heterogeneous_array_index_clamped",
+  "description": "An item beyond the last alternative uses the last one.",
+  "classes": [
+    "array",
+    "union"
+  ],
+  "input": "{ steps: [ 1, 2, 3, 4, 5 ] }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    steps: { type: \"array\", children_options: [\n      { type: \"object\", children: { a: { type: \"string\", default: \"A\" } } },\n      { type: \"object\", children: { b: { type: \"string\", default: \"B\" } } },\n      { type: \"int\" },\n    ] },\n  } },\n}\n",
+  "config": "{ steps: [ 1, 2, 3, 4, 5 ] }",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "steps",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "int",
+                "v": "1"
+              },
+              {
+                "k": "int",
+                "v": "2"
+              },
+              {
+                "k": "int",
+                "v": "3"
+              },
+              {
+                "k": "int",
+                "v": "4"
+              },
+              {
+                "k": "int",
+                "v": "5"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/steps/0",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/steps/1",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/steps/2",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/steps/3",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/steps/4",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_inside_words",
+  "description": "A placeholder surrounded by text.",
+  "classes": [
+    "syntax"
+  ],
+  "input": "a-${V}-b",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "x"
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "a-x-b",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "V"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

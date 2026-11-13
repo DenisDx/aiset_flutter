@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_astral_column_position",
+  "description": "A diagnostic after astral characters counts columns in code points.",
+  "classes": [
+    "node",
+    "positions",
+    "astral"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    rocket: { type: \"string\", description: \"🚀🚀\", oops: 1 },\n  } },\n}\n",
+  "mode": "default",
+  "expected": {
+    "issues": [
+      {
+        "code": "UNKNOWN_DESCRIPTOR_PROPERTY",
+        "column": 56,
+        "hasMessage": true,
+        "line": 4,
+        "path": "/root/children/rocket/oops",
+        "severity": "warning"
+      }
+    ],
+    "ok": true,
+    "valid": true
+  }
+}

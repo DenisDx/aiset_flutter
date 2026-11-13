@@ -1,0 +1,55 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_provenance_inline_default",
+  "description": "The inline fallback is named as the source.",
+  "classes": [
+    "provenance"
+  ],
+  "input": "${A:-fb}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "fb",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ],
+              [
+                "source",
+                {
+                  "k": "string",
+                  "v": "inline_default"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

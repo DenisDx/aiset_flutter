@@ -1,0 +1,65 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "move_target_uses_source_container",
+  "description": "Only the target index is read; the target container is ignored, as in the baseline.",
+  "classes": [
+    "move",
+    "quirk",
+    "array"
+  ],
+  "input": "{\n  a: [1, 2],\n  b: [7],\n}\n",
+  "operation": {
+    "op": "move",
+    "source": "/a/0",
+    "target": "/b/0"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  a: [1, 2],\n  b: [7],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a",
+        "/a/0",
+        "/a/1",
+        "/b",
+        "/b/0"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "int",
+                  "v": "1"
+                },
+                {
+                  "k": "int",
+                  "v": "2"
+                }
+              ]
+            }
+          ],
+          [
+            "b",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "int",
+                  "v": "7"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

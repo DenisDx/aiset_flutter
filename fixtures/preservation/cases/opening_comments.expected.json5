@@ -1,0 +1,8 @@
+{
+  a: { // obj opening owned as trailing of a
+    b: 1,
+  }, // after comma
+  c: [ // arr opening owned as trailing of c
+    2,
+  ],
+}

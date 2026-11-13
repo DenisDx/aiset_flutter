@@ -1,0 +1,49 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_case_sensitive_name",
+  "description": "Names are case-sensitive.",
+  "classes": [
+    "names"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "VAR",
+    "inlineDefault": null
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "var": "lower"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": null,
+      "name": "VAR",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": ""
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "empty"
+          }
+        ]
+      ]
+    }
+  }
+}

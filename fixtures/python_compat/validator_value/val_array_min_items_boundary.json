@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_array_min_items_boundary",
+  "description": "An array of exactly min_items passes.",
+  "classes": [
+    "array",
+    "min-items",
+    "accept"
+  ],
+  "input": "{ l: [1, 2] }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { l: { type: \"array\", children: { type: \"int\" }, min_items: 2 } } } }",
+  "value": "{ l: [1, 2] }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

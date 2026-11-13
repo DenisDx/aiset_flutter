@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "default_wrong_type",
+  "description": "A default of the wrong type is refused.",
+  "classes": [
+    "default",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"int\", default: \"abc\" } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_DEFAULT",
+        "column": 66,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/default",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

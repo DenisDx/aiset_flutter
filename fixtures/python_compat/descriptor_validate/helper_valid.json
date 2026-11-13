@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "helper_valid",
+  "description": "A helper binding with every optional field.",
+  "classes": [
+    "helper",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", helper: { tag: \"node_form\", actions: [\"create\", \"edit\"], presentation: \"modal\", settings: { x: 1 } } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

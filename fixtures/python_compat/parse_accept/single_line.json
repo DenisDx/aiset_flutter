@@ -1,0 +1,90 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "single_line",
+  "description": "Compact single-line objects and arrays, empty containers.",
+  "classes": [
+    "inline-objects",
+    "empty-containers",
+    "inline-array"
+  ],
+  "input": "{\n  compact: { a: 1, b: 2 },\n  empty_object: {},\n  empty_array: [],\n  single_array: [1, 2, 3],\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/compact",
+      "/compact/a",
+      "/compact/b",
+      "/empty_object",
+      "/empty_array",
+      "/single_array",
+      "/single_array/0",
+      "/single_array/1",
+      "/single_array/2"
+    ],
+    "rootText": "{\n  compact: { a: 1, b: 2 },\n  empty_object: {},\n  empty_array: [],\n  single_array: [1, 2, 3],\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "compact",
+          {
+            "k": "object",
+            "v": [
+              [
+                "a",
+                {
+                  "k": "int",
+                  "v": "1"
+                }
+              ],
+              [
+                "b",
+                {
+                  "k": "int",
+                  "v": "2"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "empty_object",
+          {
+            "k": "object",
+            "v": []
+          }
+        ],
+        [
+          "empty_array",
+          {
+            "k": "array",
+            "v": []
+          }
+        ],
+        [
+          "single_array",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "int",
+                "v": "1"
+              },
+              {
+                "k": "int",
+                "v": "2"
+              },
+              {
+                "k": "int",
+                "v": "3"
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

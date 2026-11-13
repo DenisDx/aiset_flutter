@@ -1,0 +1,40 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_object_to_scalar",
+  "description": "Replacing a comment-free object with a scalar.",
+  "classes": [
+    "set",
+    "object",
+    "scalar"
+  ],
+  "input": "{\n  o: {\n    a: 1,\n  },\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/o",
+    "value_text": "5"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  o: 5,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/o"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "o",
+            {
+              "k": "int",
+              "v": "5"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

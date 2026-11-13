@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_dollar_in_name",
+  "description": "A dollar sign is not a name character.",
+  "classes": [
+    "syntax",
+    "reject"
+  ],
+  "input": "${A$B}",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "x"
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "${A$B}",
+    "provenance": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_single_pass_default",
+  "description": "A nested inline default is not a reference and is not scanned again.",
+  "classes": [
+    "single-pass",
+    "nested",
+    "A23"
+  ],
+  "input": "${A:-${B}}",
+  "layers": {
+    "overrides": {
+      "B": "deep"
+    },
+    "environ": {},
+    "dotenv": {}
+  },
+  "path": "/value",
+  "divergence": {
+    "id": "A23",
+    "report": "A23",
+    "note": "The baseline matches the prefix \"${A:-${B}\" of the nested reference and substitutes the broken default as text, producing \"${B}\" for a reference the grammar does not define. The Dart implementation leaves the construct alone."
+  },
+  "expected": {
+    "ok": true,
+    "output": "${A:-${B}}",
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": []
+    },
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "issues": [],
+    "ok": true,
+    "output": "${B}",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ],
+              [
+                "source",
+                {
+                  "k": "string",
+                  "v": "inline_default"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

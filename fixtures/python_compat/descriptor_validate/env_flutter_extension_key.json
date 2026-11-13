@@ -1,0 +1,38 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "env_flutter_extension_key",
+  "description": "The namespaced Flutter envelope key is recognized here.",
+  "classes": [
+    "envelope",
+    "flutter-extension",
+    "SPEC5-FLUTTER-EXT"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  x_aiset_flutter: { extension_version: \"1.0\", nodes: {} },\n  root: { type: \"object\", children: {} },\n}\n",
+  "mode": "strict",
+  "divergence": {
+    "id": "SPEC5-FLUTTER-EXT",
+    "report": "SPEC5-FLUTTER-EXT",
+    "note": "SPEC.md amendment 5 defines x_aiset_flutter as the namespaced envelope entry of the Flutter extensions and requires the Flutter compiler to recognize it; the descriptor grammar of the shared baseline has no entry of its own for the extension. Since d4adb45 the Python baseline reports the key as UNKNOWN_DESCRIPTOR_PROPERTY (an error in strict mode), which SPEC.md 5 explicitly anticipates: a legacy Python validator may report unknown metadata without the descriptor being incompatible. This is a required intentional divergence, not a baseline defect: the Dart implementation accepts the key, preserves it uninterpreted on CompiledDescriptor.flutterExtension, and does not emit the diagnostic."
+  },
+  "expected": {
+    "ok": true,
+    "valid": true,
+    "issues": [],
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "issues": [
+      {
+        "code": "UNKNOWN_DESCRIPTOR_PROPERTY",
+        "column": 20,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/x_aiset_flutter",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

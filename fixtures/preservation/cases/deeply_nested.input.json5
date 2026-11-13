@@ -1,0 +1,13 @@
+{
+  // level 1
+  l1: {
+    // level 2
+    l2: {
+      // level 3
+      l3: [
+        // level 4
+        { l4: "deep" },
+      ],
+    },
+  },
+}

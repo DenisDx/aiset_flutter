@@ -1,0 +1,29 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_unknown_template_reference",
+  "description": "A reference to a template that is nowhere declared is refused.",
+  "classes": [
+    "compile",
+    "typedef",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"nope\" } } },\n}\n",
+  "strict": true,
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "issues": [
+      {
+        "code": "UNKNOWN_TYPE",
+        "column": 50,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/type",
+        "severity": "error"
+      }
+    ],
+    "ok": false
+  }
+}

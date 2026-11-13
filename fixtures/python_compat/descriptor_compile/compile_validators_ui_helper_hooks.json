@@ -1,0 +1,211 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_validators_ui_helper_hooks",
+  "description": "The declarable capability bindings survive compilation.",
+  "classes": [
+    "compile",
+    "capabilities",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", validators: [\"no_spaces\"], ui: { label: \"L\", rows: 2 }, helper: { tag: \"node_form\", actions: [\"edit\"], presentation: \"wizard\" }, hooks: { before_update: [ { tag: \"audit\", scope: \"subtree\" } ] } } } },\n}\n",
+  "strict": true,
+  "expected": {
+    "configVersion": null,
+    "ok": true,
+    "project": null,
+    "revision": "sha256:7830808c9de300184289679d3dd2ad51",
+    "shape": {
+      "additionalChildren": null,
+      "apply": "restart",
+      "children": [
+        [
+          "a",
+          "a",
+          {
+            "additionalChildren": null,
+            "apply": "restart",
+            "children": null,
+            "const": null,
+            "default": {
+              "k": "null"
+            },
+            "description": null,
+            "enum": null,
+            "envAllowed": false,
+            "envConvert": null,
+            "fieldName": "a",
+            "hasConst": false,
+            "hasDefault": false,
+            "helper": {
+              "k": "object",
+              "v": [
+                [
+                  "tag",
+                  {
+                    "k": "string",
+                    "v": "node_form"
+                  }
+                ],
+                [
+                  "actions",
+                  {
+                    "k": "array",
+                    "v": [
+                      {
+                        "k": "string",
+                        "v": "edit"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "presentation",
+                  {
+                    "k": "string",
+                    "v": "wizard"
+                  }
+                ]
+              ]
+            },
+            "hooks": {
+              "k": "object",
+              "v": [
+                [
+                  "before_update",
+                  {
+                    "k": "array",
+                    "v": [
+                      {
+                        "k": "object",
+                        "v": [
+                          [
+                            "tag",
+                            {
+                              "k": "string",
+                              "v": "audit"
+                            }
+                          ],
+                          [
+                            "scope",
+                            {
+                              "k": "string",
+                              "v": "subtree"
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              ]
+            },
+            "itemNode": null,
+            "keyEnum": null,
+            "keyPattern": null,
+            "label": "a",
+            "maxItems": {
+              "k": "null"
+            },
+            "maxLength": {
+              "k": "null"
+            },
+            "maximum": {
+              "k": "null"
+            },
+            "minItems": {
+              "k": "null"
+            },
+            "minLength": {
+              "k": "null"
+            },
+            "minimum": {
+              "k": "null"
+            },
+            "nullable": false,
+            "optionNodes": null,
+            "path": "/root/children/a",
+            "pattern": null,
+            "readOnly": false,
+            "required": false,
+            "secret": false,
+            "title": null,
+            "type": "object",
+            "typedefName": null,
+            "ui": {
+              "k": "object",
+              "v": [
+                [
+                  "label",
+                  {
+                    "k": "string",
+                    "v": "L"
+                  }
+                ],
+                [
+                  "rows",
+                  {
+                    "k": "int",
+                    "v": "2"
+                  }
+                ]
+              ]
+            },
+            "uniqueItems": null,
+            "validators": [
+              "no_spaces"
+            ]
+          }
+        ]
+      ],
+      "const": null,
+      "default": {
+        "k": "null"
+      },
+      "description": null,
+      "enum": null,
+      "envAllowed": false,
+      "envConvert": null,
+      "fieldName": null,
+      "hasConst": false,
+      "hasDefault": false,
+      "helper": null,
+      "hooks": null,
+      "itemNode": null,
+      "keyEnum": null,
+      "keyPattern": null,
+      "label": null,
+      "maxItems": {
+        "k": "null"
+      },
+      "maxLength": {
+        "k": "null"
+      },
+      "maximum": {
+        "k": "null"
+      },
+      "minItems": {
+        "k": "null"
+      },
+      "minLength": {
+        "k": "null"
+      },
+      "minimum": {
+        "k": "null"
+      },
+      "nullable": false,
+      "optionNodes": null,
+      "path": "/root",
+      "pattern": null,
+      "readOnly": false,
+      "required": false,
+      "secret": false,
+      "title": null,
+      "type": "object",
+      "typedefName": null,
+      "ui": null,
+      "uniqueItems": null,
+      "validators": []
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "inline_object_no_trailing_comma",
+  "description": "Inline object whose last member has no comma.",
+  "classes": [
+    "inline",
+    "no-trailing-comma"
+  ],
+  "input": "{ a: 1, b: 2 }",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/b"
+    ],
+    "rootText": "{ a: 1, b: 2 }",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "b",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    }
+  }
+}

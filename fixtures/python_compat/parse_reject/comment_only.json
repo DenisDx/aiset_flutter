@@ -1,0 +1,17 @@
+{
+  "schema": "1",
+  "area": "parse_reject",
+  "id": "comment_only",
+  "description": "A comment but no value.",
+  "classes": [
+    "empty-input",
+    "comments"
+  ],
+  "input": "// only a comment\n",
+  "expected": {
+    "accepted": false,
+    "baselineCrash": false,
+    "errorClass": "ParseError",
+    "errorCode": "PARSE_ERROR"
+  }
+}

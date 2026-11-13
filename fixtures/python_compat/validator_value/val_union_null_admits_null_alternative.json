@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_union_null_admits_null_alternative",
+  "description": "A null value is admitted when an alternative is null-typed.",
+  "classes": [
+    "union",
+    "null",
+    "accept",
+    "A35"
+  ],
+  "input": "{ u: null }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { u: { type: \"union\", children_options: [ { type: \"null\" }, { type: \"int\" } ] } } } }",
+  "value": "{ u: null }",
+  "divergence": {
+    "id": "A35",
+    "report": "A35",
+    "note": "The baseline applies the null rule to the union node itself, before it ever consults the alternatives, so a union of {null} and {int} rejects null with a nullable issue even though one alternative is exactly null. The Dart implementation lets a null reach the alternatives, so the null-typed member admits it."
+  },
+  "expected": {
+    "ok": true,
+    "valid": true,
+    "issues": [],
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/u",
+        "rule": "nullable",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

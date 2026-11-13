@@ -1,0 +1,70 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "presence_skips_invalid_names",
+  "description": "A name that is not an identifier is left out of the answer.",
+  "classes": [
+    "presence",
+    "names"
+  ],
+  "input": "",
+  "query": {
+    "op": "presence",
+    "names": [
+      "OK",
+      "not a name",
+      "1BAD",
+      "also_ok",
+      "",
+      "a-b"
+    ]
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "OK": "x"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "names": [
+        "OK",
+        "not a name",
+        "1BAD",
+        "also_ok",
+        "",
+        "a-b"
+      ],
+      "op": "presence"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "presence",
+          {
+            "k": "object",
+            "v": [
+              [
+                "OK",
+                {
+                  "k": "bool",
+                  "v": true
+                }
+              ],
+              [
+                "also_ok",
+                {
+                  "k": "bool",
+                  "v": false
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

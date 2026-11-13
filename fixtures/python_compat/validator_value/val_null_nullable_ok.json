@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_null_nullable_ok",
+  "description": "A nullable node admits an explicit null.",
+  "classes": [
+    "null",
+    "accept"
+  ],
+  "input": "{ a: null }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", nullable: true } } } }",
+  "value": "{ a: null }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

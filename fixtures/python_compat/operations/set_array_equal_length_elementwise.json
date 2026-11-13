@@ -1,0 +1,57 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_array_equal_length_elementwise",
+  "description": "Equal-length array replacement edits item by item.",
+  "classes": [
+    "set",
+    "array",
+    "elementwise",
+    "comments"
+  ],
+  "input": "{\n  list: [\n    // first\n    \"a\",\n    \"b\", // second\n    \"c\",\n  ],\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/list",
+    "value_text": "[\"x\", \"y\", \"z\"]"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  list: [\n    // first\n    \"x\",\n    \"y\", // second\n    \"z\",\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/list",
+        "/list/0",
+        "/list/1",
+        "/list/2"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "list",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "string",
+                  "v": "x"
+                },
+                {
+                  "k": "string",
+                  "v": "y"
+                },
+                {
+                  "k": "string",
+                  "v": "z"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

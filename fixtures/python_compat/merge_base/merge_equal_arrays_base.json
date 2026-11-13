@@ -1,0 +1,57 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_equal_arrays_base",
+  "description": "Two identical arrays are equal. (prefer: base)",
+  "classes": [
+    "array",
+    "equal",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "array",
+    "v": [
+      {
+        "k": "int",
+        "v": "1"
+      },
+      {
+        "k": "string",
+        "v": "x"
+      }
+    ]
+  },
+  "update": {
+    "k": "array",
+    "v": [
+      {
+        "k": "int",
+        "v": "1"
+      },
+      {
+        "k": "string",
+        "v": "x"
+      }
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "string",
+          "v": "x"
+        }
+      ]
+    },
+    "ok": true
+  }
+}

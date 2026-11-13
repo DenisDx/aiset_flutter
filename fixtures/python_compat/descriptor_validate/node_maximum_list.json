@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_maximum_list",
+  "description": "A numeric bound holding a list.",
+  "classes": [
+    "node",
+    "property-types",
+    "constraints",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"number\", maximum: [1] } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_PROPERTY_TYPE",
+        "column": 69,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/maximum",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

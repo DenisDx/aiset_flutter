@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "string_root",
+  "description": "A quoted string as the whole document.",
+  "classes": [
+    "scalar-root",
+    "string"
+  ],
+  "input": "\"just a string\"",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      ""
+    ],
+    "rootText": "\"just a string\"",
+    "storedValue": {
+      "k": "string",
+      "v": "just a string"
+    }
+  }
+}

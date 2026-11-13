@@ -1,0 +1,46 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_object_key_pattern_dialect",
+  "description": "A lookaround in key_pattern is refused as a dialect issue here; the baseline reports a plain key mismatch.",
+  "classes": [
+    "object",
+    "key-pattern",
+    "dialect",
+    "SPEC26-DIALECT"
+  ],
+  "input": "{ o: { xworker: 1 } }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { o: { type: \"object\", key_pattern: \"(?=worker)x\", additional_children: { type: \"int\" } } } } }",
+  "value": "{ o: { xworker: 1 } }",
+  "divergence": {
+    "id": "SPEC26-DIALECT",
+    "report": "SPEC26-DIALECT",
+    "note": "docs/grammars.md §1.2 and §1.3 fix which layer reports each regex construct, and §1.2 states that the two implementations can name the same problem at different layers while the outcome (refused, named, never guessed at) does not differ. This is a documented, intentional divergence from the executed baseline under that rule (SPEC.md amendment 26), not a baseline defect.  docs/grammars.md §1.3 requires key_pattern to be checked the same way as pattern. The baseline key check calls the regex directly without the portability screen, so a lookaround key_pattern is judged only by its (search) match result and reported against the data. Here the dialect check names the construct first, as a `pattern` issue. Both refuse the key; the rule and the explanation differ."
+  },
+  "expected": {
+    "ok": true,
+    "valid": false,
+    "issues": [
+      {
+        "rule": "pattern",
+        "path": "/o/xworker",
+        "severity": "error",
+        "hasMessage": true
+      }
+    ],
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/o/xworker",
+        "rule": "key_pattern",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

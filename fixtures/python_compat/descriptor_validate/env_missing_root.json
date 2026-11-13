@@ -1,0 +1,35 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "env_missing_root",
+  "description": "A descriptor without a root is refused.",
+  "classes": [
+    "envelope",
+    "root",
+    "rejection"
+  ],
+  "input": "{ descriptor_version: \"1.0\" }",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "DESCRIPTOR_STRUCTURE",
+        "column": 1,
+        "hasMessage": true,
+        "line": 1,
+        "path": "/root",
+        "severity": "error"
+      },
+      {
+        "code": "DESCRIPTOR_STRUCTURE",
+        "column": 1,
+        "hasMessage": true,
+        "line": 1,
+        "path": "/root",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

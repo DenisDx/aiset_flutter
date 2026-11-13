@@ -1,0 +1,69 @@
+{
+  "schema": "1",
+  "area": "merge_base",
+  "id": "merge_array_of_objects_base",
+  "description": "An array of objects is one value. (prefer: base)",
+  "classes": [
+    "array",
+    "object",
+    "merge",
+    "base"
+  ],
+  "input": "",
+  "prefer": "base",
+  "base": {
+    "k": "array",
+    "v": [
+      {
+        "k": "object",
+        "v": [
+          [
+            "x",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "update": {
+    "k": "array",
+    "v": [
+      {
+        "k": "object",
+        "v": [
+          [
+            "y",
+            {
+              "k": "int",
+              "v": "2"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "array",
+      "v": [
+        {
+          "k": "object",
+          "v": [
+            [
+              "x",
+              {
+                "k": "int",
+                "v": "1"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "ok": true
+  }
+}

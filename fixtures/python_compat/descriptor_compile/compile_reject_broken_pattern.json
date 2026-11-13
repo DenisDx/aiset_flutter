@@ -1,0 +1,29 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_reject_broken_pattern",
+  "description": "A broken pattern refuses compilation.",
+  "classes": [
+    "compile",
+    "rejection",
+    "pattern"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"string\", pattern: \"[\" } } },\n}\n",
+  "strict": true,
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "issues": [
+      {
+        "code": "INVALID_PATTERN",
+        "column": 69,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/pattern",
+        "severity": "error"
+      }
+    ],
+    "ok": false
+  }
+}

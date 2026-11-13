@@ -1,0 +1,41 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "comment_before_close_only",
+  "description": "A container holding nothing but a block-end comment.",
+  "classes": [
+    "comments",
+    "block-end",
+    "empty"
+  ],
+  "input": "{\n  o: {\n    // nothing here\n  },\n  a: [\n    // nothing here\n  ],\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/o",
+      "/a"
+    ],
+    "rootText": "{\n  o: {\n    // nothing here\n  },\n  a: [\n    // nothing here\n  ],\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "o",
+          {
+            "k": "object",
+            "v": []
+          }
+        ],
+        [
+          "a",
+          {
+            "k": "array",
+            "v": []
+          }
+        ]
+      ]
+    }
+  }
+}

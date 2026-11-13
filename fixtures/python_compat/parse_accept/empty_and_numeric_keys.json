@@ -1,0 +1,48 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "empty_and_numeric_keys",
+  "description": "Empty-string key and a numeric object key.",
+  "classes": [
+    "empty-key",
+    "numeric-key"
+  ],
+  "input": "{\n  \"\": 0,\n  \"0\": 1,\n  1: 2,\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/",
+      "/0",
+      "/1"
+    ],
+    "rootText": "{\n  \"\": 0,\n  \"0\": 1,\n  1: 2,\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "",
+          {
+            "k": "int",
+            "v": "0"
+          }
+        ],
+        [
+          "0",
+          {
+            "k": "int",
+            "v": "1"
+          }
+        ],
+        [
+          "1",
+          {
+            "k": "int",
+            "v": "2"
+          }
+        ]
+      ]
+    }
+  }
+}

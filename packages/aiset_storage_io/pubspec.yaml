@@ -1,0 +1,21 @@
+name: aiset_storage_io
+description: >-
+  Native-file storage adapter for the Aiset pipeline: durable JSON5 documents
+  with cross-process compare-and-swap, atomic replace, a bounded .back
+  backup chain and last-known-good recovery.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.13.0
+
+# Pure Dart (`SPEC.md` LIB-03): this package uses `dart:io` and is the
+# `local`/`native_file` adapter for CLI, mobile and desktop Flutter apps
+# as a plain Dart dependency. It must never import Flutter.
+dependencies:
+  aiset_core:
+    path: ../aiset_core
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.26.0

@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_digit_name",
+  "description": "A name cannot start with a digit.",
+  "classes": [
+    "syntax",
+    "reject"
+  ],
+  "input": "${1A}",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "x"
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "${1A}",
+    "provenance": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

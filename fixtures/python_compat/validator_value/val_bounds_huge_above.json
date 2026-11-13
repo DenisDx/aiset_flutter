@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_bounds_huge_above",
+  "description": "A value above a huge integer bound fails, even when both round to the same double. Executed-baseline evidence: Python compares an int-to-int bound with exact integer `>`, so it already refuses this value; only the enum/const path (`_same`, float()) has the collision (val_enum_huge_int_collision).",
+  "classes": [
+    "bounds",
+    "big-int",
+    "exact",
+    "rejection"
+  ],
+  "input": "{ a: 9007199254740994 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"number\", maximum: 9007199254740993 } } } }",
+  "value": "{ a: 9007199254740994 }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/a",
+        "rule": "maximum",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

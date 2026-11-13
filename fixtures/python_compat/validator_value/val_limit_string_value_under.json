@@ -1,0 +1,24 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_limit_string_value_under",
+  "description": "A string under max_string_length passes.",
+  "classes": [
+    "limits",
+    "string",
+    "under",
+    "accept"
+  ],
+  "input": "{ a: \"ab\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"any\" } } } }",
+  "value": "{ a: \"ab\" }",
+  "limits": {
+    "max_string_length": 3
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

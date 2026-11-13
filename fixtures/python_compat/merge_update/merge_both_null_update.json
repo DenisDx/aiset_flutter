@@ -1,0 +1,28 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_both_null_update",
+  "description": "Two nulls are equal, so neither wins visibly. (prefer: update)",
+  "classes": [
+    "scalar",
+    "null",
+    "equal",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "null"
+  },
+  "update": {
+    "k": "null"
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "null"
+    },
+    "ok": true
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_compile",
+  "id": "compile_reject_non_object_root",
+  "description": "A descriptor document that is not an object refuses compilation.",
+  "classes": [
+    "compile",
+    "rejection",
+    "root"
+  ],
+  "input": "\"nope\"",
+  "strict": true,
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "InvalidDescriptor",
+    "errorCode": "INVALID_DESCRIPTOR",
+    "issues": [
+      {
+        "code": "DESCRIPTOR_SYNTAX",
+        "hasMessage": true,
+        "path": "",
+        "severity": "error"
+      }
+    ],
+    "ok": false
+  }
+}

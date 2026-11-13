@@ -1,0 +1,48 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_create_member_inline",
+  "description": "Creating a key in an inline object.",
+  "classes": [
+    "set",
+    "create-member",
+    "inline"
+  ],
+  "input": "{ a: 1 }",
+  "operation": {
+    "op": "set",
+    "pointer": "/b",
+    "value_text": "2"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{ a: 1, b: 2 }",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a",
+        "/b"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ],
+          [
+            "b",
+            {
+              "k": "int",
+              "v": "2"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

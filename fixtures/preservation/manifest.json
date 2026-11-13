@@ -1,0 +1,373 @@
+{
+  "version": 1,
+  "note": "Source-preservation fixtures. For every case, parsing the input bytes and reconstructing the source from the CST must reproduce the expected bytes exactly. Expected bytes equal input bytes: preservation is identity.",
+  "baseline": {
+    "commit": "cbb74c7d8cc1a1f3bb10f0661f6bc00514982cab",
+    "pythonBaselineCases": 7,
+    "authoredCases": 22
+  },
+  "cases": [
+    {
+      "id": "comment_ownership",
+      "input": "cases/comment_ownership.input.json5",
+      "expected": "cases/comment_ownership.expected.json5",
+      "origin": "python-baseline",
+      "classes": [
+        "comments",
+        "leading",
+        "trailing",
+        "block-end",
+        "document-comment",
+        "nested"
+      ],
+      "description": "The SPEC comment-classification example: every ownership role in one document."
+    },
+    {
+      "id": "mixed_types",
+      "input": "cases/mixed_types.input.json5",
+      "expected": "cases/mixed_types.expected.json5",
+      "origin": "python-baseline",
+      "classes": [
+        "comments",
+        "single-quoted-key",
+        "double-quoted-strings",
+        "escapes",
+        "placeholder-in-string",
+        "bare-template",
+        "trailing-commas",
+        "block-comment",
+        "dotted-key",
+        "slash-key",
+        "tilde-key",
+        "numeric-key",
+        "nested-array"
+      ],
+      "description": "All scalar kinds, both quote styles, placeholders, tricky quoted keys and comments everywhere."
+    },
+    {
+      "id": "no_final_newline",
+      "input": "cases/no_final_newline.input.json5",
+      "expected": "cases/no_final_newline.expected.json5",
+      "origin": "python-baseline",
+      "classes": [
+        "no-final-newline"
+      ],
+      "description": "Document ends directly after the closing brace, no trailing newline."
+    },
+    {
+      "id": "crlf",
+      "input": "cases/crlf.input.json5",
+      "expected": "cases/crlf.expected.json5",
+      "origin": "python-baseline",
+      "classes": [
+        "crlf"
+      ],
+      "description": "Every line break is CRLF."
+    },
+    {
+      "id": "bom",
+      "input": "cases/bom.input.json5",
+      "expected": "cases/bom.expected.json5",
+      "origin": "python-baseline",
+      "classes": [
+        "bom"
+      ],
+      "description": "UTF-8 byte-order mark before the root value; the baseline treats U+FEFF as whitespace."
+    },
+    {
+      "id": "unicode",
+      "input": "cases/unicode.input.json5",
+      "expected": "cases/unicode.expected.json5",
+      "origin": "python-baseline",
+      "classes": [
+        "unicode",
+        "non-ascii-comment",
+        "em-dash",
+        "escapes"
+      ],
+      "description": "Cyrillic comment and key, mixed-script value, escaped newline inside a string."
+    },
+    {
+      "id": "single_line",
+      "input": "cases/single_line.input.json5",
+      "expected": "cases/single_line.expected.json5",
+      "origin": "python-baseline",
+      "classes": [
+        "inline-objects",
+        "empty-containers",
+        "inline-array"
+      ],
+      "description": "Compact single-line objects and arrays, empty containers."
+    },
+    {
+      "id": "astral_emoji",
+      "input": "cases/astral_emoji.input.json5",
+      "expected": "cases/astral_emoji.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "astral",
+        "surrogate-pairs",
+        "unicode",
+        "comments"
+      ],
+      "description": "Astral-plane emoji in a quoted key, in a value and in a trailing comment; UTF-8 byte offsets and UTF-16 code-unit offsets must diverge here."
+    },
+    {
+      "id": "mixed_indent",
+      "input": "cases/mixed_indent.input.json5",
+      "expected": "cases/mixed_indent.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "tabs",
+        "mixed-indentation"
+      ],
+      "description": "Tab-indented and space-indented levels side by side."
+    },
+    {
+      "id": "mid_comments",
+      "input": "cases/mid_comments.input.json5",
+      "expected": "cases/mid_comments.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "mid-comments",
+        "block-comment",
+        "trailing-comment"
+      ],
+      "description": "Two block comments between ':' and the value; a trailing comment on the next member."
+    },
+    {
+      "id": "block_comments",
+      "input": "cases/block_comments.input.json5",
+      "expected": "cases/block_comments.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "block-comment",
+        "multiline-comment",
+        "array-comments"
+      ],
+      "description": "A multi-line block comment between members and an inline block comment after an array comma."
+    },
+    {
+      "id": "crlf_comments",
+      "input": "cases/crlf_comments.input.json5",
+      "expected": "cases/crlf_comments.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "crlf",
+        "comments",
+        "leading",
+        "trailing",
+        "block-end"
+      ],
+      "description": "CRLF line endings combined with leading, trailing and block-end comments."
+    },
+    {
+      "id": "bom_crlf_no_final",
+      "input": "cases/bom_crlf_no_final.input.json5",
+      "expected": "cases/bom_crlf_no_final.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "bom",
+        "crlf",
+        "no-final-newline"
+      ],
+      "description": "BOM + CRLF + missing final newline in one document."
+    },
+    {
+      "id": "no_final_newline_comment",
+      "input": "cases/no_final_newline_comment.input.json5",
+      "expected": "cases/no_final_newline_comment.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "no-final-newline",
+        "trailing-comment",
+        "eof-comment"
+      ],
+      "description": "The document ends with a line comment's closing brace and no newline."
+    },
+    {
+      "id": "numbers_formats",
+      "input": "cases/numbers_formats.input.json5",
+      "expected": "cases/numbers_formats.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "numbers",
+        "hex",
+        "exponent",
+        "signed",
+        "leading-dot",
+        "trailing-dot"
+      ],
+      "description": "Every number form the grammar accepts: hex with sign, leading/trailing dot, exponents, leading zeros."
+    },
+    {
+      "id": "string_escapes",
+      "input": "cases/string_escapes.input.json5",
+      "expected": "cases/string_escapes.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "escapes",
+        "hex-escape",
+        "unicode-escape",
+        "surrogate-pair-escape",
+        "line-continuation"
+      ],
+      "description": "Hex, unicode and surrogate-pair escapes, escaped slash and quote, a line continuation, all kept verbatim in the raw text."
+    },
+    {
+      "id": "templates_forms",
+      "input": "cases/templates_forms.input.json5",
+      "expected": "cases/templates_forms.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "template",
+        "placeholder",
+        "empty-default",
+        "default-with-space",
+        "non-placeholder-string"
+      ],
+      "description": "Bare ${A}, ${B:-x y}, the explicit empty default ${C:-}, a placeholder inside a string, and strings that only look like placeholders."
+    },
+    {
+      "id": "empty_containers",
+      "input": "cases/empty_containers.input.json5",
+      "expected": "cases/empty_containers.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "empty-containers",
+        "nested-arrays"
+      ],
+      "description": "Empty object and array, with and without inner whitespace, plus a nested [[{}]]."
+    },
+    {
+      "id": "sparse_comments",
+      "input": "cases/sparse_comments.input.json5",
+      "expected": "cases/sparse_comments.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "comments",
+        "blank-lines",
+        "block-end"
+      ],
+      "description": "Comments separated by blank lines between members and before the closing brace."
+    },
+    {
+      "id": "deeply_nested",
+      "input": "cases/deeply_nested.input.json5",
+      "expected": "cases/deeply_nested.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "nested",
+        "comments",
+        "mixed-depth"
+      ],
+      "description": "Four nesting levels with a comment at each level."
+    },
+    {
+      "id": "unicode_keys",
+      "input": "cases/unicode_keys.input.json5",
+      "expected": "cases/unicode_keys.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "unicode-keys",
+        "unquoted-keys",
+        "non-ascii"
+      ],
+      "description": "Unquoted keys in Cyrillic, Latin with accent, CJK and Arabic-Indic digits (the baseline key grammar is Unicode-alphanumeric based)."
+    },
+    {
+      "id": "nbsp_bom_infix",
+      "input": "cases/nbsp_bom_infix.input.json5",
+      "expected": "cases/nbsp_bom_infix.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "nbsp",
+        "bom",
+        "whitespace"
+      ],
+      "description": "NBSP between tokens and a mid-document BOM, both baseline whitespace."
+    },
+    {
+      "id": "scalar_document",
+      "input": "cases/scalar_document.input.json5",
+      "expected": "cases/scalar_document.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "scalar-root",
+        "no-final-newline"
+      ],
+      "description": "A bare number as the whole document, surrounded by whitespace."
+    },
+    {
+      "id": "template_document",
+      "input": "cases/template_document.input.json5",
+      "expected": "cases/template_document.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "template-root",
+        "scalar-root"
+      ],
+      "description": "A bare placeholder token as the whole document."
+    },
+    {
+      "id": "array_inline_comments",
+      "input": "cases/array_inline_comments.input.json5",
+      "expected": "cases/array_inline_comments.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "array",
+        "leading",
+        "trailing",
+        "comments"
+      ],
+      "description": "Array with a leading comment on the first item and a trailing comment after its comma."
+    },
+    {
+      "id": "trailing_comma_variants",
+      "input": "cases/trailing_comma_variants.input.json5",
+      "expected": "cases/trailing_comma_variants.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "trailing-comma",
+        "no-trailing-comma"
+      ],
+      "description": "Last member with and without a trailing comma in the same document."
+    },
+    {
+      "id": "crlf_no_final_newline",
+      "input": "cases/crlf_no_final_newline.input.json5",
+      "expected": "cases/crlf_no_final_newline.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "crlf",
+        "no-final-newline"
+      ],
+      "description": "CRLF throughout and the file ends after the closing brace."
+    },
+    {
+      "id": "opening_comments",
+      "input": "cases/opening_comments.input.json5",
+      "expected": "cases/opening_comments.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "opening-comments",
+        "trailing-ownership",
+        "nested"
+      ],
+      "description": "Same-line comments right after a nested container's opening brace are owned as trailing comments of the entry holding that container."
+    },
+    {
+      "id": "emoji_multiline",
+      "input": "cases/emoji_multiline.input.json5",
+      "expected": "cases/emoji_multiline.expected.json5",
+      "origin": "authored",
+      "classes": [
+        "astral",
+        "template",
+        "block-comment",
+        "unicode"
+      ],
+      "description": "Astral characters inside a template default and inside a block comment, plus an emoji key."
+    }
+  ]
+}

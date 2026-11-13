@@ -1,0 +1,49 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_object_to_object_uncommented",
+  "description": "Replacing a comment-free object reindents the submitted text.",
+  "classes": [
+    "set",
+    "object",
+    "reindent"
+  ],
+  "input": "{\n  o: {\n    a: 1,\n  },\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/o",
+    "value_text": "{ b: 2 }"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  o: { b: 2 },\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/o",
+        "/o/b"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "o",
+            {
+              "k": "object",
+              "v": [
+                [
+                  "b",
+                  {
+                    "k": "int",
+                    "v": "2"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

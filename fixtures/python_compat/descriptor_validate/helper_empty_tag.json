@@ -1,0 +1,26 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "helper_empty_tag",
+  "description": "helper.tag must not be empty.",
+  "classes": [
+    "helper",
+    "rejection"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", helper: { tag: \"\", actions: [\"edit\"] } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "INVALID_STRUCTURE",
+        "column": 75,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/helper/tag",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

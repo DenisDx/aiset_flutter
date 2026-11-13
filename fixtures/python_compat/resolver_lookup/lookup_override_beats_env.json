@@ -1,0 +1,53 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_override_beats_env",
+  "description": "The override layer wins over the environment.",
+  "classes": [
+    "precedence",
+    "override",
+    "env"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "V",
+    "inlineDefault": null
+  },
+  "layers": {
+    "overrides": {
+      "V": "override"
+    },
+    "environ": {
+      "V": "env"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": null,
+      "name": "V",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": "override"
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "override"
+          }
+        ]
+      ]
+    }
+  }
+}

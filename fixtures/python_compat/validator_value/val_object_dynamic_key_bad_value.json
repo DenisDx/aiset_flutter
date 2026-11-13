@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_object_dynamic_key_bad_value",
+  "description": "A governed dynamic key still checks its value.",
+  "classes": [
+    "object",
+    "dynamic",
+    "rejection"
+  ],
+  "input": "{ o: { any: \"x\" } }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { o: { type: \"object\", additional_children: { type: \"int\" } } } } }",
+  "value": "{ o: { any: \"x\" } }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/o/any",
+        "rule": "type",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

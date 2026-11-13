@@ -1,0 +1,79 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "union_disjoint_key_string",
+  "description": "A key only another alternative declares resolves through that one.",
+  "classes": [
+    "union"
+  ],
+  "input": "{ items: { a: { label: \"${L}\" } } }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    items: { type: \"object\", additional_children: { type: \"union\", children_options: [\n      { type: \"object\", children: { enabled: { type: \"bool\" } } },\n      { type: \"object\", children: {\n          label: { type: \"string\", env: { allowed: true, convert: \"string\" } },\n          port: { type: \"int\", env: { allowed: true, convert: \"int\" } },\n        } },\n    ] } },\n  } },\n}\n",
+  "config": "{ items: { a: { label: \"${L}\" } } }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "L": "x"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "items",
+          {
+            "k": "object",
+            "v": [
+              [
+                "a",
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "label",
+                      {
+                        "k": "string",
+                        "v": "x"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/items/a/label",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "L"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

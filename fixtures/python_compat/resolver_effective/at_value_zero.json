@@ -1,0 +1,53 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "at_value_zero",
+  "description": "zero is returned as zero.",
+  "classes": [
+    "int",
+    "six-states"
+  ],
+  "input": "{}",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", default: \"fb\" }, plain: { type: \"string\" }, templated: { type: \"string\", env: { allowed: true } }, n: { type: \"int\", default: 0 }, z: { type: \"string\", nullable: true, default: null } } } }",
+  "config": "{}",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "query": {
+    "op": "effective_at",
+    "pointer": "/n",
+    "stored": 0,
+    "path": "/x"
+  },
+  "expected": {
+    "effective": {
+      "k": "int",
+      "v": "0"
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/x",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

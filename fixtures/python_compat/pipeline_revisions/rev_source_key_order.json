@@ -1,0 +1,24 @@
+{
+  "schema": "1",
+  "area": "pipeline_revisions",
+  "id": "rev_source_key_order",
+  "description": "Key order changes the revision, not the meaning.",
+  "classes": [
+    "source",
+    "order",
+    "revision",
+    "source"
+  ],
+  "input": "{ b: 2, a: 1 }\n",
+  "query": {
+    "op": "source"
+  },
+  "expected": {
+    "hasBom": false,
+    "ok": true,
+    "op": "source",
+    "revision": "sha256:3cf8fd1226b381d43063070eafd66688",
+    "utf16Length": 15,
+    "utf8Length": 15
+  }
+}

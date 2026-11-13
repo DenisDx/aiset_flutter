@@ -1,0 +1,241 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "heterogeneous_array_positional_resolution",
+  "description": "Each position of a heterogeneous array resolves with its own alternative.",
+  "classes": [
+    "array",
+    "union",
+    "A24"
+  ],
+  "input": "{ steps: [ { a: \"${A}\" }, { b: \"x\" }, 3 ] }",
+  "descriptor": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: {\n    steps: { type: \"array\", children_options: [\n      { type: \"object\", children: { a: { type: \"string\", default: \"A\" } } },\n      { type: \"object\", children: { b: { type: \"string\", default: \"B\" } } },\n      { type: \"int\" },\n    ] },\n  } },\n}\n",
+  "config": "{ steps: [ { a: \"${A}\" }, { b: \"x\" }, 3 ] }",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "A": "1"
+    },
+    "dotenv": {}
+  },
+  "divergence": {
+    "id": "A24",
+    "report": "A24",
+    "note": "Resolution is positional in the baseline and correct here; default filling is not, so the baseline also materializes the first alternative's default into the second item (see heterogeneous_array_defaults_are_positional)."
+  },
+  "expected": {
+    "ok": true,
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "steps",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "object",
+                "v": [
+                  [
+                    "a",
+                    {
+                      "k": "string",
+                      "v": "${A}"
+                    }
+                  ]
+                ]
+              },
+              {
+                "k": "object",
+                "v": [
+                  [
+                    "b",
+                    {
+                      "k": "string",
+                      "v": "x"
+                    }
+                  ]
+                ]
+              },
+              {
+                "k": "int",
+                "v": "3"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/steps/0/a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/steps/1/b",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/steps/2",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "steps",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "object",
+                "v": [
+                  [
+                    "a",
+                    {
+                      "k": "string",
+                      "v": "${A}"
+                    }
+                  ]
+                ]
+              },
+              {
+                "k": "object",
+                "v": [
+                  [
+                    "a",
+                    {
+                      "k": "string",
+                      "v": "A"
+                    }
+                  ],
+                  [
+                    "b",
+                    {
+                      "k": "string",
+                      "v": "x"
+                    }
+                  ]
+                ]
+              },
+              {
+                "k": "int",
+                "v": "3"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/steps/1/a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/steps/0/a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/steps/1/b",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/steps/2",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

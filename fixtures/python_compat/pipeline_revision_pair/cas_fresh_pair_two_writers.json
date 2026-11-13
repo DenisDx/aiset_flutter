@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "pipeline_revision_pair",
+  "id": "cas_fresh_pair_two_writers",
+  "description": "Two writers that each present the current pair store in turn.",
+  "classes": [
+    "cas",
+    "accept",
+    "cas"
+  ],
+  "input": "{ port: 1, host: \"localhost\" }\n",
+  "scenario": "fresh_pair",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: {\n    port: { type: \"int\", minimum: 1, maximum: 65535 },\n    host: { type: \"string\" },\n  } } }\n",
+  "config": "{ port: 1, host: \"localhost\" }\n",
+  "expected": {
+    "fileRevision": "sha256:4417ff29aac2fccfd900b085b4edbf29",
+    "fileText": "{ port: 8080, host: \"other\" }\n",
+    "firstWrite": "stored",
+    "ok": true,
+    "scenario": "fresh_pair",
+    "secondWrite": "stored"
+  }
+}

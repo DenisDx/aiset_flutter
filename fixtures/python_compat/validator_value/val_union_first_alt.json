@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_union_first_alt",
+  "description": "A value matching the first alternative passes.",
+  "classes": [
+    "union",
+    "accept"
+  ],
+  "input": "{ u: 42 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { u: { type: \"union\", children_options: [ { type: \"int\", minimum: 10 }, { type: \"string\", min_length: 5 } ] } } } }",
+  "value": "{ u: 42 }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

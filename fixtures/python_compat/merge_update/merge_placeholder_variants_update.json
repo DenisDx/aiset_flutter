@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_placeholder_variants_update",
+  "description": "A placeholder with and without a fallback are different values. (prefer: update)",
+  "classes": [
+    "scalar",
+    "placeholder",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "template",
+    "v": {
+      "name": "PORT",
+      "default": null
+    }
+  },
+  "update": {
+    "k": "template",
+    "v": {
+      "name": "PORT",
+      "default": "8080"
+    }
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "template",
+      "v": {
+        "default": "8080",
+        "name": "PORT"
+      }
+    },
+    "ok": true
+  }
+}

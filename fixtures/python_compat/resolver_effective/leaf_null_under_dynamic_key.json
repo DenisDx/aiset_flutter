@@ -1,0 +1,62 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "leaf_null_under_dynamic_key",
+  "description": "An explicit null under a dynamic key stays null.",
+  "classes": [
+    "null",
+    "dynamic"
+  ],
+  "input": "{ d: { k: null } }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { d: { type: \"object\", additional_children: { type: \"string\" } } } } }",
+  "config": "{ d: { k: null } }",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "d",
+          {
+            "k": "object",
+            "v": [
+              [
+                "k",
+                {
+                  "k": "null"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/d/k",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

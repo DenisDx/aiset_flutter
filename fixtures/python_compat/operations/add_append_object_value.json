@@ -1,0 +1,117 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "add_append_object_value",
+  "description": "Appending a multiline object value reindents it into the array.",
+  "classes": [
+    "add",
+    "append-marker",
+    "object",
+    "multiline"
+  ],
+  "input": "{\n  workers: [\n    {\n      id: \"web\", // worker id\n      ports: [\n        8080,\n        8081,\n      ],\n    },\n    {\n      id: \"cache\",\n    },\n  ],\n}\n",
+  "operation": {
+    "op": "add",
+    "pointer": "/workers/-",
+    "value_text": "{\n  id: \"gpu\",\n  ports: [80],\n}"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  workers: [\n    {\n      id: \"web\", // worker id\n      ports: [\n        8080,\n        8081,\n      ],\n    },\n    {\n      id: \"cache\",\n    },\n    {\n      id: \"gpu\",\n      ports: [80],\n    },\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/workers",
+        "/workers/0",
+        "/workers/0/id",
+        "/workers/0/ports",
+        "/workers/0/ports/0",
+        "/workers/0/ports/1",
+        "/workers/1",
+        "/workers/1/id",
+        "/workers/2",
+        "/workers/2/id",
+        "/workers/2/ports",
+        "/workers/2/ports/0"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "workers",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "id",
+                      {
+                        "k": "string",
+                        "v": "web"
+                      }
+                    ],
+                    [
+                      "ports",
+                      {
+                        "k": "array",
+                        "v": [
+                          {
+                            "k": "int",
+                            "v": "8080"
+                          },
+                          {
+                            "k": "int",
+                            "v": "8081"
+                          }
+                        ]
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "id",
+                      {
+                        "k": "string",
+                        "v": "cache"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "k": "object",
+                  "v": [
+                    [
+                      "id",
+                      {
+                        "k": "string",
+                        "v": "gpu"
+                      }
+                    ],
+                    [
+                      "ports",
+                      {
+                        "k": "array",
+                        "v": [
+                          {
+                            "k": "int",
+                            "v": "80"
+                          }
+                        ]
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

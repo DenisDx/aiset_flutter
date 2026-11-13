@@ -1,0 +1,49 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_name_not_prefix_matched",
+  "description": "A longer name does not answer for a shorter one.",
+  "classes": [
+    "names"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "VAR",
+    "inlineDefault": null
+  },
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "VARS": "x"
+    },
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": null,
+      "name": "VAR",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": ""
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "empty"
+          }
+        ]
+      ]
+    }
+  }
+}

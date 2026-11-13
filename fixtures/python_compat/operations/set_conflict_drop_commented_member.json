@@ -1,0 +1,24 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "set_conflict_drop_commented_member",
+  "description": "A replacement that drops a commented member is refused.",
+  "classes": [
+    "set",
+    "rejection",
+    "comment-conflict",
+    "object"
+  ],
+  "input": "{\n  e: {\n    // lead\n    x: 1,\n  },\n}\n",
+  "operation": {
+    "op": "set",
+    "pointer": "/e",
+    "value_text": "{ y: 2 }"
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "CommentPreservationConflict",
+    "errorCode": "COMMENT_PRESERVATION_CONFLICT",
+    "ok": false
+  }
+}

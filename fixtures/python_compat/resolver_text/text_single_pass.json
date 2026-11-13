@@ -1,0 +1,58 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_single_pass",
+  "description": "A resolved value is not scanned again.",
+  "classes": [
+    "single-pass"
+  ],
+  "input": "${A}",
+  "layers": {
+    "overrides": {
+      "A": "${B}",
+      "B": "deep"
+    },
+    "environ": {},
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "${B}",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ],
+              [
+                "source",
+                {
+                  "k": "string",
+                  "v": "override"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

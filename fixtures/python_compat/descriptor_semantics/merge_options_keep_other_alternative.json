@@ -1,0 +1,43 @@
+{
+  "schema": "1",
+  "area": "descriptor_semantics",
+  "id": "merge_options_keep_other_alternative",
+  "description": "An alternative the reference does not mention survives.",
+  "classes": [
+    "typedef",
+    "merge",
+    "union",
+    "A17"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { p: { typedef: \"u\", type: \"array\", children_options: [ { type: \"int\" }, { type: \"string\" } ] }, q: { type: \"u\", children_options: [ { type: \"int\", minimum: 5 } ] } } },\n}\n",
+  "query": {
+    "op": "node_field",
+    "pointer": "/q/1",
+    "field": "type"
+  },
+  "strict": true,
+  "divergence": {
+    "id": "A17",
+    "report": "A17",
+    "note": "Same residual as merge_options_by_index: the children_options merge crashes with ValueError before any alternative is produced."
+  },
+  "expected": {
+    "ok": true,
+    "result": {
+      "k": "string",
+      "v": "string"
+    },
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "baselineCrash": true,
+    "errorClass": "ValueError",
+    "errorCode": null,
+    "ok": false,
+    "query": {
+      "field": "type",
+      "op": "node_field",
+      "pointer": "/q/1"
+    }
+  }
+}

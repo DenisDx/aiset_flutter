@@ -1,0 +1,23 @@
+{
+  "schema": "1",
+  "area": "pipeline_revision_pair",
+  "id": "cas_stale_pair_refused",
+  "description": "The writer whose pair went stale is refused and the winner keeps the bytes.",
+  "classes": [
+    "cas",
+    "rejection",
+    "cas"
+  ],
+  "input": "{ port: 1, host: \"localhost\" }\n",
+  "scenario": "stale_pair",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: {\n    port: { type: \"int\", minimum: 1, maximum: 65535 },\n    host: { type: \"string\" },\n  } } }\n",
+  "config": "{ port: 1, host: \"localhost\" }\n",
+  "expected": {
+    "fileRevision": "sha256:a2a854af4a801ec2fd34dcf554f808b4",
+    "fileText": "{ port: 9090, host: \"localhost\" }\n",
+    "ok": true,
+    "scenario": "stale_pair",
+    "secondWrite": "stored",
+    "staleWrite": "REVISION_CONFLICT"
+  }
+}

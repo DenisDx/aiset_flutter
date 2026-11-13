@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "env_root_scalar",
+  "description": "A root that is not an object node is refused.",
+  "classes": [
+    "envelope",
+    "root",
+    "rejection"
+  ],
+  "input": "{ descriptor_version: \"1.0\", root: \"nope\" }",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "DESCRIPTOR_STRUCTURE",
+        "column": 36,
+        "hasMessage": true,
+        "line": 1,
+        "path": "/root",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

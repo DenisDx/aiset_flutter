@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "resolver_lookup",
+  "id": "lookup_override_empty_nothing_else_no_default",
+  "description": "An empty override with nothing below reports the override as its source.",
+  "classes": [
+    "empty-value",
+    "precedence"
+  ],
+  "input": "",
+  "query": {
+    "op": "lookup",
+    "name": "V",
+    "inlineDefault": null
+  },
+  "layers": {
+    "overrides": {
+      "V": ""
+    },
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "ok": true,
+    "query": {
+      "inlineDefault": null,
+      "name": "V",
+      "op": "lookup"
+    },
+    "result": {
+      "k": "object",
+      "v": [
+        [
+          "value",
+          {
+            "k": "string",
+            "v": ""
+          }
+        ],
+        [
+          "source",
+          {
+            "k": "string",
+            "v": "override"
+          }
+        ]
+      ]
+    }
+  }
+}

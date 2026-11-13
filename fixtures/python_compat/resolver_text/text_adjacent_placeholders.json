@@ -1,0 +1,108 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_adjacent_placeholders",
+  "description": "Two placeholders with nothing between them.",
+  "classes": [
+    "syntax",
+    "adjacent",
+    "provenance",
+    "A22"
+  ],
+  "input": "${A}${B}",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "A": "1",
+      "B": "2"
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "divergence": {
+    "id": "A22",
+    "report": "A22",
+    "note": "The baseline records provenance inside the substitution loop, so only the last placeholder of a string survives: this value is attributed to B alone. The Dart implementation names every contributing variable and keeps the single-variable shape byte-identical."
+  },
+  "expected": {
+    "ok": true,
+    "output": "12",
+    "issues": [],
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ],
+              [
+                "variables",
+                {
+                  "k": "array",
+                  "v": [
+                    {
+                      "k": "string",
+                      "v": "A"
+                    },
+                    {
+                      "k": "string",
+                      "v": "B"
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "expectation": "corrected"
+  },
+  "baselineEvidence": {
+    "issues": [],
+    "ok": true,
+    "output": "12",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "B"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

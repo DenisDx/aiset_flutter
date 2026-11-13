@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_no_placeholder",
+  "description": "A plain string is returned unchanged.",
+  "classes": [
+    "no-placeholder"
+  ],
+  "input": "just text",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "V": "x"
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "just text",
+    "provenance": {
+      "k": "object",
+      "v": []
+    }
+  }
+}

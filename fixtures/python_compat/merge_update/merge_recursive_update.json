@@ -1,0 +1,106 @@
+{
+  "schema": "1",
+  "area": "merge_update",
+  "id": "merge_recursive_update",
+  "description": "Two objects merge key by key, recursively. (prefer: update)",
+  "classes": [
+    "object",
+    "nested",
+    "merge",
+    "update"
+  ],
+  "input": "",
+  "prefer": "update",
+  "base": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "object",
+          "v": [
+            [
+              "x",
+              {
+                "k": "int",
+                "v": "1"
+              }
+            ],
+            [
+              "y",
+              {
+                "k": "int",
+                "v": "2"
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "update": {
+    "k": "object",
+    "v": [
+      [
+        "a",
+        {
+          "k": "object",
+          "v": [
+            [
+              "y",
+              {
+                "k": "int",
+                "v": "9"
+              }
+            ],
+            [
+              "z",
+              {
+                "k": "int",
+                "v": "3"
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "expected": {
+    "inputsUnchanged": true,
+    "merged": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "x",
+                {
+                  "k": "int",
+                  "v": "1"
+                }
+              ],
+              [
+                "y",
+                {
+                  "k": "int",
+                  "v": "9"
+                }
+              ],
+              [
+                "z",
+                {
+                  "k": "int",
+                  "v": "3"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    },
+    "ok": true
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "rename_quoted_to_identifier",
+  "description": "Renaming a quoted key to an identifier drops the quotes.",
+  "classes": [
+    "rename",
+    "quoted-key"
+  ],
+  "input": "{\n  \"old\": 1,\n}\n",
+  "operation": {
+    "op": "rename",
+    "pointer": "/old",
+    "new_key": "new"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  new: 1,\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/new"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "new",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

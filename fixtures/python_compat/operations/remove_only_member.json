@@ -1,0 +1,29 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_only_member",
+  "description": "Removing the only member leaves an empty object.",
+  "classes": [
+    "remove",
+    "empty"
+  ],
+  "input": "{\n  a: 1,\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/a"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        ""
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": []
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_exact_min_ok",
+  "description": "The exact minimum is accepted for int.",
+  "classes": [
+    "exact-range",
+    "int",
+    "accept"
+  ],
+  "input": "{ a: -9007199254740991 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"int\" } } } }",
+  "value": "{ a: -9007199254740991 }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

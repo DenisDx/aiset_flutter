@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_last_member_with_trailing_comment",
+  "description": "The last member and its trailing comment leave together.",
+  "classes": [
+    "remove",
+    "comments",
+    "trailing"
+  ],
+  "input": "{\n  a: 1,\n  b: 2 // trail\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/b"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  a: 1\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "description_object_form",
+  "description": "The language-tagged wrapper form.",
+  "classes": [
+    "description",
+    "localized",
+    "accept"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"int\", description: { default: \"en\", text: { en: \"Retry count\", ru: \"Число попыток\" } } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

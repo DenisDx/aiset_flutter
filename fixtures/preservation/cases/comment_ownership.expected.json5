@@ -1,0 +1,12 @@
+// Document comment (belongs to the whole document).
+{
+  // Leading comment for element1.
+  element1: 124, // Trailing comment for element1.
+  element2: { // Trailing comment for element2.
+    // Leading comment for element3.
+    element3: 123, // Trailing comment for element3.
+    // Leading comment for element4.
+    element4: 111 // Trailing comment for element4.
+    // Block-end comment for element2 (kept before the closing brace).
+  } // Trailing comment for element2's closing brace.
+}

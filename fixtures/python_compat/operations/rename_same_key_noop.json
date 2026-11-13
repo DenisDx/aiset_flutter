@@ -1,0 +1,39 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "rename_same_key_noop",
+  "description": "Renaming to the same key returns the source unchanged.",
+  "classes": [
+    "rename",
+    "noop"
+  ],
+  "input": "{ a: 1 }",
+  "operation": {
+    "op": "rename",
+    "pointer": "/a",
+    "new_key": "a"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{ a: 1 }",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/a"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "a",
+            {
+              "k": "int",
+              "v": "1"
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

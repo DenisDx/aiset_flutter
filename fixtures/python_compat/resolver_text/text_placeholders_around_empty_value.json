@@ -1,0 +1,50 @@
+{
+  "schema": "1",
+  "area": "resolver_text",
+  "id": "text_placeholders_around_empty_value",
+  "description": "A variable set to the empty string contributes nothing.",
+  "classes": [
+    "empty-value"
+  ],
+  "input": "[${A}]",
+  "layers": {
+    "overrides": {},
+    "environ": {
+      "A": ""
+    },
+    "dotenv": {}
+  },
+  "path": "/value",
+  "expected": {
+    "issues": [],
+    "ok": true,
+    "output": "[]",
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/value",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "environment"
+                }
+              ],
+              [
+                "variable",
+                {
+                  "k": "string",
+                  "v": "A"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

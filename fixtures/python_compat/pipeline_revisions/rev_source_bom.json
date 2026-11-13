@@ -1,0 +1,24 @@
+{
+  "schema": "1",
+  "area": "pipeline_revisions",
+  "id": "rev_source_bom",
+  "description": "A byte order mark is part of the stored bytes.",
+  "classes": [
+    "source",
+    "bom",
+    "revision",
+    "source"
+  ],
+  "input": "﻿{ a: 1 }\n",
+  "query": {
+    "op": "source"
+  },
+  "expected": {
+    "hasBom": true,
+    "ok": true,
+    "op": "source",
+    "revision": "sha256:2aaee8e65fc6014fee872e8377f6b319",
+    "utf16Length": 10,
+    "utf8Length": 12
+  }
+}

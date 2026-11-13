@@ -1,0 +1,22 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "rename_reject_empty_key",
+  "description": "An empty new key is refused.",
+  "classes": [
+    "rename",
+    "rejection"
+  ],
+  "input": "{ a: 1 }",
+  "operation": {
+    "op": "rename",
+    "pointer": "/a",
+    "new_key": ""
+  },
+  "expected": {
+    "baselineCrash": false,
+    "errorClass": "PathError",
+    "errorCode": "BAD_REQUEST",
+    "ok": false
+  }
+}

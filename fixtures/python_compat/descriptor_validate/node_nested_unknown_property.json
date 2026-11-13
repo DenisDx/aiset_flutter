@@ -1,0 +1,27 @@
+{
+  "schema": "1",
+  "area": "descriptor_validate",
+  "id": "node_nested_unknown_property",
+  "description": "The path points at the nested property.",
+  "classes": [
+    "node",
+    "unknown-metadata",
+    "paths"
+  ],
+  "input": "{\n  descriptor_version: \"1.0\",\n  root: { type: \"object\", children: { a: { type: \"object\", children: { b: { type: \"int\", oops: 1 } } } } },\n}\n",
+  "mode": "strict",
+  "expected": {
+    "issues": [
+      {
+        "code": "UNKNOWN_DESCRIPTOR_PROPERTY",
+        "column": 96,
+        "hasMessage": true,
+        "line": 3,
+        "path": "/root/children/a/children/b/oops",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

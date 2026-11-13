@@ -1,0 +1,11 @@
+{
+  a: 1,
+  /* multi
+     line block
+     comment */
+  b: 2,
+  list: [
+    1, /* inline */
+    2,
+  ],
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "1",
+  "area": "operations",
+  "id": "remove_array_item_no_comma_last",
+  "description": "The last item of a comma-less array leaves its line behind.",
+  "classes": [
+    "remove",
+    "array",
+    "commas"
+  ],
+  "input": "{\n  l: [\n    1,\n    2\n  ],\n}\n",
+  "operation": {
+    "op": "remove",
+    "pointer": "/l/1"
+  },
+  "expected": {
+    "ok": true,
+    "output": "{\n  l: [\n    1\n  ],\n}\n",
+    "reparse": {
+      "ok": true,
+      "paths": [
+        "",
+        "/l",
+        "/l/0"
+      ],
+      "storedValue": {
+        "k": "object",
+        "v": [
+          [
+            "l",
+            {
+              "k": "array",
+              "v": [
+                {
+                  "k": "int",
+                  "v": "1"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

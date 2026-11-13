@@ -1,0 +1,36 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_direct_undeclared_path_present_false",
+  "description": "present=False does not hide an undeclared path.",
+  "classes": [
+    "object",
+    "undeclared",
+    "present",
+    "rejection"
+  ],
+  "input": "",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\" } } } }",
+  "direct": true,
+  "query": {
+    "pointer": null,
+    "value": {
+      "k": "string",
+      "v": "x"
+    },
+    "path": "/zzz",
+    "present": false
+  },
+  "expected": {
+    "issues": [
+      {
+        "hasMessage": true,
+        "path": "/zzz",
+        "rule": "undeclared_path",
+        "severity": "error"
+      }
+    ],
+    "ok": true,
+    "valid": false
+  }
+}

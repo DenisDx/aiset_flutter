@@ -1,0 +1,56 @@
+{
+  "schema": "1",
+  "area": "parse_accept",
+  "id": "opening_comments",
+  "description": "Same-line comments right after a nested container's opening brace are owned as trailing comments of the entry holding that container.",
+  "classes": [
+    "opening-comments",
+    "trailing-ownership",
+    "nested"
+  ],
+  "input": "{\n  a: { // obj opening owned as trailing of a\n    b: 1,\n  }, // after comma\n  c: [ // arr opening owned as trailing of c\n    2,\n  ],\n}\n",
+  "expected": {
+    "accepted": true,
+    "formatOf": "json5",
+    "paths": [
+      "",
+      "/a",
+      "/a/b",
+      "/c",
+      "/c/0"
+    ],
+    "rootText": "{\n  a: { // obj opening owned as trailing of a\n    b: 1,\n  }, // after comma\n  c: [ // arr opening owned as trailing of c\n    2,\n  ],\n}",
+    "storedValue": {
+      "k": "object",
+      "v": [
+        [
+          "a",
+          {
+            "k": "object",
+            "v": [
+              [
+                "b",
+                {
+                  "k": "int",
+                  "v": "1"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "c",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "int",
+                "v": "2"
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}

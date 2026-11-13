@@ -1,0 +1,19 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_const_match",
+  "description": "A value equal to const passes.",
+  "classes": [
+    "const",
+    "accept"
+  ],
+  "input": "{ a: \"x\" }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"string\", const: \"x\" } } } }",
+  "value": "{ a: \"x\" }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

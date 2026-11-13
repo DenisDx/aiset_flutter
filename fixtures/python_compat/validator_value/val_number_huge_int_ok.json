@@ -1,0 +1,21 @@
+{
+  "schema": "1",
+  "area": "validator_value",
+  "id": "val_number_huge_int_ok",
+  "description": "A huge integer is a valid number (no exact bound).",
+  "classes": [
+    "type",
+    "number",
+    "big-int",
+    "accept"
+  ],
+  "input": "{ a: 10000000000000000000000000000000000000000 }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { a: { type: \"number\" } } } }",
+  "value": "{ a: 10000000000000000000000000000000000000000 }",
+  "expected": {
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "valid": true
+  }
+}

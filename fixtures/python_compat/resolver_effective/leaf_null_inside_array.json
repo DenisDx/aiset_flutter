@@ -1,0 +1,78 @@
+{
+  "schema": "1",
+  "area": "resolver_effective",
+  "id": "leaf_null_inside_array",
+  "description": "An explicit null item stays null.",
+  "classes": [
+    "null",
+    "array"
+  ],
+  "input": "{ tags: [null, \"a\"] }",
+  "descriptor": "{ descriptor_version: \"1.0\", root: { type: \"object\", children: { tags: { type: \"array\", children: { type: \"string\" } } } } }",
+  "config": "{ tags: [null, \"a\"] }",
+  "layers": {
+    "overrides": {},
+    "environ": {},
+    "dotenv": {}
+  },
+  "expected": {
+    "effective": {
+      "k": "object",
+      "v": [
+        [
+          "tags",
+          {
+            "k": "array",
+            "v": [
+              {
+                "k": "null"
+              },
+              {
+                "k": "string",
+                "v": "a"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    "inputsUnchanged": true,
+    "issues": [],
+    "ok": true,
+    "provenance": {
+      "k": "object",
+      "v": [
+        [
+          "/tags/0",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          "/tags/1",
+          {
+            "k": "object",
+            "v": [
+              [
+                "kind",
+                {
+                  "k": "string",
+                  "v": "file"
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+}
